@@ -1,4 +1,6 @@
-[gd_scene load_steps=58 format=3 uid="uid://ceq71xsqf5iyg"]
+[gd_scene load_steps=59 format=3 uid="uid://ceq71xsqf5iyg"]
+
+[ext_resource type="Script" path="res://scripts/character/zombie/zombie_boss.gd" id="99_bossscript"]
 
 [ext_resource type="Texture2D" uid="uid://d0gnsuf88om6q" path="res://assets/reanim/Zombie_boss_arm_upper2.png" id="0_fuck"]
 [ext_resource type="Animation" uid="uid://j63mp0vb8pka" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_enter.tres" id="1_anim"]
@@ -84,7 +86,10 @@ _data = {
 &"Zombie_boss_stomp_4": ExtResource("13_anim")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_boss"]
+size = Vector2(420, 420)
 [node name="ZombieBoss" type="Node2D"]
+script = ExtResource("99_bossscript")
 
 [node name="Boss_innerarm_bits" type="Sprite2D" parent="."]
 visible = false
@@ -473,7 +478,16 @@ scale = Vector2(0.7939163, 0.7939163)
 texture = ExtResource("35_fuck")
 centered = false
 
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_7jecp")
 }
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-60, -140)
+shape = SubResource("RectangleShape2D_boss")

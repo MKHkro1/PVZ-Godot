@@ -152,6 +152,9 @@ func _ready() -> void:
 	## 冒险模式行限制(原版1-1单行/1-2三行草坪)
 	if not game_para.usable_rows.is_empty():
 		_apply_usable_row_limit.call_deferred()
+	## 僵王博士Boss战
+	if game_para.is_zomboss_fight:
+		_spawn_zomboss_boss.call_deferred()
 	event_bus_subscribe()
 	## 默认禁用全局敌人检测组件(追踪子弹调用, 放置追踪植物时启用,追踪植物死亡时,检测是否关闭)
 	detect_component_global.disable_component(ComponentNormBase.E_IsEnableFactor.Global)
@@ -200,9 +203,21 @@ func _ready() -> void:
 		else:
 			main_game_start()
 
+## 生成僵王博士(冒险5-10最终关/小游戏Boss战)
+func _spawn_zomboss_boss() -> void:
+	var boss_scene: PackedScene = load("res://scenes/character/zombie/Zombie_boss.tscn")
+	if boss_scene == null:
+		printerr("Zombie_boss.tscn 加载失败")
+		return
+	zomboss_boss = boss_scene.instantiate()
+	add_child(zomboss_boss)
+	## 右侧半场外居中(屋顶关卡格子同布局)
+	zomboss_boss.global_position = Vector2(1010.0, 300.0)
+
 ## 主游戏管理器事件总线订阅
-func event_bus_subscribe():
-	## 手持锤子时，修改鼠标离开ui是否显示鼠标
+var zomboss_boss: ZombossBoss = null
+
+func event_bus_subscribe():	## 手持锤子时，修改鼠标离开ui是否显示鼠标
 	EventBus.subscribe("change_is_mouse_visibel_on_hammer", change_is_mouse_visibel_on_hammer)
 	## 僵尸进家
 	EventBus.subscribe("zombie_go_home", on_zombie_go_home)
@@ -420,6 +435,9 @@ func on_zombie_go_home(zombie:Zombie000Base):
 #region 奖杯
 ## 创建奖杯
 func create_trophy(glo_pos:Vector2):
+	## Boss战: 僵王未死不结算(清完小怪不代表胜利)
+	if game_para.is_zomboss_fight and is_instance_valid(zomboss_boss) and not zomboss_boss.is_dead:
+		return
 	print("胜利条件达成，创建奖杯")
 	## 如果不是最后一轮游戏，触发下一轮
 	if curr_game_round != game_para.game_round:

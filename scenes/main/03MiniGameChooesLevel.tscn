@@ -1,4 +1,6 @@
-[gd_scene load_steps=47 format=3 uid="uid://cqo7ru5lo8e6g"]
+[gd_scene load_steps=48 format=3 uid="uid://cqo7ru5lo8e6g"]
+
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_minigame/minigame_07_zomboss.tres" id="28_boss"]
 
 [ext_resource type="Theme" uid="uid://cx302yraw066y" path="res://data/ChooesLevel.tres" id="1_ehgxy"]
 [ext_resource type="Script" uid="uid://jru6xfv7g4f1" path="res://scripts/choose_level/choose_level.gd" id="1_o008e"]
@@ -533,6 +535,7 @@ layout_mode = 2
 
 [node name="ChooseLevelButton7" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
 layout_mode = 2
+curr_level_data_game_para = ExtResource("28_boss")
 
 [node name="ChooseLevelButton8" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
 layout_mode = 2
@@ -751,10 +754,14 @@ vertical_alignment = 1
 [connection signal="pressed" from="Last" to="." method="_on_last_pressed"]
 [connection signal="pressed" from="Next" to="." method="_on_next_pressed"]
 
+[node name="Label" parent="AllPage/GridContainer/ChooseLevelButton7/TextureButton" index="0"]
+text = "僵王博士"
 [editable path="AllPage/GridContainer/ChooseLevelButton"]
 [editable path="AllPage/GridContainer/ChooseLevelButton2"]
 [editable path="AllPage/GridContainer/ChooseLevelButton3"]
 [editable path="AllPage/GridContainer/ChooseLevelButton4"]
 [editable path="AllPage/GridContainer/ChooseLevelButton4/Panel/TextureRect/Rain"]
 [editable path="AllPage/GridContainer/ChooseLevelButton5"]
+[editable path="AllPage/GridContainer/ChooseLevelButton7"]
 [editable path="AllPage/GridContainer2/ChooseLevelButton"]
+

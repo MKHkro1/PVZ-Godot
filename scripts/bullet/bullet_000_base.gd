@@ -103,9 +103,12 @@ func get_bullet_paras()->Dictionary[E_InitParasAttr,Variant]:
 
 ## 子弹与敌人碰撞
 func _on_area_2d_attack_area_entered(area: Area2D) -> void:
-	var enemy:Character000Base = area.owner
-	## TODO:攻击植物子弹
-	if enemy is Plant000Base:
+	var enemy = area.owner
+	## 僵王博士Boss: 仅植物阵营子弹可伤
+	if enemy is ZombossBoss:
+		if bullet_camp != Global.CharacterType.Plant:
+			return
+	elif enemy is Plant000Base:
 		## 子弹阵营为植物
 		if bullet_camp == Global.CharacterType.Plant:
 			return
@@ -134,8 +137,10 @@ func _on_area_2d_attack_area_entered(area: Area2D) -> void:
 
 
 ## 对敌人造成伤害
-func _attack_enemy(enemy:Character000Base):
-	if enemy is Zombie000Base:
+func _attack_enemy(enemy):
+	if enemy is ZombossBoss:
+		enemy.be_attacked_bullet(attack_value, bullet_mode, true, trigger_be_attack_sfx)
+	elif enemy is Zombie000Base:
 		_attack_zombie(enemy)
 	elif enemy is Plant000Base:
 		_attack_plant(enemy)
@@ -159,7 +164,7 @@ func get_first_be_hit_plant_in_cell(plant:Plant000Base)->Plant000Base:
 	return plant
 
 ## 攻击一次
-func attack_once(enemy:Character000Base):
+func attack_once(enemy):
 	curr_attack_num += 1
 	if max_attack_num != -1 and curr_attack_num > max_attack_num:
 		return
@@ -172,6 +177,8 @@ func attack_once(enemy:Character000Base):
 	if bullet_effect.is_bullet_effect:
 		if enemy is Character000Base:
 			bullet_effect.global_position.x = enemy.hurt_box_component.global_position.x
+		elif enemy is ZombossBoss:
+			bullet_effect.global_position.x = enemy.global_position.x
 		bullet_effect.activate_bullet_effect()
 
 	## 判断是否进入删除队列
