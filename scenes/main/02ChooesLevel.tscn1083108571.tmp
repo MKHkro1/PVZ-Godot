@@ -1,0 +1,207 @@
+[gd_scene load_steps=14 format=3 uid="uid://mcad1jl5d1ui"]
+
+[ext_resource type="Texture2D" uid="uid://bwevuvs5nnwfx" path="res://assets/image/ui/ui_challenge/Challenge_Background.jpg" id="1_77tr5"]
+[ext_resource type="Script" uid="uid://jru6xfv7g4f1" path="res://scripts/choose_level/02_chooes_level.gd" id="1_qbhvk"]
+[ext_resource type="Texture2D" uid="uid://ders1ogcvovet" path="res://assets/image/ui/ui_challenge/Challenge_Blank.png" id="2_7vy8i"]
+[ext_resource type="Texture2D" uid="uid://bnwwtx66naab1" path="res://assets/image/ui/ui_challenge/Challenge_Window.png" id="3_qbhvk"]
+[ext_resource type="Texture2D" uid="uid://vwk4r0yu588v" path="res://assets/image/ui/ui_challenge/Challenge_Window_Highlight.png" id="4_5ankq"]
+[ext_resource type="Texture2D" uid="uid://hb4b6ujaahoc" path="res://assets/image/Almanac/Almanac_GroundDay.jpg" id="5_2o48a"]
+[ext_resource type="Script" uid="uid://cnagiy3yxjooh" path="res://scripts/choose_level/chooes_level_button.gd" id="6_5ankq"]
+[ext_resource type="PackedScene" uid="uid://cc56wstwe4f2m" path="res://scenes/character/plant/001_pea_shooter_single_static.tscn" id="6_y0ybt"]
+[ext_resource type="Texture2D" uid="uid://bvp2j68muqgm8" path="res://assets/image/Almanac/Almanac_GroundNight.jpg" id="7_7gy53"]
+[ext_resource type="PackedScene" uid="uid://l2p51ejr4l2i" path="res://scenes/character/plant/009_puff_shroom_static.tscn" id="8_c1hwb"]
+[ext_resource type="Texture2D" uid="uid://xc3kqag3vqlq" path="res://assets/image/ui/ui_level/Almanac_CloseButton.png" id="11_y0ybt"]
+[ext_resource type="Texture2D" uid="uid://c82uuprowr5d" path="res://assets/image/ui/ui_level/Almanac_CloseButtonHighlight.png" id="12_7gy53"]
+[ext_resource type="BitMap" uid="uid://bc7yq02xscrlr" path="res://assets/image/ui/ui_level/Almanac_CloseButton_Mask.png" id="13_c1hwb"]
+
+[node name="ChooseLevel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qbhvk")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_77tr5")
+
+[node name="GridContainer" type="GridContainer" parent="BG"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -347.0
+offset_top = 150.0
+offset_right = 324.0
+offset_bottom = 270.0
+grow_horizontal = 2
+theme_override_constants/h_separation = 85
+columns = 4
+
+[node name="TextureRect" type="TextureRect" parent="BG/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_7vy8i")
+
+[node name="TextureButton" type="TextureButton" parent="BG/GridContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -60.0
+offset_right = 59.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_qbhvk")
+texture_pressed = ExtResource("4_5ankq")
+texture_focused = ExtResource("3_qbhvk")
+script = ExtResource("6_5ankq")
+
+[node name="Panel" type="Panel" parent="BG/GridContainer/TextureRect/TextureButton"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 7.0
+offset_right = 40.0
+offset_bottom = 68.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="BG/GridContainer/TextureRect/TextureButton/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = -39.0
+offset_right = 145.0
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_2o48a")
+
+[node name="PeaShooterSingle" parent="BG/GridContainer/TextureRect/TextureButton" instance=ExtResource("6_y0ybt")]
+position = Vector2(57, 40.5)
+
+[node name="Label" type="Label" parent="BG/GridContainer/TextureRect/TextureButton"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 82.0
+offset_right = 89.0
+offset_bottom = 105.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "前院白天"
+
+[node name="TextureRect2" type="TextureRect" parent="BG/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_7vy8i")
+
+[node name="TextureButton2" type="TextureButton" parent="BG/GridContainer/TextureRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -60.0
+offset_right = 59.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_qbhvk")
+texture_pressed = ExtResource("4_5ankq")
+texture_focused = ExtResource("3_qbhvk")
+script = ExtResource("6_5ankq")
+curr_level = 1
+
+[node name="Panel" type="Panel" parent="BG/GridContainer/TextureRect2/TextureButton2"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -41.0
+offset_top = 8.0
+offset_right = 39.0
+offset_bottom = 70.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="BG/GridContainer/TextureRect2/TextureButton2/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -41.5
+offset_right = 142.0
+offset_bottom = 158.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_7gy53")
+
+[node name="PuffShroom" parent="BG/GridContainer/TextureRect2/TextureButton2" instance=ExtResource("8_c1hwb")]
+position = Vector2(59, 43.5)
+
+[node name="Label" type="Label" parent="BG/GridContainer/TextureRect2/TextureButton2"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 82.0
+offset_right = 89.0
+offset_bottom = 105.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "前院黑夜"
+
+[node name="TextureRect3" type="TextureRect" parent="BG/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_7vy8i")
+
+[node name="TextureRect4" type="TextureRect" parent="BG/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_7vy8i")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 663.0
+offset_top = 535.0
+offset_right = 752.0
+offset_bottom = 561.0
+texture_normal = ExtResource("11_y0ybt")
+texture_pressed = ExtResource("12_7gy53")
+texture_click_mask = ExtResource("13_c1hwb")
+
+[node name="Label" type="Label" parent="TextureButton"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 5.0
+offset_right = 71.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "主菜单"
+
+[connection signal="pressed" from="BG/GridContainer/TextureRect/TextureButton" to="BG/GridContainer/TextureRect/TextureButton" method="_on_pressed"]
+[connection signal="pressed" from="BG/GridContainer/TextureRect2/TextureButton2" to="BG/GridContainer/TextureRect2/TextureButton2" method="_on_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="back_start_menu"]

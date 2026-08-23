@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b2soejmoqi7wd" path="res://scenes/main/MainGame00Base.tscn" id="1_ebgo8"]
 [ext_resource type="Texture2D" uid="uid://cvydoge11mp4" path="res://assets/image/background/background3.jpg" id="2_d84l0"]
+[ext_resource type="Resource" uid="uid://hpafnr0nr8df" path="res://resources/level_date_resource/mode_adventure/adventure_03_pool_test.tres" id="2_lh46o"]
 [ext_resource type="PackedScene" uid="uid://bq5t78cjcpj7y" path="res://scenes/main_game_bg/pool.tscn" id="4_7o8m0"]
 [ext_resource type="PackedScene" uid="uid://brnfbv2sxv2qh" path="res://scenes/ui/plant_cell.tscn" id="5_lh46o"]
 [ext_resource type="Script" uid="uid://bkeu6j2ek3su7" path="res://scripts/main_game_item/zombies_row.gd" id="12_jlyge"]
@@ -12,6 +13,7 @@
 test_change_sun_value = null
 test_death_all_zombie = null
 test_time_scale = null
+game_para = ExtResource("2_lh46o")
 
 [node name="Background" parent="CanvasLayerBG" index="0"]
 texture = ExtResource("2_d84l0")
