@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b57r551kmbu1j"]
+
+[ext_resource type="Texture2D" uid="uid://cb5umxqmoviab" path="res://assets/image/background/Wallnut_bowlingstripe.png" id="1_kdpuf"]
+[ext_resource type="Script" uid="uid://b5uueum5inabk" path="res://scripts/main_game_item/mini_game_items/wallnut_bowling_stripe.gd" id="2_5e7t8"]
+
+[node name="WallnutBowlingStripe" type="Sprite2D"]
+texture = ExtResource("1_kdpuf")
+centered = false
+script = ExtResource("2_5e7t8")

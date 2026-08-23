@@ -1,0 +1,166 @@
+[gd_scene load_steps=17 format=3 uid="uid://m3w2qdnyrqju"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_ax4bb"]
+[ext_resource type="Texture2D" uid="uid://bilk171gldfxp" path="res://assets/reanim/PotatoMine_rock3.png" id="2_3ugka"]
+[ext_resource type="Script" uid="uid://s3ps13uaqahb" path="res://scripts/character/plant/plant_1000_sprout.gd" id="2_6ggwp"]
+[ext_resource type="Texture2D" uid="uid://bjkgc0td8i23h" path="res://assets/reanim/sprout_body.png" id="3_6ggwp"]
+[ext_resource type="Texture2D" uid="uid://ck7klwgfbu35w" path="res://assets/reanim/sprout_body1.png" id="4_ji5j3"]
+[ext_resource type="Texture2D" uid="uid://kigsuqanr648" path="res://assets/reanim/sprout_body2.png" id="5_ku2tf"]
+[ext_resource type="Texture2D" uid="uid://co2k82lctyh32" path="res://assets/reanim/PotatoMine_rock1.png" id="6_tk3p8"]
+[ext_resource type="Texture2D" uid="uid://chxtr5qny28xw" path="res://assets/reanim/sprout_petal.png" id="7_xlfr0"]
+[ext_resource type="Animation" uid="uid://f0fk32ns714k" path="res://animation/garden/sprout/ZenGarden_sprout_flower.tres" id="8_qcklg"]
+[ext_resource type="Animation" uid="uid://05qghd6ixjs3" path="res://animation/garden/sprout/ZenGarden_sprout_idle.tres" id="9_s361a"]
+[ext_resource type="Animation" uid="uid://dinr4c12c03rb" path="res://animation/garden/sprout/ZenGarden_sprout_idle_noflower.tres" id="10_7wm8o"]
+[ext_resource type="Animation" uid="uid://lxnfqu6elcw2" path="res://animation/garden/sprout/ZenGarden_sprout_sprout.tres" id="11_x41wx"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eoyx3"]
+_data = {
+&"ZenGarden_sprout_flower": ExtResource("8_qcklg"),
+&"ZenGarden_sprout_idle": ExtResource("9_s361a"),
+&"ZenGarden_sprout_idle_noflower": ExtResource("10_7wm8o"),
+&"ZenGarden_sprout_sprout": ExtResource("11_x41wx")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q0wse"]
+animation = &"ZenGarden_sprout_idle_noflower"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_sgebj"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_q5g85"]
+graph_offset = Vector2(-334.909, 88.4545)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_q0wse")
+nodes/Animation/position = Vector2(-180, 140)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_sgebj")
+nodes/TimeScale/position = Vector2(120, 140)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[node name="Plant1000Sprout" node_paths=PackedStringArray("node_no_change_direction") instance=ExtResource("1_ax4bb")]
+script = ExtResource("2_6ggwp")
+plant_type = 1000
+node_no_change_direction = [NodePath("HpComponent"), NodePath("SleepComponent"), null]
+
+[node name="Shadow" parent="." index="0"]
+scale = Vector2(0.2, 0.2)
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-39, -68)
+
+[node name="Anim_sprout" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+visible = false
+position = Vector2(34.9, 42.2)
+centered = false
+
+[node name="Anim_flower" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+visible = false
+position = Vector2(34.9, 42.2)
+centered = false
+
+[node name="Anim_idle" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+visible = false
+position = Vector2(34.9, 42.2)
+centered = false
+
+[node name="Anim_idle_noflower" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+position = Vector2(34.9, 42.2)
+centered = false
+
+[node name="Rock" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+position = Vector2(40, 64.8)
+rotation = 0.261799
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_3ugka")
+centered = false
+
+[node name="Sprout" type="Sprite2D" parent="Body/BodyCorrect" index="5"]
+visible = false
+position = Vector2(33.2, 46.6)
+scale = Vector2(0.8, 0.753)
+texture = ExtResource("3_6ggwp")
+centered = false
+
+[node name="Layer 26" type="Sprite2D" parent="Body/BodyCorrect" index="6"]
+position = Vector2(35.3472, 48.7727)
+rotation = 0.0213557
+scale = Vector2(0.798255, 0.683584)
+skew = 0.0684154
+texture = ExtResource("4_ji5j3")
+centered = false
+
+[node name="Layer 27" type="Sprite2D" parent="Body/BodyCorrect" index="7"]
+position = Vector2(40.2199, 48.9727)
+rotation = 0.0618785
+scale = Vector2(0.805491, 0.788764)
+skew = 0.183477
+texture = ExtResource("5_ku2tf")
+centered = false
+
+[node name="Rock1" type="Sprite2D" parent="Body/BodyCorrect" index="8"]
+position = Vector2(33.8, 71.8)
+rotation = -2.09265
+scale = Vector2(0.424, 0.424)
+texture = ExtResource("2_3ugka")
+centered = false
+
+[node name="Rock2" type="Sprite2D" parent="Body/BodyCorrect" index="9"]
+position = Vector2(40.9, 64.7)
+scale = Vector2(0.382, 0.359)
+texture = ExtResource("2_3ugka")
+centered = false
+
+[node name="Rock3" type="Sprite2D" parent="Body/BodyCorrect" index="10"]
+position = Vector2(36, 66.3)
+rotation = 0.261799
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_3ugka")
+centered = false
+
+[node name="Rock4" type="Sprite2D" parent="Body/BodyCorrect" index="11"]
+position = Vector2(41.3, 67.1)
+rotation = 0.261799
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_3ugka")
+centered = false
+
+[node name="Rock5" type="Sprite2D" parent="Body/BodyCorrect" index="12"]
+position = Vector2(37, 71.1)
+rotation = -1.83085
+scale = Vector2(0.555, 0.555)
+texture = ExtResource("6_tk3p8")
+centered = false
+
+[node name="Sprout_petal" type="Sprite2D" parent="Body/BodyCorrect" index="13"]
+visible = false
+position = Vector2(39.9, 35.6)
+rotation = 1.4748
+scale = Vector2(0.8, 0.8)
+skew = -0.0349064
+texture = ExtResource("7_xlfr0")
+centered = false
+
+[node name="Sprout_petal1" type="Sprite2D" parent="Body/BodyCorrect" index="14"]
+visible = false
+position = Vector2(46, 38)
+rotation = 2.35619
+scale = Vector2(0.8, 0.8)
+skew = -3.13985
+texture = ExtResource("7_xlfr0")
+centered = false
+
+[node name="Sprout_petal2" type="Sprite2D" parent="Body/BodyCorrect" index="15"]
+visible = false
+position = Vector2(29.1, 43.6)
+rotation = 0.127409
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_xlfr0")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
+libraries = {
+&"": SubResource("AnimationLibrary_eoyx3")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="10"]
+tree_root = SubResource("AnimationNodeBlendTree_q5g85")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0

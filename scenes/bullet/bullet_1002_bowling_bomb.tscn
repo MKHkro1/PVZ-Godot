@@ -1,0 +1,295 @@
+[gd_scene load_steps=36 format=3 uid="uid://dqaqlnax0o5fp"]
+
+[ext_resource type="PackedScene" uid="uid://cit8bsc5op7f0" path="res://scenes/bullet/bullet_000_linear_base.tscn" id="1_3qq1e"]
+[ext_resource type="Texture2D" uid="uid://osds5r8hvsmb" path="res://assets/reanim/Wallnut_body.png" id="2_1legp"]
+[ext_resource type="Script" uid="uid://c8d7bc8r1pi7i" path="res://scripts/bullet/bullet_1002_bowling_bomb.gd" id="2_3pp2i"]
+[ext_resource type="Texture2D" uid="uid://d0hpo2yp78fwc" path="res://assets/image/plant/plantshadow.png" id="2_vwbp0"]
+[ext_resource type="Texture2D" uid="uid://cpbkvykx6yq07" path="res://assets/reanim/Wallnut_twitch.png" id="3_vwbp0"]
+[ext_resource type="Texture2D" uid="uid://co3e8k6uwm4hi" path="res://assets/reanim/Wallnut_blink1.png" id="4_uyat5"]
+[ext_resource type="Script" uid="uid://l0umdgng0y2m" path="res://scripts/character/components/bomb_component/component_bomb_norm.gd" id="7_flmls"]
+[ext_resource type="Script" uid="uid://uv71i8wk2job" path="res://scripts/fx/plant_effect/plant_effect_001_bomb_cherry.gd" id="8_7aro5"]
+[ext_resource type="Texture2D" uid="uid://nnp13qryaqjx" path="res://assets/image/particles/ExplosionCloud.png" id="9_meu2b"]
+[ext_resource type="Texture2D" uid="uid://ysajcyiwrdnk" path="res://assets/image/particles/ExplosionPowie.png" id="10_2j0lu"]
+[ext_resource type="Shader" uid="uid://cikju0ectkkms" path="res://shaders/Mypartical.gdshader" id="10_syn66"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vwbp0"]
+radius = 30.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7m11"]
+size = Vector2(250, 200)
+
+[sub_resource type="Curve" id="Curve_4oqbk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.54792, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_meu2b"]
+curve = SubResource("Curve_4oqbk")
+
+[sub_resource type="Curve" id="Curve_fxhww"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_8hu5l"]
+_data = [Vector2(0, 0.9), 0.0, -0.9, 0, 1, Vector2(1, 0), -0.9, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_sir5a"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_syn66"]
+curve_x = SubResource("Curve_fxhww")
+curve_y = SubResource("Curve_8hu5l")
+curve_z = SubResource("Curve_sir5a")
+
+[sub_resource type="Curve" id="Curve_lgpm8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.303371, 1), 0.0, 0.0, 0, 0, Vector2(0.64794, 0.177344), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4oqbk"]
+curve = SubResource("Curve_lgpm8")
+
+[sub_resource type="Curve" id="Curve_nej61"]
+_data = [Vector2(0, 0.505372), 0.0, 0.0, 0, 0, Vector2(0.524345, 0.5125), 0.0135949, -2.71172, 1, 1, Vector2(0.696629, 0.0453124), -2.71172, -0.274964, 1, 1, Vector2(0.861423, 0), -0.274964, 0.0, 1, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_fxhww"]
+curve = SubResource("Curve_nej61")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7xk12"]
+shader = ExtResource("10_syn66")
+shader_parameter/direction = Vector3(1, 0, 0)
+shader_parameter/spread = 180.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/velocity_pivot = Vector3(0, 0, 0)
+shader_parameter/gravity = Vector3(0, 0, 0)
+shader_parameter/collision_friction = 0.0
+shader_parameter/collision_bounce = 0.0
+shader_parameter/collision_enabled = false
+shader_parameter/scale_min = 1.0
+shader_parameter/scale_max = 1.0
+shader_parameter/hue_variation_min = 0.0
+shader_parameter/hue_variation_max = 0.0
+shader_parameter/anim_speed_min = 0.0
+shader_parameter/anim_speed_max = 0.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/anim_offset_max = 0.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/color_value = Color(1, 1, 1, 1)
+shader_parameter/initial_angle_min = 0.0
+shader_parameter/initial_angle_max = 3.14
+shader_parameter/angular_velocity_min = 0.0
+shader_parameter/angular_velocity_max = 0.0
+shader_parameter/initial_linear_velocity_min = 100.0
+shader_parameter/initial_linear_velocity_max = 100.0
+shader_parameter/directional_velocity_min = 0.0
+shader_parameter/directional_velocity_max = 0.0
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/linear_accel_min = 0.0
+shader_parameter/linear_accel_max = 0.0
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.0
+shader_parameter/damping_max = 0.0
+shader_parameter/alpha_curve = SubResource("CurveTexture_meu2b")
+shader_parameter/color_curve = SubResource("CurveXYZTexture_syn66")
+shader_parameter/scale_curve = SubResource("CurveTexture_fxhww")
+shader_parameter/initial_linear_velocity_curve = SubResource("CurveTexture_4oqbk")
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
+shader_parameter/emission_shape_scale = 1.0
+shader_parameter/emission_sphere_radius = 40.0
+shader_parameter/random_direction_from_spread = Vector3(0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_kj2ct"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.54792, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8hu5l"]
+curve = SubResource("Curve_kj2ct")
+
+[sub_resource type="Curve" id="Curve_iytgh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_5i8y0"]
+_data = [Vector2(0, 0.9), 0.0, -0.641406, 0, 1, Vector2(1, 0.258594), -0.641406, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_jyko1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_sir5a"]
+curve_x = SubResource("Curve_iytgh")
+curve_y = SubResource("Curve_5i8y0")
+curve_z = SubResource("Curve_jyko1")
+
+[sub_resource type="Curve" id="Curve_v7fpa"]
+_data = [Vector2(0, 1), 0.0, -0.481111, 0, 1, Vector2(0.23221, 0.888281), -0.481111, -2.00431, 1, 1, Vector2(0.404494, 0.542969), -2.00431, -0.513028, 1, 1, Vector2(0.681648, 0.400781), -0.513028, 0.0, 1, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_lgpm8"]
+curve = SubResource("Curve_v7fpa")
+
+[sub_resource type="Curve" id="Curve_a2ilc"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1.26328), 0.0, 0.0, 0, 0, Vector2(0.337079, 1.26328), 0.0, -2.46195, 1, 1, Vector2(0.621723, 0.5625), -2.46195, -1.487, 1, 1, Vector2(1, 0), -1.487, 0.0, 1, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_nej61"]
+curve = SubResource("Curve_a2ilc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jeoum"]
+shader = ExtResource("10_syn66")
+shader_parameter/direction = Vector3(1, 0, 0)
+shader_parameter/spread = 180.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/velocity_pivot = Vector3(0, 0, 0)
+shader_parameter/gravity = Vector3(0, 0, 0)
+shader_parameter/collision_friction = 0.0
+shader_parameter/collision_bounce = 0.0
+shader_parameter/collision_enabled = false
+shader_parameter/scale_min = 1.0
+shader_parameter/scale_max = 1.0
+shader_parameter/hue_variation_min = 0.0
+shader_parameter/hue_variation_max = 0.0
+shader_parameter/anim_speed_min = 0.0
+shader_parameter/anim_speed_max = 0.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/anim_offset_max = 0.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/color_value = Color(1, 1, 1, 1)
+shader_parameter/initial_angle_min = 0.0
+shader_parameter/initial_angle_max = 3.14
+shader_parameter/angular_velocity_min = 0.0
+shader_parameter/angular_velocity_max = 0.0
+shader_parameter/initial_linear_velocity_min = 50.0
+shader_parameter/initial_linear_velocity_max = 50.0
+shader_parameter/directional_velocity_min = 0.0
+shader_parameter/directional_velocity_max = 0.0
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/linear_accel_min = 0.0
+shader_parameter/linear_accel_max = 0.0
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.0
+shader_parameter/damping_max = 0.0
+shader_parameter/alpha_curve = SubResource("CurveTexture_8hu5l")
+shader_parameter/color_curve = SubResource("CurveXYZTexture_sir5a")
+shader_parameter/scale_curve = SubResource("CurveTexture_nej61")
+shader_parameter/initial_linear_velocity_curve = SubResource("CurveTexture_lgpm8")
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
+shader_parameter/emission_shape_scale = 1.0
+shader_parameter/emission_sphere_radius = 60.0
+shader_parameter/random_direction_from_spread = Vector3(0, 0, 0)
+
+[node name="Bullet1002BowlingBomb" instance=ExtResource("1_3qq1e")]
+script = ExtResource("2_3pp2i")
+speed = 188.0
+type_bullet_SFX = 1001
+
+[node name="BulletShadow" parent="." index="0"]
+position = Vector2(0, 0)
+texture = ExtResource("2_vwbp0")
+hframes = 1
+
+[node name="Body" parent="." index="1"]
+modulate = Color(1, 0, 0.141176, 1)
+
+[node name="BodyCorrect" type="Node2D" parent="Body" index="1"]
+position = Vector2(0, -29)
+
+[node name="_ground" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+position = Vector2(-42, -41)
+centered = false
+
+[node name="Anim_idle" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+position = Vector2(-42, -41)
+centered = false
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+position = Vector2(-38.163, -32.7476)
+rotation = -0.0454682
+scale = Vector2(0.7, 0.68937)
+texture = ExtResource("2_1legp")
+centered = false
+
+[node name="Anim_blink_twitch" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+visible = false
+position = Vector2(-14.5894, -8.3159)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_vwbp0")
+centered = false
+
+[node name="Anim_blink_twice" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+visible = false
+position = Vector2(-15.7894, -22.3159)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_uyat5")
+centered = false
+
+[node name="BulletEffect" parent="." index="2"]
+is_bullet_effect = false
+
+[node name="Area2DAttack" parent="." index="3"]
+collision_layer = 72
+
+[node name="CollisionShape2D" parent="Area2DAttack" index="0"]
+position = Vector2(0, -30)
+shape = SubResource("CircleShape2D_vwbp0")
+
+[node name="BombComponent" type="Node2D" parent="." index="4"]
+unique_name_in_owner = true
+script = ExtResource("7_flmls")
+bomb_lane = 1
+can_attack_plant_status = 7
+can_attack_zombie_status = 31
+
+[node name="Area2DBomb" type="Area2D" parent="BombComponent" index="0"]
+collision_layer = 0
+collision_mask = 4116
+input_pickable = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BombComponent/Area2DBomb" index="0"]
+position = Vector2(0, -25)
+shape = SubResource("RectangleShape2D_o7m11")
+
+[node name="BombEffect" type="Node2D" parent="BombComponent" index="1"]
+visible = false
+position = Vector2(0, -28)
+script = ExtResource("8_7aro5")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BombComponent/BombEffect" index="0"]
+emitting = false
+amount = 13
+texture = ExtResource("9_meu2b")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 0.0
+draw_order = 0
+process_material = SubResource("ShaderMaterial_7xk12")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="BombComponent/BombEffect" index="1"]
+emitting = false
+amount = 10
+texture = ExtResource("9_meu2b")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ShaderMaterial_jeoum")
+
+[node name="ExplosiveFont" type="Sprite2D" parent="BombComponent/BombEffect" index="2"]
+texture = ExtResource("10_2j0lu")

@@ -1,0 +1,1283 @@
+[gd_resource type="Animation" load_steps=15 format=3 uid="uid://doeq42er8cia8"]
+
+[ext_resource type="Texture2D" uid="uid://b4181mgonyrat" path="res://assets/reanim/Zombie_yeti_innerarm_hand.png" id="0_fuck"]
+[ext_resource type="Texture2D" uid="uid://dmghbko85ro0" path="res://assets/reanim/Zombie_yeti_innerarm_upper.png" id="1_fuck"]
+[ext_resource type="Texture2D" uid="uid://ik6y7t3urs87" path="res://assets/reanim/Zombie_yeti_innerarm_lower.png" id="2_fuck"]
+[ext_resource type="Texture2D" uid="uid://de3rqicu6w5mf" path="res://assets/reanim/Zombie_yeti_innerleg_foot.png" id="3_fuck"]
+[ext_resource type="Texture2D" uid="uid://coj3iinjlcyoh" path="res://assets/reanim/Zombie_yeti_innerleg_lower.png" id="4_fuck"]
+[ext_resource type="Texture2D" uid="uid://bgn67j62rb15y" path="res://assets/reanim/Zombie_yeti_innerleg_upper.png" id="5_fuck"]
+[ext_resource type="Texture2D" uid="uid://y6qpheq4wtpw" path="res://assets/reanim/Zombie_yeti_body.png" id="6_fuck"]
+[ext_resource type="Texture2D" uid="uid://b3hwp8avit5jh" path="res://assets/reanim/Zombie_yeti_outerleg_foot.png" id="7_fuck"]
+[ext_resource type="Texture2D" uid="uid://s6c54d4v82nf" path="res://assets/reanim/Zombie_yeti_outerleg_lower.png" id="8_fuck"]
+[ext_resource type="Texture2D" uid="uid://o1w8vr3buyh1" path="res://assets/reanim/Zombie_yeti_outerleg_upper.png" id="9_fuck"]
+[ext_resource type="Texture2D" uid="uid://6tey5xi7w50r" path="res://assets/reanim/Zombie_yeti_head.png" id="10_fuck"]
+[ext_resource type="Texture2D" uid="uid://d3hb8vj2xmqq3" path="res://assets/reanim/Zombie_yeti_jaw.png" id="11_fuck"]
+[ext_resource type="Texture2D" uid="uid://bi21vvuc0dj7t" path="res://assets/reanim/Zombie_yeti_outerarm_hand.png" id="12_fuck"]
+[ext_resource type="Texture2D" uid="uid://b440tq6jamx1u" path="res://assets/reanim/Zombie_yeti_outerarm_lower.png" id="14_fuck"]
+
+[resource]
+resource_name = "Zombie_yeti_death"
+length = 1.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_hand:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(5.1, 83.5), Vector2(7, 82.9), Vector2(8.8, 82.3), Vector2(10.9, 81.8), Vector2(12.8, 81.2), Vector2(14.7, 80.7), Vector2(16.6, 80), Vector2(18.5, 79.4), Vector2(20.5, 79), Vector2(12.8, 86), Vector2(5.9, 93.7), Vector2(0, 101.8), Vector2(-5.2, 110.1), Vector2(-7.1, 114.5), Vector2(-8.7, 118.8), Vector2(-10.4, 123.1), Vector2(-11.8, 127.3), Vector2(-11.7, 126.4), Vector2(-11, 125), Vector2(-10.9, 125.5), Vector2(-10.9, 126), Vector2(-10.9, 126.5), Vector2(-11, 127), Vector2(-10.9, 126.7), Vector2(-10.9, 126.5), Vector2(-10.9, 126.8), Vector2(-11, 127)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_hand:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.118682, 0.123918, 0.1309, 0.139626, 0.148353, 0.153589, 0.162316, 0.171042, 0.179769, -0.08203, -0.34383, -0.605629, -0.869174, -0.98262, -1.09607, -1.21126, -1.32471, -1.57778, -1.8326, -1.83085, -1.83085, -1.83085, -1.8326, -1.83085, -1.83085, -1.83085, -1.8326]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_hand:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.72, 0.72), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.718, 0.718), Vector2(0.719, 0.719), Vector2(0.718, 0.718), Vector2(0.717, 0.717), Vector2(0.717, 0.717), Vector2(0.718, 0.718), Vector2(0.716, 0.716), Vector2(0.716, 0.716), Vector2(0.716, 0.716), Vector2(0.717, 0.717), Vector2(0.716, 0.716), Vector2(0.716, 0.716), Vector2(0.715, 0.715), Vector2(0.715, 0.715), Vector2(0.715, 0.715), Vector2(0.716, 0.716), Vector2(0.715, 0.715), Vector2(0.715, 0.715), Vector2(0.715, 0.715), Vector2(0.716, 0.716)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_hand:skew")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [4e-07, 4e-07, -3e-07, 3e-07, 0.0, 0.0, -4e-07, 3e-07, -1e-07, -5e-07, 1e-07, -2e-07, 0.0, -4e-07, 2e-07, -5e-07, 1e-07, 4e-07, 3e-07, -4e-07, -4e-07, -4e-07, 3e-07, -4e-07, -4e-07, -4e-07, 3e-07]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_hand:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("0_fuck"), ExtResource("0_fuck")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_hand:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_upper:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_upper:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(5.1, 28.6), Vector2(7.3, 28.1), Vector2(9.7, 27.5), Vector2(12.1, 27), Vector2(14.4, 26.4), Vector2(16.7, 25.9), Vector2(19, 25.3), Vector2(21.4, 24.7), Vector2(23.8, 24.2), Vector2(2.8, 36.5), Vector2(-16.7, 50.1), Vector2(-34.7, 64.8), Vector2(-50.9, 80), Vector2(-55.2, 90.2), Vector2(-59.1, 100.3), Vector2(-62.7, 110.4), Vector2(-66, 120.3), Vector2(-64.5, 133.4), Vector2(-61.7, 145.4), Vector2(-61.7, 145.9), Vector2(-61.7, 146.4), Vector2(-61.7, 146.9), Vector2(-61.7, 147.4), Vector2(-61.7, 147), Vector2(-61.7, 146.9), Vector2(-61.6, 147.1), Vector2(-61.7, 147.4)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_upper:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.005236, 0.013963, 0.022689, 0.027925, 0.034907, 0.043633, 0.05236, 0.061087, -0.198968, -0.462512, -0.724312, -0.987856, -1.1013, -1.21475, -1.3282, -1.44164, -1.69646, -1.94953, -1.94953, -1.94953, -1.94953, -1.94953, -1.94953, -1.94953, -1.94953, -1.94953]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_upper:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.643, 0.72), Vector2(0.643, 0.72), Vector2(0.643, 0.72), Vector2(0.643, 0.72), Vector2(0.643, 0.719), Vector2(0.643, 0.719), Vector2(0.643, 0.719), Vector2(0.642, 0.719), Vector2(0.642, 0.719), Vector2(0.642, 0.718), Vector2(0.641, 0.717), Vector2(0.641, 0.717), Vector2(0.641, 0.718), Vector2(0.64, 0.717), Vector2(0.64, 0.717), Vector2(0.64, 0.717), Vector2(0.641, 0.717), Vector2(0.64, 0.716), Vector2(0.64, 0.716), Vector2(0.639, 0.715), Vector2(0.639, 0.715), Vector2(0.639, 0.715), Vector2(0.64, 0.716), Vector2(0.639, 0.715), Vector2(0.639, 0.715), Vector2(0.639, 0.715), Vector2(0.64, 0.716)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_upper:skew")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -4e-07, 3e-07, 3e-07, -4e-07, 2e-07, -1e-07, -5e-07, 5e-07, -2e-07, 4e-07, -3e-07, 3e-07, -1e-07, 5e-07, 1e-07, 0.0, 3e-07, 3e-07, 3e-07, 3e-07, 3e-07, 3e-07, 3e-07, 3e-07, 3e-07]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_upper:texture")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("1_fuck"), ExtResource("1_fuck")]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_upper:self_modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_lower:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_lower:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(5.5, 51.6), Vector2(7.6, 51.1), Vector2(9.7, 50.5), Vector2(12, 50), Vector2(14.1, 49.4), Vector2(16.2, 48.9), Vector2(18.4, 48.4), Vector2(20.6, 47.8), Vector2(22.8, 47.2), Vector2(7.5, 56.6), Vector2(-6.8, 67.4), Vector2(-19.9, 79.3), Vector2(-31.5, 92.3), Vector2(-34.9, 100), Vector2(-37.9, 107.7), Vector2(-40.8, 115.2), Vector2(-43.2, 122.9), Vector2(-42.6, 130.1), Vector2(-40.5, 136.4), Vector2(-40.5, 136.9), Vector2(-40.5, 137.4), Vector2(-40.5, 137.9), Vector2(-40.5, 138.4), Vector2(-40.6, 138.2), Vector2(-40.5, 137.9), Vector2(-40.5, 138.2), Vector2(-40.5, 138.4)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_lower:rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.118682, 0.123918, 0.1309, 0.139626, 0.148353, 0.153589, 0.162316, 0.171042, 0.179769, -0.08203, -0.34383, -0.605629, -0.869174, -0.98262, -1.09607, -1.21126, -1.32471, -1.57778, -1.8326, -1.83085, -1.83085, -1.83085, -1.8326, -1.83085, -1.83085, -1.83085, -1.8326]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_lower:scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.72, 0.72), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.718, 0.718), Vector2(0.719, 0.719), Vector2(0.718, 0.718), Vector2(0.717, 0.717), Vector2(0.717, 0.717), Vector2(0.718, 0.718), Vector2(0.716, 0.716), Vector2(0.716, 0.716), Vector2(0.716, 0.716), Vector2(0.717, 0.717), Vector2(0.716, 0.716), Vector2(0.716, 0.716), Vector2(0.715, 0.715), Vector2(0.715, 0.715), Vector2(0.715, 0.715), Vector2(0.716, 0.716), Vector2(0.715, 0.715), Vector2(0.715, 0.715), Vector2(0.715, 0.715), Vector2(0.716, 0.716)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_lower:skew")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [4e-07, 4e-07, -3e-07, 3e-07, 0.0, 0.0, -4e-07, 3e-07, -1e-07, -5e-07, 1e-07, -2e-07, 0.0, -4e-07, 2e-07, -5e-07, 1e-07, 4e-07, 3e-07, -4e-07, -4e-07, -4e-07, 3e-07, -4e-07, -4e-07, -4e-07, 3e-07]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_lower:texture")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("2_fuck"), ExtResource("2_fuck")]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerarm_lower:self_modulate")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_foot:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, true]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_foot:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(5.5, 121.1), Vector2(5.5, 121.1), Vector2(5.5, 121.1), Vector2(5.5, 121.1), Vector2(5.5, 121.1), Vector2(5.5, 121.1), Vector2(5.5, 121.1), Vector2(5.5, 121.1), Vector2(5.5, 121.1), Vector2(5.2, 121.6), Vector2(4.8, 122.2), Vector2(4.6, 122.8), Vector2(4.3, 123.3), Vector2(7.6, 128.7), Vector2(14.6, 133.4), Vector2(24.7, 135.6), Vector2(36.6, 134.4), Vector2(36.1, 121.3), Vector2(34.9, 105.9), Vector2(34.5, 116.7), Vector2(33.9, 126.8), Vector2(33.1, 136.2), Vector2(32.3, 145), Vector2(32.8, 140.7), Vector2(33.1, 136.2), Vector2(32.6, 140.7), Vector2(32.3, 145)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_foot:rotation")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.041888, -0.090757, -0.137881, -0.185005, -0.605629, -1.028, -1.45037, -1.87099, -2.22006, -2.57087, -2.38761, -2.20435, -2.02284, -1.83958, -1.93208, -2.02284, -1.93208, -1.83958]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_foot:scale")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.717, 0.717), Vector2(0.717, 0.717), Vector2(0.716, 0.716), Vector2(0.715, 0.715), Vector2(0.713, 0.713), Vector2(0.713, 0.713), Vector2(0.711, 0.711), Vector2(0.71, 0.71), Vector2(0.71, 0.71), Vector2(0.71, 0.71), Vector2(0.709, 0.709), Vector2(0.71, 0.71), Vector2(0.709, 0.709), Vector2(0.71, 0.71)]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_foot:skew")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1e-07, -1e-07, 0.0, 1e-07, -2e-07, 1e-07, 4e-07, 1e-07, 2e-07, 1e-07, -4e-07, 2e-07, 4e-07, 0.0, -4e-07, 4e-07, -4e-07, 0.0]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_foot:texture")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("3_fuck"), ExtResource("3_fuck")]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_foot:self_modulate")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_lower:visible")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, true]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_lower:position")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10.9, 96), Vector2(10.7, 96), Vector2(10.5, 96), Vector2(10.2, 96), Vector2(10, 96), Vector2(9.8, 96), Vector2(9.6, 96), Vector2(9.3, 96), Vector2(9, 96), Vector2(3.5, 100.5), Vector2(-1, 105.5), Vector2(-4.8, 110.9), Vector2(-7.6, 116.3), Vector2(-6.5, 122.3), Vector2(-3.5, 127.7), Vector2(0.9, 131.9), Vector2(6.8, 134.8), Vector2(9.5, 131.7), Vector2(12.4, 125.3), Vector2(7.6, 130.8), Vector2(2.9, 134.3), Vector2(-1.1, 136.3), Vector2(-4.4, 136.8), Vector2(-2.8, 136.7), Vector2(-1.1, 136.3), Vector2(-2.8, 136.7), Vector2(-4.4, 136.8)]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_lower:rotation")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.190241, -0.382227, -0.575959, -0.767945, -1.03498, -1.30551, -1.56905, -1.83958, -2.19039, -2.5412, -2.28289, -2.02807, -1.76976, -1.51669, -1.6441, -1.76976, -1.6441, -1.51669]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_lower:scale")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.721), Vector2(0.72, 0.721), Vector2(0.72, 0.721), Vector2(0.72, 0.721), Vector2(0.72, 0.722), Vector2(0.72, 0.722), Vector2(0.719, 0.721), Vector2(0.718, 0.72), Vector2(0.718, 0.72), Vector2(0.718, 0.72), Vector2(0.717, 0.719), Vector2(0.717, 0.719), Vector2(0.717, 0.718), Vector2(0.716, 0.718), Vector2(0.714, 0.716), Vector2(0.715, 0.716), Vector2(0.713, 0.714), Vector2(0.712, 0.714), Vector2(0.712, 0.713), Vector2(0.711, 0.713), Vector2(0.711, 0.713), Vector2(0.712, 0.713), Vector2(0.711, 0.713), Vector2(0.711, 0.713)]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_lower:skew")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0069813, -0.015708, -0.0244346, -0.0331613, -0.0418879, -0.0506145, -0.0593412, -0.0715585, -0.0715584, -0.0715586, -0.0698128, -0.0733037, -0.0750494, -0.0715588, -0.0750491, -0.0733038, -0.073304, -0.0715588, -0.0733035, -0.0715581, -0.075049, -0.0715586, -0.0698133, -0.075049, -0.0698133, -0.0715586]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_lower:texture")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("4_fuck"), ExtResource("4_fuck")]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_lower:self_modulate")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_upper:visible")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, true]
+}
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_upper:position")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(9.7, 82.1), Vector2(10.5, 82), Vector2(11.3, 81.9), Vector2(12.3, 81.8), Vector2(13.1, 81.6), Vector2(14, 81.6), Vector2(14.9, 81.5), Vector2(15.9, 81.5), Vector2(16.8, 81.4), Vector2(6.2, 86.7), Vector2(-3.1, 92.9), Vector2(-11.5, 99.8), Vector2(-18.4, 107.2), Vector2(-18.4, 114.1), Vector2(-17.7, 120.7), Vector2(-16.3, 127.1), Vector2(-14.4, 133), Vector2(-12.3, 134.4), Vector2(-9.5, 134.8), Vector2(-16.8, 128.1), Vector2(-22.1, 119.2), Vector2(-24.7, 108.9), Vector2(-24.6, 98.1), Vector2(-25, 103.5), Vector2(-24.7, 108.9), Vector2(-25, 103.6), Vector2(-24.6, 98.1)]
+}
+tracks/37/type = "value"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_upper:rotation")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.027925, 0.057596, 0.087266, 0.118682, 0.148353, 0.179769, 0.20944, 0.240855, -0.015708, -0.279253, -0.544543, -0.806342, -0.991347, -1.17635, -1.3631, -1.54636, -1.79769, -2.05425, -1.67901, -1.30551, -0.93026, -0.553269, -0.741765, -0.93026, -0.741765, -0.553269]
+}
+tracks/38/type = "value"
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_upper:scale")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.718, 0.718), Vector2(0.718, 0.718), Vector2(0.718, 0.718), Vector2(0.717, 0.717), Vector2(0.717, 0.717), Vector2(0.717, 0.717), Vector2(0.717, 0.717), Vector2(0.716, 0.716), Vector2(0.716, 0.716), Vector2(0.715, 0.715), Vector2(0.714, 0.714), Vector2(0.713, 0.713), Vector2(0.714, 0.714), Vector2(0.712, 0.712), Vector2(0.713, 0.713), Vector2(0.712, 0.712), Vector2(0.714, 0.714)]
+}
+tracks/39/type = "value"
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_upper:skew")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 3e-07, -1e-07, 5e-07, 4e-07, 0.0, -1e-07, -5e-07, 4e-07, 0.0, 3e-07, 3e-07, -1e-07, 0.0, 1e-07, -1e-07, 3e-07, -1e-07, -5e-07, 3e-07, -3e-07, -5e-07, -4e-07, 1e-07, -5e-07, 1e-07, -4e-07]
+}
+tracks/40/type = "value"
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_upper:texture")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("5_fuck"), ExtResource("5_fuck")]
+}
+tracks/41/type = "value"
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/path = NodePath("Body/BodyCorrect/Zombie_yeti_innerleg_upper:self_modulate")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/42/type = "value"
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/path = NodePath("Body/BodyCorrect/Zombie_yeti_body:visible")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, true]
+}
+tracks/43/type = "value"
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/path = NodePath("Body/BodyCorrect/Zombie_yeti_body:position")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(5.3, 11.7), Vector2(8.1, 10.9), Vector2(11, 10), Vector2(13.7, 9.4), Vector2(16.7, 8.7), Vector2(19.8, 8), Vector2(22.7, 7.5), Vector2(25.9, 6.9), Vector2(29, 6.5), Vector2(4.6, 15.5), Vector2(-17.9, 26.9), Vector2(-43.4, 45.5), Vector2(-63.7, 66.7), Vector2(-69.7, 78.7), Vector2(-75, 90.6), Vector2(-79.6, 102.3), Vector2(-83.3, 114.1), Vector2(-83, 132.5), Vector2(-79.7, 148.2), Vector2(-81.4, 149), Vector2(-83.2, 149.9), Vector2(-85.1, 150.6), Vector2(-86.8, 151.4), Vector2(-84.5, 150.7), Vector2(-82.3, 150.1), Vector2(-82.7, 150.4), Vector2(-83.1, 150.8)]
+}
+tracks/44/type = "value"
+tracks/44/imported = false
+tracks/44/enabled = true
+tracks/44/path = NodePath("Body/BodyCorrect/Zombie_yeti_body:rotation")
+tracks/44/interp = 1
+tracks/44/loop_wrap = true
+tracks/44/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.031416, 0.066323, 0.097738, 0.1309, 0.165806, 0.197222, 0.232129, 0.267035, 0.05236, -0.16057, -0.471239, -0.781907, -0.895354, -1.0088, -1.12225, -1.23744, -1.494, -1.74533, -1.74358, -1.74358, -1.74358, -1.74533, -1.74358, -1.74358, -1.74358, -1.74533]
+}
+tracks/45/type = "value"
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/path = NodePath("Body/BodyCorrect/Zombie_yeti_body:scale")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.718, 0.718), Vector2(0.717, 0.717), Vector2(0.718, 0.718), Vector2(0.717, 0.717), Vector2(0.717, 0.717), Vector2(0.717, 0.717), Vector2(0.717, 0.717), Vector2(0.717, 0.717), Vector2(0.716, 0.716), Vector2(0.692, 0.741), Vector2(0.669, 0.767), Vector2(0.645, 0.792), Vector2(0.622, 0.818), Vector2(0.641, 0.785), Vector2(0.66, 0.754), Vector2(0.651, 0.76), Vector2(0.642, 0.767)]
+}
+tracks/46/type = "value"
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/path = NodePath("Body/BodyCorrect/Zombie_yeti_body:skew")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -1e-07, -5e-07, 4e-07, -3e-07, 3e-07, 2e-07, -2e-07, 4e-07, -1e-07, -3e-07, 1e-07, -5e-07, 1e-07, -3e-07, 3e-07, -4e-07, 2e-07, -2e-07, 1e-07, 1e-07, 1e-07, -2e-07, 1e-07, 1e-07, 1e-07, -2e-07]
+}
+tracks/47/type = "value"
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/path = NodePath("Body/BodyCorrect/Zombie_yeti_body:texture")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("6_fuck"), ExtResource("6_fuck")]
+}
+tracks/48/type = "value"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath("Body/BodyCorrect/Zombie_yeti_body:self_modulate")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/49/type = "value"
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_foot:visible")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, true]
+}
+tracks/50/type = "value"
+tracks/50/imported = false
+tracks/50/enabled = true
+tracks/50/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_foot:position")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(32.1, 123.8), Vector2(32.1, 123.8), Vector2(32.1, 123.8), Vector2(32.1, 123.8), Vector2(32.1, 123.8), Vector2(32.1, 123.8), Vector2(32.1, 123.8), Vector2(32.1, 123.8), Vector2(32.1, 123.8), Vector2(31.4, 124.9), Vector2(30.9, 126.1), Vector2(30.4, 127.4), Vector2(30.1, 128.6), Vector2(29.6, 127.1), Vector2(32.9, 124.6), Vector2(39.1, 119.7), Vector2(47.4, 111.3), Vector2(41, 98.6), Vector2(33.8, 82.7), Vector2(28.5, 107.8), Vector2(22.7, 128.7), Vector2(18.2, 145.6), Vector2(13.6, 162.4), Vector2(14.4, 154.9), Vector2(15.3, 147.4), Vector2(14.4, 154.9), Vector2(13.6, 162.4)]
+}
+tracks/51/type = "value"
+tracks/51/imported = false
+tracks/51/enabled = true
+tracks/51/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_foot:rotation")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.069813, -0.143117, -0.216421, -0.29147, -0.680678, -1.07512, -1.46433, -1.85354, -2.20784, -2.56214, -2.15199, -1.74358, -1.69122, -1.6441, -1.70868, -1.775, -1.70868, -1.6441]
+}
+tracks/52/type = "value"
+tracks/52/imported = false
+tracks/52/enabled = true
+tracks/52/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_foot:scale")
+tracks/52/interp = 1
+tracks/52/loop_wrap = true
+tracks/52/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.717, 0.717), Vector2(0.717, 0.717), Vector2(0.717, 0.717), Vector2(0.716, 0.716), Vector2(0.714, 0.714), Vector2(0.714, 0.714), Vector2(0.711, 0.711), Vector2(0.71, 0.71), Vector2(0.71, 0.71), Vector2(0.71, 0.71), Vector2(0.71, 0.71), Vector2(0.71, 0.71), Vector2(0.71, 0.71), Vector2(0.71, 0.71)]
+}
+tracks/53/type = "value"
+tracks/53/imported = false
+tracks/53/enabled = true
+tracks/53/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_foot:skew")
+tracks/53/interp = 1
+tracks/53/loop_wrap = true
+tracks/53/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -2e-07, 0.0, 2e-07, 0.0, -4e-07, 2e-07, -2e-07, 4e-07, -5e-07, -3e-07, 1e-07, 1e-07, 0.0, -1e-07, -3e-07, 2e-07, -3e-07, -1e-07]
+}
+tracks/54/type = "value"
+tracks/54/imported = false
+tracks/54/enabled = true
+tracks/54/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_foot:texture")
+tracks/54/interp = 1
+tracks/54/loop_wrap = true
+tracks/54/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("7_fuck"), ExtResource("7_fuck")]
+}
+tracks/55/type = "value"
+tracks/55/imported = false
+tracks/55/enabled = true
+tracks/55/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_foot:self_modulate")
+tracks/55/interp = 1
+tracks/55/loop_wrap = true
+tracks/55/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/56/type = "value"
+tracks/56/imported = false
+tracks/56/enabled = true
+tracks/56/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_lower:visible")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, true]
+}
+tracks/57/type = "value"
+tracks/57/imported = false
+tracks/57/enabled = true
+tracks/57/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_lower:position")
+tracks/57/interp = 1
+tracks/57/loop_wrap = true
+tracks/57/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(44.1, 94.7), Vector2(43.7, 94.7), Vector2(43.2, 94.6), Vector2(42.8, 94.7), Vector2(42.3, 94.6), Vector2(41.9, 94.7), Vector2(41.4, 94.7), Vector2(40.9, 94.7), Vector2(40.4, 94.7), Vector2(36.3, 96), Vector2(32.6, 97.5), Vector2(29.1, 98.9), Vector2(26, 100.4), Vector2(18.4, 105.8), Vector2(15.2, 111.2), Vector2(15.7, 114.7), Vector2(19.3, 115.2), Vector2(17.1, 111.3), Vector2(15, 103.9), Vector2(2, 117.7), Vector2(-10.5, 124.7), Vector2(-18.4, 131.8), Vector2(-25.5, 137.5), Vector2(-22.6, 136.1), Vector2(-19.4, 134.2), Vector2(-22.6, 136.1), Vector2(-25.5, 137.5)]
+}
+tracks/58/type = "value"
+tracks/58/imported = false
+tracks/58/enabled = true
+tracks/58/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_lower:rotation")
+tracks/58/interp = 1
+tracks/58/loop_wrap = true
+tracks/58/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.10821, -0.221657, -0.331613, -0.445059, -0.834267, -1.22697, -1.61268, -2.00713, -2.36143, -2.71573, -2.1869, -1.65981, -1.38405, -1.10479, -1.25838, -1.41023, -1.25838, -1.10479]
+}
+tracks/59/type = "value"
+tracks/59/imported = false
+tracks/59/enabled = true
+tracks/59/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_lower:scale")
+tracks/59/interp = 1
+tracks/59/loop_wrap = true
+tracks/59/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.72, 0.72), Vector2(0.72, 0.721), Vector2(0.72, 0.721), Vector2(0.72, 0.722), Vector2(0.72, 0.723), Vector2(0.72, 0.724), Vector2(0.72, 0.724), Vector2(0.72, 0.725), Vector2(0.72, 0.726), Vector2(0.719, 0.724), Vector2(0.719, 0.722), Vector2(0.718, 0.72), Vector2(0.719, 0.719), Vector2(0.717, 0.717), Vector2(0.716, 0.716), Vector2(0.716, 0.716), Vector2(0.715, 0.716), Vector2(0.713, 0.714), Vector2(0.714, 0.714), Vector2(0.718, 0.711), Vector2(0.723, 0.711), Vector2(0.729, 0.711), Vector2(0.736, 0.711), Vector2(0.732, 0.711), Vector2(0.73, 0.711), Vector2(0.732, 0.711), Vector2(0.736, 0.711)]
+}
+tracks/60/type = "value"
+tracks/60/imported = false
+tracks/60/enabled = true
+tracks/60/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_lower:skew")
+tracks/60/interp = 1
+tracks/60/loop_wrap = true
+tracks/60/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0122173, -0.0296706, -0.0471239, -0.0610865, -0.0767945, -0.0942478, -0.111701, -0.129154, -0.0907575, -0.0523597, -0.0157075, 0.0244347, 0.0226889, 0.0244342, 0.0209437, 0.024435, 0.0261795, 0.0244343, -0.0471234, -0.118683, -0.185005, -0.2618, -0.226893, -0.188496, -0.226893, -0.2618]
+}
+tracks/61/type = "value"
+tracks/61/imported = false
+tracks/61/enabled = true
+tracks/61/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_lower:texture")
+tracks/61/interp = 1
+tracks/61/loop_wrap = true
+tracks/61/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("8_fuck"), ExtResource("8_fuck")]
+}
+tracks/62/type = "value"
+tracks/62/imported = false
+tracks/62/enabled = true
+tracks/62/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_lower:self_modulate")
+tracks/62/interp = 1
+tracks/62/loop_wrap = true
+tracks/62/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/63/type = "value"
+tracks/63/imported = false
+tracks/63/enabled = true
+tracks/63/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_upper:visible")
+tracks/63/interp = 1
+tracks/63/loop_wrap = true
+tracks/63/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, true]
+}
+tracks/64/type = "value"
+tracks/64/imported = false
+tracks/64/enabled = true
+tracks/64/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_upper:position")
+tracks/64/interp = 1
+tracks/64/loop_wrap = true
+tracks/64/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(34.9, 76.1), Vector2(36, 75.8), Vector2(37, 75.5), Vector2(38.1, 75.1), Vector2(39.4, 74.8), Vector2(40.5, 74.5), Vector2(41.7, 74.3), Vector2(43, 74.1), Vector2(44.2, 73.8), Vector2(32.9, 76.3), Vector2(22.6, 79.3), Vector2(13.2, 83.3), Vector2(4.7, 87.9), Vector2(-0.8, 94), Vector2(-5.3, 100.1), Vector2(-8.6, 106.1), Vector2(-10.9, 111.7), Vector2(-15, 113.6), Vector2(-17.6, 114.2), Vector2(-26.8, 113.8), Vector2(-32.6, 110.7), Vector2(-33.9, 106.2), Vector2(-30.8, 102.6), Vector2(-33.3, 104.9), Vector2(-35, 107.5), Vector2(-34.5, 106.9), Vector2(-33.7, 106.8)]
+}
+tracks/65/type = "value"
+tracks/65/imported = false
+tracks/65/enabled = true
+tracks/65/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_upper:rotation")
+tracks/65/interp = 1
+tracks/65/loop_wrap = true
+tracks/65/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.031416, 0.066323, 0.101229, 0.136136, 0.171042, 0.205949, 0.240855, 0.275762, 0.066323, -0.13439, -0.340339, -0.548033, -0.750492, -0.947714, -1.15017, -1.34914, -1.60047, -1.85703, -1.46433, -1.0664, -0.668461, -0.274017, -0.453786, -0.637045, -0.497419, -0.361283]
+}
+tracks/66/type = "value"
+tracks/66/imported = false
+tracks/66/enabled = true
+tracks/66/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_upper:scale")
+tracks/66/interp = 1
+tracks/66/loop_wrap = true
+tracks/66/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.719, 0.719), Vector2(0.718, 0.718), Vector2(0.717, 0.717), Vector2(0.718, 0.718), Vector2(0.716, 0.716), Vector2(0.716, 0.716), Vector2(0.716, 0.716), Vector2(0.716, 0.716), Vector2(0.715, 0.715), Vector2(0.715, 0.715), Vector2(0.714, 0.714), Vector2(0.713, 0.713), Vector2(0.711, 0.711), Vector2(0.712, 0.712), Vector2(0.711, 0.711), Vector2(0.712, 0.712), Vector2(0.711, 0.711), Vector2(0.713, 0.713)]
+}
+tracks/67/type = "value"
+tracks/67/imported = false
+tracks/67/enabled = true
+tracks/67/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_upper:skew")
+tracks/67/interp = 1
+tracks/67/loop_wrap = true
+tracks/67/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -1e-07, -5e-07, 1e-07, -3e-07, 3e-07, -2e-07, 4e-07, 0.0, -5e-07, -4e-07, -2e-07, -4e-07, 4e-07, 2e-07, 0.0, -5e-07, 1e-07, -3e-07, -2e-07, -2e-07, -1e-07, 3e-07, 4e-07, -2e-07, 2e-07, -1e-07]
+}
+tracks/68/type = "value"
+tracks/68/imported = false
+tracks/68/enabled = true
+tracks/68/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_upper:texture")
+tracks/68/interp = 1
+tracks/68/loop_wrap = true
+tracks/68/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("9_fuck"), ExtResource("9_fuck")]
+}
+tracks/69/type = "value"
+tracks/69/imported = false
+tracks/69/enabled = true
+tracks/69/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerleg_upper:self_modulate")
+tracks/69/interp = 1
+tracks/69/loop_wrap = true
+tracks/69/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/70/type = "value"
+tracks/70/imported = false
+tracks/70/enabled = true
+tracks/70/path = NodePath("Body/BodyCorrect/Head/Anim_head1:visible")
+tracks/70/interp = 1
+tracks/70/loop_wrap = true
+tracks/70/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [false, false]
+}
+tracks/71/type = "value"
+tracks/71/imported = false
+tracks/71/enabled = true
+tracks/71/path = NodePath("Body/BodyCorrect/Head/Anim_head1:position")
+tracks/71/interp = 1
+tracks/71/loop_wrap = true
+tracks/71/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3), Vector2(-12.6, -10.3)]
+}
+tracks/72/type = "value"
+tracks/72/imported = false
+tracks/72/enabled = true
+tracks/72/path = NodePath("Body/BodyCorrect/Head/Anim_head1:rotation")
+tracks/72/interp = 1
+tracks/72/loop_wrap = true
+tracks/72/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/73/type = "value"
+tracks/73/imported = false
+tracks/73/enabled = true
+tracks/73/path = NodePath("Body/BodyCorrect/Head/Anim_head1:scale")
+tracks/73/interp = 1
+tracks/73/loop_wrap = true
+tracks/73/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72)]
+}
+tracks/74/type = "value"
+tracks/74/imported = false
+tracks/74/enabled = true
+tracks/74/path = NodePath("Body/BodyCorrect/Head/Anim_head1:skew")
+tracks/74/interp = 1
+tracks/74/loop_wrap = true
+tracks/74/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/75/type = "value"
+tracks/75/imported = false
+tracks/75/enabled = true
+tracks/75/path = NodePath("Body/BodyCorrect/Head/Anim_head1:texture")
+tracks/75/interp = 1
+tracks/75/loop_wrap = true
+tracks/75/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("10_fuck"), ExtResource("10_fuck")]
+}
+tracks/76/type = "value"
+tracks/76/imported = false
+tracks/76/enabled = true
+tracks/76/path = NodePath("Body/BodyCorrect/Head/Anim_head1:self_modulate")
+tracks/76/interp = 1
+tracks/76/loop_wrap = true
+tracks/76/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/77/type = "value"
+tracks/77/imported = false
+tracks/77/enabled = true
+tracks/77/path = NodePath("Body/BodyCorrect/Head/Anim_head2:visible")
+tracks/77/interp = 1
+tracks/77/loop_wrap = true
+tracks/77/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [false, false]
+}
+tracks/78/type = "value"
+tracks/78/imported = false
+tracks/78/enabled = true
+tracks/78/path = NodePath("Body/BodyCorrect/Head/Anim_head2:position")
+tracks/78/interp = 1
+tracks/78/loop_wrap = true
+tracks/78/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9), Vector2(2.5, 33.9)]
+}
+tracks/79/type = "value"
+tracks/79/imported = false
+tracks/79/enabled = true
+tracks/79/path = NodePath("Body/BodyCorrect/Head/Anim_head2:rotation")
+tracks/79/interp = 1
+tracks/79/loop_wrap = true
+tracks/79/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/80/type = "value"
+tracks/80/imported = false
+tracks/80/enabled = true
+tracks/80/path = NodePath("Body/BodyCorrect/Head/Anim_head2:scale")
+tracks/80/interp = 1
+tracks/80/loop_wrap = true
+tracks/80/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72)]
+}
+tracks/81/type = "value"
+tracks/81/imported = false
+tracks/81/enabled = true
+tracks/81/path = NodePath("Body/BodyCorrect/Head/Anim_head2:skew")
+tracks/81/interp = 1
+tracks/81/loop_wrap = true
+tracks/81/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/82/type = "value"
+tracks/82/imported = false
+tracks/82/enabled = true
+tracks/82/path = NodePath("Body/BodyCorrect/Head/Anim_head2:texture")
+tracks/82/interp = 1
+tracks/82/loop_wrap = true
+tracks/82/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("11_fuck"), ExtResource("11_fuck")]
+}
+tracks/83/type = "value"
+tracks/83/imported = false
+tracks/83/enabled = true
+tracks/83/path = NodePath("Body/BodyCorrect/Head/Anim_head2:self_modulate")
+tracks/83/interp = 1
+tracks/83/loop_wrap = true
+tracks/83/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/84/type = "value"
+tracks/84/imported = false
+tracks/84/enabled = true
+tracks/84/path = NodePath("Body/BodyCorrect/Hand/Zombie_outerarm_hand:visible")
+tracks/84/interp = 1
+tracks/84/loop_wrap = true
+tracks/84/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [false, false]
+}
+tracks/85/type = "value"
+tracks/85/imported = false
+tracks/85/enabled = true
+tracks/85/path = NodePath("Body/BodyCorrect/Hand/Zombie_outerarm_hand:position")
+tracks/85/interp = 1
+tracks/85/loop_wrap = true
+tracks/85/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1), Vector2(41, 87.1)]
+}
+tracks/86/type = "value"
+tracks/86/imported = false
+tracks/86/enabled = true
+tracks/86/path = NodePath("Body/BodyCorrect/Hand/Zombie_outerarm_hand:rotation")
+tracks/86/interp = 1
+tracks/86/loop_wrap = true
+tracks/86/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012]
+}
+tracks/87/type = "value"
+tracks/87/imported = false
+tracks/87/enabled = true
+tracks/87/path = NodePath("Body/BodyCorrect/Hand/Zombie_outerarm_hand:scale")
+tracks/87/interp = 1
+tracks/87/loop_wrap = true
+tracks/87/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72)]
+}
+tracks/88/type = "value"
+tracks/88/imported = false
+tracks/88/enabled = true
+tracks/88/path = NodePath("Body/BodyCorrect/Hand/Zombie_outerarm_hand:skew")
+tracks/88/interp = 1
+tracks/88/loop_wrap = true
+tracks/88/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07]
+}
+tracks/89/type = "value"
+tracks/89/imported = false
+tracks/89/enabled = true
+tracks/89/path = NodePath("Body/BodyCorrect/Hand/Zombie_outerarm_hand:texture")
+tracks/89/interp = 1
+tracks/89/loop_wrap = true
+tracks/89/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("12_fuck"), ExtResource("12_fuck")]
+}
+tracks/90/type = "value"
+tracks/90/imported = false
+tracks/90/enabled = true
+tracks/90/path = NodePath("Body/BodyCorrect/Hand/Zombie_outerarm_hand:self_modulate")
+tracks/90/interp = 1
+tracks/90/loop_wrap = true
+tracks/90/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/91/type = "value"
+tracks/91/imported = false
+tracks/91/enabled = true
+tracks/91/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerarm_upper:visible")
+tracks/91/interp = 1
+tracks/91/loop_wrap = true
+tracks/91/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, true]
+}
+tracks/92/type = "value"
+tracks/92/imported = false
+tracks/92/enabled = true
+tracks/92/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerarm_upper:position")
+tracks/92/interp = 1
+tracks/92/loop_wrap = true
+tracks/92/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(37.8, 27.9), Vector2(39.6, 28.5), Vector2(41.5, 29.2), Vector2(43.5, 29.7), Vector2(45.5, 30.4), Vector2(47.4, 31), Vector2(49.3, 31.6), Vector2(51.2, 32.2), Vector2(53.2, 32.9), Vector2(32.9, 37.2), Vector2(13.5, 42.5), Vector2(-8.8, 50.4), Vector2(-28.8, 58.8), Vector2(-35, 69.2), Vector2(-39.9, 79.2), Vector2(-43.3, 88.4), Vector2(-45.5, 96.6), Vector2(-50.6, 106.4), Vector2(-55.3, 114.6), Vector2(-70.6, 114.5), Vector2(-79.3, 106.7), Vector2(-78.4, 96.2), Vector2(-67.9, 88.8), Vector2(-72.6, 91.8), Vector2(-76, 96), Vector2(-72.6, 92), Vector2(-67.9, 88.8)]
+}
+tracks/93/type = "value"
+tracks/93/imported = false
+tracks/93/enabled = true
+tracks/93/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerarm_upper:rotation")
+tracks/93/interp = 1
+tracks/93/loop_wrap = true
+tracks/93/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.008727, 0.019199, 0.031416, 0.040143, 0.05236, 0.062832, 0.075049, 0.087266, -0.125664, -0.338594, -0.649262, -0.961676, -1.20253, -1.44164, -1.6825, -1.92335, -2.17643, -2.43124, -1.81863, -1.21126, -0.602139, 0.008727, -0.242601, -0.495673, -0.242601, 0.008727]
+}
+tracks/94/type = "value"
+tracks/94/imported = false
+tracks/94/enabled = true
+tracks/94/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerarm_upper:scale")
+tracks/94/interp = 1
+tracks/94/loop_wrap = true
+tracks/94/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.7, 0.7), Vector2(0.7, 0.7), Vector2(0.7, 0.7), Vector2(0.7, 0.7), Vector2(0.699, 0.699), Vector2(0.699, 0.699), Vector2(0.699, 0.699), Vector2(0.699, 0.699), Vector2(0.699, 0.699), Vector2(0.698, 0.698), Vector2(0.697, 0.697), Vector2(0.697, 0.697), Vector2(0.698, 0.698), Vector2(0.697, 0.697), Vector2(0.697, 0.697), Vector2(0.696, 0.696), Vector2(0.696, 0.696), Vector2(0.695, 0.695), Vector2(0.695, 0.695), Vector2(0.694, 0.694), Vector2(0.693, 0.693), Vector2(0.693, 0.693), Vector2(0.693, 0.693), Vector2(0.692, 0.692), Vector2(0.692, 0.692), Vector2(0.692, 0.692), Vector2(0.693, 0.693)]
+}
+tracks/95/type = "value"
+tracks/95/imported = false
+tracks/95/enabled = true
+tracks/95/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerarm_upper:skew")
+tracks/95/interp = 1
+tracks/95/loop_wrap = true
+tracks/95/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -4e-07, -4e-07, -1e-07, -4e-07, -1e-07, -1e-07, 2e-07, 5e-07, 3e-07, 1e-07, -5e-07, -4e-07, 2e-07, 1e-07, -4e-07, 2e-07, 5e-07, 4e-07, 0.0, -5e-07, 4e-07, -4e-07, 2e-07, -5e-07, 2e-07, -4e-07]
+}
+tracks/96/type = "value"
+tracks/96/imported = false
+tracks/96/enabled = true
+tracks/96/path = NodePath("Body/BodyCorrect/Zombie_yeti_outerarm_upper:self_modulate")
+tracks/96/interp = 1
+tracks/96/loop_wrap = true
+tracks/96/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/97/type = "value"
+tracks/97/imported = false
+tracks/97/enabled = true
+tracks/97/path = NodePath("Body/BodyCorrect/Hand2/Zombie_outerarm_lower:visible")
+tracks/97/interp = 1
+tracks/97/loop_wrap = true
+tracks/97/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [false, false]
+}
+tracks/98/type = "value"
+tracks/98/imported = false
+tracks/98/enabled = true
+tracks/98/path = NodePath("Body/BodyCorrect/Hand2/Zombie_outerarm_lower:position")
+tracks/98/interp = 1
+tracks/98/loop_wrap = true
+tracks/98/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6), Vector2(44.4, 56.6)]
+}
+tracks/99/type = "value"
+tracks/99/imported = false
+tracks/99/enabled = true
+tracks/99/path = NodePath("Body/BodyCorrect/Hand2/Zombie_outerarm_lower:rotation")
+tracks/99/interp = 1
+tracks/99/loop_wrap = true
+tracks/99/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012, 0.089012]
+}
+tracks/100/type = "value"
+tracks/100/imported = false
+tracks/100/enabled = true
+tracks/100/path = NodePath("Body/BodyCorrect/Hand2/Zombie_outerarm_lower:scale")
+tracks/100/interp = 1
+tracks/100/loop_wrap = true
+tracks/100/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72), Vector2(0.72, 0.72)]
+}
+tracks/101/type = "value"
+tracks/101/imported = false
+tracks/101/enabled = true
+tracks/101/path = NodePath("Body/BodyCorrect/Hand2/Zombie_outerarm_lower:skew")
+tracks/101/interp = 1
+tracks/101/loop_wrap = true
+tracks/101/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07, -2e-07]
+}
+tracks/102/type = "value"
+tracks/102/imported = false
+tracks/102/enabled = true
+tracks/102/path = NodePath("Body/BodyCorrect/Hand2/Zombie_outerarm_lower:texture")
+tracks/102/interp = 1
+tracks/102/loop_wrap = true
+tracks/102/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("14_fuck"), ExtResource("14_fuck")]
+}
+tracks/103/type = "value"
+tracks/103/imported = false
+tracks/103/enabled = true
+tracks/103/path = NodePath("Body/BodyCorrect/Hand2/Zombie_outerarm_lower:self_modulate")
+tracks/103/interp = 1
+tracks/103/loop_wrap = true
+tracks/103/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/104/type = "method"
+tracks/104/imported = false
+tracks/104/enabled = true
+tracks/104/path = NodePath(".")
+tracks/104/interp = 1
+tracks/104/loop_wrap = true
+tracks/104/keys = {
+"times": PackedFloat32Array(1.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_fade_and_remove"
+}]
+}

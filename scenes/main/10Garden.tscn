@@ -1,0 +1,554 @@
+[gd_scene load_steps=31 format=3 uid="uid://bro2wcaph4ceu"]
+
+[ext_resource type="Script" uid="uid://cjfk7fy344tvb" path="res://scripts/garden/garden_manager.gd" id="1_cd35e"]
+[ext_resource type="Texture2D" uid="uid://47ixd5hsddft" path="res://assets/image/ui/ui_card/ShovelBank.png" id="1_uu8cm"]
+[ext_resource type="Texture2D" uid="uid://y7ir422gbnxv" path="res://assets/image/garden/WateringCanGold.png" id="2_r7eep"]
+[ext_resource type="AudioStream" uid="uid://ryoiuendasef" path="res://assets/audio/BGM/garden.mp3" id="2_yfmuy"]
+[ext_resource type="Texture2D" uid="uid://3vm8i65dei2h" path="res://assets/image/garden/Fertilizer.png" id="4_l0x8f"]
+[ext_resource type="Script" uid="uid://55q5g0e2ktn6" path="res://scripts/garden/ui_item_button.gd" id="5_6rwu8"]
+[ext_resource type="PackedScene" uid="uid://cuken451e2wr7" path="res://scenes/garden/01_wateringcan.tscn" id="5_hjxn1"]
+[ext_resource type="Texture2D" uid="uid://i6utsm3ccf8" path="res://assets/image/garden/bug_spray.png" id="6_sxrwr"]
+[ext_resource type="PackedScene" uid="uid://bwtt8ssxrpaae" path="res://scenes/garden/02_fertilizer.tscn" id="8_6rwu8"]
+[ext_resource type="Texture2D" uid="uid://baokxxb67nqno" path="res://assets/image/garden/Phonograph.png" id="8_aho5g"]
+[ext_resource type="Texture2D" uid="uid://w5di1l74vq3m" path="res://assets/image/garden/chocolate.png" id="10_yfmuy"]
+[ext_resource type="PackedScene" uid="uid://bcqasfwaxiw13" path="res://scenes/garden/03_bugspray.tscn" id="11_2db7u"]
+[ext_resource type="Script" uid="uid://6vbmkjgmo5v0" path="res://scripts/garden/plant_cell_garden.gd" id="12_sxrwr"]
+[ext_resource type="Texture2D" uid="uid://d4lqo87x72hwx" path="res://assets/image/garden/Zen_GardenGlove.png" id="12_y8v5q"]
+[ext_resource type="PackedScene" uid="uid://dgayxx7mveh2r" path="res://scenes/garden/04_phonograph.tscn" id="14_82jhc"]
+[ext_resource type="Texture2D" uid="uid://bma7kou87taa5" path="res://assets/image/garden/Zen_MoneySign.png" id="14_s3nj7"]
+[ext_resource type="Texture2D" uid="uid://cejtuu5a1uvft" path="res://assets/image/garden/Zen_WheelBarrow.png" id="16_hjxn1"]
+[ext_resource type="PackedScene" uid="uid://eaveyrvvwxxl" path="res://scenes/garden/05_chocolate.tscn" id="17_65rhf"]
+[ext_resource type="Texture2D" uid="uid://rb8d6x36jh03" path="res://assets/image/garden/Zen_NextGarden.png" id="18_2db7u"]
+[ext_resource type="BitMap" uid="uid://b4qpudotkqgmb" path="res://assets/image/garden/Zen_NextGarden_Mask.png" id="19_82jhc"]
+[ext_resource type="Theme" uid="uid://em12la0rqibq" path="res://data/PVZ_theme.tres" id="20_i7yie"]
+[ext_resource type="PackedScene" uid="uid://dvasdbokm8eny" path="res://scenes/garden/06_glove.tscn" id="20_vwovh"]
+[ext_resource type="Script" uid="uid://parybxg7tb1k" path="res://scripts/ui/PVZ_button_base.gd" id="22_aho5g"]
+[ext_resource type="PackedScene" uid="uid://02r6pim88mbc" path="res://scenes/garden/07_money_sign.tscn" id="23_24spt"]
+[ext_resource type="Texture2D" uid="uid://b6cln5l56plwn" path="res://assets/reanim/tree_bg.jpg" id="25_aho5g"]
+[ext_resource type="PackedScene" uid="uid://b2xxhep8oyipk" path="res://scenes/item/coin_bank_label.tscn" id="26_aho5g"]
+[ext_resource type="PackedScene" uid="uid://buvouxkkc7wot" path="res://scenes/garden/08_wheel_barrow.tscn" id="26_qgitf"]
+[ext_resource type="Texture2D" uid="uid://xsu0epbjdx8o" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Store.png" id="27_y8v5q"]
+[ext_resource type="Texture2D" uid="uid://c7hm6tgjy1fbs" path="res://assets/image/ui/ui_start_menu/SelectorScreen_StoreHighlight.png" id="28_rnm3w"]
+[ext_resource type="BitMap" uid="uid://cra43htuprgvi" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Store_Mask.png" id="29_s3nj7"]
+
+[node name="Garden" type="Node2D"]
+script = ExtResource("1_cd35e")
+bgm = ExtResource("2_yfmuy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 184.0
+offset_right = 778.0
+offset_bottom = 77.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = -1
+
+[node name="GardenItemButton" type="TextureButton" parent="CanvasLayer/PanelUI/HBoxContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_uu8cm")
+stretch_mode = 0
+script = ExtResource("5_6rwu8")
+
+[node name="ItemTexture" type="TextureRect" parent="CanvasLayer/PanelUI/HBoxContainer/GardenItemButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_r7eep")
+
+[node name="GardenItemButton2" type="TextureButton" parent="CanvasLayer/PanelUI/HBoxContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_uu8cm")
+stretch_mode = 0
+script = ExtResource("5_6rwu8")
+
+[node name="ItemTexture" type="TextureRect" parent="CanvasLayer/PanelUI/HBoxContainer/GardenItemButton2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_l0x8f")
+
+[node name="GardenItemButton3" type="TextureButton" parent="CanvasLayer/PanelUI/HBoxContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_uu8cm")
+stretch_mode = 0
+script = ExtResource("5_6rwu8")
+
+[node name="ItemTexture" type="TextureRect" parent="CanvasLayer/PanelUI/HBoxContainer/GardenItemButton3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_sxrwr")
+
+[node name="GardenItemButton4" type="TextureButton" parent="CanvasLayer/PanelUI/HBoxContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_uu8cm")
+stretch_mode = 0
+script = ExtResource("5_6rwu8")
+
+[node name="ItemTexture" type="TextureRect" parent="CanvasLayer/PanelUI/HBoxContainer/GardenItemButton4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -34.0
+offset_right = 34.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_aho5g")
+
+[node name="GardenItemButton5" type="TextureButton" parent="CanvasLayer/PanelUI/HBoxContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_uu8cm")
+stretch_mode = 0
+script = ExtResource("5_6rwu8")
+
+[node name="ItemTexture" type="TextureRect" parent="CanvasLayer/PanelUI/HBoxContainer/GardenItemButton5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.5
+offset_top = -33.0
+offset_right = 28.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_yfmuy")
+
+[node name="GardenItemButton6" type="TextureButton" parent="CanvasLayer/PanelUI/HBoxContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_uu8cm")
+stretch_mode = 0
+script = ExtResource("5_6rwu8")
+
+[node name="ItemTexture" type="TextureRect" parent="CanvasLayer/PanelUI/HBoxContainer/GardenItemButton6"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("12_y8v5q")
+
+[node name="GardenItemButton7" type="TextureButton" parent="CanvasLayer/PanelUI/HBoxContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_uu8cm")
+stretch_mode = 0
+script = ExtResource("5_6rwu8")
+
+[node name="ItemTexture" type="TextureRect" parent="CanvasLayer/PanelUI/HBoxContainer/GardenItemButton7"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("14_s3nj7")
+
+[node name="GardenItemButton8" type="TextureButton" parent="CanvasLayer/PanelUI/HBoxContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_uu8cm")
+stretch_mode = 0
+script = ExtResource("5_6rwu8")
+
+[node name="ItemTexture" type="TextureRect" parent="CanvasLayer/PanelUI/HBoxContainer/GardenItemButton8"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.5
+offset_top = -41.5
+offset_right = 41.5
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("16_hjxn1")
+
+[node name="PlantCellGarden" type="Control" parent="CanvasLayer/PanelUI/HBoxContainer/GardenItemButton8/ItemTexture"]
+z_index = 100
+custom_minimum_size = Vector2(75, 75)
+anchors_preset = 0
+offset_left = 27.0
+offset_top = 6.0
+offset_right = 102.0
+offset_bottom = 81.0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+script = ExtResource("12_sxrwr")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PanelUI/HBoxContainer/GardenItemButton8/ItemTexture/PlantCellGarden"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PlantDownContainer" type="Control" parent="CanvasLayer/PanelUI/HBoxContainer/GardenItemButton8/ItemTexture/PlantCellGarden"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.5
+offset_top = 10.5
+offset_right = 0.5
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PlantFloatContainer" type="Control" parent="CanvasLayer/PanelUI/HBoxContainer/GardenItemButton8/ItemTexture/PlantCellGarden"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.5
+offset_top = -30.5
+offset_right = 0.5
+offset_bottom = -30.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PlantNormContainer" type="Control" parent="CanvasLayer/PanelUI/HBoxContainer/GardenItemButton8/ItemTexture/PlantCellGarden"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PlantShellContainer" type="Control" parent="CanvasLayer/PanelUI/HBoxContainer/GardenItemButton8/ItemTexture/PlantCellGarden"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Next" type="TextureButton" parent="CanvasLayer"]
+offset_left = 798.0
+offset_top = 5.0
+offset_right = 858.0
+offset_bottom = 65.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("18_2db7u")
+texture_click_mask = ExtResource("19_82jhc")
+stretch_mode = 0
+
+[node name="Label2" type="Label" parent="CanvasLayer/Next"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 70.0
+offset_top = 6.0
+offset_right = 161.0
+offset_bottom = 37.0
+grow_vertical = 2
+theme = ExtResource("20_i7yie")
+theme_override_font_sizes/font_size = 24
+text = "1/3"
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Next"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 70.0
+offset_top = -24.0
+offset_right = 161.0
+offset_bottom = 7.0
+grow_vertical = 2
+theme = ExtResource("20_i7yie")
+theme_override_font_sizes/font_size = 24
+text = "1/3"
+vertical_alignment = 1
+
+[node name="ReturnStartMenu" type="BaseButton" parent="CanvasLayer"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 2
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 0)
+layout_direction = 0
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -90.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 40.0
+grow_horizontal = 0
+grow_vertical = 1
+rotation = 0.0
+scale = Vector2(1, 1)
+pivot_offset = Vector2(0, 0)
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+localize_numeral_system = true
+tooltip_text = ""
+tooltip_auto_translate_mode = 0
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 2
+focus_behavior_recursive = 0
+mouse_filter = 0
+mouse_behavior_recursive = 0
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+accessibility_name = ""
+accessibility_description = ""
+accessibility_live = 0
+accessibility_controls_nodes = Array[NodePath]([])
+accessibility_described_by_nodes = Array[NodePath]([])
+accessibility_labeled_by_nodes = Array[NodePath]([])
+accessibility_flow_to_nodes = Array[NodePath]([])
+theme = ExtResource("20_i7yie")
+theme_type_variation = &""
+disabled = false
+toggle_mode = false
+button_pressed = false
+action_mode = 1
+button_mask = 1
+keep_pressed_outside = false
+button_group = null
+shortcut = null
+shortcut_feedback = true
+shortcut_in_tooltip = true
+script = ExtResource("22_aho5g")
+metadata/_custom_type_script = "uid://parybxg7tb1k"
+
+[node name="Panel" type="Panel" parent="CanvasLayer/ReturnStartMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"PanelButtonBG"
+
+[node name="Label" type="Label" parent="CanvasLayer/ReturnStartMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "主菜单"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NumNewPlantNoPlantCell" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -277.0
+offset_top = -43.0
+offset_right = -23.0
+offset_bottom = -17.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("20_i7yie")
+theme_override_font_sizes/font_size = 21
+text = "待放置植物数量:"
+
+[node name="Items" type="Node2D" parent="CanvasLayer"]
+z_index = 100
+position = Vector2(-9, -16)
+
+[node name="WateringCan" parent="CanvasLayer/Items" instance=ExtResource("5_hjxn1")]
+visible = false
+position = Vector2(72, -112)
+
+[node name="Fertilizer" parent="CanvasLayer/Items" instance=ExtResource("8_6rwu8")]
+visible = false
+position = Vector2(192.5, -122)
+
+[node name="BugSpray" parent="CanvasLayer/Items" instance=ExtResource("11_2db7u")]
+visible = false
+position = Vector2(268, -118.5)
+
+[node name="Phonograph" parent="CanvasLayer/Items" instance=ExtResource("14_82jhc")]
+visible = false
+position = Vector2(342, -118.5)
+
+[node name="Chocolate" parent="CanvasLayer/Items" instance=ExtResource("17_65rhf")]
+visible = false
+position = Vector2(424.5, -114)
+
+[node name="Glove" parent="CanvasLayer/Items" instance=ExtResource("20_vwovh")]
+visible = false
+position = Vector2(486.5, -125)
+
+[node name="MoneySign" parent="CanvasLayer/Items" instance=ExtResource("23_24spt")]
+visible = false
+position = Vector2(560.5, -124)
+
+[node name="WheelBarrow" parent="CanvasLayer/Items" instance=ExtResource("26_qgitf")]
+visible = false
+position = Vector2(633.5, -125)
+
+[node name="CoinBankLabel" parent="CanvasLayer" instance=ExtResource("26_aho5g")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 364.0
+offset_top = -56.0
+offset_right = 364.0
+offset_bottom = -56.0
+grow_vertical = 0
+auto_hide = null
+
+[node name="StoreEnterKey" type="TextureButton" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -84.0
+offset_top = 59.0
+offset_right = -5.0
+offset_bottom = 101.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("27_y8v5q")
+texture_pressed = ExtResource("28_rnm3w")
+texture_hover = ExtResource("28_rnm3w")
+texture_click_mask = ExtResource("29_s3nj7")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("22_aho5g")
+
+[node name="TreeBg" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("25_aho5g")
+centered = false
+
+[node name="CanvasLayerStore" type="CanvasLayer" parent="."]
+layer = 100
+
+[connection signal="pressed" from="CanvasLayer/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="CanvasLayer/ReturnStartMenu" to="." method="_on_return_start_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/StoreEnterKey" to="CanvasLayer/StoreEnterKey" method="_on_pressed"]

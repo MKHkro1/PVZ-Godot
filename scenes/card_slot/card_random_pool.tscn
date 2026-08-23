@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1nnrhr8k1tel"]
+
+[ext_resource type="Script" uid="uid://c8mb4y3vj0smn" path="res://scripts/ui/card/card_slot/card_random_pool.gd" id="1_peid8"]
+
+[node name="CardRandomPool" type="Node"]
+script = ExtResource("1_peid8")

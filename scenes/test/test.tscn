@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://cl06mltmut6xf"]
+
+[ext_resource type="Script" uid="uid://8tiaxorwmdks" path="res://scenes/test/test.gd" id="1_m7npr"]
+[ext_resource type="Texture2D" uid="uid://bx8xtt6oantp1" path="res://assets/image/Almanac/Almanac_GroundPool.jpg" id="2_st4qh"]
+[ext_resource type="Texture2D" uid="uid://bj57iq2dgnb0g" path="res://assets/image/Almanac/Almanac_GroundRoof.jpg" id="3_51e2l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_st4qh"]
+radius = 169.358
+
+[node name="Test" type="Node2D"]
+script = ExtResource("1_m7npr")
+
+[node name="AlmanacGroundPool" type="Sprite2D" parent="."]
+position = Vector2(105, 300)
+texture = ExtResource("2_st4qh")
+
+[node name="Area2D" type="Area2D" parent="AlmanacGroundPool"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AlmanacGroundPool/Area2D"]
+shape = SubResource("CircleShape2D_st4qh")
+
+[node name="AlmanacGroundRoof" type="Sprite2D" parent="."]
+position = Vector2(302, 307)
+texture = ExtResource("3_51e2l")
+
+[node name="Area2D2" type="Area2D" parent="AlmanacGroundRoof"]
+position = Vector2(-14, -6)
+collision_layer = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AlmanacGroundRoof/Area2D2"]
+position = Vector2(19, 3)
+shape = SubResource("CircleShape2D_st4qh")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 242.0
+offset_top = 41.0
+offset_right = 282.0
+offset_bottom = 81.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "111111"
+
+[connection signal="area_entered" from="AlmanacGroundPool/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="AlmanacGroundPool/Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="AlmanacGroundRoof/Area2D2" to="." method="_on_area_2d_2_area_entered"]
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="ResourceLevelData" load_steps=3 format=3 uid="uid://cqkbenx7gdj8m"]
+
+[ext_resource type="Script" uid="uid://bke3sg5otco7s" path="res://scripts/resources/level/pre_plant_in_level.gd" id="1_quhxg"]
+[ext_resource type="Script" uid="uid://bjt3l56exxmdw" path="res://scripts/resources/level/level_data.gd" id="2_rjj6t"]
+
+[resource]
+script = ExtResource("2_rjj6t")
+game_BG = 1
+game_BGM = 5
+is_day = false
+is_day_sun = false
+look_show_zombie = false
+can_choosed_card = false
+max_wave = 20
+zombie_refresh_types = Array[int]([1, 3, 4, 5, 6, 7, 8, 9])
+card_mode = 2
+all_card_plant_type_probability = Dictionary[int, int]({
+4: 2,
+5: 1,
+8: 2,
+13: 2,
+15: 1,
+23: 2,
+41: 1
+})
+all_card_zombie_type_probability = Dictionary[int, int]({
+1: 1,
+3: 2,
+8: 1,
+9: 1
+})
+card_order_plant = Dictionary[int, int]({
+1: 13
+})
+card_order_zombie = Dictionary[int, int]({
+0: 8
+})
+is_bowling_stripe = true
+plant_cell_col_j = 4
+plant_cell_can_use = Dictionary[String, bool]({
+"left_can_plant": true,
+"left_can_zombie": false,
+"right_can_plant": false,
+"right_can_zombie": true
+})
+metadata/_custom_type_script = "uid://bjt3l56exxmdw"

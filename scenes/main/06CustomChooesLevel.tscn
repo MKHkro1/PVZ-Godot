@@ -1,0 +1,353 @@
+[gd_scene load_steps=18 format=3 uid="uid://711bxtjuhtxw"]
+
+[ext_resource type="Theme" uid="uid://cx302yraw066y" path="res://data/ChooesLevel.tres" id="1_6yeev"]
+[ext_resource type="Script" uid="uid://bpitkycmanmap" path="res://scripts/choose_level/06_custom_chooes_level.gd" id="2_dr22h"]
+[ext_resource type="Texture2D" uid="uid://bwevuvs5nnwfx" path="res://assets/image/ui/ui_challenge/Challenge_Background.jpg" id="3_pyfr6"]
+[ext_resource type="Texture2D" uid="uid://dsobv4ixy06yp" path="res://assets/image/ui/ui_main_game_menu/UI_BG/combined_result.png" id="9_lhnjj"]
+[ext_resource type="Texture2D" uid="uid://bcq3pj58odr4i" path="res://assets/image/ui/ui_main_game_menu/UI_BG_original/dialog_header.png" id="10_ynbkr"]
+[ext_resource type="FontFile" uid="uid://dqb8lum530s2f" path="res://assets/fonts/方正少儿_GBK.ttf" id="11_0jjwi"]
+[ext_resource type="Texture2D" uid="uid://b48l4yjq0j5mo" path="res://assets/image/ui/ui_main_game_menu/UI_BG/button_BG.png" id="12_kq566"]
+[ext_resource type="Script" uid="uid://parybxg7tb1k" path="res://scripts/ui/PVZ_button_base.gd" id="13_m77a1"]
+[ext_resource type="Texture2D" uid="uid://xc3kqag3vqlq" path="res://assets/image/ui/ui_level/Almanac_CloseButton.png" id="44_006r8"]
+[ext_resource type="Texture2D" uid="uid://c82uuprowr5d" path="res://assets/image/ui/ui_level/Almanac_CloseButtonHighlight.png" id="45_nbnce"]
+[ext_resource type="BitMap" uid="uid://bc7yq02xscrlr" path="res://assets/image/ui/ui_level/Almanac_CloseButton_Mask.png" id="46_b3c16"]
+[ext_resource type="Texture2D" uid="uid://om7aubyyu3le" path="res://assets/image/ui/ui_level/SeedChooser_Button2.png" id="47_m3tt0"]
+[ext_resource type="Texture2D" uid="uid://cx854vkq3n8gs" path="res://assets/image/ui/ui_level/SeedChooser_Button2_Glow.png" id="48_3ybjw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uy41y"]
+texture = ExtResource("9_lhnjj")
+texture_margin_left = 60.0
+texture_margin_top = 60.0
+texture_margin_right = 60.0
+texture_margin_bottom = 130.0
+expand_margin_left = 65.0
+expand_margin_top = 57.0
+expand_margin_right = 65.0
+expand_margin_bottom = 114.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_vnfsp"]
+font = ExtResource("11_0jjwi")
+font_size = 34
+font_color = Color(0.9071311, 0.7868838, 7.70092e-07, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g62u1"]
+font = ExtResource("11_0jjwi")
+font_size = 25
+font_color = Color(0.9071311, 0.7868838, 7.70092e-07, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ofia1"]
+font = ExtResource("11_0jjwi")
+font_size = 21
+font_color = Color(0, 1, 0, 1)
+
+[node name="CustomChooseLevel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6yeev")
+script = ExtResource("2_dr22h")
+game_mode = 105
+metadata/_edit_vertical_guides_ = [-68.0]
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_pyfr6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.0
+offset_top = 22.0
+offset_right = 77.0
+offset_bottom = 72.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 6
+theme_override_font_sizes/font_size = 36
+text = "自 定 义 关 卡"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AllPage" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="AllPage"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -365.0
+offset_top = 99.0
+offset_right = 367.0
+offset_bottom = 568.0
+grow_horizontal = 2
+theme_override_constants/h_separation = 53
+theme_override_constants/v_separation = 3
+columns = 5
+
+[node name="MainMenu" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -133.0
+offset_top = -32.0
+offset_right = -44.0
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("44_006r8")
+texture_pressed = ExtResource("45_nbnce")
+texture_click_mask = ExtResource("46_b3c16")
+
+[node name="Label" type="Label" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = -10.0
+offset_right = 18.5
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "主菜单"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Last" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -32.0
+offset_right = -49.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("47_m3tt0")
+texture_pressed = ExtResource("48_3ybjw")
+texture_hover = ExtResource("48_3ybjw")
+texture_click_mask = ExtResource("46_b3c16")
+
+[node name="Label" type="Label" parent="Last"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "上一页"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Next" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 54.0
+offset_top = -31.0
+offset_right = 165.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("47_m3tt0")
+texture_pressed = ExtResource("48_3ybjw")
+texture_hover = ExtResource("48_3ybjw")
+texture_click_mask = ExtResource("46_b3c16")
+
+[node name="Label" type="Label" parent="Next"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "下一页"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Help" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 197.0
+offset_top = -558.0
+offset_right = 264.0
+offset_bottom = -532.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("47_m3tt0")
+texture_pressed = ExtResource("48_3ybjw")
+texture_hover = ExtResource("48_3ybjw")
+texture_click_mask = ExtResource("46_b3c16")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Help"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "帮助"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelPage" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 53.0
+offset_top = -31.0
+offset_right = 120.0
+offset_bottom = -11.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "当前页数:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelHelp" type="Panel" parent="."]
+visible = false
+z_index = 4000
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.5
+offset_top = -133.0
+offset_right = 217.5
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_uy41y")
+
+[node name="TextureRect" type="TextureRect" parent="PanelHelp"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -93.0
+offset_top = -90.0
+offset_right = 94.0
+offset_bottom = -26.0
+grow_horizontal = 2
+texture = ExtResource("10_ynbkr")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelHelp"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelHelp/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="PanelHelp/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(430, 0)
+layout_mode = 2
+text = "帮助"
+label_settings = SubResource("LabelSettings_vnfsp")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelHelp/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(430, 0)
+layout_mode = 2
+text = "   该部分关卡使用在游戏根目录下\"level_game_para\"文件夹中的游戏参数文件。
+   游戏参数文件为\"ResourceLevelData\"类型的资源文件
+   具体查看脚本文件\"res://scripts/resources/level/level_data.gd\""
+label_settings = SubResource("LabelSettings_g62u1")
+autowrap_mode = 1
+
+[node name="ButtonOK" type="TextureButton" parent="PanelHelp"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = 23.0
+offset_right = 60.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("12_kq566")
+script = ExtResource("13_m77a1")
+
+[node name="Label" type="Label" parent="PanelHelp/ButtonOK"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "关闭"
+label_settings = SubResource("LabelSettings_ofia1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FlowContainer" type="FlowContainer" parent="PanelHelp"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="MainMenu" to="." method="back_start_menu"]
+[connection signal="pressed" from="Last" to="." method="_on_last_pressed"]
+[connection signal="pressed" from="Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="Help" to="." method="_on_help_pressed"]
+[connection signal="pressed" from="PanelHelp/ButtonOK" to="." method="_on_button_ok_pressed"]

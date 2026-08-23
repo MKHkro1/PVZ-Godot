@@ -1,0 +1,88 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp3u3o8nttci"]
+
+[ext_resource type="Script" uid="uid://6vbmkjgmo5v0" path="res://scripts/garden/plant_cell_garden.gd" id="1_npqkg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npqkg"]
+size = Vector2(75, 75)
+
+[node name="PlantCellGarden" type="Control"]
+z_index = 100
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_npqkg")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(37.5, 37.5)
+shape = SubResource("RectangleShape2D_npqkg")
+
+[node name="PlantDownContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = 33.5
+offset_right = -0.5
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlantFloatContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = -9.5
+offset_right = 1.0
+offset_bottom = -9.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlantNormContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.5
+offset_top = 21.0
+offset_right = 0.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlantShellContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.5
+offset_top = 21.0
+offset_right = 0.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2

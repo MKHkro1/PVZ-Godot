@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://dix4am6e6dehi"]
+
+[ext_resource type="Script" uid="uid://blnis0vvtsqvt" path="res://scripts/main_game_item/back_ground/slope.gd" id="1_72vrf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aflyj"]
+size = Vector2(460, 600)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_6sinj"]
+a = Vector2(0, 122)
+b = Vector2(460, 0)
+
+[node name="Slope" type="Node2D"]
+script = ExtResource("1_72vrf")
+
+[node name="Area2DSlopeDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1537
+monitorable = false
+
+[node name="CollisionShape2DDetection" type="CollisionShape2D" parent="Area2DSlopeDetection"]
+position = Vector2(230, 300)
+shape = SubResource("RectangleShape2D_aflyj")
+
+[node name="SlopeReal" type="Node2D" parent="."]
+
+[node name="Area2DReal" type="Area2D" parent="SlopeReal"]
+position = Vector2(0, 145)
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlopeReal/Area2DReal"]
+shape = SubResource("SegmentShape2D_6sinj")
+
+[node name="Area2DReal2" type="Area2D" parent="SlopeReal"]
+position = Vector2(0, 231)
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlopeReal/Area2DReal2"]
+shape = SubResource("SegmentShape2D_6sinj")
+
+[node name="Area2DReal3" type="Area2D" parent="SlopeReal"]
+position = Vector2(0, 316)
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlopeReal/Area2DReal3"]
+shape = SubResource("SegmentShape2D_6sinj")
+
+[node name="Area2DReal4" type="Area2D" parent="SlopeReal"]
+position = Vector2(0, 398)
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlopeReal/Area2DReal4"]
+shape = SubResource("SegmentShape2D_6sinj")
+
+[node name="Area2DReal5" type="Area2D" parent="SlopeReal"]
+position = Vector2(0, 482)
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlopeReal/Area2DReal5"]
+shape = SubResource("SegmentShape2D_6sinj")

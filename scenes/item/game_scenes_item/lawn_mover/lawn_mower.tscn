@@ -1,0 +1,153 @@
+[gd_scene load_steps=14 format=3 uid="uid://dv5fiu4pkryba"]
+
+[ext_resource type="Script" uid="uid://bm01xxk7oygdx" path="res://scripts/main_game_item/lawn_mover/lawn_mower.gd" id="1_nbmi7"]
+[ext_resource type="Texture2D" uid="uid://de8gk86hm1rty" path="res://assets/reanim/LawnMower_wheelpiece.png" id="1_tkewj"]
+[ext_resource type="Texture2D" uid="uid://btg5xblar4uhd" path="res://assets/reanim/LawnMower_wheel2.png" id="2_0ba1f"]
+[ext_resource type="Texture2D" uid="uid://tf5p1t8o77bt" path="res://assets/reanim/LawnMower_wheelshine.png" id="3_5jk62"]
+[ext_resource type="Texture2D" uid="uid://dldct11tl5aeb" path="res://assets/reanim/LawnMower_body.png" id="4_nbmi7"]
+[ext_resource type="Texture2D" uid="uid://dr2k1cffro6kn" path="res://assets/reanim/LawnMower_pull.png" id="5_om6jw"]
+[ext_resource type="Texture2D" uid="uid://ds6qown7w0p2i" path="res://assets/reanim/LawnMower_engine.png" id="6_0kynh"]
+[ext_resource type="Texture2D" uid="uid://mcwwr4qeeqen" path="res://assets/reanim/LawnMower_wheel1.png" id="7_03vgv"]
+[ext_resource type="Texture2D" uid="uid://c8x8a2do7pbn4" path="res://assets/reanim/LawnMower_exhaust.png" id="8_iqjm2"]
+[ext_resource type="Animation" uid="uid://bjws0p5cnsuoc" path="res://animation/item/LawnMover/LawnMower_normal.tres" id="9_5jk62"]
+[ext_resource type="Animation" uid="uid://c6drj4spil3qx" path="res://animation/item/LawnMover/LawnMower_tricked.tres" id="10_nbmi7"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wxdc1"]
+_data = {
+&"LawnMower_normal": ExtResource("9_5jk62"),
+&"LawnMower_tricked": ExtResource("10_nbmi7")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5jk62"]
+size = Vector2(33.5, 48)
+
+[node name="LawnMower" type="Node2D"]
+script = ExtResource("1_nbmi7")
+
+[node name="Body" type="Node2D" parent="."]
+position = Vector2(-39, -55)
+scale = Vector2(0.8, 0.8)
+
+[node name="Anim_normal" type="Sprite2D" parent="Body"]
+centered = false
+
+[node name="Anim_tricked" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Lawnmower_backwheelpiece1" type="Sprite2D" parent="Body"]
+position = Vector2(25.8, 26.1)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_tkewj")
+centered = false
+
+[node name="Lawnmower_backwheel1" type="Sprite2D" parent="Body"]
+position = Vector2(25.5, 29)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_0ba1f")
+centered = false
+
+[node name="Lawnmower_backwheelshine1" type="Sprite2D" parent="Body"]
+position = Vector2(25, 28.4)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_5jk62")
+centered = false
+
+[node name="Lawnmower_backwheelpiece2" type="Sprite2D" parent="Body"]
+position = Vector2(59, 26.2)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_tkewj")
+centered = false
+
+[node name="Lawnmower_backwheel2" type="Sprite2D" parent="Body"]
+position = Vector2(58.6, 29.2)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_0ba1f")
+centered = false
+
+[node name="Lawnmower_backwheelshine2" type="Sprite2D" parent="Body"]
+position = Vector2(58.5, 28.6)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_5jk62")
+centered = false
+
+[node name="LawnMower_dice" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="LawnMower_body" type="Sprite2D" parent="Body"]
+position = Vector2(-2.2, 2.6)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_nbmi7")
+centered = false
+
+[node name="LawnMower_pull" type="Sprite2D" parent="Body"]
+position = Vector2(7.6, 40.5)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_om6jw")
+centered = false
+
+[node name="LawnMower_engine" type="Sprite2D" parent="Body"]
+position = Vector2(38, 26.2)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_0kynh")
+centered = false
+
+[node name="Lawnmower_frontwheelpiece1" type="Sprite2D" parent="Body"]
+position = Vector2(19.7, 45.6)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_tkewj")
+centered = false
+
+[node name="Lawnmower_frontwheel1" type="Sprite2D" parent="Body"]
+position = Vector2(19.4, 49)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_03vgv")
+centered = false
+
+[node name="Lawnmower_wheelshine1" type="Sprite2D" parent="Body"]
+position = Vector2(18.2, 48.8)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_5jk62")
+centered = false
+
+[node name="Lawnmower_frontwheelpiece2" type="Sprite2D" parent="Body"]
+position = Vector2(54.5, 47)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_tkewj")
+centered = false
+
+[node name="Lawnmower_frontwheel2" type="Sprite2D" parent="Body"]
+position = Vector2(54.1, 49.6)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_0ba1f")
+centered = false
+
+[node name="Lawnmower_wheelshine2" type="Sprite2D" parent="Body"]
+position = Vector2(53.1, 49.4)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_5jk62")
+centered = false
+
+[node name="Lawnmower_exhaust" type="Sprite2D" parent="Body"]
+position = Vector2(38.7, 46.7)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("8_iqjm2")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wxdc1")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -17)
+collision_layer = 0
+collision_mask = 513
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-4.75, -10)
+shape = SubResource("RectangleShape2D_5jk62")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://fhk3rqkadujf"]
+
+[ext_resource type="Script" uid="uid://tsl7jejg3jg7" path="res://scripts/garden/garden_speech_bubble.gd" id="1_vm6lc"]
+[ext_resource type="Texture2D" uid="uid://54rpfashjbpk" path="res://assets/image/garden/plantspeechbubble.png" id="2_xus3l"]
+[ext_resource type="Texture2D" uid="uid://ce2m54cahv50v" path="res://assets/image/garden/waterdrop.png" id="3_1plcy"]
+[ext_resource type="Texture2D" uid="uid://b5bo5s8mwuvuu" path="res://assets/image/garden/zen_need_icons.png" id="4_b24yh"]
+
+[node name="GardenSpeechBubble" type="Node2D"]
+script = ExtResource("1_vm6lc")
+
+[node name="Plantspeechbubble" type="Sprite2D" parent="."]
+position = Vector2(39, -54)
+texture = ExtResource("2_xus3l")
+
+[node name="Waterdrop" type="Sprite2D" parent="Plantspeechbubble"]
+position = Vector2(1, -3)
+texture = ExtResource("3_1plcy")
+
+[node name="ZenNeedIcons" type="Sprite2D" parent="Plantspeechbubble"]
+position = Vector2(2, -2)
+texture = ExtResource("4_b24yh")
+region_enabled = true
+region_rect = Rect2(0, 2, 30, 27)
+
+[node name="ZenNeedIcons2" type="Sprite2D" parent="Plantspeechbubble"]
+position = Vector2(1, -2)
+texture = ExtResource("4_b24yh")
+region_enabled = true
+region_rect = Rect2(35, 1, 19, 28)
+
+[node name="ZenNeedIcons3" type="Sprite2D" parent="Plantspeechbubble"]
+position = Vector2(2, -2)
+texture = ExtResource("4_b24yh")
+region_enabled = true
+region_rect = Rect2(65, 1, 22, 28)

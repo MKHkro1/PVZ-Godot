@@ -1,0 +1,65 @@
+[gd_scene load_steps=12 format=3 uid="uid://c3s7jbfbsys6d"]
+
+[ext_resource type="PackedScene" uid="uid://cit8bsc5op7f0" path="res://scenes/bullet/bullet_000_linear_base.tscn" id="1_0vx1j"]
+[ext_resource type="Texture2D" uid="uid://yjc7pkf5hdn2" path="res://assets/image/particles/bullet/PuffShroom_puff1.png" id="2_eod4s"]
+[ext_resource type="Script" uid="uid://b8deeas2k62vb" path="res://scripts/fx/bullet_effect/bullet_effect_001_norm.gd" id="3_nxlx4"]
+[ext_resource type="Texture2D" uid="uid://bq2t7ki1icbpq" path="res://assets/image/particles/bullet/PuffShroom_puff2.png" id="4_rtp2o"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yix8j"]
+
+[sub_resource type="Curve" id="Curve_wqrdb"]
+_data = [Vector2(0, 0.550562), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_s2srl"]
+curve = SubResource("Curve_wqrdb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6h5r5"]
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 80.0
+gravity = Vector3(0, 100, 0)
+scale_curve = SubResource("CurveTexture_s2srl")
+
+[sub_resource type="Curve" id="Curve_c44kq"]
+_data = [Vector2(0, 0.52809), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hp3op"]
+curve = SubResource("Curve_c44kq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yix8j"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 9.67
+angle_min = -180.0
+angle_max = 180.0
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_hp3op")
+
+[node name="Bullet005PuffLongTime" instance=ExtResource("1_0vx1j")]
+bullet_type = 5
+type_bullet_SFX = 0
+
+[node name="BulletBody" parent="Body" index="0"]
+texture = ExtResource("2_eod4s")
+
+[node name="BulletEffect" parent="." index="2"]
+script = ExtResource("3_nxlx4")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BulletEffect/AllParticles2D" index="0"]
+material = SubResource("CanvasItemMaterial_yix8j")
+emitting = false
+amount = 10
+texture = ExtResource("4_rtp2o")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_6h5r5")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="4"]
+position = Vector2(-8, 0)
+texture = ExtResource("4_rtp2o")
+process_material = SubResource("ParticleProcessMaterial_yix8j")

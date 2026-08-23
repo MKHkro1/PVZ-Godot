@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://dem0v2rrlor4p"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_aj77m"]
+[ext_resource type="Script" uid="uid://dfmsywqp6uy3v" path="res://scripts/character/plant/plant_1001_wall_nut_bowling.gd" id="2_41x36"]
+[ext_resource type="Texture2D" uid="uid://osds5r8hvsmb" path="res://assets/reanim/Wallnut_body.png" id="2_futah"]
+[ext_resource type="PackedScene" uid="uid://bbgh3cu4qdrb5" path="res://scenes/bullet/bullet_1003_bowling_big.tscn" id="3_31glj"]
+[ext_resource type="Texture2D" uid="uid://cpbkvykx6yq07" path="res://assets/reanim/Wallnut_twitch.png" id="3_41x36"]
+[ext_resource type="Texture2D" uid="uid://co3e8k6uwm4hi" path="res://assets/reanim/Wallnut_blink1.png" id="4_31glj"]
+[ext_resource type="Script" uid="uid://t3g1fyasmwgx" path="res://scripts/character/components/anim_component/component_anim_empty.gd" id="7_23c7u"]
+
+[node name="Plant1003WallNutBowling" instance=ExtResource("1_aj77m")]
+script = ExtResource("2_41x36")
+bowling_bullet_scene = ExtResource("3_31glj")
+plant_type = 1003
+
+[node name="Shadow" parent="." index="0"]
+scale = Vector2(2, 2)
+
+[node name="Body" parent="." index="1"]
+scale = Vector2(2, 2)
+
+[node name="_ground" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+position = Vector2(-42.5, -69.5)
+centered = false
+
+[node name="Anim_idle" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+position = Vector2(-42.5, -69.5)
+centered = false
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+position = Vector2(-38.663, -61.2476)
+rotation = -0.0454682
+scale = Vector2(0.7, 0.68937)
+texture = ExtResource("2_futah")
+centered = false
+
+[node name="Anim_blink_twitch" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+visible = false
+position = Vector2(-14.5894, -8.3159)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_41x36")
+centered = false
+
+[node name="Anim_blink_twice" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+visible = false
+position = Vector2(-15.7894, -22.3159)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_31glj")
+centered = false
+
+[node name="AnimComponent" parent="." index="2"]
+script = ExtResource("7_23c7u")
+
+[node name="BlinkComponent" parent="." index="5"]
+is_enable_default = false

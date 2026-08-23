@@ -1,0 +1,623 @@
+[gd_scene load_steps=40 format=3 uid="uid://clqecxrxm0peb"]
+
+[ext_resource type="Script" uid="uid://dj45uwooyxcqq" path="res://scripts/store/store_manager.gd" id="1_2eot4"]
+[ext_resource type="Texture2D" uid="uid://bbk4mkctblpfp" path="res://assets/image/store/Store_CarClosed.png" id="2_2q1s6"]
+[ext_resource type="Texture2D" uid="uid://cw46jx8pqc150" path="res://assets/image/store/Store_Bg_New.png" id="2_68plr"]
+[ext_resource type="Texture2D" uid="uid://umyqotkyrx6w" path="res://assets/image/store/Store_HatchbackOpen.png" id="3_8gqjn"]
+[ext_resource type="Texture2D" uid="uid://c2n2g18qgsut1" path="res://assets/image/store/Store_Car.png" id="4_u8m56"]
+[ext_resource type="Texture2D" uid="uid://xuwee8l8koxe" path="res://assets/image/store/Store_MushroomGardenIcon.png" id="5_1407h"]
+[ext_resource type="Texture2D" uid="uid://bv64j7pfbj2xs" path="res://assets/image/garden/Background_Greenhouse.jpg" id="6_e6man"]
+[ext_resource type="Script" uid="uid://7qucqjvdq78q" path="res://scripts/resources/crazy_dave_dialog_detail_resource.gd" id="7_36gbm"]
+[ext_resource type="PackedScene" uid="uid://oia7m8j6yhjl" path="res://scenes/store/goods.tscn" id="7_gw0he"]
+[ext_resource type="Script" uid="uid://crakrqgriwtml" path="res://scripts/store/goods_garden_bg.gd" id="7_o853e"]
+[ext_resource type="Resource" uid="uid://b22hj2bfr4gfg" path="res://resources/crazy_dave_resource/dialog_detail/Store/GardenBg00GreenHouse.tres" id="8_on4af"]
+[ext_resource type="Texture2D" uid="uid://hfg2bkaxw1xb" path="res://assets/image/store/Store_AquariumGardenIcon.png" id="8_uxw12"]
+[ext_resource type="Texture2D" uid="uid://ihcn7jrt1j8k" path="res://assets/image/store/Store_TreeOfWisdomIcon.png" id="9_2eot4"]
+[ext_resource type="Texture2D" uid="uid://c4vn5sj6dy5xq" path="res://assets/image/store/Store_Sign.png" id="10_e6man"]
+[ext_resource type="Texture2D" uid="uid://6lxh526uh3v" path="res://assets/image/store/Store_PrevButtonDisabled.png" id="10_vkx5w"]
+[ext_resource type="Texture2D" uid="uid://c03wbudyom60v" path="res://assets/image/store/Store_NextButtonDisabled.png" id="11_36gbm"]
+[ext_resource type="Resource" uid="uid://deixh11w3c5a2" path="res://resources/crazy_dave_resource/dialog_detail/Store/GardenBg01MushroomGraden.tres" id="11_45f1l"]
+[ext_resource type="Resource" uid="uid://fhaahw4pfs5d" path="res://resources/crazy_dave_resource/dialog_detail/Store/GardenBg02Aquarium.tres" id="12_2rser"]
+[ext_resource type="Texture2D" uid="uid://d1v7iypigcffs" path="res://assets/image/store/Store_MainMenuButton.png" id="12_gw0he"]
+[ext_resource type="Texture2D" uid="uid://cdoq1urea0r1y" path="res://assets/image/store/Store_MainMenuButtonDown.png" id="13_iukld"]
+[ext_resource type="Resource" uid="uid://dbujykqt6bbfc" path="res://resources/crazy_dave_resource/dialog_detail/Store/GardenBg03Tree.tres" id="14_vu7tl"]
+[ext_resource type="Texture2D" uid="uid://cxm7vdvvw2u8x" path="res://assets/image/store/Store_MainMenuButtonHighlight.png" id="14_wb67t"]
+[ext_resource type="PackedScene" uid="uid://dsxyx35geqj23" path="res://scenes/crazy_dave/crazy_dave.tscn" id="15_1407h"]
+[ext_resource type="Script" uid="uid://jmh0ludmutvq" path="res://scripts/store/goods_garden_sprout.gd" id="16_ptakq"]
+[ext_resource type="Resource" uid="uid://bi52bqkur7pd1" path="res://resources/crazy_dave_resource/dialog_detail/Store/GardenSprout.tres" id="17_rv2dm"]
+[ext_resource type="PackedScene" uid="uid://djx300tx2setf" path="res://scenes/garden/garden_flower_pot.tscn" id="18_68plr"]
+[ext_resource type="PackedScene" uid="uid://m3w2qdnyrqju" path="res://scenes/character/plant/plant_1000_sprout.tscn" id="19_256br"]
+[ext_resource type="PackedScene" uid="uid://b2xxhep8oyipk" path="res://scenes/item/coin_bank_label.tscn" id="20_vkx5w"]
+[ext_resource type="Resource" uid="uid://urishti8iy5w" path="res://resources/crazy_dave_resource/dialog_detail/001_Crazy.tres" id="21_wb67t"]
+[ext_resource type="Theme" uid="uid://em12la0rqibq" path="res://data/PVZ_theme.tres" id="22_iukld"]
+[ext_resource type="Script" uid="uid://dlfnh7fjqyil6" path="res://scripts/resources/crazy_dave_dialog_resource.gd" id="22_o853e"]
+[ext_resource type="Script" uid="uid://dyyd4dh8b20qi" path="res://scripts/store/store_confirm_goods.gd" id="22_wb67t"]
+[ext_resource type="Script" uid="uid://parybxg7tb1k" path="res://scripts/ui/PVZ_button_base.gd" id="23_wb67t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o853e"]
+
+[sub_resource type="Resource" id="Resource_8c1ng"]
+script = ExtResource("7_36gbm")
+text = "欢迎来到疯狂戴夫的商店"
+metadata/_custom_type_script = "uid://7qucqjvdq78q"
+
+[sub_resource type="Resource" id="Resource_on4af"]
+script = ExtResource("7_36gbm")
+text = "吃饭、睡觉、做大梦"
+metadata/_custom_type_script = "uid://7qucqjvdq78q"
+
+[sub_resource type="Resource" id="Resource_45f1l"]
+script = ExtResource("7_36gbm")
+text = "戴夫~接客"
+is_crazy = true
+metadata/_custom_type_script = "uid://7qucqjvdq78q"
+
+[sub_resource type="Resource" id="Resource_2rser"]
+script = ExtResource("22_o853e")
+dialog_detail_list = Array[ExtResource("7_36gbm")]([SubResource("Resource_8c1ng")])
+dialog_detail_long_time_idle_list = Array[ExtResource("7_36gbm")]([ExtResource("21_wb67t"), SubResource("Resource_on4af"), SubResource("Resource_45f1l")])
+is_enter_up = true
+is_long_time_dave = true
+metadata/_custom_type_script = "uid://dlfnh7fjqyil6"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8c1ng"]
+
+[node name="Store" type="Control" node_paths=PackedStringArray("all_goods")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2eot4")
+all_goods = [NodePath("Bg/Car2/Panel/HBoxContainer/Goods1"), NodePath("Bg/Car2/Panel/HBoxContainer/Goods2"), NodePath("Bg/Car2/Panel/HBoxContainer/Goods3"), NodePath("Bg/Car2/Panel/HBoxContainer/Goods4"), NodePath("Bg/Car2/Panel/HBoxContainer2/Goods1")]
+
+[node name="Bg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_68plr")
+expand_mode = 1
+
+[node name="CarClosed" type="TextureRect" parent="Bg"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -604.0
+offset_top = -462.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_2q1s6")
+
+[node name="PrevPageButton" type="TextureButton" parent="Bg/CarClosed"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -245.0
+offset_top = -199.0
+offset_right = -149.0
+offset_bottom = -124.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("10_vkx5w")
+
+[node name="NextPageButton2" type="TextureButton" parent="Bg/CarClosed"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 98.0
+offset_top = -200.0
+offset_right = 234.0
+offset_bottom = -117.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("11_36gbm")
+
+[node name="Car2" type="TextureRect" parent="Bg"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -604.0
+offset_top = -462.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("4_u8m56")
+
+[node name="CarHatchbackOpen" type="TextureRect" parent="Bg/Car2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -217.0
+offset_top = -137.0
+offset_right = 189.0
+offset_bottom = 36.0
+grow_horizontal = 2
+texture = ExtResource("3_8gqjn")
+
+[node name="Panel" type="Panel" parent="Bg/Car2"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 257.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o853e")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Bg/Car2/Panel"]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 59.0
+offset_right = 491.0
+offset_bottom = 148.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Goods1" parent="Bg/Car2/Panel/HBoxContainer" instance=ExtResource("7_gw0he")]
+layout_mode = 2
+script = ExtResource("7_o853e")
+curr_goods_garden_bg = 0
+price = 30000
+dialog_detail = ExtResource("8_on4af")
+
+[node name="StoreIcon" type="TextureRect" parent="Bg/Car2/Panel/HBoxContainer/Goods1"]
+z_index = -1
+layout_mode = 0
+mouse_filter = 2
+texture = ExtResource("5_1407h")
+
+[node name="TextureRect" type="TextureRect" parent="Bg/Car2/Panel/HBoxContainer/Goods1/StoreIcon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -32.0
+offset_right = 31.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_e6man")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Goods2" parent="Bg/Car2/Panel/HBoxContainer" instance=ExtResource("7_gw0he")]
+layout_mode = 2
+script = ExtResource("7_o853e")
+curr_goods_garden_bg = 2
+price = 30000
+dialog_detail = ExtResource("11_45f1l")
+
+[node name="StoreIcon" type="TextureRect" parent="Bg/Car2/Panel/HBoxContainer/Goods2"]
+z_index = -1
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 68.0
+mouse_filter = 2
+texture = ExtResource("5_1407h")
+
+[node name="Goods3" parent="Bg/Car2/Panel/HBoxContainer" instance=ExtResource("7_gw0he")]
+layout_mode = 2
+script = ExtResource("7_o853e")
+curr_goods_garden_bg = 2
+price = 30000
+dialog_detail = ExtResource("12_2rser")
+
+[node name="StoreIcon" type="TextureRect" parent="Bg/Car2/Panel/HBoxContainer/Goods3"]
+z_index = -1
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 68.0
+mouse_filter = 2
+texture = ExtResource("8_uxw12")
+
+[node name="Goods4" parent="Bg/Car2/Panel/HBoxContainer" instance=ExtResource("7_gw0he")]
+layout_mode = 2
+script = ExtResource("7_o853e")
+curr_goods_garden_bg = 0
+price = 30000
+is_have_goods = false
+dialog_detail = ExtResource("14_vu7tl")
+
+[node name="StoreIcon" type="TextureRect" parent="Bg/Car2/Panel/HBoxContainer/Goods4"]
+z_index = -1
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 68.0
+mouse_filter = 2
+texture = ExtResource("9_2eot4")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Bg/Car2/Panel"]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 163.0
+offset_right = 443.0
+offset_bottom = 252.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Goods1" parent="Bg/Car2/Panel/HBoxContainer2" instance=ExtResource("7_gw0he")]
+layout_mode = 2
+script = ExtResource("16_ptakq")
+price = 2500
+dialog_detail = ExtResource("17_rv2dm")
+
+[node name="FlowerPot" parent="Bg/Car2/Panel/HBoxContainer2/Goods1" instance=ExtResource("18_68plr")]
+z_index = -1
+position = Vector2(32, 64)
+
+[node name="Pot_bottom" parent="Bg/Car2/Panel/HBoxContainer2/Goods1/FlowerPot/Body/BodyCorrect" index="6"]
+position = Vector2(13.5, 52.289783)
+scale = Vector2(0.8, 0.9333096)
+
+[node name="Pot_bottom2" parent="Bg/Car2/Panel/HBoxContainer2/Goods1/FlowerPot/Body/BodyCorrect" index="7"]
+position = Vector2(13.5, 52.289783)
+scale = Vector2(0.8, 0.9333096)
+
+[node name="Pot_stem" parent="Bg/Car2/Panel/HBoxContainer2/Goods1/FlowerPot/Body/BodyCorrect" index="8"]
+position = Vector2(23.369968, 10.769969)
+rotation = -0.2007236
+scale = Vector2(0.799, 0.799)
+
+[node name="Pot_leaf1" parent="Bg/Car2/Panel/HBoxContainer2/Goods1/FlowerPot/Body/BodyCorrect" index="9"]
+position = Vector2(28.43003, 6.939938)
+rotation = 0.23632193
+scale = Vector2(0.799, 0.799)
+
+[node name="Pot_leaf2" parent="Bg/Car2/Panel/HBoxContainer2/Goods1/FlowerPot/Body/BodyCorrect" index="10"]
+position = Vector2(17.230032, 11.139938)
+rotation = -0.23928818
+scale = Vector2(0.799, 0.799)
+
+[node name="Pot_top" parent="Bg/Car2/Panel/HBoxContainer2/Goods1/FlowerPot/Body/BodyCorrect" index="11"]
+position = Vector2(7.2, 11.679876)
+
+[node name="DownPlantContainer" parent="Bg/Car2/Panel/HBoxContainer2/Goods1/FlowerPot" index="4"]
+position = Vector2(0, -1.6201237)
+
+[node name="Plant1000Sprout" parent="Bg/Car2/Panel/HBoxContainer2/Goods1/FlowerPot/DownPlantContainer" index="0" node_paths=PackedStringArray("node_no_change_direction") instance=ExtResource("19_256br")]
+position = Vector2(0, -26.78)
+node_no_change_direction = [NodePath("HpComponent"), NodePath("SleepComponent"), null]
+character_init_type = 1
+
+[node name="StoreSign" type="TextureRect" parent="Bg"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -536.0
+offset_right = -28.0
+offset_bottom = 124.0
+grow_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("10_e6man")
+
+[node name="StoreMainMenuButton" type="TextureButton" parent="Bg"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 124.0
+offset_top = -122.0
+offset_right = 262.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("12_gw0he")
+texture_pressed = ExtResource("13_iukld")
+texture_hover = ExtResource("14_wb67t")
+
+[node name="Label" type="Label" parent="Bg/StoreMainMenuButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -23.0
+offset_right = 36.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.384314, 0.6, 0.921569, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 21
+text = "返回"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CrazyDave" parent="." instance=ExtResource("15_1407h")]
+position = Vector2(44, 0)
+dialog_resource = SubResource("Resource_2rser")
+
+[node name="CoinBankLabel" parent="." instance=ExtResource("20_vkx5w")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 206.0
+offset_top = -51.0
+offset_right = 206.0
+offset_bottom = -51.0
+grow_vertical = 0
+auto_hide = false
+
+[node name="ConfirmGoods" type="Control" parent="."]
+visible = false
+z_index = 1000
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_iukld")
+script = ExtResource("22_wb67t")
+
+[node name="ChooseMouseStopPanel" type="Panel" parent="ConfirmGoods"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8c1ng")
+
+[node name="Panel" type="Panel" parent="ConfirmGoods"]
+custom_minimum_size = Vector2(345, 311)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -471.0
+offset_top = -117.0
+offset_right = -126.0
+offset_bottom = 194.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_type_variation = &"PanelDialogBG"
+
+[node name="MarginContainer" type="MarginContainer" parent="ConfirmGoods/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 100
+
+[node name="ChooseContent" type="Label" parent="ConfirmGoods/Panel/MarginContainer"]
+custom_minimum_size = Vector2(277, 0)
+layout_mode = 2
+text = "是否购买该商品"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ConfirmGoods/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -80.0
+offset_right = -32.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PVZButtonYes" type="BaseButton" parent="ConfirmGoods/Panel/HBoxContainer"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 2
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(100, 40)
+layout_direction = 0
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+localize_numeral_system = true
+tooltip_text = ""
+tooltip_auto_translate_mode = 0
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 2
+focus_behavior_recursive = 0
+mouse_filter = 0
+mouse_behavior_recursive = 0
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+accessibility_name = ""
+accessibility_description = ""
+accessibility_live = 0
+accessibility_controls_nodes = Array[NodePath]([])
+accessibility_described_by_nodes = Array[NodePath]([])
+accessibility_labeled_by_nodes = Array[NodePath]([])
+accessibility_flow_to_nodes = Array[NodePath]([])
+theme = null
+theme_type_variation = &""
+disabled = false
+toggle_mode = false
+button_pressed = false
+action_mode = 1
+button_mask = 1
+keep_pressed_outside = false
+button_group = null
+shortcut = null
+shortcut_feedback = true
+shortcut_in_tooltip = true
+script = ExtResource("23_wb67t")
+metadata/_custom_type_script = "uid://parybxg7tb1k"
+
+[node name="Panel" type="Panel" parent="ConfirmGoods/Panel/HBoxContainer/PVZButtonYes"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"PanelButtonBG"
+
+[node name="Label" type="Label" parent="ConfirmGoods/Panel/HBoxContainer/PVZButtonYes"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "确认"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PVZButtonNo" type="BaseButton" parent="ConfirmGoods/Panel/HBoxContainer"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 2
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(100, 40)
+layout_direction = 0
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+localize_numeral_system = true
+tooltip_text = ""
+tooltip_auto_translate_mode = 0
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 2
+focus_behavior_recursive = 0
+mouse_filter = 0
+mouse_behavior_recursive = 0
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+accessibility_name = ""
+accessibility_description = ""
+accessibility_live = 0
+accessibility_controls_nodes = Array[NodePath]([])
+accessibility_described_by_nodes = Array[NodePath]([])
+accessibility_labeled_by_nodes = Array[NodePath]([])
+accessibility_flow_to_nodes = Array[NodePath]([])
+theme = null
+theme_type_variation = &""
+disabled = false
+toggle_mode = false
+button_pressed = false
+action_mode = 1
+button_mask = 1
+keep_pressed_outside = false
+button_group = null
+shortcut = null
+shortcut_feedback = true
+shortcut_in_tooltip = true
+script = ExtResource("23_wb67t")
+metadata/_custom_type_script = "uid://parybxg7tb1k"
+
+[node name="Panel" type="Panel" parent="ConfirmGoods/Panel/HBoxContainer/PVZButtonNo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"PanelButtonBG"
+
+[node name="Label" type="Label" parent="ConfirmGoods/Panel/HBoxContainer/PVZButtonNo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "取消"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Bg/StoreMainMenuButton" to="." method="_on_store_main_menu_button_pressed"]
+
+[editable path="Bg/Car2/Panel/HBoxContainer2/Goods1/FlowerPot"]

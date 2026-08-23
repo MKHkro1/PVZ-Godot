@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvhbgfg5nxjo4"]
+
+[ext_resource type="Script" uid="uid://c61xw8ahvwfom" path="res://scripts/character/components/009_jackson/zombie_jackson_manager.gd" id="1_k3eon"]
+
+[sub_resource type="Animation" id="Animation_20c57"]
+length = 0.84
+step = 0.0833333
+
+[sub_resource type="Animation" id="Animation_5a5kd"]
+resource_name = "armraise_ed"
+length = 0.416675
+step = 0.0833333
+
+[sub_resource type="Animation" id="Animation_uxgga"]
+length = 2.16668
+step = 0.0833333
+
+[sub_resource type="Animation" id="Animation_vxobb"]
+length = 0.750008
+step = 0.0833333
+
+[sub_resource type="Animation" id="Animation_0mrgh"]
+resource_name = "walk"
+length = 1.7
+step = 0.0833333
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vqi7n"]
+_data = {
+&"armraise": SubResource("Animation_20c57"),
+&"armraise_end": SubResource("Animation_5a5kd"),
+&"moonwalk": SubResource("Animation_uxgga"),
+&"point": SubResource("Animation_vxobb"),
+&"walk": SubResource("Animation_0mrgh")
+}
+
+[node name="JacksonManager" type="Node"]
+script = ExtResource("1_k3eon")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vqi7n")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

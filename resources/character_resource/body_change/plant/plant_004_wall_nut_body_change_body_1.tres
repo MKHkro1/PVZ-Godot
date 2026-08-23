@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ResourceBodyChange" load_steps=3 format=3 uid="uid://da3xbskl4xg0q"]
+
+[ext_resource type="Script" uid="uid://jl0nl4a234bc" path="res://scripts/resources/resource_body_change.gd" id="1_vr3wb"]
+[ext_resource type="Texture2D" uid="uid://bms4xhmhlcsam" path="res://assets/reanim/Wallnut_cracked2.png" id="2_j88ei"]
+
+[resource]
+script = ExtResource("1_vr3wb")
+sprite_chage = Array[NodePath]([NodePath("../Body/BodyCorrect/Anim_face")])
+sprite_chage_texture = Array[Texture2D]([ExtResource("2_j88ei")])
+sprite_appear = Array[NodePath]([])
+sprite_disappear = Array[NodePath]([])
+node_drop = NodePath("")
+metadata/_custom_type_script = "uid://jl0nl4a234bc"

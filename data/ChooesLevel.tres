@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cx302yraw066y"]
+
+[ext_resource type="FontFile" uid="uid://dqb8lum530s2f" path="res://assets/fonts/方正少儿_GBK.ttf" id="1_jlhwg"]
+
+[resource]
+Label/fonts/font = ExtResource("1_jlhwg")

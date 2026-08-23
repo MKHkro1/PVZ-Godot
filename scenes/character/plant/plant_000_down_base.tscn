@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://n2y27ai1nm5f"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_oqehh"]
+[ext_resource type="Script" uid="uid://dgtl8kmaumerv" path="res://scripts/character/plant/plant_000_down_base.gd" id="2_5l3k7"]
+
+[node name="Plant000DownBase" instance=ExtResource("1_oqehh")]
+script = ExtResource("2_5l3k7")
+plant_up_position = Vector2(0, 0)
+
+[node name="DownPlantContainer" type="Node2D" parent="." index="7"]

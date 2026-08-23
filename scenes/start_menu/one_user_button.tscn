@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://5yk8fhfwgwo0"]
+
+[ext_resource type="FontFile" uid="uid://dqb8lum530s2f" path="res://assets/fonts/方正少儿_GBK.ttf" id="1_h34de"]
+[ext_resource type="Script" uid="uid://udah4tu4vf0o" path="res://scripts/start_menu/one_user_button.gd" id="2_vtk8y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nu6d8"]
+font = ExtResource("1_h34de")
+font_size = 26
+font_color = Color(1, 1, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="OneUserButton" type="Button"]
+custom_minimum_size = Vector2(450, 35)
+script = ExtResource("2_vtk8y")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Player"
+label_settings = SubResource("LabelSettings_nu6d8")
+horizontal_alignment = 1

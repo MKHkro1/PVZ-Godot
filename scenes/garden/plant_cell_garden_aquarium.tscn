@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://c37t6y03lap40"]
+
+[ext_resource type="PackedScene" uid="uid://bp3u3o8nttci" path="res://scenes/garden/plant_cell_garden.tscn" id="1_gix5e"]
+[ext_resource type="Script" uid="uid://cp4gmc4sqpuxl" path="res://scripts/garden/plant_cell_garden_aquarium.gd" id="2_refwt"]
+[ext_resource type="Texture2D" uid="uid://d0hpo2yp78fwc" path="res://assets/image/plant/plantshadow.png" id="3_m66bu"]
+
+[node name="PlantCellGardenAquarium" instance=ExtResource("1_gix5e")]
+script = ExtResource("2_refwt")
+
+[node name="Plantshadow" type="Sprite2D" parent="." index="0"]
+visible = false
+position = Vector2(36, 48)
+scale = Vector2(1.30233, 1.72222)
+texture = ExtResource("3_m66bu")

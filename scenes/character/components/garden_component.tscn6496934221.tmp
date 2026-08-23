@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0tyh3w4xxnj8"]
+
+[ext_resource type="Script" uid="uid://bv8m5ldv6i00l" path="res://scripts/character/components/garden/component_garden.gd" id="1_rju2v"]
+
+[node name="GardenComponent" type="Node2D"]
+script = ExtResource("1_rju2v")
+
+[node name="NeedTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CreateCoinTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="NeedTimer" to="." method="_on_need_timer_timeout"]
+[connection signal="timeout" from="CreateCoinTimer" to="." method="_on_coin_timer_timeout"]

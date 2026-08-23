@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ResourceLevelData" load_steps=3 format=3 uid="uid://bdqduptedqvxt"]
+
+[ext_resource type="Script" uid="uid://bke3sg5otco7s" path="res://scripts/resources/level/pre_plant_in_level.gd" id="1_6p861"]
+[ext_resource type="Script" uid="uid://bjt3l56exxmdw" path="res://scripts/resources/level/level_data.gd" id="2_at8kj"]
+
+[resource]
+script = ExtResource("2_at8kj")
+game_sences = 1
+game_round = 10
+game_BG = 3
+game_BGM = 3
+is_fog = true
+is_day = false
+is_day_sun = false
+max_wave = 20
+zombie_refresh_types = Array[int]([1, 2, 3, 5, 12, 15, 16, 17, 18, 19])
+metadata/_custom_type_script = "uid://bjt3l56exxmdw"

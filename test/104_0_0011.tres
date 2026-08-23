@@ -1,0 +1,489 @@
+[gd_resource type="Resource" script_class="ResourceSaveGameMainGame" load_steps=50 format=3 uid="uid://b2mc4ixy0fmbb"]
+
+[ext_resource type="Script" uid="uid://ddey80omjp558" path="res://scripts/resources/save_game/save_game_plant_cell.gd" id="1_vg1r2"]
+[ext_resource type="Script" uid="uid://cn1p0jdvs14aj" path="res://scripts/resources/save_game/save_game_plant_cell_manager.gd" id="2_wx3tq"]
+[ext_resource type="Script" uid="uid://3lg4qnohpyes" path="res://scripts/resources/save_game/save_game_main_game.gd" id="3_c2wq1"]
+
+[sub_resource type="Resource" id="Resource_vg1r2"]
+script = ExtResource("1_vg1r2")
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 41
+}
+})
+
+[sub_resource type="Resource" id="Resource_wx3tq"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(0, 1)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+1: {
+"curr_hp": 4000,
+"is_imitater_material": false,
+"plant_type": 31
+}
+})
+
+[sub_resource type="Resource" id="Resource_c2wq1"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(0, 2)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 41
+}
+})
+
+[sub_resource type="Resource" id="Resource_tj736"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(0, 3)
+
+[sub_resource type="Resource" id="Resource_20l3q"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(0, 4)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 8
+}
+})
+
+[sub_resource type="Resource" id="Resource_und37"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(0, 5)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 23
+}
+})
+
+[sub_resource type="Resource" id="Resource_qns1x"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(0, 6)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 8000,
+"is_imitater_material": false,
+"plant_type": 24
+},
+1: {
+"curr_hp": 4000,
+"is_imitater_material": false,
+"plant_type": 31
+}
+})
+
+[sub_resource type="Resource" id="Resource_vyiw8"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(0, 7)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 450,
+"is_imitater_material": false,
+"plant_type": 47
+}
+})
+
+[sub_resource type="Resource" id="Resource_p4rkd"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(0, 8)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 450,
+"is_imitater_material": false,
+"plant_type": 47
+}
+})
+
+[sub_resource type="Resource" id="Resource_djkoj"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(1, 0)
+
+[sub_resource type="Resource" id="Resource_v3yeh"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(1, 1)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 41
+}
+})
+
+[sub_resource type="Resource" id="Resource_vtjub"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(1, 2)
+
+[sub_resource type="Resource" id="Resource_crblj"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(1, 3)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 41
+}
+})
+
+[sub_resource type="Resource" id="Resource_capnh"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(1, 4)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 8
+}
+})
+
+[sub_resource type="Resource" id="Resource_ge482"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(1, 5)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 23
+}
+})
+
+[sub_resource type="Resource" id="Resource_yrooa"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(1, 6)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 8000,
+"is_imitater_material": false,
+"plant_type": 24
+},
+1: {
+"curr_hp": 4000,
+"is_imitater_material": false,
+"plant_type": 31
+}
+})
+
+[sub_resource type="Resource" id="Resource_dr8kq"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(1, 7)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 450,
+"is_imitater_material": false,
+"plant_type": 47
+}
+})
+
+[sub_resource type="Resource" id="Resource_fa61s"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(1, 8)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 250,
+"is_imitater_material": false,
+"plant_type": 47
+}
+})
+
+[sub_resource type="Resource" id="Resource_urmwm"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(2, 0)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 41
+}
+})
+
+[sub_resource type="Resource" id="Resource_xj75q"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(2, 1)
+
+[sub_resource type="Resource" id="Resource_q5hud"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(2, 2)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 41
+}
+})
+
+[sub_resource type="Resource" id="Resource_htlm1"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(2, 3)
+
+[sub_resource type="Resource" id="Resource_bstbc"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(2, 4)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 8
+}
+})
+
+[sub_resource type="Resource" id="Resource_ney1t"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(2, 5)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 23
+}
+})
+
+[sub_resource type="Resource" id="Resource_27ypa"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(2, 6)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 8000,
+"is_imitater_material": false,
+"plant_type": 24
+},
+1: {
+"curr_hp": 3935,
+"is_imitater_material": false,
+"plant_type": 31
+}
+})
+
+[sub_resource type="Resource" id="Resource_cp7it"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(2, 7)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 450,
+"is_imitater_material": false,
+"plant_type": 47
+}
+})
+
+[sub_resource type="Resource" id="Resource_2wp8x"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(2, 8)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 400,
+"is_imitater_material": false,
+"plant_type": 47
+}
+})
+
+[sub_resource type="Resource" id="Resource_wxhka"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(3, 0)
+
+[sub_resource type="Resource" id="Resource_1ri88"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(3, 1)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 41
+}
+})
+
+[sub_resource type="Resource" id="Resource_asvuy"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(3, 2)
+
+[sub_resource type="Resource" id="Resource_ib4bq"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(3, 3)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 41
+}
+})
+
+[sub_resource type="Resource" id="Resource_c6c51"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(3, 4)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 8
+}
+})
+
+[sub_resource type="Resource" id="Resource_rfjax"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(3, 5)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 23
+}
+})
+
+[sub_resource type="Resource" id="Resource_4ynxd"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(3, 6)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 8000,
+"is_imitater_material": false,
+"plant_type": 24
+},
+1: {
+"curr_hp": 4000,
+"is_imitater_material": false,
+"plant_type": 31
+}
+})
+
+[sub_resource type="Resource" id="Resource_ix6dc"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(3, 7)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 450,
+"is_imitater_material": false,
+"plant_type": 47
+}
+})
+
+[sub_resource type="Resource" id="Resource_wlwil"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(3, 8)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 47
+}
+})
+
+[sub_resource type="Resource" id="Resource_shuuu"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(4, 0)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 41
+}
+})
+
+[sub_resource type="Resource" id="Resource_4nfuy"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(4, 1)
+
+[sub_resource type="Resource" id="Resource_hoyuh"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(4, 2)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 41
+}
+})
+
+[sub_resource type="Resource" id="Resource_ik6cq"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(4, 3)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 8
+}
+})
+
+[sub_resource type="Resource" id="Resource_hicmo"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(4, 4)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 8
+}
+})
+
+[sub_resource type="Resource" id="Resource_hixor"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(4, 5)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 23
+}
+})
+
+[sub_resource type="Resource" id="Resource_ipndt"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(4, 6)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 8000,
+"is_imitater_material": false,
+"plant_type": 24
+},
+1: {
+"curr_hp": 4000,
+"is_imitater_material": false,
+"plant_type": 31
+}
+})
+
+[sub_resource type="Resource" id="Resource_agwr3"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(4, 7)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 450,
+"is_imitater_material": false,
+"plant_type": 47
+}
+})
+
+[sub_resource type="Resource" id="Resource_fs61v"]
+script = ExtResource("1_vg1r2")
+row_col = Vector2i(4, 8)
+plant_type_in_cell = Dictionary[int, Dictionary]({
+0: {
+"curr_hp": 300,
+"is_imitater_material": false,
+"plant_type": 22
+}
+})
+
+[sub_resource type="Resource" id="Resource_xltwm"]
+script = ExtResource("2_wx3tq")
+all_plant_cells_datas = Array[ExtResource("1_vg1r2")]([SubResource("Resource_vg1r2"), SubResource("Resource_wx3tq"), SubResource("Resource_c2wq1"), SubResource("Resource_tj736"), SubResource("Resource_20l3q"), SubResource("Resource_und37"), SubResource("Resource_qns1x"), SubResource("Resource_vyiw8"), SubResource("Resource_p4rkd"), SubResource("Resource_djkoj"), SubResource("Resource_v3yeh"), SubResource("Resource_vtjub"), SubResource("Resource_crblj"), SubResource("Resource_capnh"), SubResource("Resource_ge482"), SubResource("Resource_yrooa"), SubResource("Resource_dr8kq"), SubResource("Resource_fa61s"), SubResource("Resource_urmwm"), SubResource("Resource_xj75q"), SubResource("Resource_q5hud"), SubResource("Resource_htlm1"), SubResource("Resource_bstbc"), SubResource("Resource_ney1t"), SubResource("Resource_27ypa"), SubResource("Resource_cp7it"), SubResource("Resource_2wp8x"), SubResource("Resource_wxhka"), SubResource("Resource_1ri88"), SubResource("Resource_asvuy"), SubResource("Resource_ib4bq"), SubResource("Resource_c6c51"), SubResource("Resource_rfjax"), SubResource("Resource_4ynxd"), SubResource("Resource_ix6dc"), SubResource("Resource_wlwil"), SubResource("Resource_shuuu"), SubResource("Resource_4nfuy"), SubResource("Resource_hoyuh"), SubResource("Resource_ik6cq"), SubResource("Resource_hicmo"), SubResource("Resource_hixor"), SubResource("Resource_ipndt"), SubResource("Resource_agwr3"), SubResource("Resource_fs61v")])
+tomb_stone_manager_data = {
+"all_is_tombstone": Array[Array]([[false, false, false, false, false, false, false, false, false], [false, false, false, false, false, false, false, false, false], [false, false, false, false, false, false, false, false, false], [false, false, false, false, false, false, false, false, false], [false, false, false, false, false, false, false, false, false]])
+}
+
+[resource]
+script = ExtResource("3_c2wq1")
+curr_game_round = 3
+plant_cell_manager_data = SubResource("Resource_xltwm")
+curr_max_wave = 60
+curr_wave = 59
+day_sun_curr_sun_sum_value = 1075
+card_manager_data = {
+"curr_sun_value": 3850
+}
+lawn_mover_manager_data = {
+"is_has_all_lawn_mover": Array[bool]([true, true, true, true, true])
+}

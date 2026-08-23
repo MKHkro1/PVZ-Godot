@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://3anktsw826yt"]
+
+[ext_resource type="Script" uid="uid://kadjgg4bxb66" path="res://scripts/main_game_item/mini_game_items/hammer.gd" id="1_dearv"]
+[ext_resource type="Texture2D" uid="uid://la64qjorh8nt" path="res://assets/image/particles/Pow.png" id="3_5f0x4"]
+[ext_resource type="Texture2D" uid="uid://bqtnl31pv3rv3" path="res://assets/reanim/Hammer_3.png" id="4_345eo"]
+[ext_resource type="Texture2D" uid="uid://qtifu6lsmq6x" path="res://assets/reanim/hammer_1.png" id="5_ljud5"]
+[ext_resource type="Texture2D" uid="uid://dweon5ml8otw5" path="res://assets/reanim/Hammer_2.png" id="6_cb3xe"]
+[ext_resource type="Animation" uid="uid://cf18nflpwmmfk" path="res://animation/item/Hammer/Hammer_whack_zombie.tres" id="7_ga6kt"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3meaf"]
+_data = {
+&"Hammer_whack_zombie": ExtResource("7_ga6kt")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmp28"]
+radius = 29.0172
+
+[node name="Hammer" type="Node2D"]
+script = ExtResource("1_dearv")
+
+[node name="Pow" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(61.75, 31.375)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_5f0x4")
+
+[node name="Body" type="Node2D" parent="."]
+position = Vector2(-62, -11)
+
+[node name="Hammer_3" type="Sprite2D" parent="Body"]
+position = Vector2(57.9, -19.3)
+rotation = 1.11527
+scale = Vector2(0.797, 0.797)
+texture = ExtResource("4_345eo")
+centered = false
+
+[node name="Hammer_2" type="Sprite2D" parent="Body"]
+position = Vector2(74.6, -29.3)
+rotation = 1.11527
+scale = Vector2(0.797, 0.797)
+texture = ExtResource("5_ljud5")
+centered = false
+
+[node name="Hammer1" type="Sprite2D" parent="Body"]
+position = Vector2(65.3, 4.1)
+rotation = 1.11527
+scale = Vector2(0.797, 0.797)
+texture = ExtResource("6_cb3xe")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3meaf")
+}
+speed_scale = 1.5
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_gmp28")

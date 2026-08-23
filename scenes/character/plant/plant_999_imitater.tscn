@@ -1,0 +1,361 @@
+[gd_scene load_steps=43 format=3 uid="uid://bq2ef6etyqxxt"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_hjvtv"]
+[ext_resource type="Script" uid="uid://bbvpjixpt0wmh" path="res://scripts/character/plant/plant_999_imitater.gd" id="2_4e7mo"]
+[ext_resource type="Texture2D" uid="uid://c63tf7upqqxus" path="res://assets/reanim/Imitater_root2.png" id="2_a0vy4"]
+[ext_resource type="Texture2D" uid="uid://bqw13oc1ficg7" path="res://assets/reanim/Imitater_root3.png" id="3_6sn0i"]
+[ext_resource type="Texture2D" uid="uid://wox6kcig3h35" path="res://assets/reanim/Imitater_body.png" id="4_wlwkf"]
+[ext_resource type="Texture2D" uid="uid://bkjsjbi47lxlv" path="res://assets/reanim/Imitater_root1.png" id="5_d08h2"]
+[ext_resource type="Texture2D" uid="uid://d3etuf1sy65a1" path="res://assets/reanim/Imitater_blink1.png" id="6_f2fc4"]
+[ext_resource type="Texture2D" uid="uid://bnccv7wjkdsph" path="res://assets/reanim/Imitater_hat.png" id="7_uj3h0"]
+[ext_resource type="Texture2D" uid="uid://c583jsodj755w" path="res://assets/reanim/Imitater_spin1.png" id="8_xhl1m"]
+[ext_resource type="Animation" uid="uid://bq1crd2bn6vvo" path="res://animation/character/plant/999_imitater/Imitater_explode.tres" id="9_g4siw"]
+[ext_resource type="Animation" uid="uid://djru61kilamtm" path="res://animation/character/plant/999_imitater/Imitater_idle.tres" id="10_xksgs"]
+[ext_resource type="Texture2D" uid="uid://nnp13qryaqjx" path="res://assets/image/particles/ExplosionCloud.png" id="12_3rp6v"]
+[ext_resource type="Shader" uid="uid://cikju0ectkkms" path="res://shaders/Mypartical.gdshader" id="13_xia5t"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b55ym"]
+_data = {
+&"Imitater_explode": ExtResource("9_g4siw"),
+&"Imitater_idle": ExtResource("10_xksgs")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1ul8a"]
+animation = &"Imitater_explode"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_1nbdc"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_g4iio"]
+graph_offset = Vector2(-90, 12)
+nodes/output/position = Vector2(680, 140)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_1nbdc")
+nodes/TimeScale/position = Vector2(480, 120)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_1ul8a")
+nodes/Animation/position = Vector2(240, 120)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ba4yg"]
+animation = &"Imitater_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l2mnl"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4yxjd"]
+break_loop_at_end = true
+switch_mode = 2
+advance_mode = 2
+advance_expression = "not is_show"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_65uuy"]
+states/BlendTree/node = SubResource("AnimationNodeBlendTree_g4iio")
+states/BlendTree/position = Vector2(577, 100)
+states/Imitater_idle/node = SubResource("AnimationNodeAnimation_ba4yg")
+states/Imitater_idle/position = Vector2(361, 100)
+transitions = ["Start", "Imitater_idle", SubResource("AnimationNodeStateMachineTransition_l2mnl"), "Imitater_idle", "BlendTree", SubResource("AnimationNodeStateMachineTransition_4yxjd")]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_mfogd"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gxw7h"]
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_mfogd")
+nodes/TimeScale/position = Vector2(120, 140)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_65uuy")
+nodes/StateMachine/position = Vector2(-200, 140)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"StateMachine"]
+
+[sub_resource type="GDScript" id="GDScript_3rp6v"]
+script/source = "extends Node2D
+
+@onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
+@onready var gpu_particles_2d_2: GPUParticles2D = $GPUParticles2D2
+
+
+func activate_it():
+	reparent(owner.get_parent())
+	gpu_particles_2d.emitting = true
+	gpu_particles_2d_2.emitting = true
+
+	await gpu_particles_2d.finished
+	await gpu_particles_2d_2.finished
+
+	queue_free()
+"
+
+[sub_resource type="Curve" id="Curve_xia5t"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.555556, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4ghbo"]
+curve = SubResource("Curve_xia5t")
+
+[sub_resource type="Curve" id="Curve_1jxlm"]
+_data = [Vector2(0, 0.69430697), 0.0, 0.0, 0, 0, Vector2(1, 0.5173268), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_mjpkk"]
+curve_x = SubResource("Curve_1jxlm")
+curve_y = SubResource("Curve_1jxlm")
+curve_z = SubResource("Curve_1jxlm")
+
+[sub_resource type="Curve" id="Curve_q04vu"]
+_data = [Vector2(0, 0.7023515), 0.0, 0.0, 0, 0, Vector2(0.29721358, 0.69430697), 0.0, 0.0, 0, 0, Vector2(0.64794, 0.177344), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_q6eb7"]
+curve = SubResource("Curve_q04vu")
+
+[sub_resource type="Curve" id="Curve_2sbbw"]
+_data = [Vector2(0, 0.505372), 0.0, 0.0, 0, 0, Vector2(0.49226, 0.4931931), -0.024740783, -2.1915295, 1, 1, Vector2(0.696629, 0.0453124), -2.1915295, -0.274964, 1, 1, Vector2(0.861423, 0), -0.274964, 0.0, 1, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ryg5o"]
+curve = SubResource("Curve_2sbbw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_totpa"]
+shader = ExtResource("13_xia5t")
+shader_parameter/direction = Vector3(1, 0, 0)
+shader_parameter/spread = 180.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/velocity_pivot = Vector3(0, 0, 0)
+shader_parameter/gravity = Vector3(0, 0, 0)
+shader_parameter/collision_friction = 0.0
+shader_parameter/collision_bounce = 0.0
+shader_parameter/collision_enabled = false
+shader_parameter/scale_min = 1.0
+shader_parameter/scale_max = 1.0
+shader_parameter/hue_variation_min = 0.0
+shader_parameter/hue_variation_max = 0.0
+shader_parameter/anim_speed_min = 0.0
+shader_parameter/anim_speed_max = 0.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/anim_offset_max = 0.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/color_value = Color(1, 1, 1, 1)
+shader_parameter/initial_angle_min = 0.0
+shader_parameter/initial_angle_max = 3.14
+shader_parameter/angular_velocity_min = 0.0
+shader_parameter/angular_velocity_max = 0.0
+shader_parameter/initial_linear_velocity_min = 100.0
+shader_parameter/initial_linear_velocity_max = 100.0
+shader_parameter/directional_velocity_min = 0.0
+shader_parameter/directional_velocity_max = 0.0
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/linear_accel_min = 0.0
+shader_parameter/linear_accel_max = 0.0
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.0
+shader_parameter/damping_max = 0.0
+shader_parameter/alpha_curve = SubResource("CurveTexture_4ghbo")
+shader_parameter/color_curve = SubResource("CurveXYZTexture_mjpkk")
+shader_parameter/scale_curve = SubResource("CurveTexture_ryg5o")
+shader_parameter/initial_linear_velocity_curve = SubResource("CurveTexture_q6eb7")
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
+shader_parameter/emission_shape_scale = 1.0
+shader_parameter/emission_sphere_radius = 20.0
+shader_parameter/random_direction_from_spread = Vector3(0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_p7lm0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.54792, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_38xwn"]
+curve = SubResource("Curve_p7lm0")
+
+[sub_resource type="Curve" id="Curve_7ql72"]
+_data = [Vector2(0, 0.754054), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_pp8cn"]
+curve_x = SubResource("Curve_7ql72")
+curve_y = SubResource("Curve_7ql72")
+curve_z = SubResource("Curve_7ql72")
+
+[sub_resource type="Curve" id="Curve_nrml8"]
+_data = [Vector2(0, 1), 0.0, -0.481111, 0, 1, Vector2(0.23221, 0.888281), -0.481111, -2.00431, 1, 1, Vector2(0.404494, 0.542969), -2.00431, -0.513028, 1, 1, Vector2(0.681648, 0.400781), -0.513028, 0.0, 1, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ocrjh"]
+curve = SubResource("Curve_nrml8")
+
+[sub_resource type="Curve" id="Curve_3fgov"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 0.9727721), 0.0, 0.0, 0, 0, Vector2(0.35294116, 0.82797027), -0.4102719, -0.9876793, 1, 1, Vector2(0.621723, 0.5625), -0.9876793, -1.487, 1, 1, Vector2(1, 0), -1.487, 0.0, 1, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_j78pl"]
+curve = SubResource("Curve_3fgov")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_slemc"]
+shader = ExtResource("13_xia5t")
+shader_parameter/direction = Vector3(1, 0, 0)
+shader_parameter/spread = 180.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/velocity_pivot = Vector3(0, 0, 0)
+shader_parameter/gravity = Vector3(0, 0, 0)
+shader_parameter/collision_friction = 0.0
+shader_parameter/collision_bounce = 0.0
+shader_parameter/collision_enabled = false
+shader_parameter/scale_min = 1.0
+shader_parameter/scale_max = 1.0
+shader_parameter/hue_variation_min = 0.0
+shader_parameter/hue_variation_max = 0.0
+shader_parameter/anim_speed_min = 0.0
+shader_parameter/anim_speed_max = 0.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/anim_offset_max = 0.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/color_value = Color(1, 1, 1, 1)
+shader_parameter/initial_angle_min = 0.0
+shader_parameter/initial_angle_max = 3.14
+shader_parameter/angular_velocity_min = 0.0
+shader_parameter/angular_velocity_max = 0.0
+shader_parameter/initial_linear_velocity_min = 50.0
+shader_parameter/initial_linear_velocity_max = 50.0
+shader_parameter/directional_velocity_min = 0.0
+shader_parameter/directional_velocity_max = 0.0
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/linear_accel_min = 0.0
+shader_parameter/linear_accel_max = 0.0
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.0
+shader_parameter/damping_max = 0.0
+shader_parameter/alpha_curve = SubResource("CurveTexture_38xwn")
+shader_parameter/color_curve = SubResource("CurveXYZTexture_pp8cn")
+shader_parameter/scale_curve = SubResource("CurveTexture_j78pl")
+shader_parameter/initial_linear_velocity_curve = SubResource("CurveTexture_ocrjh")
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
+shader_parameter/emission_shape_scale = 0.6
+shader_parameter/emission_sphere_radius = 30.0
+shader_parameter/random_direction_from_spread = Vector3(0, 0, 0)
+
+[node name="Plant999Imitater" instance=ExtResource("1_hjvtv")]
+script = ExtResource("2_4e7mo")
+plant_type = 999
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-40, -69)
+
+[node name="Anim_blink" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+visible = false
+centered = false
+
+[node name="Anim_idle" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+visible = false
+centered = false
+
+[node name="Anim_explode" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+centered = false
+
+[node name="Imitater_root4" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+visible = false
+position = Vector2(62.8, 49.1)
+rotation = 2.572615
+scale = Vector2(0.809, 0.809)
+skew = -3.1154125
+texture = ExtResource("2_a0vy4")
+centered = false
+
+[node name="Imitater_root3" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+visible = false
+position = Vector2(55.8, 29.6)
+rotation = 0.249582
+scale = Vector2(0.799, 0.819)
+texture = ExtResource("3_6sn0i")
+centered = false
+
+[node name="Imitater_root2" type="Sprite2D" parent="Body/BodyCorrect" index="5"]
+visible = false
+position = Vector2(15.8, 49)
+rotation = -0.26529
+scale = Vector2(0.799, 0.819)
+texture = ExtResource("2_a0vy4")
+centered = false
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="6"]
+visible = false
+position = Vector2(17.3, 3.7)
+scale = Vector2(0.8, 0.819)
+texture = ExtResource("4_wlwkf")
+centered = false
+
+[node name="Imitater_root1" type="Sprite2D" parent="Body/BodyCorrect" index="7"]
+visible = false
+position = Vector2(14.7, 31.7)
+rotation = -0.342085
+scale = Vector2(0.821, 0.819)
+skew = 0.2286386
+texture = ExtResource("5_d08h2")
+centered = false
+
+[node name="Imitater_blink" type="Sprite2D" parent="Body/BodyCorrect" index="8"]
+visible = false
+position = Vector2(26.9, 13.4)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_f2fc4")
+centered = false
+
+[node name="Imitater_hat" type="Sprite2D" parent="Body/BodyCorrect" index="9"]
+visible = false
+position = Vector2(15.8, -0.5)
+scale = Vector2(0.8, 0.819)
+texture = ExtResource("7_uj3h0")
+centered = false
+
+[node name="Imitater_spin" type="Sprite2D" parent="Body/BodyCorrect" index="10"]
+position = Vector2(14.2, -3.8)
+scale = Vector2(0.801, 0.799)
+texture = ExtResource("8_xhl1m")
+centered = false
+
+[node name="Imitater_explode" type="Sprite2D" parent="Body/BodyCorrect" index="11"]
+visible = false
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_b55ym")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+tree_root = SubResource("AnimationNodeBlendTree_gxw7h")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0
+parameters/StateMachine/BlendTree/TimeScale/scale = 0.5
+
+[node name="ImitaterEffect" type="Node2D" parent="." index="10"]
+script = SubResource("GDScript_3rp6v")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ImitaterEffect" index="0"]
+position = Vector2(0, -36)
+emitting = false
+amount = 13
+texture = ExtResource("12_3rp6v")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 0.0
+draw_order = 0
+process_material = SubResource("ShaderMaterial_totpa")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ImitaterEffect" index="1"]
+position = Vector2(0, -36)
+emitting = false
+amount = 10
+texture = ExtResource("12_3rp6v")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ShaderMaterial_slemc")

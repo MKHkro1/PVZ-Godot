@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=3 uid="uid://dd8wl34s7myh6"]
+
+[ext_resource type="Script" uid="uid://duu62jyp6kc21" path="res://scripts/bullet/001_bullet_pea.gd" id="1_pihfl"]
+[ext_resource type="Texture2D" uid="uid://c4rbih2yuv0vx" path="res://assets/image/projectile/ProjectilePea.png" id="2_hg162"]
+[ext_resource type="Texture2D" uid="uid://c54er6fxpmcc8" path="res://assets/image/projectile/pea_shadows.png" id="3_mlnor"]
+[ext_resource type="Texture2D" uid="uid://dexaplwj5wryv" path="res://assets/image/particles/bullet/pea_splats.png" id="4_hg162"]
+[ext_resource type="Texture2D" uid="uid://b127q3vhqs7n8" path="res://assets/image/particles/bullet/Pea_particles.png" id="4_mlnor"]
+[ext_resource type="Script" uid="uid://b0jwg1stuxit2" path="res://scripts/fx/bullet_effect/bullet_effect_001_pea.gd" id="4_pddgq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xw0nn"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mlnor"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_mlnor"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pddgq"]
+curve = SubResource("Curve_mlnor")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pddgq"]
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 80.0
+gravity = Vector3(0, 100, 0)
+scale_curve = SubResource("CurveTexture_pddgq")
+anim_offset_max = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jb3px"]
+radius = 10.0499
+
+[node name="BulletPea" type="Node2D"]
+script = ExtResource("1_pihfl")
+bullet_up_type = 5
+
+[node name="PeaBulletBody" type="Sprite2D" parent="."]
+texture = ExtResource("2_hg162")
+
+[node name="PeaBulletShadow" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, 50)
+texture = ExtResource("3_mlnor")
+hframes = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_xw0nn")
+
+[node name="BulletEffect" type="Node2D" parent="." node_paths=PackedStringArray("splats")]
+visible = false
+script = ExtResource("4_pddgq")
+splats = NodePath("Splats")
+
+[node name="Splats" type="Sprite2D" parent="BulletEffect"]
+texture = ExtResource("4_hg162")
+hframes = 4
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BulletEffect"]
+material = SubResource("CanvasItemMaterial_mlnor")
+emitting = false
+amount = 10
+texture = ExtResource("4_mlnor")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_pddgq")
+
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("CircleShape2D_jb3px")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]

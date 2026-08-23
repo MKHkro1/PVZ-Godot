@@ -1,0 +1,180 @@
+[gd_scene load_steps=32 format=3 uid="uid://uqips7rvhgpg"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_n3wco"]
+[ext_resource type="Texture2D" uid="uid://3a0yexorxcsk" path="res://assets/reanim/IceShroom_body.png" id="2_37t62"]
+[ext_resource type="Script" uid="uid://b1v8yyvu0jo58" path="res://scripts/character/plant/plant_015_ice_shroom.gd" id="2_xarg1"]
+[ext_resource type="Texture2D" uid="uid://c213mmlt125el" path="res://assets/reanim/IceShroom_base.png" id="3_757qa"]
+[ext_resource type="Texture2D" uid="uid://dhb33lor5gb5w" path="res://assets/reanim/IceShroom_blink1.png" id="4_663tl"]
+[ext_resource type="Texture2D" uid="uid://cco82p2wd1ql4" path="res://assets/reanim/IceShroom_head.png" id="5_236rb"]
+[ext_resource type="Animation" uid="uid://bv1w6c5kxvxdu" path="res://animation/character/plant/015_ice_shroom/IceShroom_idle.tres" id="6_xarg1"]
+[ext_resource type="Animation" uid="uid://bg3t1o4lre152" path="res://animation/character/plant/015_ice_shroom/IceShroom_sleep.tres" id="7_qhmsm"]
+[ext_resource type="Script" uid="uid://jl0nl4a234bc" path="res://scripts/resources/resource_body_change.gd" id="7_wi4d4"]
+[ext_resource type="Script" uid="uid://jjkononfo1vm" path="res://scripts/character/components/bomb_component/component_bomb_ice.gd" id="8_37t62"]
+[ext_resource type="Texture2D" uid="uid://502erh735gni" path="res://assets/reanim/IceShroom_blink2.png" id="8_bep3f"]
+[ext_resource type="Animation" uid="uid://qpikomcn8ttw" path="res://animation/character/plant/015_ice_shroom/IceShroom_idle_only.tres" id="9_xarg1"]
+[ext_resource type="Texture2D" uid="uid://bifx1ttlwu3bw" path="res://assets/image/particles/bullet/SnowFlakes.png" id="10_236rb"]
+[ext_resource type="Script" uid="uid://dwlef1tly6uqi" path="res://scripts/fx/plant_effect/plant_effect_003_bomb_ice.gd" id="11_xarg1"]
+
+[sub_resource type="Resource" id="Resource_ohyhk"]
+script = ExtResource("7_wi4d4")
+sprite_change = Array[NodePath]([NodePath("../Body/BodyCorrect/Anim_blink")])
+sprite_change_texture = Array[Texture2D]([ExtResource("4_663tl"), ExtResource("8_bep3f")])
+metadata/_custom_type_script = "uid://jl0nl4a234bc"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_euprm"]
+_data = {
+&"IceShroom_idle": ExtResource("6_xarg1"),
+&"IceShroom_idle_only": ExtResource("9_xarg1"),
+&"IceShroom_sleep": ExtResource("7_qhmsm")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2xsdr"]
+animation = &"IceShroom_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xarg1"]
+animation = &"IceShroom_idle_only"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_edbt1"]
+animation = &"IceShroom_sleep"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sxd4y"]
+advance_mode = 2
+advance_expression = "is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hkwun"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "not is_sleeping and not is_show"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n3wco"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qhmsm"]
+advance_mode = 2
+advance_expression = "is_show and not is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wi4d4"]
+advance_mode = 2
+advance_expression = "not is_sleeping and is_show"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bep3f"]
+advance_mode = 2
+advance_expression = "is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ohyhk"]
+advance_mode = 2
+advance_expression = "not is_show and not is_sleeping "
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fc1ok"]
+states/IceShroom_idle/node = SubResource("AnimationNodeAnimation_2xsdr")
+states/IceShroom_idle/position = Vector2(401, 212)
+states/IceShroom_idle_only/node = SubResource("AnimationNodeAnimation_xarg1")
+states/IceShroom_idle_only/position = Vector2(401, 2)
+states/IceShroom_sleep/node = SubResource("AnimationNodeAnimation_edbt1")
+states/IceShroom_sleep/position = Vector2(401, 100)
+states/Start/position = Vector2(187, 100)
+transitions = ["Start", "IceShroom_sleep", SubResource("AnimationNodeStateMachineTransition_sxd4y"), "IceShroom_sleep", "IceShroom_idle", SubResource("AnimationNodeStateMachineTransition_hkwun"), "IceShroom_idle", "IceShroom_sleep", SubResource("AnimationNodeStateMachineTransition_n3wco"), "Start", "IceShroom_idle_only", SubResource("AnimationNodeStateMachineTransition_qhmsm"), "IceShroom_sleep", "IceShroom_idle_only", SubResource("AnimationNodeStateMachineTransition_wi4d4"), "IceShroom_idle_only", "IceShroom_sleep", SubResource("AnimationNodeStateMachineTransition_bep3f"), "Start", "IceShroom_idle", SubResource("AnimationNodeStateMachineTransition_ohyhk")]
+graph_offset = Vector2(95, -3)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_sa70k"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_wi4d4"]
+nodes/output/position = Vector2(940, 160)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_fc1ok")
+nodes/StateMachine/position = Vector2(400, 140)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_sa70k")
+nodes/TimeScale/position = Vector2(700, 140)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"StateMachine"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xarg1"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qhmsm"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(50, 50, 1)
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, -1, 0)
+spread = 50.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 98, 0)
+scale_max = 3.0
+
+[node name="Plant015IceShroom" node_paths=PackedStringArray("node_no_change_direction") instance=ExtResource("1_n3wco")]
+script = ExtResource("2_xarg1")
+plant_type = 15
+is_sleep_in_day = true
+node_no_change_direction = [NodePath("HpComponent"), NodePath("SleepComponent"), null]
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-41, -69)
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+position = Vector2(13.471491, 39.114037)
+scale = Vector2(0.80714035, 0.77614903)
+texture = ExtResource("2_37t62")
+centered = false
+
+[node name="IceShroom_base" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+position = Vector2(8.5, 60.1)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_757qa")
+centered = false
+
+[node name="Anim_sleep1" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+visible = false
+centered = false
+
+[node name="Anim_blink" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+visible = false
+position = Vector2(27.21839, 38.8889)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_663tl")
+centered = false
+
+[node name="IceShroom_head" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+position = Vector2(-1.4, 1.6425474)
+scale = Vector2(0.8, 0.80742985)
+texture = ExtResource("5_236rb")
+centered = false
+
+[node name="BlinkComponent" parent="." index="5"]
+all_blink_body_change = Array[ExtResource("7_wi4d4")]([SubResource("Resource_ohyhk")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_euprm")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+deterministic = false
+tree_root = SubResource("AnimationNodeBlendTree_wi4d4")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0
+
+[node name="BombComponent" type="Node2D" parent="." index="10"]
+script = ExtResource("8_37t62")
+bomb_value = 0
+is_cherry_bomb = false
+bomb_sfx = &"Frozen"
+metadata/_custom_type_script = "uid://houapt72isd2"
+
+[node name="BombEffect" type="Node2D" parent="BombComponent" index="0"]
+visible = false
+script = ExtResource("11_xarg1")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BombComponent/BombEffect" index="0"]
+material = SubResource("CanvasItemMaterial_xarg1")
+emitting = false
+texture = ExtResource("10_236rb")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_qhmsm")

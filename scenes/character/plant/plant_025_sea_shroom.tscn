@@ -1,0 +1,219 @@
+[gd_scene load_steps=37 format=3 uid="uid://dvtg44jen3lb6"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_trumw"]
+[ext_resource type="Texture2D" uid="uid://eyoj2etiyi4k" path="res://assets/reanim/SeaShroom_tentacles.png" id="2_cq6r6"]
+[ext_resource type="Script" uid="uid://d1irf0shejy1e" path="res://scripts/character/plant/plant_025_sea_shroom.gd" id="2_y3aiw"]
+[ext_resource type="Texture2D" uid="uid://vm2queyyke4v" path="res://assets/reanim/SeaShroom_body.png" id="3_x4qhn"]
+[ext_resource type="Texture2D" uid="uid://dsuh2ioxrdues" path="res://assets/reanim/SeaShroom_blink1.png" id="4_ai3ac"]
+[ext_resource type="Texture2D" uid="uid://cxc288x17u2g8" path="res://assets/reanim/SeaShroom_foam.png" id="5_y3aiw"]
+[ext_resource type="Texture2D" uid="uid://dh2w1owgt2gqq" path="res://assets/reanim/SeaShroom_head.png" id="6_t37yi"]
+[ext_resource type="Texture2D" uid="uid://q5wujowspg8i" path="res://assets/reanim/SeaShroom_mouth.png" id="7_8cpqx"]
+[ext_resource type="Texture2D" uid="uid://dvdfe128qav7a" path="res://assets/reanim/SeaShroom_lips.png" id="8_l3s8s"]
+[ext_resource type="Script" uid="uid://jl0nl4a234bc" path="res://scripts/resources/resource_body_change.gd" id="9_x4qhn"]
+[ext_resource type="Texture2D" uid="uid://cimkc6fdbr418" path="res://assets/reanim/SeaShroom_blink2.png" id="10_ai3ac"]
+[ext_resource type="Animation" uid="uid://bw23yx50ks70a" path="res://animation/character/plant/025_sea_shroom/SeaShroom_idle.tres" id="10_t78d7"]
+[ext_resource type="Animation" uid="uid://0cpns1l7s0vn" path="res://animation/character/plant/025_sea_shroom/SeaShroom_idle_aquarium.tres" id="11_py3v7"]
+[ext_resource type="Animation" uid="uid://brmghere7n3h1" path="res://animation/character/plant/025_sea_shroom/SeaShroom_shooting.tres" id="12_sjvba"]
+[ext_resource type="Animation" uid="uid://cyu6nc3ivas2q" path="res://animation/character/plant/025_sea_shroom/SeaShroom_sleep.tres" id="13_56fd0"]
+[ext_resource type="Script" uid="uid://d27ifln7bjwup" path="res://scripts/character/components/attack_behavior_component/component_attack_bullet_base.gd" id="14_x4qhn"]
+[ext_resource type="Script" uid="uid://bafp0ax1lmlge" path="res://scripts/character/components/detect_component/component_detect.gd" id="15_ai3ac"]
+
+[sub_resource type="Resource" id="Resource_ai3ac"]
+script = ExtResource("9_x4qhn")
+sprite_change = Array[NodePath]([NodePath("../Body/BodyCorrect/SeaShroom_blink")])
+sprite_change_texture = Array[Texture2D]([ExtResource("4_ai3ac"), ExtResource("10_ai3ac")])
+metadata/_custom_type_script = "uid://jl0nl4a234bc"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_too6g"]
+_data = {
+&"SeaShroom_idle": ExtResource("10_t78d7"),
+&"SeaShroom_idle_aquarium": ExtResource("11_py3v7"),
+&"SeaShroom_shooting": ExtResource("12_sjvba"),
+&"SeaShroom_sleep": ExtResource("13_56fd0")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_taaod"]
+animation = &"SeaShroom_shooting"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_l0cn6"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_prm86"]
+animation = &"SeaShroom_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2nf7j"]
+animation = &"SeaShroom_idle_aquarium"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v7y1c"]
+animation = &"SeaShroom_sleep"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_06utf"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_byi1l"]
+advance_mode = 2
+advance_expression = "not is_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ody2g"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "not is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8cpqx"]
+advance_mode = 2
+advance_expression = "is_garden_aquarium"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ai3ac"]
+advance_mode = 2
+advance_expression = "not is_garden_aquarium"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y3aiw"]
+advance_mode = 2
+advance_expression = "is_garden_aquarium"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t37yi"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_orguw"]
+states/SeaShroom_idle/node = SubResource("AnimationNodeAnimation_prm86")
+states/SeaShroom_idle/position = Vector2(404, 87)
+states/SeaShroom_idle_aquarium/node = SubResource("AnimationNodeAnimation_2nf7j")
+states/SeaShroom_idle_aquarium/position = Vector2(404, -12)
+states/SeaShroom_sleep/node = SubResource("AnimationNodeAnimation_v7y1c")
+states/SeaShroom_sleep/position = Vector2(404, 185)
+states/Start/position = Vector2(151, 95)
+transitions = ["Start", "SeaShroom_idle", SubResource("AnimationNodeStateMachineTransition_06utf"), "Start", "SeaShroom_sleep", SubResource("AnimationNodeStateMachineTransition_byi1l"), "SeaShroom_sleep", "SeaShroom_idle", SubResource("AnimationNodeStateMachineTransition_ody2g"), "SeaShroom_idle", "SeaShroom_idle_aquarium", SubResource("AnimationNodeStateMachineTransition_8cpqx"), "SeaShroom_idle_aquarium", "SeaShroom_idle", SubResource("AnimationNodeStateMachineTransition_ai3ac"), "Start", "SeaShroom_idle_aquarium", SubResource("AnimationNodeStateMachineTransition_y3aiw"), "SeaShroom_idle", "SeaShroom_sleep", SubResource("AnimationNodeStateMachineTransition_t37yi")]
+graph_offset = Vector2(108, -71)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_280kf"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_i7xab"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jispe"]
+graph_offset = Vector2(-419.312, -55.9424)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_taaod")
+nodes/Animation/position = Vector2(-580, 300)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_l0cn6")
+nodes/OneShot/position = Vector2(-120, 140)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_orguw")
+nodes/StateMachine/position = Vector2(-440, 40)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_i7xab")
+nodes/TimeScale/position = Vector2(140, 140)
+"nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_280kf")
+"nodes/TimeScale 2/position" = Vector2(-300, 280)
+node_connections = [&"output", 0, &"TimeScale", &"OneShot", 0, &"StateMachine", &"OneShot", 1, &"TimeScale 2", &"TimeScale", 0, &"OneShot", &"TimeScale 2", 0, &"Animation"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ai3ac"]
+size = Vector2(249, 5)
+
+[node name="Plant025SeaShroom" node_paths=PackedStringArray("node2d_detect_in_slope") instance=ExtResource("1_trumw")]
+script = ExtResource("2_y3aiw")
+plant_type = 25
+is_sleep_in_day = true
+node2d_detect_in_slope = [NodePath("HurtBoxComponent/HurtBoxDetection"), NodePath("AttackComponent/DetectComponent")]
+
+[node name="Shadow" parent="." index="0"]
+visible = false
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-42, -63)
+
+[node name="SeaShroom_tentacles" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+position = Vector2(17.86378, 52)
+scale = Vector2(0.6917098, 0.7146962)
+texture = ExtResource("2_cq6r6")
+centered = false
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+position = Vector2(24.037683, 33.924633)
+scale = Vector2(0.7353622, 0.7030146)
+texture = ExtResource("3_x4qhn")
+centered = false
+
+[node name="SeaShroom_blink" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+visible = false
+position = Vector2(41.576202, 36.61001)
+scale = Vector2(0.711841, 0.841227)
+texture = ExtResource("4_ai3ac")
+centered = false
+
+[node name="SeaShroom_blink2" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+visible = false
+position = Vector2(40.7, 37.6)
+scale = Vector2(0.732, 0.7)
+texture = ExtResource("10_ai3ac")
+centered = false
+
+[node name="Anim_waterline" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+position = Vector2(28.437683, 51)
+scale = Vector2(0.7792317, 0.773)
+texture = ExtResource("5_y3aiw")
+centered = false
+
+[node name="SeaShroom_head" type="Sprite2D" parent="Body/BodyCorrect" index="5"]
+position = Vector2(21.075365, 21.086952)
+scale = Vector2(0.697739, 0.7)
+texture = ExtResource("6_t37yi")
+centered = false
+
+[node name="SeahShroom_mouth" type="Sprite2D" parent="Body/BodyCorrect" index="6"]
+position = Vector2(51.724632, 42.18695)
+rotation = -0.004603694
+scale = Vector2(0.7, 0.7)
+skew = 0.004603694
+texture = ExtResource("7_8cpqx")
+centered = false
+
+[node name="SeaShroom_lips" type="Sprite2D" parent="Body/BodyCorrect" index="7"]
+position = Vector2(56.5, 40.18695)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("8_l3s8s")
+centered = false
+
+[node name="Marker2DBullet" type="Marker2D" parent="Body/BodyCorrect" index="8"]
+position = Vector2(60, 46)
+scale = Vector2(0.5, 0.592593)
+
+[node name="SleepComponent" parent="." index="4" node_paths=PackedStringArray("sleep_influence_components")]
+sleep_influence_components = [NodePath("../BlinkComponent"), NodePath("../AttackComponent")]
+
+[node name="BlinkComponent" parent="." index="5"]
+all_blink_body_change = Array[ExtResource("9_x4qhn")]([SubResource("Resource_ai3ac")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_too6g")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+deterministic = false
+tree_root = SubResource("AnimationNodeBlendTree_jispe")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
+parameters/TimeScale/scale = 1.0
+"parameters/TimeScale 2/scale" = 1.0
+
+[node name="AttackComponent" type="Node2D" parent="." index="10" node_paths=PackedStringArray("markers_2d_bullet")]
+script = ExtResource("14_x4qhn")
+attack_bullet_type = 3
+markers_2d_bullet = [NodePath("../Body/BodyCorrect/Marker2DBullet")]
+
+[node name="BulletAttackCdTimer" type="Timer" parent="AttackComponent" index="0"]
+
+[node name="DetectComponent" type="Node2D" parent="AttackComponent" index="1"]
+script = ExtResource("15_ai3ac")
+
+[node name="Area2D" type="Area2D" parent="AttackComponent/DetectComponent" index="0"]
+position = Vector2(0, -25)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/DetectComponent/Area2D" index="0"]
+position = Vector2(124.5, 0)
+shape = SubResource("RectangleShape2D_ai3ac")
+
+[connection signal="timeout" from="AttackComponent/BulletAttackCdTimer" to="AttackComponent" method="_on_bullet_attack_cd_timer_timeout"]

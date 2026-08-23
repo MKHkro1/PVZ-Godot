@@ -1,0 +1,327 @@
+[gd_scene load_steps=43 format=3 uid="uid://d3143vebwme2l"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_f1mwv"]
+[ext_resource type="Script" uid="uid://cbxxx6e6ns50k" path="res://scripts/character/plant/plant_029_split_pea.gd" id="2_2ik77"]
+[ext_resource type="Texture2D" uid="uid://cy3xu8ug3gd2" path="res://assets/reanim/PeaShooter_backleaf.png" id="2_rervr"]
+[ext_resource type="Texture2D" uid="uid://cyknr5ymersct" path="res://assets/reanim/PeaShooter_backleaf_lefttip.png" id="3_2ik77"]
+[ext_resource type="Texture2D" uid="uid://i7fngqj5l36a" path="res://assets/reanim/PeaShooter_backleaf_righttip.png" id="4_jewiy"]
+[ext_resource type="Texture2D" uid="uid://yxv2bpco6d57" path="res://assets/reanim/PeaShooter_stalk_bottom.png" id="5_xokq4"]
+[ext_resource type="Texture2D" uid="uid://bu8g84fe1ni48" path="res://assets/reanim/PeaShooter_stalk_top.png" id="6_xi83w"]
+[ext_resource type="Texture2D" uid="uid://300aew7liup" path="res://assets/reanim/PeaShooter_frontleaf.png" id="7_ctipg"]
+[ext_resource type="Texture2D" uid="uid://nj6m28m6k5p1" path="res://assets/reanim/PeaShooter_frontleaf_righttip.png" id="8_us5g2"]
+[ext_resource type="Texture2D" uid="uid://dit0i5evvco14" path="res://assets/reanim/PeaShooter_frontleaf_lefttip.png" id="9_3aa8q"]
+[ext_resource type="Texture2D" uid="uid://b00drwni3ja82" path="res://assets/reanim/PeaShooter_Head.png" id="10_2t6r7"]
+[ext_resource type="Texture2D" uid="uid://txlm4fwvygkx" path="res://assets/reanim/PeaShooter_mouth.png" id="11_s05xt"]
+[ext_resource type="Texture2D" uid="uid://gxmu788oywxk" path="res://assets/reanim/Splitpea_head.png" id="12_5eh3h"]
+[ext_resource type="Texture2D" uid="uid://dp8034ogayq0f" path="res://assets/reanim/PeaShooter_blink1.png" id="13_0xm03"]
+[ext_resource type="Texture2D" uid="uid://dgigsil3n5prk" path="res://assets/reanim/PeaShooter_eyebrow.png" id="14_enn8v"]
+[ext_resource type="Animation" uid="uid://q7dxwst27jof" path="res://animation/character/plant/029_split_pea/SplitPea_head_idle.tres" id="16_mbydj"]
+[ext_resource type="Animation" uid="uid://b6qtnu27vy03g" path="res://animation/character/plant/029_split_pea/SplitPea_idle.tres" id="17_peavt"]
+[ext_resource type="Animation" uid="uid://cjdntixs87bgb" path="res://animation/character/plant/029_split_pea/SplitPea_shooting.tres" id="18_3tsv8"]
+[ext_resource type="Animation" uid="uid://cli2tfwg0bwes" path="res://animation/character/plant/029_split_pea/SplitPea_splitpea_idle.tres" id="19_fix2o"]
+[ext_resource type="Animation" uid="uid://mc37nycpoy73" path="res://animation/character/plant/029_split_pea/SplitPea_splitpea_shooting.tres" id="20_2o4ph"]
+[ext_resource type="Script" uid="uid://dhvxvi8lwo3m5" path="res://scripts/character/components/attack_behavior_component/component_attack_bullet_split_pea.gd" id="20_rervr"]
+[ext_resource type="Script" uid="uid://bafp0ax1lmlge" path="res://scripts/character/components/detect_component/component_detect.gd" id="22_jewiy"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7b08x"]
+_data = {
+&"SplitPea_head_idle": ExtResource("16_mbydj"),
+&"SplitPea_idle": ExtResource("17_peavt"),
+&"SplitPea_shooting": ExtResource("18_3tsv8"),
+&"SplitPea_splitpea_idle": ExtResource("19_fix2o"),
+&"SplitPea_splitpea_shooting": ExtResource("20_2o4ph")
+}
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_xdqs7"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_yqw6s"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5oo36"]
+animation = &"SplitPea_head_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lh7ud"]
+animation = &"SplitPea_splitpea_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_amsta"]
+animation = &"SplitPea_shooting"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2p1tm"]
+animation = &"SplitPea_idle"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_77wf1"]
+sync = true
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_8jypp"]
+sync = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xdqs7"]
+animation = &"SplitPea_splitpea_shooting"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_77wf1"]
+animation = &"SplitPea_splitpea_shooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ueddu"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3u5n5"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b61mc"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5ty33"]
+states/SplitPea_splitpea_shooting/node = SubResource("AnimationNodeAnimation_77wf1")
+states/SplitPea_splitpea_shooting/position = Vector2(394, 110)
+"states/SplitPea_splitpea_shooting 2/node" = SubResource("AnimationNodeAnimation_xdqs7")
+"states/SplitPea_splitpea_shooting 2/position" = Vector2(674, 110)
+transitions = ["Start", "SplitPea_splitpea_shooting", SubResource("AnimationNodeStateMachineTransition_ueddu"), "SplitPea_splitpea_shooting", "SplitPea_splitpea_shooting 2", SubResource("AnimationNodeStateMachineTransition_3u5n5"), "SplitPea_splitpea_shooting 2", "End", SubResource("AnimationNodeStateMachineTransition_b61mc")]
+graph_offset = Vector2(56, -4)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_636kj"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_ueddu"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_tibmi"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2oth2"]
+graph_offset = Vector2(-560.219, -86.7227)
+nodes/output/position = Vector2(680, 180)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_yqw6s")
+nodes/Add2/position = Vector2(180, 180)
+"nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_xdqs7")
+"nodes/Add2 2/position" = Vector2(-140, 40)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_2p1tm")
+nodes/Animation/position = Vector2(-120, 520)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_5oo36")
+"nodes/Animation 2/position" = Vector2(-720, -260)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_lh7ud")
+"nodes/Animation 3/position" = Vector2(-940, 300)
+"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_amsta")
+"nodes/Animation 4/position" = Vector2(-920, 0)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_8jypp")
+nodes/OneShot/position = Vector2(-420, -200)
+"nodes/OneShot 2/node" = SubResource("AnimationNodeOneShot_77wf1")
+"nodes/OneShot 2/position" = Vector2(-420, 300)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_5ty33")
+nodes/StateMachine/position = Vector2(-960, 560)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tibmi")
+nodes/TimeScale/position = Vector2(440, 140)
+"nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_636kj")
+"nodes/TimeScale 2/position" = Vector2(-660, 20)
+"nodes/TimeScale 3/node" = SubResource("AnimationNodeTimeScale_ueddu")
+"nodes/TimeScale 3/position" = Vector2(-600, 460)
+node_connections = [&"output", 0, &"TimeScale", &"Add2", 0, &"Add2 2", &"Add2", 1, &"Animation", &"Add2 2", 0, &"OneShot", &"Add2 2", 1, &"OneShot 2", &"OneShot", 0, &"Animation 2", &"OneShot", 1, &"TimeScale 2", &"OneShot 2", 0, &"Animation 3", &"OneShot 2", 1, &"TimeScale 3", &"TimeScale", 0, &"Add2", &"TimeScale 2", 0, &"Animation 4", &"TimeScale 3", 0, &"StateMachine"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ik77"]
+size = Vector2(1000, 5)
+
+[node name="Plant029SplitPea" node_paths=PackedStringArray("node2d_detect_in_slope") instance=ExtResource("1_f1mwv")]
+script = ExtResource("2_2ik77")
+plant_type = 29
+node2d_detect_in_slope = [NodePath("HurtBoxComponent/HurtBoxDetection"), NodePath("AttackComponent/DetectComponent")]
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-42, -68)
+
+[node name="Backleaf" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+position = Vector2(27.5, 55.34551)
+scale = Vector2(0.5999102, 0.45395204)
+texture = ExtResource("2_rervr")
+centered = false
+
+[node name="Backleaf_left_tip" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+position = Vector2(24.277245, 56.413776)
+rotation = -0.06783846
+scale = Vector2(0.64004797, 0.515)
+texture = ExtResource("3_2ik77")
+centered = false
+
+[node name="Backleaf_right_tip" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+position = Vector2(48.322754, 55.145508)
+rotation = 0.09996446
+scale = Vector2(0.6458623, 0.49186224)
+texture = ExtResource("4_jewiy")
+centered = false
+
+[node name="Stalk_bottom" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+position = Vector2(41.78204, 50.322754)
+rotation = 0.59787524
+scale = Vector2(0.5654551, 0.63286227)
+skew = -0.215
+texture = ExtResource("5_xokq4")
+centered = false
+
+[node name="Stalk_top" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+position = Vector2(42.53235, 38.382042)
+rotation = 0.391278
+scale = Vector2(0.54281425, 0.7919521)
+skew = 0.07617814
+texture = ExtResource("6_xi83w")
+centered = false
+
+[node name="Frontleaf" type="Sprite2D" parent="Body/BodyCorrect" index="5"]
+position = Vector2(21.7, 56.422756)
+scale = Vector2(0.59691024, 0.4916347)
+texture = ExtResource("7_ctipg")
+centered = false
+
+[node name="Frontleaf_right_tip" type="Sprite2D" parent="Body/BodyCorrect" index="6"]
+position = Vector2(57.591022, 57.1)
+rotation = -0.018874774
+scale = Vector2(0.6162214, 0.5365449)
+texture = ExtResource("8_us5g2")
+centered = false
+
+[node name="Frontleaf_tip_left" type="Sprite2D" parent="Body/BodyCorrect" index="7"]
+position = Vector2(18.431734, 62.19102)
+rotation = -0.06577976
+scale = Vector2(0.58617955, 0.57659286)
+skew = -0.0034902454
+texture = ExtResource("9_3aa8q")
+centered = false
+
+[node name="Anim_idle" type="Sprite2D" parent="Body/BodyCorrect" index="8"]
+position = Vector2(46.318573, 45.68204)
+centered = false
+
+[node name="stem_correct" type="Node2D" parent="Body/BodyCorrect/Anim_idle" index="0"]
+position = Vector2(-37.6, -49.7)
+
+[node name="Anim_shooting" type="Sprite2D" parent="Body/BodyCorrect/Anim_idle/stem_correct" index="0"]
+centered = false
+
+[node name="Anim_head_idle" type="Sprite2D" parent="Body/BodyCorrect/Anim_idle/stem_correct" index="1"]
+centered = false
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect/Anim_idle/stem_correct" index="2"]
+position = Vector2(19.222755, 16.350307)
+scale = Vector2(0.555, 0.5139041)
+texture = ExtResource("10_2t6r7")
+centered = false
+
+[node name="Idle_mouth" type="Sprite2D" parent="Body/BodyCorrect/Anim_idle/stem_correct" index="3"]
+position = Vector2(52.6, 16.118572)
+rotation = 0.1226841
+scale = Vector2(0.55472445, 0.5139041)
+skew = -0.1226841
+texture = ExtResource("11_s05xt")
+centered = false
+
+[node name="Anim_splitpea_idle" type="Sprite2D" parent="Body/BodyCorrect/Anim_idle/stem_correct" index="4"]
+centered = false
+
+[node name="Anim_splitpea_shooting" type="Sprite2D" parent="Body/BodyCorrect/Anim_idle/stem_correct" index="5"]
+centered = false
+
+[node name="SplitPea_head" type="Sprite2D" parent="Body/BodyCorrect/Anim_idle/stem_correct" index="6"]
+position = Vector2(-1.6, 16.444897)
+rotation = -0.07414963
+scale = Vector2(0.5613173, 0.571)
+skew = 0.07414963
+texture = ExtResource("12_5eh3h")
+centered = false
+
+[node name="SplitPea_mouth" type="Sprite2D" parent="Body/BodyCorrect/Anim_idle/stem_correct" index="7"]
+position = Vector2(3.4, 16.140713)
+rotation = 2.967681
+scale = Vector2(0.4722694, 0.458)
+skew = -2.967681
+texture = ExtResource("11_s05xt")
+centered = false
+
+[node name="Idle_shoot_blink" type="Sprite2D" parent="Body/BodyCorrect/Anim_idle/stem_correct" index="8"]
+visible = false
+position = Vector2(37.7, 19.9)
+scale = Vector2(0.555, 0.521)
+texture = ExtResource("13_0xm03")
+centered = false
+
+[node name="Idle_SplitPea_shoot_blink" type="Sprite2D" parent="Body/BodyCorrect/Anim_idle/stem_correct" index="9"]
+visible = false
+centered = false
+
+[node name="Anim_blink" type="Sprite2D" parent="Body/BodyCorrect/Anim_idle/stem_correct" index="10"]
+visible = false
+position = Vector2(37, 22.020681)
+scale = Vector2(0.555, 0.555)
+texture = ExtResource("13_0xm03")
+centered = false
+
+[node name="Anim_SplitPea_blink" type="Sprite2D" parent="Body/BodyCorrect/Anim_idle/stem_correct" index="11"]
+visible = false
+position = Vector2(15, 21.372448)
+rotation = -3.12414
+scale = Vector2(0.448, -0.492)
+skew = -0.0122178
+texture = ExtResource("13_0xm03")
+centered = false
+
+[node name="SplitPea_eyebrows" type="Sprite2D" parent="Body/BodyCorrect/Anim_idle/stem_correct" index="12"]
+position = Vector2(18.6, 17.613161)
+rotation = 3.14159
+scale = Vector2(0.8, 0.8)
+skew = -3.14159
+texture = ExtResource("14_enn8v")
+centered = false
+
+[node name="Marker2DBullet" type="Marker2D" parent="Body/BodyCorrect/Anim_idle/stem_correct" index="13"]
+position = Vector2(66.0134, 31.0673)
+scale = Vector2(0.5, 0.592593)
+
+[node name="Marker2DBullet2" type="Marker2D" parent="Body/BodyCorrect/Anim_idle/stem_correct" index="14"]
+position = Vector2(-1.5722914, 27.571093)
+scale = Vector2(0.25, 0.351166)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_7b08x")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+deterministic = false
+tree_root = SubResource("AnimationNodeBlendTree_2oth2")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Add2/add_amount = 1.0
+"parameters/Add2 2/add_amount" = 1.0
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
+"parameters/OneShot 2/active" = false
+"parameters/OneShot 2/internal_active" = false
+"parameters/OneShot 2/request" = 0
+parameters/TimeScale/scale = 1.0
+"parameters/TimeScale 2/scale" = 3.0
+"parameters/TimeScale 3/scale" = 3.0
+
+[node name="AttackComponent" type="Node2D" parent="." index="10" node_paths=PackedStringArray("markers_2d_bullet")]
+script = ExtResource("20_rervr")
+markers_2d_bullet = [NodePath("../Body/BodyCorrect/Anim_idle/stem_correct/Marker2DBullet"), NodePath("../Body/BodyCorrect/Anim_idle/stem_correct/Marker2DBullet2")]
+
+[node name="BulletAttackCdTimer" type="Timer" parent="AttackComponent" index="0"]
+
+[node name="DetectComponent" type="Node2D" parent="AttackComponent" index="1"]
+script = ExtResource("22_jewiy")
+
+[node name="Area2D" type="Area2D" parent="AttackComponent/DetectComponent" index="0"]
+position = Vector2(0, -25)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/DetectComponent/Area2D" index="0"]
+position = Vector2(500, 0)
+shape = SubResource("RectangleShape2D_2ik77")
+
+[node name="Area2D2" type="Area2D" parent="AttackComponent/DetectComponent" index="1"]
+position = Vector2(0, -25)
+rotation = -3.14159
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/DetectComponent/Area2D2" index="0"]
+position = Vector2(500, 0)
+shape = SubResource("RectangleShape2D_2ik77")
+
+[connection signal="timeout" from="AttackComponent/BulletAttackCdTimer" to="AttackComponent" method="_on_bullet_attack_cd_timer_timeout"]

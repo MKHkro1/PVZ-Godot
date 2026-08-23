@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://oia7m8j6yhjl"]
+
+[ext_resource type="Script" uid="uid://drqoxi3pwi0np" path="res://scripts/store/goods.gd" id="1_l7kkb"]
+[ext_resource type="Theme" uid="uid://brc7iy7wte3nn" path="res://data/norm_ui_theme.tres" id="1_sllwg"]
+[ext_resource type="Texture2D" uid="uid://dc2kt6m7ukquh" path="res://assets/image/store/Store_PriceTag.png" id="5_6tca7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sllwg"]
+
+[node name="Goods1" type="Control"]
+z_index = 100
+custom_minimum_size = Vector2(67, 89)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 67.0
+offset_bottom = 89.0
+theme = ExtResource("1_sllwg")
+script = ExtResource("1_l7kkb")
+price = 3000
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 67.0
+offset_bottom = 89.0
+
+[node name="PanelContainer" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(67, 68)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+offset_right = 67.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme_override_styles/hover = SubResource("StyleBoxEmpty_sllwg")
+flat = true
+
+[node name="IsNotHaveGoodsLabel" type="Label" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+offset_top = 20.0
+offset_right = 67.0
+offset_bottom = 46.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/font_size = 18
+text = "卖光了"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PriceTag" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_6tca7")
+
+[node name="Label" type="Label" parent="VBoxContainer/PriceTag"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "$100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/PanelContainer/Button" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/PanelContainer/Button" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/PanelContainer/Button" to="." method="_on_button_pressed"]

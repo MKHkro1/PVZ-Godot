@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ResourcePlantConditionGraveBuster" load_steps=2 format=3 uid="uid://c7xmmg5qf31r"]
+
+[ext_resource type="Script" uid="uid://dahaft4ngtdm4" path="res://scripts/resources/plant_condition/condition_012_grave_buster.gd" id="1_ixjue"]
+
+[resource]
+script = ExtResource("1_ixjue")
+plant_condition = 63
+place_plant_in_cell = 0
+is_special_plants = true
+is_purple_card = false
+metadata/_custom_type_script = "uid://lm6sv7e83ixs"

@@ -1,0 +1,224 @@
+[gd_scene load_steps=32 format=3 uid="uid://btpwt2i0rieim"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_5hnsj"]
+[ext_resource type="Script" uid="uid://brpddpuqk6usu" path="res://scripts/character/plant/plant_044_cattail.gd" id="2_7npfu"]
+[ext_resource type="Texture2D" uid="uid://dk1nraow67nfq" path="res://assets/reanim/Cattail_paw2.png" id="2_kbe0y"]
+[ext_resource type="Texture2D" uid="uid://yeq0wkhh7ocq" path="res://assets/reanim/Cattail_paw3.png" id="3_2hp7h"]
+[ext_resource type="Texture2D" uid="uid://imy0eqi3xw8o" path="res://assets/reanim/Cattail_tail.png" id="4_eckv1"]
+[ext_resource type="Texture2D" uid="uid://b7n0a7ih4mvcr" path="res://assets/reanim/Cattail_tail2.png" id="5_7npfu"]
+[ext_resource type="Texture2D" uid="uid://dgj32utlkf8f0" path="res://assets/reanim/Cattail_spike.png" id="6_sqd6c"]
+[ext_resource type="Texture2D" uid="uid://djx3mvue4t6nu" path="res://assets/reanim/Cattail_tail2_overlay.png" id="7_pcdgd"]
+[ext_resource type="Texture2D" uid="uid://dikvd4i8v635g" path="res://assets/reanim/Cattail_head.png" id="8_v1yv0"]
+[ext_resource type="Texture2D" uid="uid://ch4khbbbwhh0d" path="res://assets/reanim/Cattail_paw1.png" id="9_va78y"]
+[ext_resource type="Texture2D" uid="uid://bpm3pvlhwnqxk" path="res://assets/reanim/Cattail_hat.png" id="10_kl7ow"]
+[ext_resource type="Texture2D" uid="uid://xmsfwuavj25e" path="res://assets/reanim/Cattail_blink1.png" id="11_eckv1"]
+[ext_resource type="Texture2D" uid="uid://j427peyuyp0f" path="res://assets/reanim/Cattail_eyebrow1.png" id="12_nsrdc"]
+[ext_resource type="Texture2D" uid="uid://del4hhtgqb4fr" path="res://assets/reanim/Cattail_eyebrow2.png" id="13_s7ymc"]
+[ext_resource type="Animation" uid="uid://cu5g771k54tb7" path="res://animation/character/plant/044_cattail/Cattail_idle.tres" id="14_8r44m"]
+[ext_resource type="Animation" uid="uid://brrvac8kn6vqi" path="res://animation/character/plant/044_cattail/Cattail_shooting.tres" id="15_p11vv"]
+[ext_resource type="Script" uid="uid://gxh0w2813np7" path="res://scripts/character/components/attack_behavior_component/component_attack_bullet_track.gd" id="16_2hp7h"]
+[ext_resource type="Script" uid="uid://bafp0ax1lmlge" path="res://scripts/character/components/detect_component/component_detect.gd" id="17_eckv1"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_55v01"]
+_data = {
+&"Cattail_idle": ExtResource("14_8r44m"),
+&"Cattail_shooting": ExtResource("15_p11vv")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kbe0y"]
+animation = &"Cattail_idle"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_2hp7h"]
+fadein_time = 0.2
+fadeout_time = 0.2
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eckv1"]
+animation = &"Cattail_shooting"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7npfu"]
+animation = &"Cattail_shooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sqd6c"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pcdgd"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v1yv0"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_va78y"]
+states/Cattail_shooting/node = SubResource("AnimationNodeAnimation_7npfu")
+states/Cattail_shooting/position = Vector2(406, 100)
+"states/Cattail_shooting 2/node" = SubResource("AnimationNodeAnimation_eckv1")
+"states/Cattail_shooting 2/position" = Vector2(622, 100)
+states/End/position = Vector2(861, 100)
+transitions = ["Start", "Cattail_shooting", SubResource("AnimationNodeStateMachineTransition_sqd6c"), "Cattail_shooting", "Cattail_shooting 2", SubResource("AnimationNodeStateMachineTransition_pcdgd"), "Cattail_shooting 2", "End", SubResource("AnimationNodeStateMachineTransition_v1yv0")]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_kl7ow"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_wsgec"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_nsrdc"]
+graph_offset = Vector2(-351.124, 163.355)
+nodes/output/position = Vector2(760, 200)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_kbe0y")
+nodes/Animation/position = Vector2(40, 120)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_2hp7h")
+nodes/OneShot/position = Vector2(300, 140)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_va78y")
+nodes/StateMachine/position = Vector2(-220, 340)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_wsgec")
+nodes/TimeScale/position = Vector2(560, 160)
+"nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_kl7ow")
+"nodes/TimeScale 2/position" = Vector2(60, 320)
+node_connections = [&"output", 0, &"TimeScale", &"OneShot", 0, &"Animation", &"OneShot", 1, &"TimeScale 2", &"TimeScale", 0, &"OneShot", &"TimeScale 2", 0, &"StateMachine"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eckv1"]
+size = Vector2(200, 5)
+
+[node name="Plant044Cattail" node_paths=PackedStringArray("node2d_detect_in_slope") instance=ExtResource("1_5hnsj")]
+script = ExtResource("2_7npfu")
+plant_type = 44
+node2d_detect_in_slope = [NodePath("HurtBoxComponent/HurtBoxDetection"), NodePath("AttackComponent/DetectComponent")]
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-42, -66)
+
+[node name="Anim_blink" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+visible = false
+centered = false
+
+[node name="Anim_idle" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+centered = false
+
+[node name="Anim_shooting" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+visible = false
+centered = false
+
+[node name="Cattail_paw2" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+position = Vector2(6.277203, 54)
+scale = Vector2(0.80734193, 0.8)
+texture = ExtResource("2_kbe0y")
+centered = false
+
+[node name="Cattail_paw3" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+position = Vector2(57.688602, 50.6)
+scale = Vector2(0.8221398, 0.8)
+texture = ExtResource("3_2hp7h")
+centered = false
+
+[node name="Cattail_tail" type="Sprite2D" parent="Body/BodyCorrect" index="5"]
+position = Vector2(0.6202106, 35.813984)
+rotation = -0.06855587
+scale = Vector2(0.80211395, 0.796886)
+skew = 0.00039773263
+texture = ExtResource("4_eckv1")
+centered = false
+
+[node name="Cattail_tail2" type="Sprite2D" parent="Body/BodyCorrect" index="6"]
+position = Vector2(-9.821744, 10.019157)
+rotation = -0.2196305
+scale = Vector2(0.8, 0.798)
+skew = -0.023684178
+texture = ExtResource("5_7npfu")
+centered = false
+
+[node name="Cattail_spike" type="Sprite2D" parent="Body/BodyCorrect" index="7"]
+position = Vector2(-0.7787366, 6.139368)
+rotation = -0.2196305
+scale = Vector2(0.8, 0.798)
+skew = -0.023684178
+texture = ExtResource("6_sqd6c")
+centered = false
+
+[node name="Cattail_tail2_overlay" type="Sprite2D" parent="Body/BodyCorrect" index="8"]
+position = Vector2(-8.07615, 13.884962)
+rotation = -0.2196305
+scale = Vector2(0.8, 0.798)
+skew = -0.023684178
+texture = ExtResource("7_pcdgd")
+centered = false
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="9"]
+position = Vector2(25.588602, 25.522797)
+scale = Vector2(0.8147979, 0.7915441)
+texture = ExtResource("8_v1yv0")
+centered = false
+
+[node name="Cattail_paw1" type="Sprite2D" parent="Body/BodyCorrect" index="10"]
+position = Vector2(30.988602, 59.4114)
+scale = Vector2(0.8584559, 0.8616839)
+texture = ExtResource("9_va78y")
+centered = false
+
+[node name="Cattail_hat" type="Sprite2D" parent="Body/BodyCorrect" index="11"]
+position = Vector2(11.177203, 9.834196)
+scale = Vector2(0.8147979, 0.7915441)
+texture = ExtResource("10_kl7ow")
+centered = false
+
+[node name="Cattail_blink" type="Sprite2D" parent="Body/BodyCorrect" index="12"]
+visible = false
+position = Vector2(41.1, 33.8)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("11_eckv1")
+centered = false
+
+[node name="Cattail_eyebrow1" type="Sprite2D" parent="Body/BodyCorrect" index="13"]
+position = Vector2(38.5, 34.734196)
+scale = Vector2(0.8147979, 0.7915441)
+texture = ExtResource("12_nsrdc")
+centered = false
+
+[node name="Cattail_eyebrow2" type="Sprite2D" parent="Body/BodyCorrect" index="14"]
+position = Vector2(61.311398, 32.045593)
+scale = Vector2(0.8147979, 0.7915441)
+texture = ExtResource("13_s7ymc")
+centered = false
+
+[node name="Marker2D" type="Marker2D" parent="Body/BodyCorrect" index="15"]
+position = Vector2(31, 2)
+
+[node name="SleepComponent" parent="." index="4"]
+is_enable_default = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_55v01")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+tree_root = SubResource("AnimationNodeBlendTree_nsrdc")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
+parameters/TimeScale/scale = 1.5
+"parameters/TimeScale 2/scale" = 2.0
+
+[node name="AttackComponent" type="Node2D" parent="." index="10" node_paths=PackedStringArray("markers_2d_bullet")]
+script = ExtResource("16_2hp7h")
+is_lane = false
+attack_bullet_type = 14
+markers_2d_bullet = [NodePath("../Body/BodyCorrect/Marker2D")]
+
+[node name="BulletAttackCdTimer" type="Timer" parent="AttackComponent" index="0"]
+
+[node name="DetectComponent" type="Node2D" parent="AttackComponent" index="1"]
+script = ExtResource("17_eckv1")
+can_attack_zombie_status = 9
+
+[node name="Area2D" type="Area2D" parent="AttackComponent/DetectComponent" index="0"]
+position = Vector2(0, -25)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/DetectComponent/Area2D" index="0"]
+position = Vector2(100, 0)
+shape = SubResource("RectangleShape2D_eckv1")
+
+[connection signal="timeout" from="AttackComponent/BulletAttackCdTimer" to="AttackComponent" method="_on_bullet_attack_cd_timer_timeout"]

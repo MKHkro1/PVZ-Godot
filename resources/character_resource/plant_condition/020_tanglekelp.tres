@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourcePlantCondition" load_steps=2 format=3 uid="uid://tec1u12tchsy"]
+
+[ext_resource type="Script" uid="uid://lm6sv7e83ixs" path="res://scripts/resources/plant_condition/condition_000_plant_base.gd" id="1_ncfa8"]
+
+[resource]
+script = ExtResource("1_ncfa8")
+plant_condition = 8
+place_plant_in_cell = 0
+is_special_plants = false
+is_purple_card = false

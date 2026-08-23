@@ -1,0 +1,559 @@
+[gd_scene load_steps=84 format=3 uid="uid://dsxyx35geqj23"]
+
+[ext_resource type="Script" uid="uid://bcog1jf31uui7" path="res://scripts/crazy_dave/crazy_dave.gd" id="1_ffcxg"]
+[ext_resource type="Texture2D" uid="uid://cc31mlx7ye5ka" path="res://assets/reanim/CrazyDave_innerpants.png" id="1_w5sht"]
+[ext_resource type="Resource" uid="uid://dfej0f5gi8osq" path="res://resources/crazy_dave_resource/dialog/000_Hello.tres" id="2_smsmo"]
+[ext_resource type="Texture2D" uid="uid://be3h44molspx4" path="res://assets/reanim/CrazyDave_foot2.png" id="2_yg7cu"]
+[ext_resource type="Texture2D" uid="uid://cxkinao3ajl6e" path="res://assets/reanim/CrazyDave_foot1.png" id="3_cqc0n"]
+[ext_resource type="Texture2D" uid="uid://cthqsdcr8t6ea" path="res://assets/reanim/CrazyDave_body2.png" id="4_yfpeb"]
+[ext_resource type="Texture2D" uid="uid://ba6ct4kgq284k" path="res://assets/reanim/CrazyDave_body1.png" id="5_kf3nt"]
+[ext_resource type="Texture2D" uid="uid://bfd71nj7k6hn5" path="res://assets/reanim/CrazyDave_head.png" id="6_nj2p7"]
+[ext_resource type="Texture2D" uid="uid://bmqyq85tfandw" path="res://assets/reanim/CrazyDave_beard.png" id="7_mbnm1"]
+[ext_resource type="Texture2D" uid="uid://div01ucfsfftw" path="res://assets/reanim/CrazyDave_mouth2.png" id="8_7kxro"]
+[ext_resource type="Texture2D" uid="uid://cmtcyg2c3ttt3" path="res://assets/reanim/CrazyDave_eye.png" id="9_usqct"]
+[ext_resource type="Texture2D" uid="uid://wnskai2dy0p" path="res://assets/reanim/CrazyDave_eyebrow.png" id="10_gw4o1"]
+[ext_resource type="Texture2D" uid="uid://cmo4xtkq00bl6" path="res://assets/reanim/CrazyDave_pot.png" id="11_5uciu"]
+[ext_resource type="Texture2D" uid="uid://fcryqcidgsnj" path="res://assets/reanim/CrazyDave_innerarm.png" id="12_kxyio"]
+[ext_resource type="Texture2D" uid="uid://dit5hsfm7xm5h" path="res://assets/reanim/CrazyDave_innerhand.png" id="13_1mi2n"]
+[ext_resource type="Texture2D" uid="uid://l8ka45nwofx3" path="res://assets/reanim/CrazyDave_innerfinger1.png" id="14_5x3gs"]
+[ext_resource type="Texture2D" uid="uid://ddd5fxvmdxy0i" path="res://assets/reanim/CrazyDave_innerfinger2.png" id="15_pkxbp"]
+[ext_resource type="Texture2D" uid="uid://b5vomf2s5naj4" path="res://assets/reanim/CrazyDave_innerfinger3.png" id="16_cm68l"]
+[ext_resource type="Texture2D" uid="uid://cip6pjcs825le" path="res://assets/reanim/CrazyDave_innerfinger4.png" id="17_56ysj"]
+[ext_resource type="Texture2D" uid="uid://cxgwo5wvbdcpo" path="res://assets/reanim/CrazyDave_outerarm.png" id="18_2flxe"]
+[ext_resource type="Texture2D" uid="uid://c4i3pgitwuu4h" path="res://assets/reanim/CrazyDave_outerhand.png" id="19_qdppa"]
+[ext_resource type="Texture2D" uid="uid://b6nm3i5upos7m" path="res://assets/reanim/CrazyDave_outerfinger1.png" id="20_2t86a"]
+[ext_resource type="Texture2D" uid="uid://isv3mlg8a6c6" path="res://assets/reanim/CrazyDave_outerfinger2.png" id="21_c22xj"]
+[ext_resource type="Texture2D" uid="uid://cpxbvkcpmudhn" path="res://assets/reanim/CrazyDave_outerfinger3.png" id="22_3xq2r"]
+[ext_resource type="Texture2D" uid="uid://bnxwfg1i61uui" path="res://assets/reanim/CrazyDave_outerfinger4.png" id="23_ffcxg"]
+[ext_resource type="Animation" uid="uid://jstk6veiwrp3" path="res://animation/crazy_dave/CrazyDave_blahblah.tres" id="24_csyta"]
+[ext_resource type="Animation" uid="uid://dc6mjdwrodios" path="res://animation/crazy_dave/CrazyDave_blink.tres" id="25_5t7qp"]
+[ext_resource type="Animation" uid="uid://csaf4w2atakpf" path="res://animation/crazy_dave/CrazyDave_crazy.tres" id="26_b15ba"]
+[ext_resource type="Animation" uid="uid://gjrhyvmnji2s" path="res://animation/crazy_dave/CrazyDave_enter.tres" id="27_efc8h"]
+[ext_resource type="Animation" uid="uid://diyt4uhgcjtl" path="res://animation/crazy_dave/CrazyDave_enterup.tres" id="28_nuqg2"]
+[ext_resource type="Animation" uid="uid://4w87gey6qu5o" path="res://animation/crazy_dave/CrazyDave_enter_handing.tres" id="29_ocfac"]
+[ext_resource type="Animation" uid="uid://bshdsxgh0c6ud" path="res://animation/crazy_dave/CrazyDave_grab.tres" id="30_awy4k"]
+[ext_resource type="Animation" uid="uid://byiot42inry0j" path="res://animation/crazy_dave/CrazyDave_idle.tres" id="31_i52f2"]
+[ext_resource type="Animation" uid="uid://dnsxmt511a1lo" path="res://animation/crazy_dave/CrazyDave_idle_handing.tres" id="32_ggx5y"]
+[ext_resource type="Animation" uid="uid://3h7gnpmofqhw" path="res://animation/crazy_dave/CrazyDave_leave.tres" id="33_sqp8r"]
+[ext_resource type="Animation" uid="uid://bsj8thngh0kxm" path="res://animation/crazy_dave/CrazyDave_mediumtalk.tres" id="34_sjb4o"]
+[ext_resource type="Animation" uid="uid://tjmu18dwo7y8" path="res://animation/crazy_dave/CrazyDave_smalltalk.tres" id="35_tpu3f"]
+[ext_resource type="Animation" uid="uid://dodq0diwna8jg" path="res://animation/crazy_dave/CrazyDave_talk_handing.tres" id="36_r1cwa"]
+[ext_resource type="FontFile" uid="uid://bjnvl0v2ws21u" path="res://assets/fonts/SIMSUN.TTC" id="39_kf3nt"]
+[ext_resource type="Texture2D" uid="uid://jvadlyirkbpp" path="res://assets/reanim/CrazyDave_handinghand.png" id="41_mnqem"]
+[ext_resource type="Texture2D" uid="uid://cgn0tgmngfrh2" path="res://assets/image/store/Store_SpeechBubble.png" id="57_xswp6"]
+[ext_resource type="Texture2D" uid="uid://qinkh2y47x0m" path="res://assets/image/store/Store_SpeechBubble2.png" id="58_y5vhj"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sqwtv"]
+_data = {
+&"CrazyDave_blahblah": ExtResource("24_csyta"),
+&"CrazyDave_blink": ExtResource("25_5t7qp"),
+&"CrazyDave_crazy": ExtResource("26_b15ba"),
+&"CrazyDave_enter": ExtResource("27_efc8h"),
+&"CrazyDave_enter_handing": ExtResource("29_ocfac"),
+&"CrazyDave_enterup": ExtResource("28_nuqg2"),
+&"CrazyDave_grab": ExtResource("30_awy4k"),
+&"CrazyDave_idle": ExtResource("31_i52f2"),
+&"CrazyDave_idle_handing": ExtResource("32_ggx5y"),
+&"CrazyDave_leave": ExtResource("33_sqp8r"),
+&"CrazyDave_mediumtalk": ExtResource("34_sjb4o"),
+&"CrazyDave_smalltalk": ExtResource("35_tpu3f"),
+&"CrazyDave_talk_handing": ExtResource("36_r1cwa")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_115ha"]
+animation = &"CrazyDave_enter"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qpy48"]
+animation = &"CrazyDave_enter_handing"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pvb83"]
+animation = &"CrazyDave_grab"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yeotq"]
+animation = &"CrazyDave_leave"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nu7mk"]
+animation = &"CrazyDave_idle_handing"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nta5m"]
+animation = &"CrazyDave_talk_handing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pvb83"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8cla2"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "(talk_time <= 0 and is_idle) or curr_talk_id <= mouse_skip_talk_id"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jsuyv"]
+advance_mode = 2
+advance_expression = "not is_idle and is_hand"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ofwxb"]
+states/CrazyDave_idle_handing/node = SubResource("AnimationNodeAnimation_nu7mk")
+states/CrazyDave_idle_handing/position = Vector2(704, 100)
+states/CrazyDave_talk_handing/node = SubResource("AnimationNodeAnimation_nta5m")
+states/CrazyDave_talk_handing/position = Vector2(325, 100)
+states/End/position = Vector2(953, 100)
+states/Start/position = Vector2(88, 100)
+transitions = ["Start", "CrazyDave_talk_handing", SubResource("AnimationNodeStateMachineTransition_pvb83"), "CrazyDave_talk_handing", "CrazyDave_idle_handing", SubResource("AnimationNodeStateMachineTransition_8cla2"), "CrazyDave_idle_handing", "CrazyDave_talk_handing", SubResource("AnimationNodeStateMachineTransition_jsuyv")]
+graph_offset = Vector2(228, -42)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kf3nt"]
+animation = &"CrazyDave_blahblah"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8cla2"]
+animation = &"CrazyDave_crazy"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jsuyv"]
+animation = &"CrazyDave_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nj2p7"]
+animation = &"CrazyDave_mediumtalk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mbnm1"]
+animation = &"CrazyDave_smalltalk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3xq2r"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "not is_idle and is_crazy"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ffcxg"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "is_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7kxro"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "talk_time == 3 and not is_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_usqct"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "is_idle or curr_talk_id <= mouse_skip_talk_id"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gw4o1"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "talk_time == 2 and not is_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5uciu"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "is_idle or curr_talk_id <= mouse_skip_talk_id"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kxyio"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "talk_time == 1 and not is_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1mi2n"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "is_idle or curr_talk_id <= mouse_skip_talk_id"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5x3gs"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pkxbp"]
+states/CrazyDave_blahblah/node = SubResource("AnimationNodeAnimation_kf3nt")
+states/CrazyDave_blahblah/position = Vector2(659, -60)
+states/CrazyDave_crazy/node = SubResource("AnimationNodeAnimation_8cla2")
+states/CrazyDave_crazy/position = Vector2(454, 222)
+states/CrazyDave_idle/node = SubResource("AnimationNodeAnimation_jsuyv")
+states/CrazyDave_idle/position = Vector2(454, 75)
+states/CrazyDave_mediumtalk/node = SubResource("AnimationNodeAnimation_nj2p7")
+states/CrazyDave_mediumtalk/position = Vector2(454, -102)
+states/CrazyDave_smalltalk/node = SubResource("AnimationNodeAnimation_mbnm1")
+states/CrazyDave_smalltalk/position = Vector2(242, -60)
+states/End/position = Vector2(756, 75)
+states/Start/position = Vector2(142, 64)
+transitions = ["CrazyDave_idle", "CrazyDave_crazy", SubResource("AnimationNodeStateMachineTransition_3xq2r"), "CrazyDave_crazy", "CrazyDave_idle", SubResource("AnimationNodeStateMachineTransition_ffcxg"), "CrazyDave_idle", "CrazyDave_blahblah", SubResource("AnimationNodeStateMachineTransition_7kxro"), "CrazyDave_blahblah", "CrazyDave_idle", SubResource("AnimationNodeStateMachineTransition_usqct"), "CrazyDave_idle", "CrazyDave_mediumtalk", SubResource("AnimationNodeStateMachineTransition_gw4o1"), "CrazyDave_mediumtalk", "CrazyDave_idle", SubResource("AnimationNodeStateMachineTransition_5uciu"), "CrazyDave_idle", "CrazyDave_smalltalk", SubResource("AnimationNodeStateMachineTransition_kxyio"), "CrazyDave_smalltalk", "CrazyDave_idle", SubResource("AnimationNodeStateMachineTransition_1mi2n"), "Start", "CrazyDave_idle", SubResource("AnimationNodeStateMachineTransition_5x3gs")]
+graph_offset = Vector2(8, -145)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cm68l"]
+advance_mode = 2
+advance_expression = "not is_hand"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_56ysj"]
+advance_mode = 2
+advance_expression = "is_hand"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2flxe"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qdppa"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2t86a"]
+advance_mode = 2
+advance_expression = "is_hand"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c22xj"]
+advance_mode = 2
+advance_expression = "not is_hand"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0qamm"]
+advance_mode = 2
+advance_expression = "not is_activate and not is_grab"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vlj5i"]
+advance_mode = 2
+advance_expression = "not is_activate and is_grab"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hpxrs"]
+advance_mode = 2
+advance_expression = "not is_activate and is_grab"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x3lkt"]
+advance_mode = 2
+advance_expression = "not is_activate and not is_grab"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3xq2r"]
+states/CrazyDave_enter/node = SubResource("AnimationNodeAnimation_115ha")
+states/CrazyDave_enter/position = Vector2(365, 67)
+states/CrazyDave_enter_handing/node = SubResource("AnimationNodeAnimation_qpy48")
+states/CrazyDave_enter_handing/position = Vector2(365, 191)
+states/CrazyDave_grab/node = SubResource("AnimationNodeAnimation_pvb83")
+states/CrazyDave_grab/position = Vector2(959, 191)
+states/CrazyDave_leave/node = SubResource("AnimationNodeAnimation_yeotq")
+states/CrazyDave_leave/position = Vector2(959, 67)
+states/End/position = Vector2(1162, 112)
+states/Start/position = Vector2(163, 100)
+states/TalkHand/node = SubResource("AnimationNodeStateMachine_ofwxb")
+states/TalkHand/position = Vector2(648, 191)
+states/TalkNoHand/node = SubResource("AnimationNodeStateMachine_pkxbp")
+states/TalkNoHand/position = Vector2(648, 67)
+transitions = ["Start", "CrazyDave_enter", SubResource("AnimationNodeStateMachineTransition_cm68l"), "Start", "CrazyDave_enter_handing", SubResource("AnimationNodeStateMachineTransition_56ysj"), "CrazyDave_enter", "TalkNoHand", SubResource("AnimationNodeStateMachineTransition_2flxe"), "CrazyDave_enter_handing", "TalkHand", SubResource("AnimationNodeStateMachineTransition_qdppa"), "TalkNoHand", "TalkHand", SubResource("AnimationNodeStateMachineTransition_2t86a"), "TalkHand", "TalkNoHand", SubResource("AnimationNodeStateMachineTransition_c22xj"), "TalkNoHand", "CrazyDave_leave", SubResource("AnimationNodeStateMachineTransition_0qamm"), "TalkHand", "CrazyDave_grab", SubResource("AnimationNodeStateMachineTransition_vlj5i"), "TalkNoHand", "CrazyDave_grab", SubResource("AnimationNodeStateMachineTransition_hpxrs"), "TalkHand", "CrazyDave_leave", SubResource("AnimationNodeStateMachineTransition_x3lkt")]
+graph_offset = Vector2(165, 4)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_ffcxg"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_csyta"]
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_3xq2r")
+nodes/StateMachine/position = Vector2(220, 80)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_ffcxg")
+nodes/TimeScale/position = Vector2(520, 80)
+nodes/output/position = Vector2(740, 120)
+node_connections = [&"TimeScale", 0, &"StateMachine", &"output", 0, &"TimeScale"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7er0j"]
+texture = ExtResource("58_y5vhj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gdxht"]
+texture = ExtResource("57_xswp6")
+
+[node name="CrazyDave" type="Node2D"]
+z_index = 1900
+z_as_relative = false
+script = ExtResource("1_ffcxg")
+dialog_resource = ExtResource("2_smsmo")
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Zombie_body" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Zombie_upperleg1" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Zombie_upperleg2" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Zombie_lowerleg1" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Zombie_foot1" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Zombie_lowerleg2" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Zombie_foot2" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Zombie_arm1" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Zombie_hand1" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Zombie_arm2" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Zombie_hand2" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Zombie_head2" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Zombie_head1" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Dave_innerpants" type="Sprite2D" parent="Body"]
+position = Vector2(-22.2, 843.5)
+texture = ExtResource("1_w5sht")
+centered = false
+
+[node name="Dave_foot2" type="Sprite2D" parent="Body"]
+position = Vector2(94.2, 817)
+texture = ExtResource("2_yg7cu")
+centered = false
+
+[node name="Dave_foot1" type="Sprite2D" parent="Body"]
+position = Vector2(-31.5, 820.4)
+texture = ExtResource("3_cqc0n")
+centered = false
+
+[node name="Dave_body2" type="Sprite2D" parent="Body"]
+position = Vector2(-21.6, 510.9)
+texture = ExtResource("4_yfpeb")
+centered = false
+
+[node name="Dave_body1" type="Sprite2D" parent="Body"]
+position = Vector2(-54.0778, 224.638)
+rotation = 0.00492278
+scale = Vector2(1, 1.00776)
+texture = ExtResource("5_kf3nt")
+centered = false
+
+[node name="Grabhand1" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Grabhand2" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Dave_pot_inside" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Dave_head" type="Sprite2D" parent="Body"]
+position = Vector2(16.6445, 114.673)
+rotation = 0.016931
+scale = Vector2(1, 1.00776)
+skew = -0.00349044
+texture = ExtResource("6_nj2p7")
+centered = false
+
+[node name="Dave_blink" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Dave_beard" type="Sprite2D" parent="Body"]
+position = Vector2(81.7043, 212.814)
+rotation = 0.016931
+scale = Vector2(1, 1.00776)
+skew = -0.00349044
+texture = ExtResource("7_mbnm1")
+centered = false
+
+[node name="Dave_mouths" type="Sprite2D" parent="Body"]
+position = Vector2(113.21, 224.996)
+rotation = 0.016931
+scale = Vector2(1, 1.00776)
+skew = -0.00349044
+texture = ExtResource("8_7kxro")
+centered = false
+
+[node name="Dave_eye" type="Sprite2D" parent="Body"]
+position = Vector2(145.48, 175.296)
+rotation = 6.25649
+scale = Vector2(1, 1.00682)
+texture = ExtResource("9_usqct")
+centered = false
+
+[node name="Dave_eyebrow" type="Sprite2D" parent="Body"]
+position = Vector2(147.674, 160.35)
+rotation = 6.25649
+scale = Vector2(1, 1.00682)
+texture = ExtResource("10_gw4o1")
+centered = false
+
+[node name="Dave_pot" type="Sprite2D" parent="Body"]
+position = Vector2(9.71456, 100.563)
+rotation = 6.26489
+scale = Vector2(1.032, 1.00682)
+texture = ExtResource("11_5uciu")
+centered = false
+
+[node name="Dave_innerarm" type="Sprite2D" parent="Body"]
+position = Vector2(221.352, 421.796)
+rotation = 0.030372
+scale = Vector2(1, 1.00682)
+texture = ExtResource("12_kxyio")
+centered = false
+
+[node name="Dave_innerhand" type="Sprite2D" parent="Body"]
+position = Vector2(180.694, 443.808)
+rotation = 0.0218538
+scale = Vector2(0.924, 0.930821)
+texture = ExtResource("13_1mi2n")
+centered = false
+
+[node name="Dave_innerfinger1" type="Sprite2D" parent="Body"]
+position = Vector2(156.106, 443.15)
+rotation = 0.0593121
+scale = Vector2(0.92306, 0.929821)
+texture = ExtResource("14_5x3gs")
+centered = false
+
+[node name="Dave_innerfinger2" type="Sprite2D" parent="Body"]
+position = Vector2(170.106, 463.379)
+rotation = 0.118519
+scale = Vector2(0.92306, 0.929821)
+texture = ExtResource("15_pkxbp")
+centered = false
+
+[node name="Dave_innerfinger3" type="Sprite2D" parent="Body"]
+position = Vector2(184.936, 479.672)
+rotation = -0.00328217
+scale = Vector2(0.924, 0.930761)
+texture = ExtResource("16_cm68l")
+centered = false
+
+[node name="Dave_innerfinger4" type="Sprite2D" parent="Body"]
+position = Vector2(204.636, 491.148)
+rotation = -0.00328217
+scale = Vector2(0.924, 0.930761)
+texture = ExtResource("17_56ysj")
+centered = false
+
+[node name="Dave_outerarm" type="Sprite2D" parent="Body"]
+position = Vector2(1.18804, 442.448)
+rotation = -0.0201087
+scale = Vector2(1, 1.00776)
+texture = ExtResource("18_2flxe")
+centered = false
+
+[node name="Dave_outerhand" type="Sprite2D" parent="Body"]
+position = Vector2(75.3821, 394.808)
+scale = Vector2(1.087, 1.09476)
+texture = ExtResource("19_qdppa")
+centered = false
+
+[node name="Dave_outerfinger1" type="Sprite2D" parent="Body"]
+position = Vector2(73.7495, 370.024)
+rotation = -0.138628
+scale = Vector2(1.08606, 1.09576)
+skew = -0.045871
+texture = ExtResource("20_2t86a")
+centered = false
+
+[node name="Dave_outerfinger2" type="Sprite2D" parent="Body"]
+position = Vector2(101.258, 391.908)
+rotation = 0.0338629
+scale = Vector2(1.087, 1.09476)
+skew = -0.00349106
+texture = ExtResource("21_c22xj")
+centered = false
+
+[node name="Dave_outerfinger3" type="Sprite2D" parent="Body"]
+position = Vector2(109.264, 407.89)
+rotation = 0.030372
+scale = Vector2(1.087, 1.09476)
+skew = -0.0049229
+texture = ExtResource("22_3xq2r")
+centered = false
+
+[node name="Dave_outerfinger4" type="Sprite2D" parent="Body"]
+position = Vector2(120.264, 428.596)
+rotation = 0.0218538
+scale = Vector2(1.087, 1.09476)
+texture = ExtResource("23_ffcxg")
+centered = false
+
+[node name="Dave_handinghand" type="Sprite2D" parent="Body"]
+visible = false
+position = Vector2(86.7282, 428.738)
+texture = ExtResource("41_mnqem")
+centered = false
+
+[node name="HandContainer" type="Node2D" parent="Body/Dave_handinghand"]
+position = Vector2(56.5875, 20.2536)
+rotation = 0.033161
+scale = Vector2(1.00301, 1.00301)
+
+[node name="Dave_handinghand2" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Dave_handinghand3" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sqwtv")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_csyta")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0
+
+[node name="SpeechBubble" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 181.0
+offset_top = 11.0
+offset_right = 221.0
+offset_bottom = 51.0
+
+[node name="Bubble2" type="Panel" parent="SpeechBubble"]
+visible = false
+layout_mode = 0
+offset_right = 291.0
+offset_bottom = 201.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_7er0j")
+
+[node name="MarginContainer" type="MarginContainer" parent="SpeechBubble/Bubble2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="SpeechTextLabel" type="Label" parent="SpeechBubble/Bubble2/MarginContainer"]
+custom_minimum_size = Vector2(270, 155)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("39_kf3nt")
+theme_override_font_sizes/font_size = 16
+text = "	你好，我亲爱的邻居，我是戴夫"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Bubble" type="Panel" parent="SpeechBubble"]
+visible = false
+layout_mode = 0
+offset_right = 291.0
+offset_bottom = 200.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_gdxht")
+
+[node name="TimerLongTimeIdle" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true

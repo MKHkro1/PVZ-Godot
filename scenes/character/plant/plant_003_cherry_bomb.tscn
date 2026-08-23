@@ -1,0 +1,450 @@
+[gd_scene load_steps=59 format=3 uid="uid://dqtpqeh1yldux"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_mdj76"]
+[ext_resource type="Texture2D" uid="uid://dvuugtbourjhs" path="res://assets/reanim/CherryBomb_leftstem.png" id="2_1003c"]
+[ext_resource type="Script" uid="uid://b3qu8jitytcut" path="res://scripts/character/plant/plant_003_cherry_bomb.gd" id="2_dniyj"]
+[ext_resource type="Texture2D" uid="uid://bmpuc6vb6mfpk" path="res://assets/reanim/CherryBomb_left1.png" id="3_mg664"]
+[ext_resource type="Texture2D" uid="uid://c3mfcmrjen4il" path="res://assets/reanim/CherryBomb_left3.png" id="4_xvxsx"]
+[ext_resource type="Texture2D" uid="uid://dlayj8ftlothc" path="res://assets/reanim/CherryBomb_lefteye11.png" id="5_fwwkt"]
+[ext_resource type="Texture2D" uid="uid://cuv0j6lkkkr5d" path="res://assets/reanim/CherryBomb_lefteye21.png" id="6_7axkc"]
+[ext_resource type="Texture2D" uid="uid://b6gaqdfa477uw" path="res://assets/reanim/CherryBomb_leftmouth1.png" id="7_dniyj"]
+[ext_resource type="Texture2D" uid="uid://bjdqpef0ve0pg" path="res://assets/reanim/CherryBomb_rightstem.png" id="8_2gy5r"]
+[ext_resource type="Texture2D" uid="uid://dspmy0uy0cacv" path="res://assets/reanim/CherryBomb_right1.png" id="9_ql0xv"]
+[ext_resource type="Texture2D" uid="uid://uklt4t2i3j63" path="res://assets/reanim/CherryBomb_right3.png" id="10_qq8mq"]
+[ext_resource type="Texture2D" uid="uid://cfdwh0bhgcrlb" path="res://assets/reanim/CherryBomb_righteye11.png" id="11_s6vx3"]
+[ext_resource type="Texture2D" uid="uid://d0dmytj04iew5" path="res://assets/reanim/CherryBomb_righteye21.png" id="12_0rjum"]
+[ext_resource type="Texture2D" uid="uid://biffa3h6h5rxy" path="res://assets/reanim/CherryBomb_rightmouth1.png" id="13_jel4a"]
+[ext_resource type="Texture2D" uid="uid://d2cv50584w3k7" path="res://assets/reanim/CherryBomb_leaf3.png" id="14_erbjr"]
+[ext_resource type="Texture2D" uid="uid://b6robscgti75e" path="res://assets/reanim/CherryBomb_leaf2tip.png" id="15_7m227"]
+[ext_resource type="Texture2D" uid="uid://bjskgh2aep1fi" path="res://assets/reanim/CherryBomb_leaf2.png" id="16_nlrwo"]
+[ext_resource type="Texture2D" uid="uid://be4ah7odddsjx" path="res://assets/reanim/CherryBomb_leaf1.png" id="17_gsjgd"]
+[ext_resource type="Texture2D" uid="uid://fh1tkc18o3qe" path="res://assets/reanim/CherryBomb_leaf1tip.png" id="18_lg8p0"]
+[ext_resource type="Animation" uid="uid://eg5i0srekcuo" path="res://animation/character/plant/003_cherry_bomb/CherryBomb_explode.tres" id="19_6bpf6"]
+[ext_resource type="Script" uid="uid://l0umdgng0y2m" path="res://scripts/character/components/bomb_component/component_bomb_norm.gd" id="20_dniyj"]
+[ext_resource type="Animation" uid="uid://b2a3f5y4dudyi" path="res://animation/character/plant/003_cherry_bomb/CherryBomb_idle.tres" id="20_g6ibo"]
+[ext_resource type="Script" uid="uid://uv71i8wk2job" path="res://scripts/fx/plant_effect/plant_effect_001_bomb_cherry.gd" id="22_7axkc"]
+[ext_resource type="Texture2D" uid="uid://ysajcyiwrdnk" path="res://assets/image/particles/ExplosionPowie.png" id="24_2gy5r"]
+[ext_resource type="Texture2D" uid="uid://nnp13qryaqjx" path="res://assets/image/particles/ExplosionCloud.png" id="24_ql0xv"]
+[ext_resource type="Shader" uid="uid://cikju0ectkkms" path="res://shaders/Mypartical.gdshader" id="25_qq8mq"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q5e28"]
+_data = {
+&"CherryBomb_explode": ExtResource("19_6bpf6"),
+&"CherryBomb_idle": ExtResource("20_g6ibo")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q5e28"]
+animation = &"CherryBomb_explode"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fj2s8"]
+animation = &"CherryBomb_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qg3or"]
+advance_mode = 2
+advance_expression = "is_show"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ocibd"]
+advance_mode = 2
+advance_expression = "not is_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xru78"]
+advance_mode = 2
+advance_expression = "not is_show"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fj2s8"]
+states/CherryBomb_explode/node = SubResource("AnimationNodeAnimation_q5e28")
+states/CherryBomb_explode/position = Vector2(394, 151)
+states/CherryBomb_idle/node = SubResource("AnimationNodeAnimation_fj2s8")
+states/CherryBomb_idle/position = Vector2(394, 58)
+states/Start/position = Vector2(177, 87)
+transitions = ["Start", "CherryBomb_idle", SubResource("AnimationNodeStateMachineTransition_qg3or"), "CherryBomb_idle", "CherryBomb_explode", SubResource("AnimationNodeStateMachineTransition_ocibd"), "Start", "CherryBomb_explode", SubResource("AnimationNodeStateMachineTransition_xru78")]
+graph_offset = Vector2(57, -49)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_fj2s8"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dniyj"]
+nodes/output/position = Vector2(740, 140)
+nodes/AnimationNodeStateMachine/node = SubResource("AnimationNodeStateMachine_fj2s8")
+nodes/AnimationNodeStateMachine/position = Vector2(100, 80)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_fj2s8")
+nodes/TimeScale/position = Vector2(460, 80)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"AnimationNodeStateMachine"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gy5r"]
+size = Vector2(250, 200)
+
+[sub_resource type="Curve" id="Curve_2gy5r"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.54792, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2gy5r"]
+curve = SubResource("Curve_2gy5r")
+
+[sub_resource type="Curve" id="Curve_qq8mq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_s6vx3"]
+_data = [Vector2(0, 0.9), 0.0, -0.9, 0, 1, Vector2(1, 0), -0.9, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_0rjum"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_ql0xv"]
+curve_x = SubResource("Curve_qq8mq")
+curve_y = SubResource("Curve_s6vx3")
+curve_z = SubResource("Curve_0rjum")
+
+[sub_resource type="Curve" id="Curve_erbjr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.303371, 1), 0.0, 0.0, 0, 0, Vector2(0.64794, 0.177344), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qq8mq"]
+curve = SubResource("Curve_erbjr")
+
+[sub_resource type="Curve" id="Curve_nlrwo"]
+_data = [Vector2(0, 0.505372), 0.0, 0.0, 0, 0, Vector2(0.524345, 0.5125), 0.0135949, -2.71172, 1, 1, Vector2(0.696629, 0.0453124), -2.71172, -0.274964, 1, 1, Vector2(0.861423, 0), -0.274964, 0.0, 1, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_s6vx3"]
+curve = SubResource("Curve_nlrwo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lg8p0"]
+shader = ExtResource("25_qq8mq")
+shader_parameter/direction = Vector3(1, 0, 0)
+shader_parameter/spread = 180.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/velocity_pivot = Vector3(0, 0, 0)
+shader_parameter/gravity = Vector3(0, 0, 0)
+shader_parameter/collision_friction = 0.0
+shader_parameter/collision_bounce = 0.0
+shader_parameter/collision_enabled = false
+shader_parameter/scale_min = 1.0
+shader_parameter/scale_max = 1.0
+shader_parameter/hue_variation_min = 0.0
+shader_parameter/hue_variation_max = 0.0
+shader_parameter/anim_speed_min = 0.0
+shader_parameter/anim_speed_max = 0.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/anim_offset_max = 0.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/color_value = Color(1, 1, 1, 1)
+shader_parameter/initial_angle_min = 0.0
+shader_parameter/initial_angle_max = 3.14
+shader_parameter/angular_velocity_min = 0.0
+shader_parameter/angular_velocity_max = 0.0
+shader_parameter/initial_linear_velocity_min = 100.0
+shader_parameter/initial_linear_velocity_max = 100.0
+shader_parameter/directional_velocity_min = 0.0
+shader_parameter/directional_velocity_max = 0.0
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/linear_accel_min = 0.0
+shader_parameter/linear_accel_max = 0.0
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.0
+shader_parameter/damping_max = 0.0
+shader_parameter/alpha_curve = SubResource("CurveTexture_2gy5r")
+shader_parameter/color_curve = SubResource("CurveXYZTexture_ql0xv")
+shader_parameter/scale_curve = SubResource("CurveTexture_s6vx3")
+shader_parameter/initial_linear_velocity_curve = SubResource("CurveTexture_qq8mq")
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
+shader_parameter/emission_shape_scale = 1.0
+shader_parameter/emission_sphere_radius = 40.0
+shader_parameter/random_direction_from_spread = Vector3(0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_ql0xv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.54792, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0rjum"]
+curve = SubResource("Curve_ql0xv")
+
+[sub_resource type="Curve" id="Curve_jel4a"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_7m227"]
+_data = [Vector2(0, 0.9), 0.0, -0.641406, 0, 1, Vector2(1, 0.258594), -0.641406, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_gsjgd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_jel4a"]
+curve_x = SubResource("Curve_jel4a")
+curve_y = SubResource("Curve_7m227")
+curve_z = SubResource("Curve_gsjgd")
+
+[sub_resource type="Curve" id="Curve_6bpf6"]
+_data = [Vector2(0, 1), 0.0, -0.481111, 0, 1, Vector2(0.23221, 0.888281), -0.481111, -2.00431, 1, 1, Vector2(0.404494, 0.542969), -2.00431, -0.513028, 1, 1, Vector2(0.681648, 0.400781), -0.513028, 0.0, 1, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_erbjr"]
+curve = SubResource("Curve_6bpf6")
+
+[sub_resource type="Curve" id="Curve_kw33j"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1.26328), 0.0, 0.0, 0, 0, Vector2(0.337079, 1.26328), 0.0, -2.46195, 1, 1, Vector2(0.621723, 0.5625), -2.46195, -1.487, 1, 1, Vector2(1, 0), -1.487, 0.0, 1, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_7m227"]
+curve = SubResource("Curve_kw33j")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vp07b"]
+shader = ExtResource("25_qq8mq")
+shader_parameter/direction = Vector3(1, 0, 0)
+shader_parameter/spread = 180.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/velocity_pivot = Vector3(0, 0, 0)
+shader_parameter/gravity = Vector3(0, 0, 0)
+shader_parameter/collision_friction = 0.0
+shader_parameter/collision_bounce = 0.0
+shader_parameter/collision_enabled = false
+shader_parameter/scale_min = 1.0
+shader_parameter/scale_max = 1.0
+shader_parameter/hue_variation_min = 0.0
+shader_parameter/hue_variation_max = 0.0
+shader_parameter/anim_speed_min = 0.0
+shader_parameter/anim_speed_max = 0.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/anim_offset_max = 0.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/color_value = Color(1, 1, 1, 1)
+shader_parameter/initial_angle_min = 0.0
+shader_parameter/initial_angle_max = 3.14
+shader_parameter/angular_velocity_min = 0.0
+shader_parameter/angular_velocity_max = 0.0
+shader_parameter/initial_linear_velocity_min = 50.0
+shader_parameter/initial_linear_velocity_max = 50.0
+shader_parameter/directional_velocity_min = 0.0
+shader_parameter/directional_velocity_max = 0.0
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/linear_accel_min = 0.0
+shader_parameter/linear_accel_max = 0.0
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.0
+shader_parameter/damping_max = 0.0
+shader_parameter/alpha_curve = SubResource("CurveTexture_0rjum")
+shader_parameter/color_curve = SubResource("CurveXYZTexture_jel4a")
+shader_parameter/scale_curve = SubResource("CurveTexture_7m227")
+shader_parameter/initial_linear_velocity_curve = SubResource("CurveTexture_erbjr")
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
+shader_parameter/emission_shape_scale = 1.0
+shader_parameter/emission_sphere_radius = 60.0
+shader_parameter/random_direction_from_spread = Vector3(0, 0, 0)
+
+[node name="Plant003CherryBomb" node_paths=PackedStringArray("node_no_change_direction", "node2d_detect_in_slope") instance=ExtResource("1_mdj76")]
+script = ExtResource("2_dniyj")
+plant_type = 3
+node_no_change_direction = [NodePath("HpComponent"), NodePath("SleepComponent"), null]
+node2d_detect_in_slope = [NodePath("HurtBoxComponent/HurtBoxDetection"), NodePath("BombComponent/Area2DBomb")]
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-42, -67)
+
+[node name="Anim_explode" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+centered = false
+
+[node name="Anim_idle" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+visible = false
+centered = false
+
+[node name="CherryBomb_leftstem" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+position = Vector2(29.7, 5.9)
+rotation = 0.774926
+scale = Vector2(0.599, 0.599)
+texture = ExtResource("2_1003c")
+centered = false
+
+[node name="CherryBomb_left1" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+visible = false
+position = Vector2(-8.3, 17.2)
+rotation = 0.057596
+scale = Vector2(1.152, 1.246)
+texture = ExtResource("3_mg664")
+centered = false
+
+[node name="CherryBomb_left3" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+position = Vector2(-12.4, 5.3)
+rotation = 0.171042
+scale = Vector2(1.037, 1.003)
+texture = ExtResource("4_xvxsx")
+centered = false
+
+[node name="CherryBomb_lefteye11" type="Sprite2D" parent="Body/BodyCorrect" index="5"]
+position = Vector2(-9.7, 22.1)
+rotation = 0.174533
+scale = Vector2(1.184, 1.214)
+texture = ExtResource("5_fwwkt")
+centered = false
+
+[node name="CherryBomb_lefteye21" type="Sprite2D" parent="Body/BodyCorrect" index="6"]
+position = Vector2(15.4, 31.8)
+rotation = 0.174533
+scale = Vector2(1.184, 1.214)
+texture = ExtResource("6_7axkc")
+centered = false
+
+[node name="CherryBomb_leftmouth1" type="Sprite2D" parent="Body/BodyCorrect" index="7"]
+position = Vector2(-15.9, 43.3)
+rotation = 0.174533
+scale = Vector2(1.698, 1.214)
+texture = ExtResource("7_dniyj")
+centered = false
+
+[node name="CherryBomb_rightstem" type="Sprite2D" parent="Body/BodyCorrect" index="8"]
+position = Vector2(34.5, 7.6)
+rotation = 6.62178
+scale = Vector2(0.57, 0.554)
+skew = 0.0122174
+texture = ExtResource("8_2gy5r")
+centered = false
+
+[node name="CherryBomb_right1" type="Sprite2D" parent="Body/BodyCorrect" index="9"]
+visible = false
+position = Vector2(31.8, 22.7)
+rotation = -0.143117
+scale = Vector2(1.308, 1.327)
+skew = 0.0261799
+texture = ExtResource("9_ql0xv")
+centered = false
+
+[node name="CherryBomb_right3" type="Sprite2D" parent="Body/BodyCorrect" index="10"]
+position = Vector2(26.2, 23.3)
+rotation = -0.270526
+scale = Vector2(1.116, 1.116)
+texture = ExtResource("10_qq8mq")
+centered = false
+
+[node name="CherryBomb_righteye11" type="Sprite2D" parent="Body/BodyCorrect" index="11"]
+position = Vector2(76.2, 30.2)
+scale = Vector2(1.218, 1.218)
+texture = ExtResource("11_s6vx3")
+centered = false
+
+[node name="CherryBomb_righteye21" type="Sprite2D" parent="Body/BodyCorrect" index="12"]
+position = Vector2(38.6, 38.7)
+scale = Vector2(1.493, 1.493)
+texture = ExtResource("12_0rjum")
+centered = false
+
+[node name="CherryBomb_rightmouth1" type="Sprite2D" parent="Body/BodyCorrect" index="13"]
+position = Vector2(56.4, 52.7)
+rotation = -0.118682
+scale = Vector2(3.386, 1.077)
+skew = 0.0366515
+texture = ExtResource("13_jel4a")
+centered = false
+
+[node name="CherryBomb_leaf3" type="Sprite2D" parent="Body/BodyCorrect" index="14"]
+position = Vector2(39.5, 0.5)
+rotation = 0.328122
+scale = Vector2(0.798, 0.798)
+texture = ExtResource("14_erbjr")
+centered = false
+
+[node name="CherryBomb_leaf2tip" type="Sprite2D" parent="Body/BodyCorrect" index="15"]
+position = Vector2(42.8, -6.3)
+rotation = 1.58825
+scale = Vector2(0.796, 0.859)
+skew = 0.383972
+texture = ExtResource("15_7m227")
+centered = false
+
+[node name="CherryBomb_leaf2" type="Sprite2D" parent="Body/BodyCorrect" index="16"]
+position = Vector2(42, -8.7)
+rotation = 0.818559
+scale = Vector2(0.798, 0.798)
+texture = ExtResource("16_nlrwo")
+centered = false
+
+[node name="CherryBomb_leaf1" type="Sprite2D" parent="Body/BodyCorrect" index="17"]
+position = Vector2(33.5, -5.2)
+rotation = 0.809833
+scale = Vector2(0.798, 0.805)
+skew = 0.1309
+texture = ExtResource("17_gsjgd")
+centered = false
+
+[node name="CherryBomb_leaf1tip" type="Sprite2D" parent="Body/BodyCorrect" index="18"]
+position = Vector2(29.2, -10.1)
+rotation = 0.963422
+scale = Vector2(0.796, 0.802)
+skew = -0.125664
+texture = ExtResource("18_lg8p0")
+centered = false
+
+[node name="BlinkComponent" parent="." index="5"]
+is_enable_default = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_q5e28")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+tree_root = SubResource("AnimationNodeBlendTree_dniyj")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0
+
+[node name="BombComponent" type="Node2D" parent="." index="10"]
+unique_name_in_owner = true
+script = ExtResource("20_dniyj")
+bomb_lane = 1
+can_attack_plant_status = 7
+can_attack_zombie_status = 63
+
+[node name="Area2DBomb" type="Area2D" parent="BombComponent" index="0"]
+collision_layer = 0
+collision_mask = 2068
+input_pickable = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BombComponent/Area2DBomb" index="0"]
+position = Vector2(0, -25)
+shape = SubResource("RectangleShape2D_2gy5r")
+
+[node name="BombEffect" type="Node2D" parent="BombComponent" index="1"]
+visible = false
+position = Vector2(0, -28)
+script = ExtResource("22_7axkc")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BombComponent/BombEffect" index="0"]
+emitting = false
+amount = 13
+texture = ExtResource("24_ql0xv")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 0.0
+draw_order = 0
+process_material = SubResource("ShaderMaterial_lg8p0")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="BombComponent/BombEffect" index="1"]
+emitting = false
+amount = 10
+texture = ExtResource("24_ql0xv")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ShaderMaterial_vp07b")
+
+[node name="ExplosiveFont" type="Sprite2D" parent="BombComponent/BombEffect" index="2"]
+texture = ExtResource("24_2gy5r")

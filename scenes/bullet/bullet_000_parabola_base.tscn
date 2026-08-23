@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://p2fwghratmjl"]
+
+[ext_resource type="PackedScene" uid="uid://dlwaiybjqakk1" path="res://scenes/bullet/bullet_000_base.tscn" id="1_l41ri"]
+[ext_resource type="Script" uid="uid://1cbn10tiy5qr" path="res://scripts/bullet/bullet_000_parabola_base.gd" id="2_4yv73"]
+
+[node name="Bullet000ParabolaBase" instance=ExtResource("1_l41ri")]
+script = ExtResource("2_4yv73")
+max_diff_x = 200.0
+parabola_height = -300.0
+speed = 600.0

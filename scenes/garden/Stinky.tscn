@@ -1,0 +1,174 @@
+[gd_scene load_steps=31 format=3 uid="uid://bakw6hndsm3j5"]
+
+[ext_resource type="Script" uid="uid://bic2ou3udtc55" path="res://scripts/garden/stinky.gd" id="1_nej10"]
+[ext_resource type="Texture2D" uid="uid://b0cged7sb4o0f" path="res://assets/reanim/Stinky_tail.png" id="3_j5dkc"]
+[ext_resource type="Texture2D" uid="uid://hv8vxynql5tx" path="res://assets/reanim/Stinky_body.png" id="4_eyhr4"]
+[ext_resource type="Texture2D" uid="uid://cpvpkk08wkbkb" path="res://assets/reanim/Stinky_antenna.png" id="5_iww4c"]
+[ext_resource type="Texture2D" uid="uid://bl6031k6h3rn7" path="res://assets/reanim/Stinky_shell.png" id="6_cd80u"]
+[ext_resource type="Animation" uid="uid://c2ttmtp3ppik4" path="res://animation/garden/stinky/Stinky_crawl.tres" id="7_j6s5v"]
+[ext_resource type="Animation" uid="uid://dl2rewc1bkood" path="res://animation/garden/stinky/Stinky_idle.tres" id="8_3cecx"]
+[ext_resource type="Animation" uid="uid://de5ja2kfcl6ge" path="res://animation/garden/stinky/Stinky_in.tres" id="9_pnvey"]
+[ext_resource type="Animation" uid="uid://ctkdmlnn3gftw" path="res://animation/garden/stinky/Stinky_out.tres" id="10_nufce"]
+[ext_resource type="Animation" uid="uid://smeblchx0jls" path="res://animation/garden/stinky/Stinky_turn.tres" id="11_nxqbb"]
+[ext_resource type="Animation" uid="uid://dvp2m4ru63fv4" path="res://animation/garden/stinky/Stinky_sleep.tres" id="12_3fre6"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r088e"]
+_data = {
+&"Stinky_crawl": ExtResource("7_j6s5v"),
+&"Stinky_idle": ExtResource("8_3cecx"),
+&"Stinky_in": ExtResource("9_pnvey"),
+&"Stinky_out": ExtResource("10_nufce"),
+&"Stinky_sleep": ExtResource("12_3fre6"),
+&"Stinky_turn": ExtResource("11_nxqbb")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2m2wl"]
+animation = &"Stinky_crawl"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2c2u2"]
+animation = &"Stinky_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hgt6i"]
+animation = &"Stinky_in"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v8o77"]
+animation = &"Stinky_out"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yiaya"]
+animation = &"Stinky_sleep"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p1151"]
+animation = &"Stinky_turn"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wve37"]
+advance_mode = 2
+advance_expression = "not is_sleep"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_08sql"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_124el"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w0acl"]
+advance_mode = 2
+advance_expression = "is_turn"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lcust"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_avxlu"]
+advance_mode = 2
+advance_expression = "is_sleep"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bup6t"]
+advance_mode = 2
+advance_expression = "is_sleep"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rr5o7"]
+advance_mode = 2
+advance_expression = "not is_sleep"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ooeb3"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dpt7t"]
+states/Start/position = Vector2(-34, 110)
+states/Stinky_crawl/node = SubResource("AnimationNodeAnimation_2m2wl")
+states/Stinky_crawl/position = Vector2(492, 110)
+states/Stinky_idle/node = SubResource("AnimationNodeAnimation_2c2u2")
+states/Stinky_idle/position = Vector2(182, -63)
+states/Stinky_in/node = SubResource("AnimationNodeAnimation_hgt6i")
+states/Stinky_in/position = Vector2(344, 110)
+states/Stinky_out/node = SubResource("AnimationNodeAnimation_v8o77")
+states/Stinky_out/position = Vector2(182, 29)
+states/Stinky_sleep/node = SubResource("AnimationNodeAnimation_yiaya")
+states/Stinky_sleep/position = Vector2(182, 110)
+states/Stinky_turn/node = SubResource("AnimationNodeAnimation_p1151")
+states/Stinky_turn/position = Vector2(685, 110)
+transitions = ["Start", "Stinky_idle", SubResource("AnimationNodeStateMachineTransition_wve37"), "Stinky_out", "Stinky_idle", SubResource("AnimationNodeStateMachineTransition_08sql"), "Stinky_idle", "Stinky_crawl", SubResource("AnimationNodeStateMachineTransition_124el"), "Stinky_crawl", "Stinky_turn", SubResource("AnimationNodeStateMachineTransition_w0acl"), "Stinky_turn", "Stinky_crawl", SubResource("AnimationNodeStateMachineTransition_lcust"), "Stinky_crawl", "Stinky_in", SubResource("AnimationNodeStateMachineTransition_avxlu"), "Start", "Stinky_sleep", SubResource("AnimationNodeStateMachineTransition_bup6t"), "Stinky_sleep", "Stinky_out", SubResource("AnimationNodeStateMachineTransition_rr5o7"), "Stinky_in", "Stinky_sleep", SubResource("AnimationNodeStateMachineTransition_ooeb3")]
+graph_offset = Vector2(-167, -139)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_88j5v"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jgoiu"]
+graph_offset = Vector2(-452, 74)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_dpt7t")
+nodes/StateMachine/position = Vector2(-200, 120)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_88j5v")
+nodes/TimeScale/position = Vector2(100, 120)
+node_connections = [&"TimeScale", 0, &"StateMachine", &"output", 0, &"TimeScale"]
+
+[node name="Stinky" type="Node2D"]
+script = ExtResource("1_nej10")
+
+[node name="Body" type="Node2D" parent="."]
+position = Vector2(-50, -34)
+
+[node name="_ground" type="Sprite2D" parent="Body"]
+position = Vector2(-22.323, -6.3)
+centered = false
+
+[node name="Turn" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Anim_crawl" type="Sprite2D" parent="Body"]
+centered = false
+
+[node name="Anim_turn" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Anim_in" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Anim_out" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Anim_idle" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="Tail" type="Sprite2D" parent="Body"]
+position = Vector2(57.8909, 40.9)
+scale = Vector2(1.01211, 1)
+texture = ExtResource("3_j5dkc")
+centered = false
+
+[node name="Body" type="Sprite2D" parent="Body"]
+position = Vector2(-2.74592, 12.9)
+scale = Vector2(1.02934, 1.00489)
+skew = -0.0954333
+texture = ExtResource("4_eyhr4")
+centered = false
+
+[node name="Antenna" type="Sprite2D" parent="Body"]
+position = Vector2(3.56604, 2.31101)
+scale = Vector2(1.02934, 1.02434)
+skew = 0.214918
+texture = ExtResource("5_iww4c")
+centered = false
+
+[node name="Shell" type="Sprite2D" parent="Body"]
+position = Vector2(22.655, 7.78899)
+scale = Vector2(1.03202, 1.00033)
+texture = ExtResource("6_cd80u")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_r088e")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_jgoiu")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0

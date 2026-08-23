@@ -1,0 +1,175 @@
+[gd_scene load_steps=30 format=3 uid="uid://1r7qdfreegf5"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_dqhtu"]
+[ext_resource type="Texture2D" uid="uid://d3fiedp7rmj02" path="res://assets/reanim/SunShroom_body.png" id="2_2o6oo"]
+[ext_resource type="Script" uid="uid://dl4dfcgliacmj" path="res://scripts/character/plant/plant_010_sun_shroom.gd" id="2_qum68"]
+[ext_resource type="Texture2D" uid="uid://boh05go0jrax1" path="res://assets/reanim/SunShroom_blink2.png" id="4_qum68"]
+[ext_resource type="Texture2D" uid="uid://cwpdbv6tcn38g" path="res://assets/reanim/SunShroom_head.png" id="5_utsq0"]
+[ext_resource type="Animation" uid="uid://bhw1sr8amdvdl" path="res://animation/character/plant/010_sun_shroom/SunShroom_bigidle.tres" id="6_dmd1b"]
+[ext_resource type="Script" uid="uid://jl0nl4a234bc" path="res://scripts/resources/resource_body_change.gd" id="7_dmd1b"]
+[ext_resource type="Animation" uid="uid://bdhli4iadxd5h" path="res://animation/character/plant/010_sun_shroom/SunShroom_bigsleep.tres" id="7_q5ric"]
+[ext_resource type="Texture2D" uid="uid://ca27om0ioxih0" path="res://assets/reanim/SunShroom_blink1.png" id="8_q5ric"]
+[ext_resource type="Animation" uid="uid://d0id5g5kd6ug4" path="res://animation/character/plant/010_sun_shroom/SunShroom_grow.tres" id="8_vdr6k"]
+[ext_resource type="Animation" uid="uid://da8e21tx8kpxv" path="res://animation/character/plant/010_sun_shroom/SunShroom_idle.tres" id="9_dj2yi"]
+[ext_resource type="Animation" uid="uid://cswajbnwiqpv0" path="res://animation/character/plant/010_sun_shroom/SunShroom_sleep.tres" id="10_m5b0b"]
+[ext_resource type="Script" uid="uid://0hywxqemaott" path="res://scripts/character/components/component_create_sun.gd" id="11_kknrs"]
+
+[sub_resource type="Resource" id="Resource_vdr6k"]
+script = ExtResource("7_dmd1b")
+sprite_change = Array[NodePath]([NodePath("../Body/BodyCorrect/Anim_blink")])
+sprite_change_texture = Array[Texture2D]([ExtResource("8_q5ric"), ExtResource("4_qum68")])
+sprite_appear = Array[NodePath]([])
+sprite_disappear = Array[NodePath]([])
+node_drop = NodePath("")
+metadata/_custom_type_script = "uid://jl0nl4a234bc"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6h3r7"]
+_data = {
+&"SunShroom_bigidle": ExtResource("6_dmd1b"),
+&"SunShroom_bigsleep": ExtResource("7_q5ric"),
+&"SunShroom_grow": ExtResource("8_vdr6k"),
+&"SunShroom_idle": ExtResource("9_dj2yi"),
+&"SunShroom_sleep": ExtResource("10_m5b0b")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tc41y"]
+animation = &"SunShroom_bigidle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_igemf"]
+animation = &"SunShroom_bigsleep"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_21iv2"]
+animation = &"SunShroom_grow"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hlh3c"]
+animation = &"SunShroom_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nf1qf"]
+animation = &"SunShroom_sleep"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wokip"]
+advance_mode = 2
+advance_expression = "is_grow"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_glqr6"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bkxr5"]
+advance_mode = 2
+advance_expression = "not is_show"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rx3yf"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "not is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2je2o"]
+advance_mode = 2
+advance_expression = "is_show"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qum68"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ebjf4"]
+states/Start/position = Vector2(154, 100)
+states/SunShroom_bigidle/node = SubResource("AnimationNodeAnimation_tc41y")
+states/SunShroom_bigidle/position = Vector2(518, 258)
+states/SunShroom_bigsleep/node = SubResource("AnimationNodeAnimation_igemf")
+states/SunShroom_bigsleep/position = Vector2(265, 258)
+states/SunShroom_grow/node = SubResource("AnimationNodeAnimation_21iv2")
+states/SunShroom_grow/position = Vector2(518, 166)
+states/SunShroom_idle/node = SubResource("AnimationNodeAnimation_hlh3c")
+states/SunShroom_idle/position = Vector2(518, 79)
+states/SunShroom_sleep/node = SubResource("AnimationNodeAnimation_nf1qf")
+states/SunShroom_sleep/position = Vector2(347, -2)
+transitions = ["SunShroom_idle", "SunShroom_grow", SubResource("AnimationNodeStateMachineTransition_wokip"), "SunShroom_grow", "SunShroom_bigidle", SubResource("AnimationNodeStateMachineTransition_glqr6"), "Start", "SunShroom_sleep", SubResource("AnimationNodeStateMachineTransition_bkxr5"), "SunShroom_sleep", "SunShroom_idle", SubResource("AnimationNodeStateMachineTransition_rx3yf"), "Start", "SunShroom_grow", SubResource("AnimationNodeStateMachineTransition_2je2o"), "SunShroom_idle", "SunShroom_sleep", SubResource("AnimationNodeStateMachineTransition_qum68")]
+graph_offset = Vector2(50, -52)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_rikvi"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_fw6sg"]
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_ebjf4")
+nodes/StateMachine/position = Vector2(280, 100)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_rikvi")
+nodes/TimeScale/position = Vector2(580, 100)
+nodes/output/position = Vector2(800, 120)
+node_connections = [&"TimeScale", 0, &"StateMachine", &"output", 0, &"TimeScale"]
+
+[node name="Plant010SunShroom" node_paths=PackedStringArray("node_no_change_direction") instance=ExtResource("1_dqhtu")]
+script = ExtResource("2_qum68")
+time_grow = 100.0
+mini_sun_value = 15
+norm_sun_value = 25
+is_grow = false
+plant_type = 10
+is_sleep_in_day = true
+node_no_change_direction = [NodePath("HpComponent"), NodePath("SleepComponent"), null]
+
+[node name="Shadow" parent="." index="0"]
+scale = Vector2(0.511628, 0.444444)
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-42, -61)
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+position = Vector2(30.717, 48.483)
+scale = Vector2(0.383979, 0.337851)
+texture = ExtResource("2_2o6oo")
+centered = false
+
+[node name="Anim_sleep1" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+visible = false
+position = Vector2(36.5, 51.7149)
+scale = Vector2(0.410128, 0.340702)
+centered = false
+
+[node name="Anim_blink" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+visible = false
+position = Vector2(36.5, 51.3957)
+scale = Vector2(0.403106, 0.347085)
+texture = ExtResource("4_qum68")
+centered = false
+
+[node name="SunShroom_head" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+position = Vector2(25.1511, 28.9808)
+rotation = 0.07854
+scale = Vector2(0.375319, 0.338851)
+texture = ExtResource("5_utsq0")
+centered = false
+
+[node name="Marker2DCreateSun" type="Marker2D" parent="Body/BodyCorrect" index="4"]
+position = Vector2(42, 36)
+
+[node name="SleepComponent" parent="." index="5" node_paths=PackedStringArray("sleep_influence_components")]
+sleep_influence_components = [NodePath("../BlinkComponent"), NodePath("../CreateSunComponent")]
+
+[node name="BlinkComponent" parent="." index="6"]
+all_blink_body_change = Array[ExtResource("7_dmd1b")]([SubResource("Resource_vdr6k")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_6h3r7")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+deterministic = false
+tree_root = SubResource("AnimationNodeBlendTree_fw6sg")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0
+
+[node name="CreateSunComponent" type="Node2D" parent="." index="10" node_paths=PackedStringArray("marker_2d_create_sun")]
+script = ExtResource("11_kknrs")
+marker_2d_create_sun = NodePath("../Body/BodyCorrect/Marker2DCreateSun")
+
+[node name="CreateSunTimer" type="Timer" parent="CreateSunComponent" index="0"]
+one_shot = true
+
+[node name="GrowTimer" type="Timer" parent="." index="11"]
+one_shot = true
+
+[connection signal="timeout" from="CreateSunComponent/CreateSunTimer" to="CreateSunComponent" method="_on_create_sun_timer_timeout"]
+[connection signal="timeout" from="GrowTimer" to="." method="_on_grow_timer_timeout"]

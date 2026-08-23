@@ -1,0 +1,240 @@
+[gd_scene load_steps=29 format=3 uid="uid://g6ybgmhkx6rj"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_ntbhs"]
+[ext_resource type="Script" uid="uid://dg022118rnan8" path="res://scripts/character/plant/plant_033_cabbage_pult.gd" id="2_01mcx"]
+[ext_resource type="Texture2D" uid="uid://dit0i5evvco14" path="res://assets/reanim/PeaShooter_frontleaf_lefttip.png" id="2_4s2r4"]
+[ext_resource type="Texture2D" uid="uid://nj6m28m6k5p1" path="res://assets/reanim/PeaShooter_frontleaf_righttip.png" id="3_lsi5g"]
+[ext_resource type="Texture2D" uid="uid://b7uqfdos6ocy7" path="res://assets/reanim/Cabbagepult_basket.png" id="4_01mcx"]
+[ext_resource type="Texture2D" uid="uid://ch84133e8r30q" path="res://assets/reanim/Cabbagepult_cabbage.png" id="5_4pxcv"]
+[ext_resource type="Texture2D" uid="uid://ypi3oybr0n66" path="res://assets/reanim/Cabbagepult_basket_overlay.png" id="6_v16nm"]
+[ext_resource type="Texture2D" uid="uid://cbcy85auqsqxo" path="res://assets/reanim/Cabbagepult_stalk4.png" id="7_54h42"]
+[ext_resource type="Texture2D" uid="uid://dfh0ujqq7ciin" path="res://assets/reanim/Cabbagepult_stalk3.png" id="8_3rydx"]
+[ext_resource type="Texture2D" uid="uid://bpfr12xfpabt2" path="res://assets/reanim/Cabbagepult_stalk2.png" id="9_cenvh"]
+[ext_resource type="Texture2D" uid="uid://dhxg5sfuuamwo" path="res://assets/reanim/Cabbagepult_stalk1.png" id="10_3l6yy"]
+[ext_resource type="Texture2D" uid="uid://d31i0qu2yufil" path="res://assets/reanim/Cabbagepult_leaf.png" id="11_iy31f"]
+[ext_resource type="Texture2D" uid="uid://doafgbf11qv24" path="res://assets/reanim/Cabbagepult_head.png" id="12_dfp3i"]
+[ext_resource type="Texture2D" uid="uid://2kjeq2b7olbb" path="res://assets/reanim/Cabbagepult_blink1.png" id="13_woeqa"]
+[ext_resource type="Texture2D" uid="uid://b2utpcye3xuco" path="res://assets/reanim/Cabbagepult_eyebrow.png" id="14_16d14"]
+[ext_resource type="Texture2D" uid="uid://300aew7liup" path="res://assets/reanim/PeaShooter_frontleaf.png" id="15_nuffr"]
+[ext_resource type="Animation" uid="uid://bpu4ferhquhcm" path="res://animation/character/plant/033_cabbage_pult/Cabbagepult_idle.tres" id="16_dwpqx"]
+[ext_resource type="Animation" uid="uid://bl7vb1swhnjem" path="res://animation/character/plant/033_cabbage_pult/Cabbagepult_shooting.tres" id="17_a4hjs"]
+[ext_resource type="Script" uid="uid://b5t3ejxgko6nc" path="res://scripts/character/components/attack_behavior_component/component_attack_bullet_pult_base.gd" id="18_lsi5g"]
+[ext_resource type="Script" uid="uid://bafp0ax1lmlge" path="res://scripts/character/components/detect_component/component_detect.gd" id="19_01mcx"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pp5t7"]
+_data = {
+&"Cabbagepult_idle": ExtResource("16_dwpqx"),
+&"Cabbagepult_shooting": ExtResource("17_a4hjs")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ntbhs"]
+animation = &"Cabbagepult_shooting"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4s2r4"]
+animation = &"Cabbagepult_idle"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_lsi5g"]
+fadein_time = 0.2
+fadeout_time = 0.2
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_01mcx"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_4pxcv"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_v16nm"]
+graph_offset = Vector2(-366.321, 106.741)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_4s2r4")
+nodes/Animation/position = Vector2(-380, 120)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_ntbhs")
+"nodes/Animation 2/position" = Vector2(-640, 380)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_lsi5g")
+nodes/OneShot/position = Vector2(-100, 140)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_4pxcv")
+nodes/TimeScale/position = Vector2(120, 140)
+"nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_01mcx")
+"nodes/TimeScale 2/position" = Vector2(-340, 340)
+node_connections = [&"output", 0, &"TimeScale", &"OneShot", 0, &"Animation", &"OneShot", 1, &"TimeScale 2", &"TimeScale", 0, &"OneShot", &"TimeScale 2", 0, &"Animation 2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pxcv"]
+size = Vector2(1000, 5)
+
+[node name="Plant033CabbagePult" node_paths=PackedStringArray("node2d_detect_in_slope") instance=ExtResource("1_ntbhs")]
+script = ExtResource("2_01mcx")
+plant_type = 33
+node2d_detect_in_slope = [NodePath("HurtBoxComponent/HurtBoxDetection"), NodePath("AttackComponent/DetectComponent")]
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-41, -65)
+
+[node name="Cabbagepult_backleaf1" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+position = Vector2(15.361071, 53.35638)
+rotation = 0.26575804
+scale = Vector2(0.556, 0.374)
+skew = -0.07117168
+texture = ExtResource("2_4s2r4")
+centered = false
+
+[node name="Cabbagepult_backleaf2" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+position = Vector2(54.817448, 52.87383)
+rotation = -0.36834624
+scale = Vector2(0.6355572, 0.443)
+skew = 0.047650952
+texture = ExtResource("3_lsi5g")
+centered = false
+
+[node name="Cabbagepult_basket" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+position = Vector2(-13.4006605, -0.73826927)
+rotation = 0.19477451
+scale = Vector2(0.639, 0.639)
+texture = ExtResource("4_01mcx")
+centered = false
+
+[node name="Cabbagepult_cabbage" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+position = Vector2(-9.644281, -5.729545)
+rotation = 0.11813183
+scale = Vector2(0.99708724, 0.99708724)
+texture = ExtResource("5_4pxcv")
+centered = false
+
+[node name="Cabbagepult_basket_overlay" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+position = Vector2(-13.683211, -0.6469936)
+rotation = 0.18635207
+scale = Vector2(0.636, 0.6457383)
+texture = ExtResource("6_v16nm")
+centered = false
+
+[node name="Cabbagepult_stalk4" type="Sprite2D" parent="Body/BodyCorrect" index="5"]
+position = Vector2(15.404032, 12.995968)
+rotation = 0.11009611
+scale = Vector2(0.798, 0.798)
+texture = ExtResource("7_54h42")
+centered = false
+
+[node name="Cabbagepult_stalk3" type="Sprite2D" parent="Body/BodyCorrect" index="6"]
+position = Vector2(24.169134, 11.334898)
+rotation = 0.81626385
+scale = Vector2(0.797, 0.797)
+texture = ExtResource("8_3rydx")
+centered = false
+
+[node name="Cabbagepult_stalk2" type="Sprite2D" parent="Body/BodyCorrect" index="7"]
+position = Vector2(27.92148, 12.7)
+rotation = 0.64553756
+scale = Vector2(0.798, 0.798)
+texture = ExtResource("9_cenvh")
+centered = false
+
+[node name="Cabbagepult_stalk1" type="Sprite2D" parent="Body/BodyCorrect" index="8"]
+position = Vector2(33.847656, 21.608725)
+rotation = 0.11670253
+scale = Vector2(0.7990873, 0.7990873)
+texture = ExtResource("10_3l6yy")
+centered = false
+
+[node name="Cabbagepult_leaf" type="Sprite2D" parent="Body/BodyCorrect" index="9"]
+position = Vector2(39.290615, 11.482552)
+rotation = 0.4697639
+scale = Vector2(0.798, 0.798)
+texture = ExtResource("11_iy31f")
+centered = false
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="10"]
+position = Vector2(15.673827, 28.426172)
+rotation = -0.023602614
+scale = Vector2(0.799, 0.799)
+texture = ExtResource("12_dfp3i")
+centered = false
+
+[node name="Cabbagepult_blink" type="Sprite2D" parent="Body/BodyCorrect" index="11"]
+visible = false
+position = Vector2(43, 48.3)
+rotation = -0.047124
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("13_woeqa")
+centered = false
+
+[node name="Cabbagepult_eyebrow2" type="Sprite2D" parent="Body/BodyCorrect" index="12"]
+position = Vector2(51.882553, 41.817448)
+rotation = 0.253073
+scale = Vector2(0.799, 0.799)
+texture = ExtResource("14_16d14")
+centered = false
+
+[node name="Cabbagepult_eyebrow1" type="Sprite2D" parent="Body/BodyCorrect" index="13"]
+position = Vector2(47.1, 42.808723)
+rotation = 2.56913
+scale = Vector2(0.797, 0.797)
+skew = -3.13985
+texture = ExtResource("14_16d14")
+centered = false
+
+[node name="Frontleaf" type="Sprite2D" parent="Body/BodyCorrect" index="14"]
+position = Vector2(23.417448, 54.773827)
+rotation = 0.10472
+scale = Vector2(0.5714766, 0.4106107)
+texture = ExtResource("15_nuffr")
+centered = false
+
+[node name="Frontleaf_right_tip" type="Sprite2D" parent="Body/BodyCorrect" index="15"]
+position = Vector2(56.71745, 58.5)
+rotation = -0.009171676
+scale = Vector2(0.6821613, 0.4381745)
+texture = ExtResource("3_lsi5g")
+centered = false
+
+[node name="Frontleaf_tip_left" type="Sprite2D" parent="Body/BodyCorrect" index="16"]
+position = Vector2(20.082552, 58.12617)
+rotation = 0.20798735
+scale = Vector2(0.6074296, 0.4451745)
+texture = ExtResource("2_4s2r4")
+centered = false
+
+[node name="Marker2DBullet" type="Marker2D" parent="Body/BodyCorrect" index="17"]
+position = Vector2(25, -7)
+
+[node name="HpControl" parent="HpComponent" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBarHp" parent="HpComponent/HpControl" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelHp" parent="HpComponent/HpControl" index="1"]
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_pp5t7")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+tree_root = SubResource("AnimationNodeBlendTree_v16nm")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
+parameters/TimeScale/scale = 1.0
+"parameters/TimeScale 2/scale" = 2.0
+
+[node name="AttackComponent" type="Node2D" parent="." index="10" node_paths=PackedStringArray("markers_2d_bullet")]
+script = ExtResource("18_lsi5g")
+can_attack_zombie_status = 5
+attack_cd = 3.0
+attack_bullet_type = 9
+markers_2d_bullet = [NodePath("../Body/BodyCorrect/Marker2DBullet")]
+
+[node name="BulletAttackCdTimer" type="Timer" parent="AttackComponent" index="0"]
+
+[node name="DetectComponent" type="Node2D" parent="AttackComponent" index="1"]
+script = ExtResource("19_01mcx")
+
+[node name="Area2D" type="Area2D" parent="AttackComponent/DetectComponent" index="0"]
+position = Vector2(0, -25)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/DetectComponent/Area2D" index="0"]
+position = Vector2(500, 0)
+shape = SubResource("RectangleShape2D_4pxcv")
+
+[connection signal="timeout" from="AttackComponent/BulletAttackCdTimer" to="AttackComponent" method="_on_bullet_attack_cd_timer_timeout"]

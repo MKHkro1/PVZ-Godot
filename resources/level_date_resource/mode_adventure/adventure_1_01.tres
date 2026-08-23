@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ResourceLevelData" load_steps=3 format=3]
+
+[ext_resource type="Script" uid="uid://bke3sg5otco7s" path="res://scripts/resources/level/pre_plant_in_level.gd" id="1_pre"]
+[ext_resource type="Script" uid="uid://bjt3l56exxmdw" path="res://scripts/resources/level/level_data.gd" id="1_ld"]
+
+[resource]
+script = ExtResource("1_ld")
+usable_rows = Array[int]([2])
+zombie_multy = 1
+max_wave = 10
+zombie_refresh_types = Array[int]([1])
+metadata/_custom_type_script = "uid://bjt3l56exxmdw"
+

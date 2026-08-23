@@ -1,0 +1,272 @@
+[gd_scene load_steps=35 format=3 uid="uid://dhnn2kea4vbhd"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_1i1ru"]
+[ext_resource type="Script" uid="uid://is6nausnoy0t" path="res://scripts/character/plant/plant_035_corn_pult.gd" id="2_btqik"]
+[ext_resource type="Texture2D" uid="uid://b5mr8ey3k5b38" path="res://assets/reanim/Cornpult_husk5.png" id="2_px547"]
+[ext_resource type="Texture2D" uid="uid://dhiff2v81wape" path="res://assets/reanim/Cornpult_husk6.png" id="3_j3uml"]
+[ext_resource type="Texture2D" uid="uid://c34rhce01kmx3" path="res://assets/reanim/Cornpult_body.png" id="4_t3okm"]
+[ext_resource type="Texture2D" uid="uid://bbajmrd6xl8hb" path="res://assets/reanim/Cornpult_blink1.png" id="5_btqik"]
+[ext_resource type="Texture2D" uid="uid://b7uqfdos6ocy7" path="res://assets/reanim/Cabbagepult_basket.png" id="6_1v5nr"]
+[ext_resource type="Texture2D" uid="uid://ypi3oybr0n66" path="res://assets/reanim/Cabbagepult_basket_overlay.png" id="7_lqpdm"]
+[ext_resource type="Texture2D" uid="uid://bqviq28gmuns3" path="res://assets/reanim/Cornpult_kernal.png" id="8_jjugt"]
+[ext_resource type="Texture2D" uid="uid://ckgvs70ot3cw4" path="res://assets/reanim/Cornpult_butter.png" id="9_ddfhy"]
+[ext_resource type="Texture2D" uid="uid://im1lwg4ej8fv" path="res://assets/reanim/Cornpult_husk3.png" id="10_yu88b"]
+[ext_resource type="Texture2D" uid="uid://cytnopd2epjgs" path="res://assets/reanim/Cornpult_husktip3.png" id="11_s88wv"]
+[ext_resource type="Texture2D" uid="uid://bbhqqfta66jy3" path="res://assets/reanim/Cornpult_husk1.png" id="12_7olme"]
+[ext_resource type="Texture2D" uid="uid://cqja5st2uvpp8" path="res://assets/reanim/Cornpult_husktip1.png" id="13_a4m87"]
+[ext_resource type="Texture2D" uid="uid://7dsmvhc7gwje" path="res://assets/reanim/Cornpult_husk4.png" id="14_st8fo"]
+[ext_resource type="Texture2D" uid="uid://thxhat42ty1a" path="res://assets/reanim/Cornpult_husk2.png" id="15_n3hh3"]
+[ext_resource type="Texture2D" uid="uid://4np7ydpdsxtv" path="res://assets/reanim/Cornpult_husktip2.png" id="16_eccnh"]
+[ext_resource type="Texture2D" uid="uid://bmjlqqawxj4f" path="res://assets/reanim/Cornpult_stalk1.png" id="17_gy7i5"]
+[ext_resource type="Texture2D" uid="uid://ce5wk77hkwut6" path="res://assets/reanim/Cornpult_stalk2.png" id="18_k64ir"]
+[ext_resource type="Texture2D" uid="uid://c0jiwde0862hq" path="res://assets/reanim/Cornpult_stalk4.png" id="19_c84qq"]
+[ext_resource type="Texture2D" uid="uid://rlj4anlr1koh" path="res://assets/reanim/Cornpult_stalk3.png" id="20_50x1q"]
+[ext_resource type="Texture2D" uid="uid://diyoj22drctsu" path="res://assets/reanim/Cornpult_eyebrow.png" id="21_8sqss"]
+[ext_resource type="Animation" uid="uid://bsio1cqmdn56g" path="res://animation/character/plant/035_corn_pult/Cornpult_idle.tres" id="22_lnxox"]
+[ext_resource type="Animation" uid="uid://dd6u5i6ynqwe3" path="res://animation/character/plant/035_corn_pult/Cornpult_shooting.tres" id="23_yokan"]
+[ext_resource type="Script" uid="uid://df0eavyfmbrdw" path="res://scripts/character/components/attack_behavior_component/component_attack_bullet_corn.gd" id="24_t3okm"]
+[ext_resource type="Script" uid="uid://bafp0ax1lmlge" path="res://scripts/character/components/detect_component/component_detect.gd" id="25_btqik"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sp1kv"]
+_data = {
+&"Cornpult_idle": ExtResource("22_lnxox"),
+&"Cornpult_shooting": ExtResource("23_yokan")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_px547"]
+animation = &"Cornpult_shooting"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j3uml"]
+animation = &"Cornpult_idle"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_t3okm"]
+fadein_time = 0.2
+fadeout_time = 0.2
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_btqik"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_1v5nr"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lqpdm"]
+nodes/output/position = Vector2(560, 120)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_j3uml")
+nodes/Animation/position = Vector2(20, 60)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_px547")
+"nodes/Animation 2/position" = Vector2(-200, 320)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_t3okm")
+nodes/OneShot/position = Vector2(220, 120)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_1v5nr")
+nodes/TimeScale/position = Vector2(400, 100)
+"nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_btqik")
+"nodes/TimeScale 2/position" = Vector2(40, 280)
+node_connections = [&"output", 0, &"TimeScale", &"OneShot", 0, &"Animation", &"OneShot", 1, &"TimeScale 2", &"TimeScale", 0, &"OneShot", &"TimeScale 2", 0, &"Animation 2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1v5nr"]
+size = Vector2(1000, 5)
+
+[node name="Plant035CornPult" node_paths=PackedStringArray("node2d_detect_in_slope") instance=ExtResource("1_1i1ru")]
+script = ExtResource("2_btqik")
+plant_type = 35
+node2d_detect_in_slope = [NodePath("HurtBoxComponent/HurtBoxDetection"), NodePath("AttackComponent/DetectComponent")]
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-45, -67)
+
+[node name="Cornpult_husk5" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+position = Vector2(56.323444, 55.47448)
+rotation = -0.0022270775
+scale = Vector2(0.8434273, 0.8015312)
+texture = ExtResource("2_px547")
+centered = false
+
+[node name="Cornpult_husk6" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+position = Vector2(15.353116, 55.02344)
+rotation = 0.0044539
+scale = Vector2(0.8434273, 0.8015312)
+texture = ExtResource("3_j3uml")
+centered = false
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+position = Vector2(21.82552, 21.297922)
+scale = Vector2(0.85921365, 0.754276)
+texture = ExtResource("4_t3okm")
+centered = false
+
+[node name="Cornpult_blink" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+visible = false
+position = Vector2(45.8, 46.2)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_btqik")
+centered = false
+
+[node name="Cabbagepult_basket" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+position = Vector2(-17.723442, 21.628185)
+rotation = -0.26526394
+scale = Vector2(0.599, 0.599)
+texture = ExtResource("6_1v5nr")
+centered = false
+
+[node name="Cabbagepult_basket2" type="Sprite2D" parent="Body/BodyCorrect" index="5"]
+position = Vector2(-17.548962, 21.728186)
+rotation = -0.26526394
+scale = Vector2(0.599, 0.599)
+texture = ExtResource("7_lqpdm")
+centered = false
+
+[node name="Cornpult_kernal" type="Sprite2D" parent="Body/BodyCorrect" index="6"]
+position = Vector2(-14.923442, 22.828186)
+rotation = -0.7861903
+scale = Vector2(0.9484896, 0.9484896)
+texture = ExtResource("8_jjugt")
+centered = false
+
+[node name="Cornpult_butter" type="Sprite2D" parent="Body/BodyCorrect" index="7"]
+visible = false
+position = Vector2(-21.97448, -5.4635043)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("9_ddfhy")
+centered = false
+
+[node name="Cabbagepult_basket_overlay" type="Sprite2D" parent="Body/BodyCorrect" index="8"]
+position = Vector2(-17.823442, 21.502666)
+rotation = -0.26526394
+scale = Vector2(0.599, 0.599)
+texture = ExtResource("7_lqpdm")
+centered = false
+
+[node name="Cornpult_husk3" type="Sprite2D" parent="Body/BodyCorrect" index="9"]
+position = Vector2(10.627597, 58.223442)
+rotation = 0.0022270775
+scale = Vector2(0.8434273, 0.8015312)
+texture = ExtResource("10_yu88b")
+centered = false
+
+[node name="Cornpult_husktip3" type="Sprite2D" parent="Body/BodyCorrect" index="10"]
+position = Vector2(5.780713, 58.921364)
+rotation = 0.015589032
+scale = Vector2(0.8434273, 0.8015312)
+texture = ExtResource("11_s88wv")
+centered = false
+
+[node name="Cornpult_husk1" type="Sprite2D" parent="Body/BodyCorrect" index="11"]
+position = Vector2(17.953115, 61.54896)
+rotation = 0.0013361955
+scale = Vector2(0.8434273, 0.8015312)
+texture = ExtResource("12_7olme")
+centered = false
+
+[node name="Cornpult_husktip1" type="Sprite2D" parent="Body/BodyCorrect" index="12"]
+position = Vector2(10.180713, 67.12137)
+rotation = 0.012471073
+scale = Vector2(0.8434273, 0.80280715)
+skew = 0.00979881
+texture = ExtResource("13_a4m87")
+centered = false
+
+[node name="Cornpult_husk4" type="Sprite2D" parent="Body/BodyCorrect" index="13"]
+position = Vector2(56.923443, 61.47448)
+rotation = -0.0017815089
+scale = Vector2(0.8434273, 0.8015312)
+texture = ExtResource("14_st8fo")
+centered = false
+
+[node name="Cornpult_husk2" type="Sprite2D" parent="Body/BodyCorrect" index="14"]
+position = Vector2(44.84896, 63)
+rotation = -0.0040085865
+scale = Vector2(0.8434273, 0.8015312)
+texture = ExtResource("15_n3hh3")
+centered = false
+
+[node name="Cornpult_husktip2" type="Sprite2D" parent="Body/BodyCorrect" index="15"]
+position = Vector2(63.346886, 65.47448)
+rotation = -0.0062356642
+scale = Vector2(0.8434273, 0.8025519)
+skew = -0.010244046
+texture = ExtResource("16_eccnh")
+centered = false
+
+[node name="Cornpult_stalk1" type="Sprite2D" parent="Body/BodyCorrect" index="16"]
+position = Vector2(38, 12.523442)
+rotation = 0.0013361955
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("17_gy7i5")
+centered = false
+
+[node name="Cornpult_stalk2" type="Sprite2D" parent="Body/BodyCorrect" index="17"]
+position = Vector2(25.551039, 13.170325)
+rotation = -0.066995315
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("18_k64ir")
+centered = false
+
+[node name="Cornpult_stalk4" type="Sprite2D" parent="Body/BodyCorrect" index="18"]
+position = Vector2(13.851039, 20.717209)
+rotation = 0.10935496
+scale = Vector2(0.755, 0.755)
+texture = ExtResource("19_c84qq")
+centered = false
+
+[node name="Cornpult_stalk3" type="Sprite2D" parent="Body/BodyCorrect" index="19"]
+position = Vector2(15, 23.017208)
+rotation = -0.14980817
+scale = Vector2(0.79974484, 0.79974484)
+texture = ExtResource("20_50x1q")
+centered = false
+
+[node name="Cornpult_eyebrow1" type="Sprite2D" parent="Body/BodyCorrect" index="20"]
+position = Vector2(38.1, 45.99792)
+rotation = -0.2613902
+scale = Vector2(0.79974484, 0.79974484)
+texture = ExtResource("21_8sqss")
+centered = false
+
+[node name="Cornpult_eyebrow2" type="Sprite2D" parent="Body/BodyCorrect" index="21"]
+position = Vector2(65.1, 45.69792)
+rotation = 3.4047272
+scale = Vector2(0.6207448, 0.6207448)
+skew = -3.14159
+texture = ExtResource("21_8sqss")
+centered = false
+
+[node name="Marker2DBullet" type="Marker2D" parent="Body/BodyCorrect" index="22"]
+position = Vector2(30, -32)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_sp1kv")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+tree_root = SubResource("AnimationNodeBlendTree_lqpdm")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
+parameters/TimeScale/scale = 1.0
+"parameters/TimeScale 2/scale" = 2.0
+
+[node name="AttackComponent" type="Node2D" parent="." index="10" node_paths=PackedStringArray("sprite_2d_butter_in_body", "markers_2d_bullet")]
+script = ExtResource("24_t3okm")
+p_butter = 0.25
+sprite_2d_butter_in_body = NodePath("../Body/BodyCorrect/Cornpult_butter")
+can_attack_zombie_status = 5
+attack_cd = 3.0
+attack_bullet_type = 9
+markers_2d_bullet = [NodePath("../Body/BodyCorrect/Marker2DBullet")]
+
+[node name="BulletAttackCdTimer" type="Timer" parent="AttackComponent" index="0"]
+
+[node name="DetectComponent" type="Node2D" parent="AttackComponent" index="1"]
+script = ExtResource("25_btqik")
+
+[node name="Area2D" type="Area2D" parent="AttackComponent/DetectComponent" index="0"]
+position = Vector2(0, -25)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/DetectComponent/Area2D" index="0"]
+position = Vector2(500, 0)
+shape = SubResource("RectangleShape2D_1v5nr")
+
+[connection signal="timeout" from="AttackComponent/BulletAttackCdTimer" to="AttackComponent" method="_on_bullet_attack_cd_timer_timeout"]

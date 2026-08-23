@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://mrofp8xsn0xd"]
+
+[ext_resource type="PackedScene" uid="uid://45gwbrqotnwa" path="res://scenes/bullet/bullet_000_track_base.tscn" id="1_dbrh7"]
+[ext_resource type="Texture2D" uid="uid://spfd63h0e5vv" path="res://assets/image/projectile/ProjectileCactus.png" id="2_hfvkc"]
+
+[node name="Bullet014CattailBullet" instance=ExtResource("1_dbrh7")]
+bullet_type = 14
+bullet_mode = 1
+
+[node name="BulletBody" parent="Body" index="0"]
+texture = ExtResource("2_hfvkc")
+
+[node name="BulletEffect" parent="." index="2"]
+is_bullet_effect = false

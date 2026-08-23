@@ -1,0 +1,760 @@
+[gd_scene load_steps=47 format=3 uid="uid://cqo7ru5lo8e6g"]
+
+[ext_resource type="Theme" uid="uid://cx302yraw066y" path="res://data/ChooesLevel.tres" id="1_ehgxy"]
+[ext_resource type="Script" uid="uid://jru6xfv7g4f1" path="res://scripts/choose_level/choose_level.gd" id="1_o008e"]
+[ext_resource type="Texture2D" uid="uid://bwevuvs5nnwfx" path="res://assets/image/ui/ui_challenge/Challenge_Background.jpg" id="2_xopa1"]
+[ext_resource type="Texture2D" uid="uid://hb4b6ujaahoc" path="res://assets/image/Almanac/Almanac_GroundDay.jpg" id="4_e2jkj"]
+[ext_resource type="Resource" uid="uid://c8yt6n65ponc6" path="res://resources/level_date_resource/mode_minigame/minigame_01_bowling.tres" id="5_mrsyh"]
+[ext_resource type="PackedScene" uid="uid://bqvqjd3yshp8r" path="res://scenes/character/zombie/zombie_020_yeti.tscn" id="7_my4l7"]
+[ext_resource type="Texture2D" uid="uid://osds5r8hvsmb" path="res://assets/reanim/Wallnut_body.png" id="7_pw6t1"]
+[ext_resource type="Texture2D" uid="uid://cpbkvykx6yq07" path="res://assets/reanim/Wallnut_twitch.png" id="8_bkyeq"]
+[ext_resource type="Resource" uid="uid://3mvuumsl5v6c" path="res://resources/level_date_resource/mode_minigame/minigame_02_hammer_zombie.tres" id="8_fgi2n"]
+[ext_resource type="Texture2D" uid="uid://bvp2j68muqgm8" path="res://assets/image/Almanac/Almanac_GroundNight.jpg" id="8_we3l7"]
+[ext_resource type="Texture2D" uid="uid://bqtnl31pv3rv3" path="res://assets/reanim/Hammer_3.png" id="9_e2jkj"]
+[ext_resource type="Texture2D" uid="uid://co3e8k6uwm4hi" path="res://assets/reanim/Wallnut_blink1.png" id="9_rivfv"]
+[ext_resource type="PackedScene" uid="uid://bhjnqm3kqr2fq" path="res://scenes/choose_level/choose_level_button.tscn" id="9_xsph7"]
+[ext_resource type="Texture2D" uid="uid://qtifu6lsmq6x" path="res://assets/reanim/hammer_1.png" id="10_sb4cu"]
+[ext_resource type="Texture2D" uid="uid://dweon5ml8otw5" path="res://assets/reanim/Hammer_2.png" id="11_mrsyh"]
+[ext_resource type="PackedScene" uid="uid://cfc5vrs1dcy0j" path="res://scenes/character/plant/plant_001_pea_shooter_single.tscn" id="12_fgi2n"]
+[ext_resource type="Resource" uid="uid://cxdnr4j80e85h" path="res://resources/level_date_resource/mode_minigame/minigame_03_mini_zombie.tres" id="13_bkyeq"]
+[ext_resource type="PackedScene" uid="uid://b72u5kwdpw4te" path="res://scenes/character/zombie/zombie_001_norm.tscn" id="13_pw6t1"]
+[ext_resource type="Texture2D" uid="uid://om7aubyyu3le" path="res://assets/image/ui/ui_level/SeedChooser_Button2.png" id="13_v8ms4"]
+[ext_resource type="Resource" uid="uid://byaabbkntnwec" path="res://resources/level_date_resource/mode_minigame/minigame_101_small_gambling.tres" id="14_5d8uv"]
+[ext_resource type="Texture2D" uid="uid://dwva3w3r5kjvb" path="res://assets/image/Almanac/Almanac_GroundNightPool.jpg" id="14_bkyeq"]
+[ext_resource type="Texture2D" uid="uid://cx854vkq3n8gs" path="res://assets/image/ui/ui_level/SeedChooser_Button2_Glow.png" id="14_xsph7"]
+[ext_resource type="PackedScene" uid="uid://cv3iw5srgpusv" path="res://scenes/main_game_bg/rain.tscn" id="15_rivfv"]
+[ext_resource type="Theme" uid="uid://em12la0rqibq" path="res://data/PVZ_theme.tres" id="16_iqxly"]
+[ext_resource type="Resource" uid="uid://bdrb4tnjvx61w" path="res://resources/level_date_resource/mode_minigame/minigame_04_seed_rain.tres" id="16_rivfv"]
+[ext_resource type="Texture2D" uid="uid://cdm356vgex30b" path="res://assets/image/ui/ui_card/SeedPacket_Larger.png" id="17_xlo1v"]
+[ext_resource type="Texture2D" uid="uid://d0hpo2yp78fwc" path="res://assets/image/plant/plantshadow.png" id="18_f1qdu"]
+[ext_resource type="Texture2D" uid="uid://cbhaawnc37cwe" path="res://assets/reanim/LilyPad_body.png" id="19_4nhff"]
+[ext_resource type="Texture2D" uid="uid://dmmcjbsd028oj" path="res://assets/reanim/LilyPad_blink1.png" id="20_bku10"]
+[ext_resource type="Resource" uid="uid://0vrftjy7v4a2" path="res://resources/level_date_resource/mode_minigame/minigame_05_column.tres" id="24_iqxly"]
+[ext_resource type="Texture2D" uid="uid://xc3kqag3vqlq" path="res://assets/image/ui/ui_level/Almanac_CloseButton.png" id="25_ta0hi"]
+[ext_resource type="Texture2D" uid="uid://c82uuprowr5d" path="res://assets/image/ui/ui_level/Almanac_CloseButtonHighlight.png" id="26_fvivu"]
+[ext_resource type="BitMap" uid="uid://bc7yq02xscrlr" path="res://assets/image/ui/ui_level/Almanac_CloseButton_Mask.png" id="27_2sh17"]
+[ext_resource type="Texture2D" uid="uid://ddq8w41grl3re" path="res://assets/image/choose_level/111.png" id="27_pw6t1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pmduy"]
+
+[sub_resource type="Animation" id="Animation_msri8"]
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/BowlingCenter:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5707964, 3.1415927, 4.712389, 6.2831855]
+}
+
+[sub_resource type="Animation" id="Animation_ea7g5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/BowlingCenter:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7lapw"]
+_data = {
+&"Bowling": SubResource("Animation_msri8"),
+&"RESET": SubResource("Animation_ea7g5")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m7q7w"]
+animation = &"Bowling"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_r0uf5"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_iqxly"]
+graph_offset = Vector2(-287, 71)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_r0uf5")
+nodes/TimeScale/position = Vector2(120, 140)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_m7q7w")
+nodes/Animation/position = Vector2(-60, 140)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icdg3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ug5o"]
+
+[sub_resource type="SystemFont" id="SystemFont_mbc5i"]
+font_names = PackedStringArray("Sans-Serif")
+font_weight = 500
+hinting = 2
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_we3l7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1i0xb"]
+
+[node name="ChooseLevel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ehgxy")
+script = ExtResource("1_o008e")
+game_mode = 102
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xopa1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.0
+offset_top = 22.0
+offset_right = 77.0
+offset_bottom = 72.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 6
+theme_override_font_sizes/font_size = 36
+text = "迷 你 游 戏"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AllPage" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="AllPage"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -365.0
+offset_top = 99.0
+offset_right = 367.0
+offset_bottom = 568.0
+grow_horizontal = 2
+theme_override_constants/h_separation = 53
+theme_override_constants/v_separation = 3
+columns = 5
+
+[node name="ChooseLevelButton" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("5_mrsyh")
+
+[node name="Label" parent="AllPage/GridContainer/ChooseLevelButton/TextureButton" index="0"]
+text = "保龄球"
+
+[node name="Panel" type="Panel" parent="AllPage/GridContainer/ChooseLevelButton"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.3976
+offset_top = 4.3855286
+offset_right = 42.6024
+offset_bottom = 70.3855
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pmduy")
+
+[node name="TextureRect" type="TextureRect" parent="AllPage/GridContainer/ChooseLevelButton/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = -39.0
+offset_right = 145.0
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_e2jkj")
+
+[node name="Plant1001WallNutBowling" type="Node2D" parent="AllPage/GridContainer/ChooseLevelButton/Panel/TextureRect"]
+position = Vector2(92.32933, 94.35751)
+
+[node name="Body" type="Node2D" parent="AllPage/GridContainer/ChooseLevelButton/Panel/TextureRect/Plant1001WallNutBowling"]
+
+[node name="BowlingCenter" type="Node2D" parent="AllPage/GridContainer/ChooseLevelButton/Panel/TextureRect/Plant1001WallNutBowling/Body"]
+position = Vector2(0, -28)
+
+[node name="BodyCorrect" type="Node2D" parent="AllPage/GridContainer/ChooseLevelButton/Panel/TextureRect/Plant1001WallNutBowling/Body/BowlingCenter"]
+position = Vector2(0, 30)
+
+[node name="_ground" type="Sprite2D" parent="AllPage/GridContainer/ChooseLevelButton/Panel/TextureRect/Plant1001WallNutBowling/Body/BowlingCenter/BodyCorrect"]
+position = Vector2(-42, -71)
+centered = false
+
+[node name="Anim_idle" type="Sprite2D" parent="AllPage/GridContainer/ChooseLevelButton/Panel/TextureRect/Plant1001WallNutBowling/Body/BowlingCenter/BodyCorrect"]
+position = Vector2(-42, -71)
+centered = false
+
+[node name="Anim_face" type="Sprite2D" parent="AllPage/GridContainer/ChooseLevelButton/Panel/TextureRect/Plant1001WallNutBowling/Body/BowlingCenter/BodyCorrect"]
+position = Vector2(-38.163, -62.7476)
+rotation = -0.0454682
+scale = Vector2(0.7, 0.68937)
+texture = ExtResource("7_pw6t1")
+centered = false
+
+[node name="Anim_blink_twitch" type="Sprite2D" parent="AllPage/GridContainer/ChooseLevelButton/Panel/TextureRect/Plant1001WallNutBowling/Body/BowlingCenter/BodyCorrect"]
+visible = false
+position = Vector2(-14.5894, -8.3159)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("8_bkyeq")
+centered = false
+
+[node name="Anim_blink_twice" type="Sprite2D" parent="AllPage/GridContainer/ChooseLevelButton/Panel/TextureRect/Plant1001WallNutBowling/Body/BowlingCenter/BodyCorrect"]
+visible = false
+position = Vector2(-15.7894, -22.3159)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("9_rivfv")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AllPage/GridContainer/ChooseLevelButton/Panel/TextureRect/Plant1001WallNutBowling"]
+libraries = {
+&"": SubResource("AnimationLibrary_7lapw")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="AllPage/GridContainer/ChooseLevelButton/Panel/TextureRect/Plant1001WallNutBowling"]
+tree_root = SubResource("AnimationNodeBlendTree_iqxly")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0
+
+[node name="ChooseLevelButton2" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("8_fgi2n")
+
+[node name="Label" parent="AllPage/GridContainer/ChooseLevelButton2/TextureButton" index="0"]
+text = "锤僵尸"
+
+[node name="Panel" type="Panel" parent="AllPage/GridContainer/ChooseLevelButton2"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.93979
+offset_top = 0.98791504
+offset_right = 42.06021
+offset_bottom = 68.9879
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_icdg3")
+
+[node name="TextureRect" type="TextureRect" parent="AllPage/GridContainer/ChooseLevelButton2/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -51.0
+offset_right = 141.0
+offset_bottom = 149.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_we3l7")
+
+[node name="Hammer" type="Node2D" parent="AllPage/GridContainer/ChooseLevelButton2/Panel"]
+position = Vector2(45.241, 35.5121)
+scale = Vector2(0.51, 0.51)
+
+[node name="Body" type="Node2D" parent="AllPage/GridContainer/ChooseLevelButton2/Panel/Hammer"]
+position = Vector2(-62, -11)
+
+[node name="Hammer_3" type="Sprite2D" parent="AllPage/GridContainer/ChooseLevelButton2/Panel/Hammer/Body"]
+position = Vector2(57.9, -19.3)
+rotation = 1.11527
+scale = Vector2(0.797, 0.797)
+texture = ExtResource("9_e2jkj")
+centered = false
+
+[node name="Hammer_2" type="Sprite2D" parent="AllPage/GridContainer/ChooseLevelButton2/Panel/Hammer/Body"]
+position = Vector2(74.6, -29.3)
+rotation = 1.11527
+scale = Vector2(0.797, 0.797)
+texture = ExtResource("10_sb4cu")
+centered = false
+
+[node name="Hammer1" type="Sprite2D" parent="AllPage/GridContainer/ChooseLevelButton2/Panel/Hammer/Body"]
+position = Vector2(65.3, 4.1)
+rotation = 1.11527
+scale = Vector2(0.797, 0.797)
+texture = ExtResource("11_mrsyh")
+centered = false
+
+[node name="ChooseLevelButton3" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("13_bkyeq")
+
+[node name="Label" parent="AllPage/GridContainer/ChooseLevelButton3/TextureButton" index="0"]
+text = "小僵尸大麻烦"
+
+[node name="Panel" type="Panel" parent="AllPage/GridContainer/ChooseLevelButton3"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0ug5o")
+
+[node name="TextureRect" type="TextureRect" parent="AllPage/GridContainer/ChooseLevelButton3/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.5
+offset_top = -39.0
+offset_right = 135.5
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_e2jkj")
+
+[node name="Plant001PeaShooterSingle" parent="AllPage/GridContainer/ChooseLevelButton3/Panel/TextureRect" node_paths=PackedStringArray("node_no_change_direction") instance=ExtResource("12_fgi2n")]
+position = Vector2(85.8333, 88.115)
+node_no_change_direction = [NodePath("HpComponent"), NodePath("SleepComponent"), null]
+character_init_type = 1
+
+[node name="Zombie001Norm" parent="AllPage/GridContainer/ChooseLevelButton3/Panel/TextureRect" instance=ExtResource("13_pw6t1")]
+position = Vector2(151.66666, 93.33333)
+scale = Vector2(0.5, 0.5)
+character_init_type = 1
+
+[node name="ChooseLevelButton4" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("16_rivfv")
+
+[node name="Label" parent="AllPage/GridContainer/ChooseLevelButton4/TextureButton" index="0"]
+text = "种子雨"
+
+[node name="Panel" type="Panel" parent="AllPage/GridContainer/ChooseLevelButton4"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0ug5o")
+
+[node name="TextureRect" type="TextureRect" parent="AllPage/GridContainer/ChooseLevelButton4/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("14_bkyeq")
+
+[node name="Rain" parent="AllPage/GridContainer/ChooseLevelButton4/Panel/TextureRect" instance=ExtResource("15_rivfv")]
+layout_mode = 0
+offset_left = -16.361694
+offset_top = 38.235672
+offset_right = 186.97168
+offset_bottom = 193.23564
+
+[node name="rainParticles" parent="AllPage/GridContainer/ChooseLevelButton4/Panel/TextureRect/Rain" index="3"]
+position = Vector2(118.33334, 4.9999905)
+
+[node name="Card17" type="Control" parent="AllPage/GridContainer/ChooseLevelButton4/Panel/TextureRect"]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -35.0
+offset_right = 25.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("16_iqxly")
+
+[node name="CardBg" type="TextureRect" parent="AllPage/GridContainer/ChooseLevelButton4/Panel/TextureRect/Card17"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("17_xlo1v")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Cost" type="Label" parent="AllPage/GridContainer/ChooseLevelButton4/Panel/TextureRect/Card17/CardBg"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.78
+anchor_right = 0.65
+anchor_bottom = 0.95
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = SubResource("SystemFont_mbc5i")
+theme_override_font_sizes/font_size = 10
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CharacterStatic" type="Node2D" parent="AllPage/GridContainer/ChooseLevelButton4/Panel/TextureRect/Card17/CardBg"]
+position = Vector2(24, 30)
+
+[node name="Plant017LilyPad" type="Node2D" parent="AllPage/GridContainer/ChooseLevelButton4/Panel/TextureRect/Card17/CardBg/CharacterStatic"]
+position = Vector2(3, 15)
+scale = Vector2(0.5, 0.5)
+
+[node name="Shadow" type="Sprite2D" parent="AllPage/GridContainer/ChooseLevelButton4/Panel/TextureRect/Card17/CardBg/CharacterStatic/Plant017LilyPad"]
+visible = false
+texture = ExtResource("18_f1qdu")
+
+[node name="Body" type="Node2D" parent="AllPage/GridContainer/ChooseLevelButton4/Panel/TextureRect/Card17/CardBg/CharacterStatic/Plant017LilyPad"]
+
+[node name="BodyCorrect" type="Node2D" parent="AllPage/GridContainer/ChooseLevelButton4/Panel/TextureRect/Card17/CardBg/CharacterStatic/Plant017LilyPad/Body"]
+position = Vector2(-44, -67)
+
+[node name="shadow" type="Sprite2D" parent="AllPage/GridContainer/ChooseLevelButton4/Panel/TextureRect/Card17/CardBg/CharacterStatic/Plant017LilyPad/Body/BodyCorrect"]
+visible = false
+position = Vector2(40, 61)
+texture = ExtResource("18_f1qdu")
+
+[node name="Anim_idle" type="Sprite2D" parent="AllPage/GridContainer/ChooseLevelButton4/Panel/TextureRect/Card17/CardBg/CharacterStatic/Plant017LilyPad/Body/BodyCorrect"]
+position = Vector2(-0.2, 5.5)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("19_4nhff")
+centered = false
+
+[node name="Anim_blink" type="Sprite2D" parent="AllPage/GridContainer/ChooseLevelButton4/Panel/TextureRect/Card17/CardBg/CharacterStatic/Plant017LilyPad/Body/BodyCorrect"]
+visible = false
+position = Vector2(46, 50)
+scale = Vector2(0.735294, 0.695652)
+texture = ExtResource("20_bku10")
+centered = false
+
+[node name="ChooseLevelButton5" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("24_iqxly")
+
+[node name="Label" parent="AllPage/GridContainer/ChooseLevelButton5/TextureButton" index="0"]
+text = "柱子"
+
+[node name="Panel" type="Panel" parent="AllPage/GridContainer/ChooseLevelButton5"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.93979
+offset_top = 0.98791504
+offset_right = 42.06021
+offset_bottom = 68.9879
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_we3l7")
+
+[node name="TextureRect" type="TextureRect" parent="AllPage/GridContainer/ChooseLevelButton5/Panel"]
+layout_mode = 0
+offset_left = -1.0602112
+offset_top = -4.987915
+offset_right = 88.93979
+offset_bottom = 76.012085
+texture = ExtResource("27_pw6t1")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ChooseLevelButton6" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+
+[node name="ChooseLevelButton7" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+
+[node name="ChooseLevelButton8" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+
+[node name="ChooseLevelButton9" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+
+[node name="ChooseLevelButton10" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+
+[node name="ChooseLevelButton11" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+
+[node name="ChooseLevelButton12" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+
+[node name="ChooseLevelButton13" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+
+[node name="ChooseLevelButton14" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+
+[node name="ChooseLevelButton15" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+
+[node name="ChooseLevelButton16" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+
+[node name="ChooseLevelButton17" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+
+[node name="ChooseLevelButton18" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+
+[node name="ChooseLevelButton19" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+
+[node name="ChooseLevelButton20" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+
+[node name="GridContainer2" type="GridContainer" parent="AllPage"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -365.0
+offset_top = 99.0
+offset_right = 367.0
+offset_bottom = 570.0
+grow_horizontal = 2
+theme_override_constants/h_separation = 53
+theme_override_constants/v_separation = 3
+columns = 5
+
+[node name="ChooseLevelButton" parent="AllPage/GridContainer2" instance=ExtResource("9_xsph7")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("14_5d8uv")
+
+[node name="Label" parent="AllPage/GridContainer2/ChooseLevelButton/TextureButton" index="0"]
+text = "小赌怡情"
+
+[node name="Panel" type="Panel" parent="AllPage/GridContainer2/ChooseLevelButton"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.0
+offset_top = 2.13101
+offset_right = 46.0
+offset_bottom = 74.131
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1i0xb")
+
+[node name="TextureRect" type="TextureRect" parent="AllPage/GridContainer2/ChooseLevelButton/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = -39.0
+offset_right = 145.0
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_e2jkj")
+
+[node name="Zombie020Yeti" parent="AllPage/GridContainer2/ChooseLevelButton/Panel/TextureRect" instance=ExtResource("7_my4l7")]
+position = Vector2(92.5, 94.7817)
+scale = Vector2(0.5, 0.5)
+character_init_type = 1
+
+[node name="MainMenu" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -31.0
+offset_right = -55.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("25_ta0hi")
+texture_pressed = ExtResource("26_fvivu")
+texture_click_mask = ExtResource("27_2sh17")
+
+[node name="Label" type="Label" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = -10.0
+offset_right = 18.5
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "主菜单"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Last" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -32.0
+offset_right = -49.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("13_v8ms4")
+texture_pressed = ExtResource("14_xsph7")
+texture_hover = ExtResource("14_xsph7")
+texture_click_mask = ExtResource("27_2sh17")
+
+[node name="Label" type="Label" parent="Last"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "上一页"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Next" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 54.0
+offset_top = -31.0
+offset_right = 165.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("13_v8ms4")
+texture_pressed = ExtResource("14_xsph7")
+texture_hover = ExtResource("14_xsph7")
+texture_click_mask = ExtResource("27_2sh17")
+
+[node name="Label" type="Label" parent="Next"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "下一页"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelPage" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 55.0
+offset_top = -30.0
+offset_right = 122.0
+offset_bottom = -10.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "当前页数:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MainMenu" to="." method="back_start_menu"]
+[connection signal="pressed" from="Last" to="." method="_on_last_pressed"]
+[connection signal="pressed" from="Next" to="." method="_on_next_pressed"]
+
+[editable path="AllPage/GridContainer/ChooseLevelButton"]
+[editable path="AllPage/GridContainer/ChooseLevelButton2"]
+[editable path="AllPage/GridContainer/ChooseLevelButton3"]
+[editable path="AllPage/GridContainer/ChooseLevelButton4"]
+[editable path="AllPage/GridContainer/ChooseLevelButton4/Panel/TextureRect/Rain"]
+[editable path="AllPage/GridContainer/ChooseLevelButton5"]
+[editable path="AllPage/GridContainer2/ChooseLevelButton"]

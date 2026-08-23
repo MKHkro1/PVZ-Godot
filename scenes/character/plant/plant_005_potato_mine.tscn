@@ -1,0 +1,307 @@
+[gd_scene load_steps=40 format=3 uid="uid://b5hkuknpeg7bl"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_8djfp"]
+[ext_resource type="Script" uid="uid://becq5646c67s7" path="res://scripts/character/plant/plant_005_potato_mine.gd" id="2_0r7iw"]
+[ext_resource type="Texture2D" uid="uid://bo22elcj4cnrl" path="res://assets/reanim/PotatoMine_rock4.png" id="2_q8gyy"]
+[ext_resource type="Texture2D" uid="uid://cwcs1c31vf7xx" path="res://assets/reanim/PotatoMine_rock2.png" id="3_gxhax"]
+[ext_resource type="Texture2D" uid="uid://bem7ao15bhj4u" path="res://assets/reanim/PotatoMine_stem.png" id="4_uu0y5"]
+[ext_resource type="Texture2D" uid="uid://nqtupvaignh1" path="res://assets/reanim/PotatoMine_blink2.png" id="5_0r7iw"]
+[ext_resource type="Texture2D" uid="uid://ycnbibi4ckni" path="res://assets/reanim/PotatoMine_light1.png" id="6_36d07"]
+[ext_resource type="Texture2D" uid="uid://bu4nphfht0ry0" path="res://assets/reanim/PotatoMine_rock6.png" id="7_27vsk"]
+[ext_resource type="Texture2D" uid="uid://co2k82lctyh32" path="res://assets/reanim/PotatoMine_rock1.png" id="8_c7j4p"]
+[ext_resource type="Texture2D" uid="uid://bilk171gldfxp" path="res://assets/reanim/PotatoMine_rock3.png" id="9_tq0os"]
+[ext_resource type="Texture2D" uid="uid://cfpjpv8v0tdgo" path="res://assets/reanim/PotatoMine_rock5.png" id="10_iq31m"]
+[ext_resource type="Animation" uid="uid://cenx6nfh0tar8" path="res://animation/character/plant/005_potato_mine/PotatoMine_armed.tres" id="11_kp7v2"]
+[ext_resource type="Animation" uid="uid://bjb0syhfu22jj" path="res://animation/character/plant/005_potato_mine/PotatoMine_light.tres" id="12_6w1u8"]
+[ext_resource type="Animation" uid="uid://bo23aae8c1lab" path="res://animation/character/plant/005_potato_mine/PotatoMine_mashed.tres" id="13_hi8k1"]
+[ext_resource type="Animation" uid="uid://rourh2mea42j" path="res://animation/character/plant/005_potato_mine/PotatoMine_rise.tres" id="14_l48fy"]
+[ext_resource type="Script" uid="uid://jl0nl4a234bc" path="res://scripts/resources/resource_body_change.gd" id="15_6w1u8"]
+[ext_resource type="Texture2D" uid="uid://dnilkxbadh0rl" path="res://assets/reanim/PotatoMine_blink1.png" id="16_hi8k1"]
+[ext_resource type="Script" uid="uid://l0umdgng0y2m" path="res://scripts/character/components/bomb_component/component_bomb_norm.gd" id="20_iq31m"]
+[ext_resource type="Script" uid="uid://cp6q723x2kd2g" path="res://scripts/fx/plant_effect/plant_effect_002_bomb_potato_mine.gd" id="21_kp7v2"]
+[ext_resource type="Texture2D" uid="uid://c8f1ytvtikhaa" path="res://assets/image/particles/PotatoMine_particles.png" id="22_6w1u8"]
+[ext_resource type="Texture2D" uid="uid://c7xenjnldyucf" path="res://assets/reanim/PotatoMine_mashed.png" id="23_hi8k1"]
+[ext_resource type="Script" uid="uid://bafp0ax1lmlge" path="res://scripts/character/components/detect_component/component_detect.gd" id="24_kp7v2"]
+
+[sub_resource type="Resource" id="Resource_l48fy"]
+script = ExtResource("15_6w1u8")
+sprite_change = Array[NodePath]([NodePath("../Body/BodyCorrect/PotatoMine_blink")])
+sprite_change_texture = Array[Texture2D]([ExtResource("16_hi8k1"), ExtResource("5_0r7iw")])
+metadata/_custom_type_script = "uid://jl0nl4a234bc"
+
+[sub_resource type="Animation" id="Animation_iq31m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/BodyCorrect/PotatoMine_blink:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(30, 50)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8d14f"]
+_data = {
+&"PotatoMine_armed": ExtResource("11_kp7v2"),
+&"PotatoMine_light": ExtResource("12_6w1u8"),
+&"PotatoMine_mashed": ExtResource("13_hi8k1"),
+&"PotatoMine_rise": ExtResource("14_l48fy"),
+&"RESET": SubResource("Animation_iq31m")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_civy0"]
+animation = &"PotatoMine_armed"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aje7v"]
+animation = &"PotatoMine_light"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_evxum"]
+animation = &"PotatoMine_rise"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6wxu7"]
+advance_mode = 2
+advance_expression = "not is_show"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_csn61"]
+break_loop_at_end = true
+switch_mode = 2
+advance_mode = 2
+advance_expression = "is_prepare_end"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i37gq"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_as5ej"]
+advance_mode = 2
+advance_expression = "is_show"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kteyv"]
+states/PotatoMine_armed/node = SubResource("AnimationNodeAnimation_civy0")
+states/PotatoMine_armed/position = Vector2(650, 100)
+states/PotatoMine_light/node = SubResource("AnimationNodeAnimation_aje7v")
+states/PotatoMine_light/position = Vector2(266, 41)
+states/PotatoMine_rise/node = SubResource("AnimationNodeAnimation_evxum")
+states/PotatoMine_rise/position = Vector2(450, 100)
+states/Start/position = Vector2(89, 99)
+transitions = ["Start", "PotatoMine_light", SubResource("AnimationNodeStateMachineTransition_6wxu7"), "PotatoMine_light", "PotatoMine_rise", SubResource("AnimationNodeStateMachineTransition_csn61"), "PotatoMine_rise", "PotatoMine_armed", SubResource("AnimationNodeStateMachineTransition_i37gq"), "Start", "PotatoMine_rise", SubResource("AnimationNodeStateMachineTransition_as5ej")]
+graph_offset = Vector2(15, -73)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_ifo2p"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_f5s5r"]
+graph_offset = Vector2(-514, -13)
+nodes/AnimationNodeStateMachine/node = SubResource("AnimationNodeStateMachine_kteyv")
+nodes/AnimationNodeStateMachine/position = Vector2(-460, 120)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_ifo2p")
+nodes/TimeScale/position = Vector2(-60, 120)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"AnimationNodeStateMachine"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kp7v2"]
+size = Vector2(55, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l48fy"]
+size = Vector2(100, 50)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l48fy"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f5s5r"]
+particle_flag_disable_z = true
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 145.45
+initial_velocity_max = 245.45
+gravity = Vector3(0, 100, 0)
+radial_accel_min = -150.0
+radial_accel_max = -100.0
+scale_min = 0.5
+anim_offset_max = 1.0
+
+[node name="Plant005PotatoMine" node_paths=PackedStringArray("node_no_change_direction", "node2d_detect_in_slope") instance=ExtResource("1_8djfp")]
+script = ExtResource("2_0r7iw")
+prepare_time = 10.0
+is_prepare_end = false
+plant_type = 5
+node_no_change_direction = [null, null, null]
+node2d_detect_in_slope = [NodePath("HurtBoxComponent/HurtBoxDetection"), NodePath("BombComponent/Area2DBomb"), NodePath("DetectComponent")]
+
+[node name="Shadow" parent="." index="0"]
+scale = Vector2(0.901163, 0.763889)
+
+[node name="BodyCorrect" parent="Body" index="0"]
+unique_name_in_owner = true
+position = Vector2(-31, -56)
+scale = Vector2(0.8, 0.8)
+
+[node name="Anim_mashed" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+visible = false
+centered = false
+
+[node name="PotatoMine_rock4" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+position = Vector2(38.6, 62.684906)
+scale = Vector2(0.59, 0.59)
+texture = ExtResource("2_q8gyy")
+centered = false
+
+[node name="PotatoMine_rock2" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+position = Vector2(23.9, 61.460373)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_gxhax")
+centered = false
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+visible = false
+centered = false
+
+[node name="PotatoMine_stem" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+position = Vector2(20.3, 57)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_uu0y5")
+centered = false
+
+[node name="Anim_eye" type="Sprite2D" parent="Body/BodyCorrect" index="5"]
+visible = false
+centered = false
+
+[node name="PotatoMine_blink" type="Sprite2D" parent="Body/BodyCorrect" index="6"]
+visible = false
+position = Vector2(30, 50)
+texture = ExtResource("5_0r7iw")
+centered = false
+
+[node name="PotatoMine_rock41" type="Sprite2D" parent="Body/BodyCorrect" index="7"]
+visible = false
+centered = false
+
+[node name="PotatoMine_rock3b" type="Sprite2D" parent="Body/BodyCorrect" index="8"]
+visible = false
+centered = false
+
+[node name="PotatoMine_rock1b" type="Sprite2D" parent="Body/BodyCorrect" index="9"]
+visible = false
+centered = false
+
+[node name="PotatoMine_rock6b" type="Sprite2D" parent="Body/BodyCorrect" index="10"]
+visible = false
+centered = false
+
+[node name="PotatoMine_rock5b" type="Sprite2D" parent="Body/BodyCorrect" index="11"]
+visible = false
+centered = false
+
+[node name="Anim_light" type="Sprite2D" parent="Body/BodyCorrect" index="12"]
+position = Vector2(28.2, 40.61887)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_36d07")
+centered = false
+
+[node name="Anim_glow" type="Sprite2D" parent="Body/BodyCorrect" index="13"]
+visible = false
+centered = false
+
+[node name="PotatoMine_rock6" type="Sprite2D" parent="Body/BodyCorrect" index="14"]
+position = Vector2(14.7, 66.26981)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_27vsk")
+centered = false
+
+[node name="PotatoMine_rock1" type="Sprite2D" parent="Body/BodyCorrect" index="15"]
+position = Vector2(26.8, 68.669815)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("8_c7j4p")
+centered = false
+
+[node name="PotatoMine_rock3" type="Sprite2D" parent="Body/BodyCorrect" index="16"]
+position = Vector2(42.5, 64.330185)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("9_tq0os")
+centered = false
+
+[node name="PotatoMine_rock5" type="Sprite2D" parent="Body/BodyCorrect" index="17"]
+position = Vector2(31.1, 68.93018)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_iq31m")
+centered = false
+
+[node name="BlinkComponent" parent="." index="5"]
+all_blink_body_change = Array[ExtResource("15_6w1u8")]([SubResource("Resource_l48fy")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_8d14f")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+deterministic = false
+tree_root = SubResource("AnimationNodeBlendTree_f5s5r")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0
+
+[node name="DetectComponent" type="Node2D" parent="." index="10"]
+script = ExtResource("24_kp7v2")
+can_attack_zombie_status = 17
+
+[node name="Area2D" type="Area2D" parent="DetectComponent" index="0"]
+position = Vector2(0, -25)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectComponent/Area2D" index="0"]
+position = Vector2(10.5, 0)
+shape = SubResource("RectangleShape2D_kp7v2")
+
+[node name="BombComponent" type="Node2D" parent="." index="11"]
+script = ExtResource("20_iq31m")
+bomb_lane = 0
+is_cherry_bomb = false
+is_auto_bomb_in_death = false
+can_attack_plant_status = 5
+can_attack_zombie_status = 21
+bomb_sfx = &"PotatoMine"
+
+[node name="Area2DBomb" type="Area2D" parent="BombComponent" index="0"]
+collision_layer = 0
+collision_mask = 20
+input_pickable = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BombComponent/Area2DBomb" index="0"]
+position = Vector2(0, -25)
+shape = SubResource("RectangleShape2D_l48fy")
+
+[node name="BombEffect" type="Node2D" parent="BombComponent" index="1"]
+visible = false
+script = ExtResource("21_kp7v2")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BombComponent/BombEffect" index="0"]
+material = SubResource("CanvasItemMaterial_l48fy")
+position = Vector2(0, -37)
+emitting = false
+amount = 60
+texture = ExtResource("22_6w1u8")
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_f5s5r")
+
+[node name="Anim_mashed" type="Sprite2D" parent="BombComponent/BombEffect" index="1"]
+position = Vector2(-68, -76)
+texture = ExtResource("23_hi8k1")
+centered = false
+
+[node name="PrepareTimer" type="Timer" parent="." index="12"]
+one_shot = true
+
+[connection signal="timeout" from="PrepareTimer" to="." method="_on_prepare_timer_timeout"]

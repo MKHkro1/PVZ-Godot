@@ -1,0 +1,137 @@
+[gd_scene load_steps=20 format=3 uid="uid://c78n78gfrkolq"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_qbo1e"]
+[ext_resource type="Texture2D" uid="uid://bx76a21ng1hd1" path="res://assets/reanim/Tallnut_body.png" id="2_814ck"]
+[ext_resource type="Script" uid="uid://bvl3i7eqr4htw" path="res://scripts/character/plant/plant_024_tall_nut.gd" id="2_lgypc"]
+[ext_resource type="Texture2D" uid="uid://df5yxhm82xo61" path="res://assets/reanim/Tallnut_blink1.png" id="3_se5o2"]
+[ext_resource type="Animation" uid="uid://vv3qtbm6a1td" path="res://animation/character/plant/024_tall_nut/Tallnut_idle.tres" id="4_6hwhb"]
+[ext_resource type="Script" uid="uid://4o1wtnifn4tq" path="res://scripts/character/components/hp_component/component_hp_stage_change.gd" id="5_ecgny"]
+[ext_resource type="Texture2D" uid="uid://dx41doer20tqv" path="res://assets/reanim/Tallnut_blink2.png" id="6_ecgny"]
+[ext_resource type="Script" uid="uid://jl0nl4a234bc" path="res://scripts/resources/resource_body_change.gd" id="6_lgypc"]
+[ext_resource type="Texture2D" uid="uid://d0q3vvxpeqiia" path="res://assets/reanim/Tallnut_cracked1.png" id="9_0h6i8"]
+[ext_resource type="Texture2D" uid="uid://c6a2y7jjdxove" path="res://assets/reanim/Tallnut_cracked2.png" id="10_2d134"]
+
+[sub_resource type="Resource" id="Resource_6hwhb"]
+script = ExtResource("6_lgypc")
+sprite_change = Array[NodePath]([NodePath("../Body/BodyCorrect/blink")])
+sprite_change_texture = Array[Texture2D]([ExtResource("3_se5o2"), ExtResource("6_ecgny")])
+metadata/_custom_type_script = "uid://jl0nl4a234bc"
+
+[sub_resource type="Animation" id="Animation_6hwhb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/BodyCorrect/blink:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(53, 1.07288e-06)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mp8j5"]
+_data = {
+&"RESET": SubResource("Animation_6hwhb"),
+&"Tallnut_idle": ExtResource("4_6hwhb")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uyw20"]
+animation = &"Tallnut_idle"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_uxf8y"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ecgny"]
+nodes/output/position = Vector2(520, 80)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_uyw20")
+nodes/Animation/position = Vector2(100, 80)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_uxf8y")
+nodes/TimeScale/position = Vector2(340, 60)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
+
+[sub_resource type="Resource" id="Resource_sum7j"]
+script = ExtResource("6_lgypc")
+sprite_change = Array[NodePath]([NodePath("../Body/BodyCorrect/Anim_idle")])
+sprite_change_texture = Array[Texture2D]([ExtResource("9_0h6i8")])
+metadata/_custom_type_script = "uid://jl0nl4a234bc"
+
+[sub_resource type="Resource" id="Resource_hev76"]
+script = ExtResource("6_lgypc")
+sprite_change = Array[NodePath]([NodePath("../Body/BodyCorrect/Anim_idle")])
+sprite_change_texture = Array[Texture2D]([ExtResource("10_2d134")])
+metadata/_custom_type_script = "uid://jl0nl4a234bc"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0h6i8"]
+size = Vector2(50, 50)
+
+[node name="Plant024TallNut" node_paths=PackedStringArray("node2d_detect_in_slope") instance=ExtResource("1_qbo1e")]
+script = ExtResource("2_lgypc")
+plant_type = 24
+is_can_ladder = true
+node2d_detect_in_slope = [NodePath("HurtBoxComponent/HurtBoxDetection"), NodePath("Area2DStopJump")]
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-43, -74)
+
+[node name="Anim_idle" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+position = Vector2(0.33533943, -36.08421)
+rotation = 0.0068108994
+scale = Vector2(0.80580455, 0.80729324)
+texture = ExtResource("2_814ck")
+centered = false
+
+[node name="Anim_blink_twice" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+visible = false
+position = Vector2(31.2, -15)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_se5o2")
+centered = false
+
+[node name="Anim_blink_thrice" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+visible = false
+position = Vector2(31.2, -15)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_se5o2")
+centered = false
+
+[node name="blink" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+visible = false
+position = Vector2(53, 1.07288e-06)
+scale = Vector2(0.774038, 0.608428)
+texture = ExtResource("3_se5o2")
+
+[node name="HpComponent" parent="." index="3"]
+max_hp = 8000
+
+[node name="BlinkComponent" parent="." index="5"]
+all_blink_body_change = Array[ExtResource("6_lgypc")]([SubResource("Resource_6hwhb")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_mp8j5")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+deterministic = false
+tree_root = SubResource("AnimationNodeBlendTree_ecgny")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0
+
+[node name="HpStageChangeComponent" type="Node2D" parent="." index="10"]
+script = ExtResource("5_ecgny")
+boundary_value_hp = Array[int]([5332, 2666, 0])
+body_change = Array[ExtResource("6_lgypc")]([SubResource("Resource_sum7j"), SubResource("Resource_hev76"), null])
+
+[node name="Area2DStopJump" type="Area2D" parent="." index="11"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DStopJump" index="0"]
+position = Vector2(0, -25)
+shape = SubResource("RectangleShape2D_0h6i8")
+
+[connection signal="area_entered" from="Area2DStopJump" to="." method="_on_area_2d_stop_jump_area_entered"]

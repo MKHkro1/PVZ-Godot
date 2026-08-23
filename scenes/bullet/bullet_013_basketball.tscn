@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://vs2o86f7b2gw"]
+
+[ext_resource type="PackedScene" uid="uid://p2fwghratmjl" path="res://scenes/bullet/bullet_000_parabola_base.tscn" id="1_iafcp"]
+[ext_resource type="Texture2D" uid="uid://c01klhv14falj" path="res://assets/reanim/Zombie_catapult_basketball.png" id="2_l883q"]
+
+[node name="Bullet013Basketball" instance=ExtResource("1_iafcp")]
+parabola_height = -400.0
+bullet_type = 13
+bullet_camp = 2
+attack_value = 75
+bullet_mode = 2
+
+[node name="BulletBody" parent="Body" index="0"]
+texture = ExtResource("2_l883q")
+
+[node name="BulletEffect" parent="." index="2"]
+is_bullet_effect = false
+
+[node name="Area2DAttack" parent="." index="3"]
+collision_layer = 128
+collision_mask = 256

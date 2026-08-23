@@ -1,0 +1,240 @@
+[gd_scene load_steps=36 format=3 uid="uid://doj6rgia7iq2v"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_4klhy"]
+[ext_resource type="Texture2D" uid="uid://b5v5vannbipgc" path="res://assets/reanim/FumeShroom_body.png" id="2_5mc0d"]
+[ext_resource type="Script" uid="uid://cgphp1a42v3jd" path="res://scripts/character/plant/plant_011_fume_shroom.gd" id="2_47ii7"]
+[ext_resource type="Texture2D" uid="uid://dvjtgvsprc5em" path="res://assets/reanim/FumeShroom_blink2.png" id="3_bbimx"]
+[ext_resource type="Texture2D" uid="uid://bdecyr5u832mx" path="res://assets/reanim/FumeShroom_head.png" id="4_0qv5g"]
+[ext_resource type="Texture2D" uid="uid://b8hsdl8m0la2k" path="res://assets/reanim/FumeShroom_spout.png" id="5_47ii7"]
+[ext_resource type="Texture2D" uid="uid://dlwrjkajjpdsb" path="res://assets/reanim/FumeShroom_tip.png" id="6_h5tkg"]
+[ext_resource type="Texture2D" uid="uid://yjc7pkf5hdn2" path="res://assets/image/particles/bullet/PuffShroom_puff1.png" id="7_060wc"]
+[ext_resource type="Animation" uid="uid://du6mjid0siwe1" path="res://animation/character/plant/011_fume_shroom/FumeShroom_idle.tres" id="8_234co"]
+[ext_resource type="Script" uid="uid://jl0nl4a234bc" path="res://scripts/resources/resource_body_change.gd" id="8_h5tkg"]
+[ext_resource type="Texture2D" uid="uid://cvjt2bbvgatgh" path="res://assets/reanim/FumeShroom_blink1.png" id="9_060wc"]
+[ext_resource type="Animation" uid="uid://djgaiijvnmftn" path="res://animation/character/plant/011_fume_shroom/FumeShroom_shooting.tres" id="9_prj4b"]
+[ext_resource type="Animation" uid="uid://bsqoibg8oa6p8" path="res://animation/character/plant/011_fume_shroom/FumeShroom_sleep.tres" id="10_gkpnf"]
+[ext_resource type="Script" uid="uid://bafp0ax1lmlge" path="res://scripts/character/components/detect_component/component_detect.gd" id="11_0qv5g"]
+[ext_resource type="Script" uid="uid://d27ifln7bjwup" path="res://scripts/character/components/attack_behavior_component/component_attack_bullet_base.gd" id="12_47ii7"]
+
+[sub_resource type="Resource" id="Resource_234co"]
+script = ExtResource("8_h5tkg")
+sprite_change = Array[NodePath]([NodePath("../Body/BodyCorrect/Anim_blink")])
+sprite_change_texture = Array[Texture2D]([ExtResource("9_060wc"), ExtResource("3_bbimx")])
+metadata/_custom_type_script = "uid://jl0nl4a234bc"
+
+[sub_resource type="Animation" id="Animation_h5tkg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackComponent/AllBullet_FX/Bullet_FX:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(59, -32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ydcil"]
+_data = {
+&"FumeShroom_idle": ExtResource("8_234co"),
+&"FumeShroom_shooting": ExtResource("9_prj4b"),
+&"FumeShroom_sleep": ExtResource("10_gkpnf"),
+&"RESET": SubResource("Animation_h5tkg")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p2ylm"]
+animation = &"FumeShroom_shooting"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_6btfu"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_asf73"]
+animation = &"FumeShroom_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w5mxo"]
+animation = &"FumeShroom_sleep"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oiiue"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "not is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ic5q6"]
+advance_mode = 2
+advance_expression = "is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p2ylm"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_47ii7"]
+advance_mode = 2
+advance_expression = "not is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bbrt2"]
+states/FumeShroom_idle/node = SubResource("AnimationNodeAnimation_asf73")
+states/FumeShroom_idle/position = Vector2(407, 69)
+states/FumeShroom_sleep/node = SubResource("AnimationNodeAnimation_w5mxo")
+states/FumeShroom_sleep/position = Vector2(407, 173)
+states/Start/position = Vector2(134, 173)
+transitions = ["FumeShroom_sleep", "FumeShroom_idle", SubResource("AnimationNodeStateMachineTransition_oiiue"), "Start", "FumeShroom_sleep", SubResource("AnimationNodeStateMachineTransition_ic5q6"), "FumeShroom_idle", "FumeShroom_sleep", SubResource("AnimationNodeStateMachineTransition_p2ylm"), "Start", "FumeShroom_idle", SubResource("AnimationNodeStateMachineTransition_47ii7")]
+graph_offset = Vector2(12, 0)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_0x3e4"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_djm5y"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_wf7jb"]
+graph_offset = Vector2(-253.52637, 42.73294)
+nodes/output/position = Vector2(880, 180)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_p2ylm")
+nodes/Animation/position = Vector2(-120, 300)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_6btfu")
+nodes/OneShot/position = Vector2(380, 100)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_bbrt2")
+nodes/StateMachine/position = Vector2(-80, 80)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_djm5y")
+nodes/TimeScale/position = Vector2(640, 160)
+"nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_0x3e4")
+"nodes/TimeScale 2/position" = Vector2(160, 260)
+node_connections = [&"output", 0, &"TimeScale", &"OneShot", 0, &"StateMachine", &"OneShot", 1, &"TimeScale 2", &"TimeScale", 0, &"OneShot", &"TimeScale 2", 0, &"Animation"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47ii7"]
+size = Vector2(350, 5)
+
+[sub_resource type="CurveTexture" id="CurveTexture_h5tkg"]
+
+[sub_resource type="Curve" id="Curve_27sef"]
+_limits = [0.0, 500.0, 0.0, 1.0]
+_data = [Vector2(0, 145.455), 0.0, 1914.43, 0, 0, Vector2(0.733831, 500), -369.389, -369.389, 0, 0, Vector2(1, 0), -1713.29, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_060wc"]
+curve = SubResource("Curve_27sef")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_smv18"]
+particle_flag_disable_z = true
+spread = 3.0
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+radial_velocity_min = -88.0
+radial_velocity_max = 100.0
+radial_velocity_curve = SubResource("CurveTexture_h5tkg")
+velocity_limit_curve = SubResource("CurveTexture_060wc")
+gravity = Vector3(0, 0, 0)
+
+[node name="Plant011FumeShroom" node_paths=PackedStringArray("node2d_detect_in_slope") instance=ExtResource("1_4klhy")]
+script = ExtResource("2_47ii7")
+plant_type = 11
+is_sleep_in_day = true
+node2d_detect_in_slope = [NodePath("HurtBoxComponent/HurtBoxDetection"), NodePath("AttackComponent/DetectComponent")]
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-36, -59)
+scale = Vector2(0.9, 0.9)
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+position = Vector2(9.8, 37.42536)
+scale = Vector2(0.8, 0.81936604)
+texture = ExtResource("2_5mc0d")
+centered = false
+
+[node name="DoomShroom_eyes" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+visible = false
+centered = false
+
+[node name="Anim_blink" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+visible = false
+position = Vector2(43, 50)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_bbimx")
+centered = false
+
+[node name="DoomShroom_head" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+position = Vector2(6.4619617, -8.122488)
+scale = Vector2(0.77088755, 0.8483517)
+texture = ExtResource("4_0qv5g")
+centered = false
+
+[node name="DoomShroom_spout" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+position = Vector2(66.73804, 12.139474)
+rotation = -0.0073028374
+scale = Vector2(0.7711411, 0.8483517)
+skew = 0.0073028374
+texture = ExtResource("5_47ii7")
+centered = false
+
+[node name="DoomShroom_tip" type="Sprite2D" parent="Body/BodyCorrect" index="5"]
+position = Vector2(72.83804, 9.574641)
+rotation = -0.0073028374
+scale = Vector2(0.7711411, 0.8483517)
+skew = 0.0073028374
+texture = ExtResource("6_h5tkg")
+centered = false
+
+[node name="Marker2DBullet" type="Marker2D" parent="Body/BodyCorrect" index="6"]
+position = Vector2(43.3333, 32.2222)
+scale = Vector2(0.5, 0.592593)
+
+[node name="SleepComponent" parent="." index="4" node_paths=PackedStringArray("sleep_influence_components")]
+sleep_influence_components = [NodePath("../BlinkComponent"), NodePath("../AttackComponent")]
+
+[node name="BlinkComponent" parent="." index="5"]
+all_blink_body_change = Array[ExtResource("8_h5tkg")]([SubResource("Resource_234co")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_ydcil")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+deterministic = false
+tree_root = SubResource("AnimationNodeBlendTree_wf7jb")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
+parameters/TimeScale/scale = 1.0
+"parameters/TimeScale 2/scale" = 2.0
+
+[node name="AttackComponent" type="Node2D" parent="." index="10" node_paths=PackedStringArray("markers_2d_bullet")]
+script = ExtResource("12_47ii7")
+attack_bullet_type = 4
+markers_2d_bullet = [NodePath("../Body/BodyCorrect/Marker2DBullet")]
+attack_sfx = &"Fume"
+
+[node name="DetectComponent" type="Node2D" parent="AttackComponent" index="0"]
+script = ExtResource("11_0qv5g")
+
+[node name="Area2D" type="Area2D" parent="AttackComponent/DetectComponent" index="0"]
+position = Vector2(0, -25)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/DetectComponent/Area2D" index="0"]
+position = Vector2(175, 0)
+shape = SubResource("RectangleShape2D_47ii7")
+
+[node name="BulletAttackCdTimer" type="Timer" parent="AttackComponent" index="1"]
+
+[node name="AllBullet_FX" type="Node2D" parent="AttackComponent" index="2"]
+
+[node name="Bullet_FX" type="Node2D" parent="AttackComponent/AllBullet_FX" index="0"]
+unique_name_in_owner = true
+position = Vector2(59, -32)
+scale = Vector2(0.9, 0.9)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="AttackComponent/AllBullet_FX/Bullet_FX" index="0"]
+z_index = 600
+z_as_relative = false
+emitting = false
+amount = 30
+texture = ExtResource("7_060wc")
+lifetime = 0.8
+process_material = SubResource("ParticleProcessMaterial_smv18")
+
+[connection signal="timeout" from="AttackComponent/BulletAttackCdTimer" to="AttackComponent" method="_on_bullet_attack_cd_timer_timeout"]

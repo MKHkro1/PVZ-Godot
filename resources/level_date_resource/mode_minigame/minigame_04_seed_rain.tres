@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="ResourceLevelData" load_steps=3 format=3 uid="uid://bdrb4tnjvx61w"]
+
+[ext_resource type="Script" uid="uid://bke3sg5otco7s" path="res://scripts/resources/level/pre_plant_in_level.gd" id="1_x43m4"]
+[ext_resource type="Script" uid="uid://bjt3l56exxmdw" path="res://scripts/resources/level/level_data.gd" id="2_dr54m"]
+
+[resource]
+script = ExtResource("2_dr54m")
+game_sences = 1
+game_BG = 3
+game_BGM = 3
+is_fog = true
+is_rain = true
+is_day = false
+is_day_sun = false
+can_choosed_card = false
+zombie_multy = 4
+zombie_refresh_types = Array[int]([9, 1, 3, 4, 5, 7, 8, 16, 15, 4])
+card_mode = 0
+is_seed_rain = true
+all_card_plant_type_probability_seed_rain = Dictionary[int, int]({
+1: 2,
+3: 1,
+4: 2,
+6: 2,
+8: 2,
+17: 8,
+18: 1,
+19: 2,
+21: 1,
+23: 2,
+26: 1,
+28: 2,
+44: 1
+})
+card_order_plant_seed_rain = Dictionary[int, int]({
+0: 17,
+5: 44
+})
+metadata/_custom_type_script = "uid://bjt3l56exxmdw"

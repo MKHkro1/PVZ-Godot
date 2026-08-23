@@ -1,0 +1,245 @@
+[gd_scene load_steps=33 format=3 uid="uid://g3sfat0vm1lk"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_la5fr"]
+[ext_resource type="Texture2D" uid="uid://c5i3v2h1dou6p" path="res://assets/reanim/Magnetshroom_stem.png" id="2_1ji1j"]
+[ext_resource type="Script" uid="uid://n5arlmhgsixs" path="res://scripts/character/plant/plant_032_magnet_shroom.gd" id="2_fmi46"]
+[ext_resource type="Texture2D" uid="uid://dnmepex12p3xq" path="res://assets/reanim/Magnetshroom_stemcap.png" id="3_vvqvt"]
+[ext_resource type="Texture2D" uid="uid://3rd1uiq8lpn8" path="res://assets/reanim/Magnetshroom_head1.png" id="4_fmi46"]
+[ext_resource type="Texture2D" uid="uid://2snv65tl4xk6" path="res://assets/reanim/Magnetshroom_stemcap_overlay.png" id="5_joae0"]
+[ext_resource type="Texture2D" uid="uid://dl3cfd2n18484" path="res://assets/reanim/Magnetshroom_eye1.png" id="6_52fw1"]
+[ext_resource type="Texture2D" uid="uid://cac85x53tvblx" path="res://assets/reanim/Magnetshroom_eyeblink3.png" id="7_4o74c"]
+[ext_resource type="Texture2D" uid="uid://b03m7og0h7653" path="res://assets/reanim/Magnetshroom_eyebrow.png" id="8_ilpu8"]
+[ext_resource type="Animation" uid="uid://crcgp4xy72of0" path="res://animation/character/plant/032_magnet_shroom/Magnetshroom_idle.tres" id="9_751g4"]
+[ext_resource type="Texture2D" uid="uid://j4xw4erjse5o" path="res://assets/reanim/Magnetshroom_idle_electric3.png" id="10_fmi46"]
+[ext_resource type="Animation" uid="uid://cvcrqy3gtiaom" path="res://animation/character/plant/032_magnet_shroom/Magnetshroom_nonactive_idle.tres" id="10_h3pes"]
+[ext_resource type="Animation" uid="uid://d4mvc6wrs744f" path="res://animation/character/plant/032_magnet_shroom/Magnetshroom_nonactive_idle2.tres" id="11_hfq51"]
+[ext_resource type="Animation" uid="uid://cq0rhsyu667e2" path="res://animation/character/plant/032_magnet_shroom/Magnetshroom_shooting.tres" id="12_yvast"]
+[ext_resource type="Animation" uid="uid://lj17wuby085" path="res://animation/character/plant/032_magnet_shroom/Magnetshroom_sleep.tres" id="13_6ml1a"]
+[ext_resource type="Script" uid="uid://c0xqtq7j1rek2" path="res://scripts/character/components/component_magnet.gd" id="16_joae0"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0q7qt"]
+_data = {
+&"Magnetshroom_idle": ExtResource("9_751g4"),
+&"Magnetshroom_nonactive_idle": ExtResource("10_h3pes"),
+&"Magnetshroom_nonactive_idle2": ExtResource("11_hfq51"),
+&"Magnetshroom_shooting": ExtResource("12_yvast"),
+&"Magnetshroom_sleep": ExtResource("13_6ml1a")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6te6e"]
+animation = &"Magnetshroom_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6vqpq"]
+animation = &"Magnetshroom_nonactive_idle2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sx43b"]
+animation = &"Magnetshroom_shooting"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fmtat"]
+animation = &"Magnetshroom_sleep"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uaxcm"]
+advance_mode = 2
+advance_expression = "not is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w8uqx"]
+advance_mode = 2
+advance_expression = "is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qnhe6"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "not is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w0x5d"]
+advance_mode = 2
+advance_expression = "is_attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0kjhv"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pj7e0"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "not is_attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_52fw1"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dex4y"]
+states/Magnetshroom_idle/node = SubResource("AnimationNodeAnimation_6te6e")
+states/Magnetshroom_idle/position = Vector2(401, 160)
+states/Magnetshroom_nonactive_idle2/node = SubResource("AnimationNodeAnimation_6vqpq")
+states/Magnetshroom_nonactive_idle2/position = Vector2(661, 265)
+states/Magnetshroom_shooting/node = SubResource("AnimationNodeAnimation_sx43b")
+states/Magnetshroom_shooting/position = Vector2(661, 160)
+states/Magnetshroom_sleep/node = SubResource("AnimationNodeAnimation_fmtat")
+states/Magnetshroom_sleep/position = Vector2(401, 49)
+transitions = ["Start", "Magnetshroom_idle", SubResource("AnimationNodeStateMachineTransition_uaxcm"), "Start", "Magnetshroom_sleep", SubResource("AnimationNodeStateMachineTransition_w8uqx"), "Magnetshroom_sleep", "Magnetshroom_idle", SubResource("AnimationNodeStateMachineTransition_qnhe6"), "Magnetshroom_idle", "Magnetshroom_shooting", SubResource("AnimationNodeStateMachineTransition_w0x5d"), "Magnetshroom_shooting", "Magnetshroom_nonactive_idle2", SubResource("AnimationNodeStateMachineTransition_0kjhv"), "Magnetshroom_nonactive_idle2", "Magnetshroom_idle", SubResource("AnimationNodeStateMachineTransition_pj7e0"), "Magnetshroom_idle", "Magnetshroom_sleep", SubResource("AnimationNodeStateMachineTransition_52fw1")]
+graph_offset = Vector2(141, -16)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_4f0f1"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_vbdv8"]
+graph_offset = Vector2(-37.7107, -63.3804)
+nodes/output/position = Vector2(540, 140)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_dex4y")
+nodes/StateMachine/position = Vector2(80, 120)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_4f0f1")
+nodes/TimeScale/position = Vector2(340, 120)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"StateMachine"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fmi46"]
+radius = 187.501
+height = 495.001
+
+[node name="Plant032MagnetShroom" node_paths=PackedStringArray("node2d_detect_in_slope") instance=ExtResource("1_la5fr")]
+script = ExtResource("2_fmi46")
+is_attack = false
+plant_type = 32
+is_sleep_in_day = true
+node2d_detect_in_slope = [NodePath("HurtBoxComponent/HurtBoxDetection"), NodePath("MagnetComponent/Area2D")]
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-43, -68)
+
+[node name="Magnetshroom_stem" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+position = Vector2(37.470013, 58.813343)
+scale = Vector2(0.6, 0.6007331)
+skew = 0.11082964
+texture = ExtResource("2_1ji1j")
+centered = false
+
+[node name="Magnetshroom_stemcap" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+position = Vector2(30.140028, 45.55667)
+rotation = 0.09564528
+scale = Vector2(0.598, 0.5945997)
+skew = -0.0034909
+texture = ExtResource("3_vvqvt")
+centered = false
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+position = Vector2(9.863416, -5.4)
+rotation = 0.1195566
+scale = Vector2(0.599, 0.59516644)
+skew = 0.0052357
+texture = ExtResource("4_fmi46")
+centered = false
+
+[node name="Magnetshroom_stemcap_overlay" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+position = Vector2(29.94003, 45.613342)
+rotation = 0.09564528
+scale = Vector2(0.6035667, 0.5945997)
+skew = -0.0034909
+texture = ExtResource("5_joae0")
+centered = false
+
+[node name="Anim_eyes" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+position = Vector2(37.540028, 38.383354)
+rotation = 0.1195566
+scale = Vector2(0.599, 0.59516644)
+skew = 0.0052357
+texture = ExtResource("6_52fw1")
+centered = false
+
+[node name="Anim_eyes2" type="Sprite2D" parent="Body/BodyCorrect" index="5"]
+position = Vector2(52.6967, 35.566715)
+rotation = 0.1195566
+scale = Vector2(0.569, 0.5651665)
+skew = 0.0052357
+texture = ExtResource("6_52fw1")
+centered = false
+
+[node name="Anim_eyes21" type="Sprite2D" parent="Body/BodyCorrect" index="6"]
+visible = false
+centered = false
+
+[node name="Anim_eyes22" type="Sprite2D" parent="Body/BodyCorrect" index="7"]
+visible = false
+centered = false
+
+[node name="Blink2" type="Sprite2D" parent="Body/BodyCorrect" index="8"]
+visible = false
+position = Vector2(49.1, 31)
+scale = Vector2(0.542, 0.549)
+texture = ExtResource("7_4o74c")
+centered = false
+
+[node name="Blink1" type="Sprite2D" parent="Body/BodyCorrect" index="9"]
+visible = false
+position = Vector2(34.3, 35.8)
+scale = Vector2(0.595, 0.603)
+texture = ExtResource("7_4o74c")
+centered = false
+
+[node name="Magnetshroom_eyebrows" type="Sprite2D" parent="Body/BodyCorrect" index="10"]
+position = Vector2(43.6967, 36.066715)
+rotation = 1.3026588
+scale = Vector2(0.59373313, 0.59843326)
+skew = 0.0022110099
+texture = ExtResource("8_ilpu8")
+centered = false
+
+[node name="Magnetshroom_eyebrows2" type="Sprite2D" parent="Body/BodyCorrect" index="11"]
+position = Vector2(51.3967, 33.88006)
+rotation = 1.9252126
+scale = Vector2(0.59516644, 0.59743327)
+skew = -3.1470578
+texture = ExtResource("8_ilpu8")
+centered = false
+
+[node name="Magnetshroom_spot" type="Sprite2D" parent="Body/BodyCorrect" index="12"]
+visible = false
+centered = false
+
+[node name="Magnetshroom_shock" type="Sprite2D" parent="Body/BodyCorrect" index="13"]
+visible = false
+position = Vector2(31.7, 10.4)
+rotation = 0.075049
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("10_fmi46")
+centered = false
+
+[node name="CurrIronContainer" type="Node2D" parent="Body" index="1"]
+z_index = 10
+position = Vector2(21, -42)
+
+[node name="SleepComponent" parent="." index="4" node_paths=PackedStringArray("sleep_influence_components")]
+sleep_influence_components = [NodePath("../BlinkComponent"), NodePath("../MagnetComponent")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_0q7qt")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+deterministic = false
+tree_root = SubResource("AnimationNodeBlendTree_vbdv8")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0
+
+[node name="MagnetComponent" type="Node2D" parent="." index="10" node_paths=PackedStringArray("curr_iron_container")]
+script = ExtResource("16_joae0")
+curr_iron_container = NodePath("../Body/CurrIronContainer")
+
+[node name="AttackCdTimer" type="Timer" parent="MagnetComponent" index="0"]
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="MagnetComponent" index="1"]
+position = Vector2(0, -23)
+collision_layer = 0
+collision_mask = 2052
+input_pickable = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetComponent/Area2D" index="0"]
+position = Vector2(-0.5, 0.5)
+rotation = 1.57038
+shape = SubResource("CapsuleShape2D_fmi46")
+
+[connection signal="timeout" from="MagnetComponent/AttackCdTimer" to="MagnetComponent" method="_on_attack_cd_timer_timeout"]
+[connection signal="area_entered" from="MagnetComponent/Area2D" to="MagnetComponent" method="_on_area_2d_area_entered"]

@@ -1,0 +1,170 @@
+[gd_scene load_steps=22 format=3 uid="uid://0gwoathhcraf"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_gk1fj"]
+[ext_resource type="Script" uid="uid://ccsk1fv8nukl6" path="res://scripts/character/plant/plant_046_gold_magnet.gd" id="2_er5xs"]
+[ext_resource type="Texture2D" uid="uid://ce7fkg5hv8s6l" path="res://assets/reanim/GoldMagnet_stem.png" id="2_k6o72"]
+[ext_resource type="Texture2D" uid="uid://b68nx5vy75ff1" path="res://assets/reanim/GoldMagnet_leaf5.png" id="3_er5xs"]
+[ext_resource type="Texture2D" uid="uid://mq76seqkalyk" path="res://assets/reanim/GoldMagnet_leaf1.png" id="4_d1osr"]
+[ext_resource type="Texture2D" uid="uid://dxacxekqdua7b" path="res://assets/reanim/GoldMagnet_leaf4.png" id="5_px343"]
+[ext_resource type="Texture2D" uid="uid://btfp5akxhw6m5" path="res://assets/reanim/GoldMagnet_head1.png" id="6_ykox4"]
+[ext_resource type="Texture2D" uid="uid://55ygswjd4ypj" path="res://assets/reanim/GoldMagnet_eyebrow.png" id="7_h00td"]
+[ext_resource type="Texture2D" uid="uid://cmt5pfp2mwnlc" path="res://assets/reanim/GoldMagnet_leaf2.png" id="8_4aw0k"]
+[ext_resource type="Texture2D" uid="uid://x8844lkm77fv" path="res://assets/reanim/GoldMagnet_leaf3.png" id="9_71ma0"]
+[ext_resource type="Texture2D" uid="uid://cfoe638mubffa" path="res://assets/reanim/GoldMagnet_blink1.png" id="10_5kop1"]
+[ext_resource type="Texture2D" uid="uid://cvjgt37odcqvd" path="res://assets/reanim/GoldMagnet_smallspark3.png" id="11_7h3ca"]
+[ext_resource type="Animation" uid="uid://dj2vqb6wmvdi3" path="res://animation/character/plant/046_gold_magnet/GoldMagnet_attract.tres" id="12_luj8m"]
+[ext_resource type="Animation" uid="uid://2a71dohma3ij" path="res://animation/character/plant/046_gold_magnet/GoldMagnet_idle.tres" id="13_ueypb"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t6jq4"]
+_data = {
+&"GoldMagnet_attract": ExtResource("12_luj8m"),
+&"GoldMagnet_idle": ExtResource("13_ueypb")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k6o72"]
+animation = &"GoldMagnet_attract"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_er5xs"]
+animation = &"GoldMagnet_idle"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_d1osr"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_px343"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_ykox4"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_k6o72"]
+graph_offset = Vector2(-338.124, 180.615)
+nodes/output/position = Vector2(680, 140)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_er5xs")
+nodes/Animation/position = Vector2(20, 140)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_k6o72")
+"nodes/Animation 2/position" = Vector2(-200, 340)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_d1osr")
+nodes/OneShot/position = Vector2(280, 160)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_ykox4")
+nodes/TimeScale/position = Vector2(480, 140)
+"nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_px343")
+"nodes/TimeScale 2/position" = Vector2(100, 340)
+node_connections = [&"output", 0, &"TimeScale", &"OneShot", 0, &"Animation", &"OneShot", 1, &"TimeScale 2", &"TimeScale", 0, &"OneShot", &"TimeScale 2", 0, &"Animation 2"]
+
+[node name="Plant046GoldMagnet" instance=ExtResource("1_gk1fj")]
+script = ExtResource("2_er5xs")
+attack_cd = 5.0
+plant_type = 46
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-41, -71)
+
+[node name="Anim_blink" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+visible = false
+centered = false
+
+[node name="Anim_idle" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+centered = false
+
+[node name="Anim_attract" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+visible = false
+centered = false
+
+[node name="GoldMagnet_stem" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+position = Vector2(41.906223, 53.348965)
+scale = Vector2(0.55, 0.5750623)
+skew = 0.11459059
+texture = ExtResource("2_k6o72")
+centered = false
+
+[node name="GoldMagnet_leaf5" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+position = Vector2(49.904152, 58.397926)
+rotation = 0.39009887
+scale = Vector2(0.549, 0.549)
+texture = ExtResource("3_er5xs")
+centered = false
+
+[node name="GoldMagnet_leaf5_2" type="Sprite2D" parent="Body/BodyCorrect" index="5"]
+position = Vector2(47.729668, 62.4)
+rotation = -3.311643
+scale = Vector2(0.40223444, 0.3747448)
+skew = 3.5686424
+texture = ExtResource("3_er5xs")
+centered = false
+
+[node name="GoldMagnet_leaf1" type="Sprite2D" parent="Body/BodyCorrect" index="6"]
+position = Vector2(21.106224, 49.12137)
+rotation = -0.07275006
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("4_d1osr")
+centered = false
+
+[node name="GoldMagnet_leaf4" type="Sprite2D" parent="Body/BodyCorrect" index="7"]
+position = Vector2(55.851036, 41.746887)
+rotation = 0.1960784
+scale = Vector2(0.54974484, 0.54974484)
+texture = ExtResource("5_px343")
+centered = false
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="8"]
+position = Vector2(-6.5172195, -12.029669)
+scale = Vector2(0.56423444, 0.5405104)
+texture = ExtResource("6_ykox4")
+centered = false
+
+[node name="GoldMagnet_eyebrow1" type="Sprite2D" parent="Body/BodyCorrect" index="9"]
+position = Vector2(32.606224, 40.144814)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_h00td")
+centered = false
+
+[node name="GoldMagnet_eyebrow11" type="Sprite2D" parent="Body/BodyCorrect" index="10"]
+position = Vector2(51.306225, 36.719296)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_h00td")
+centered = false
+
+[node name="GoldMagnet_leaf2" type="Sprite2D" parent="Body/BodyCorrect" index="11"]
+position = Vector2(29.329668, 51.672405)
+rotation = 0.083776
+scale = Vector2(0.55, 0.551)
+skew = -0.066659465
+texture = ExtResource("8_4aw0k")
+centered = false
+
+[node name="GoldMagnet_leaf3" type="Sprite2D" parent="Body/BodyCorrect" index="12"]
+position = Vector2(46.529667, 45.872406)
+rotation = 0.11720149
+scale = Vector2(0.5537448, 0.55)
+skew = -0.11720149
+texture = ExtResource("9_71ma0")
+centered = false
+
+[node name="GoldMagnet_blink" type="Sprite2D" parent="Body/BodyCorrect" index="13"]
+visible = false
+position = Vector2(29.3, 38.5)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("10_5kop1")
+centered = false
+
+[node name="GoldMagnet_sparks" type="Sprite2D" parent="Body/BodyCorrect" index="14"]
+visible = false
+position = Vector2(18.885687, 1.862865)
+scale = Vector2(0.48251036, 0.55)
+texture = ExtResource("11_7h3ca")
+centered = false
+
+[node name="Marker2DCoin" type="Marker2D" parent="Body/BodyCorrect" index="15"]
+position = Vector2(62, 35)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_t6jq4")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+tree_root = SubResource("AnimationNodeBlendTree_k6o72")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
+parameters/TimeScale/scale = 1.0
+"parameters/TimeScale 2/scale" = 1.0

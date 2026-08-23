@@ -1,0 +1,206 @@
+[gd_scene load_steps=26 format=3 uid="uid://ds30bt2f2bdfi"]
+
+[ext_resource type="Script" uid="uid://b5dgbspbo2pkw" path="res://scripts/character/components/zombie_death_bomb/zombie_death_bomb.gd" id="1_o8h0l"]
+[ext_resource type="Texture2D" uid="uid://nnp13qryaqjx" path="res://assets/image/particles/ExplosionCloud.png" id="2_p5grf"]
+[ext_resource type="Shader" uid="uid://cikju0ectkkms" path="res://shaders/Mypartical.gdshader" id="3_u7nrw"]
+
+[sub_resource type="Curve" id="Curve_xift2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.555556, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xvg1s"]
+curve = SubResource("Curve_xift2")
+
+[sub_resource type="Curve" id="Curve_gakd8"]
+_data = [Vector2(0, 0.458919), 0.0, 0.0, 0, 0, Vector2(1, 0.170811), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ayi8k"]
+_data = [Vector2(0, 0.437838), 0.0, -0.26, 0, 1, Vector2(1, 0.177838), -0.26, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_us414"]
+_data = [Vector2(0, 0.866486), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_da3wv"]
+curve_x = SubResource("Curve_gakd8")
+curve_y = SubResource("Curve_ayi8k")
+curve_z = SubResource("Curve_us414")
+
+[sub_resource type="Curve" id="Curve_kr5dm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.303371, 1), 0.0, 0.0, 0, 0, Vector2(0.64794, 0.177344), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xxx3k"]
+curve = SubResource("Curve_kr5dm")
+
+[sub_resource type="Curve" id="Curve_hpggk"]
+_data = [Vector2(0, 0.505372), 0.0, 0.0, 0, 0, Vector2(0.524345, 0.5125), 0.0135949, -2.71172, 1, 1, Vector2(0.696629, 0.0453124), -2.71172, -0.274964, 1, 1, Vector2(0.861423, 0), -0.274964, 0.0, 1, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_tpe2y"]
+curve = SubResource("Curve_hpggk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_suiu1"]
+shader = ExtResource("3_u7nrw")
+shader_parameter/direction = Vector3(1, 0, 0)
+shader_parameter/spread = 180.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/velocity_pivot = Vector3(0, 0, 0)
+shader_parameter/gravity = Vector3(0, 0, 0)
+shader_parameter/collision_friction = 0.0
+shader_parameter/collision_bounce = 0.0
+shader_parameter/collision_enabled = false
+shader_parameter/scale_min = 1.0
+shader_parameter/scale_max = 1.0
+shader_parameter/hue_variation_min = 0.0
+shader_parameter/hue_variation_max = 0.0
+shader_parameter/anim_speed_min = 0.0
+shader_parameter/anim_speed_max = 0.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/anim_offset_max = 0.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/color_value = Color(1, 1, 1, 1)
+shader_parameter/initial_angle_min = 0.0
+shader_parameter/initial_angle_max = 3.14
+shader_parameter/angular_velocity_min = 0.0
+shader_parameter/angular_velocity_max = 0.0
+shader_parameter/initial_linear_velocity_min = 100.0
+shader_parameter/initial_linear_velocity_max = 100.0
+shader_parameter/directional_velocity_min = 0.0
+shader_parameter/directional_velocity_max = 0.0
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/linear_accel_min = 0.0
+shader_parameter/linear_accel_max = 0.0
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.0
+shader_parameter/damping_max = 0.0
+shader_parameter/alpha_curve = SubResource("CurveTexture_xvg1s")
+shader_parameter/color_curve = SubResource("CurveXYZTexture_da3wv")
+shader_parameter/scale_curve = SubResource("CurveTexture_tpe2y")
+shader_parameter/initial_linear_velocity_curve = SubResource("CurveTexture_xxx3k")
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
+shader_parameter/emission_shape_scale = 1.0
+shader_parameter/emission_sphere_radius = 40.0
+shader_parameter/random_direction_from_spread = Vector3(0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_d640n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.54792, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2rp7y"]
+curve = SubResource("Curve_d640n")
+
+[sub_resource type="Curve" id="Curve_v0upq"]
+_data = [Vector2(0, 0.142703), 0.0, 0.0, 0, 0, Vector2(1, 0.14973), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_c2jvu"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 1, Vector2(1, 0), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_k0se8"]
+_data = [Vector2(0, 0.754054), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_h7sdk"]
+curve_x = SubResource("Curve_v0upq")
+curve_y = SubResource("Curve_c2jvu")
+curve_z = SubResource("Curve_k0se8")
+
+[sub_resource type="Curve" id="Curve_38ko1"]
+_data = [Vector2(0, 1), 0.0, -0.481111, 0, 1, Vector2(0.23221, 0.888281), -0.481111, -2.00431, 1, 1, Vector2(0.404494, 0.542969), -2.00431, -0.513028, 1, 1, Vector2(0.681648, 0.400781), -0.513028, 0.0, 1, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_hc7ai"]
+curve = SubResource("Curve_38ko1")
+
+[sub_resource type="Curve" id="Curve_chqdo"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1.26328), 0.0, 0.0, 0, 0, Vector2(0.337079, 1.26328), 0.0, -2.46195, 1, 1, Vector2(0.621723, 0.5625), -2.46195, -1.487, 1, 1, Vector2(1, 0), -1.487, 0.0, 1, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_3rbcs"]
+curve = SubResource("Curve_chqdo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymgkd"]
+shader = ExtResource("3_u7nrw")
+shader_parameter/direction = Vector3(1, 0, 0)
+shader_parameter/spread = 180.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/velocity_pivot = Vector3(0, 0, 0)
+shader_parameter/gravity = Vector3(0, 0, 0)
+shader_parameter/collision_friction = 0.0
+shader_parameter/collision_bounce = 0.0
+shader_parameter/collision_enabled = false
+shader_parameter/scale_min = 1.0
+shader_parameter/scale_max = 1.0
+shader_parameter/hue_variation_min = 0.0
+shader_parameter/hue_variation_max = 0.0
+shader_parameter/anim_speed_min = 0.0
+shader_parameter/anim_speed_max = 0.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/anim_offset_max = 0.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/color_value = Color(1, 1, 1, 1)
+shader_parameter/initial_angle_min = 0.0
+shader_parameter/initial_angle_max = 3.14
+shader_parameter/angular_velocity_min = 0.0
+shader_parameter/angular_velocity_max = 0.0
+shader_parameter/initial_linear_velocity_min = 50.0
+shader_parameter/initial_linear_velocity_max = 50.0
+shader_parameter/directional_velocity_min = 0.0
+shader_parameter/directional_velocity_max = 0.0
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/linear_accel_min = 0.0
+shader_parameter/linear_accel_max = 0.0
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.0
+shader_parameter/damping_max = 0.0
+shader_parameter/alpha_curve = SubResource("CurveTexture_2rp7y")
+shader_parameter/color_curve = SubResource("CurveXYZTexture_h7sdk")
+shader_parameter/scale_curve = SubResource("CurveTexture_3rbcs")
+shader_parameter/initial_linear_velocity_curve = SubResource("CurveTexture_hc7ai")
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
+shader_parameter/emission_shape_scale = 1.0
+shader_parameter/emission_sphere_radius = 60.0
+shader_parameter/random_direction_from_spread = Vector3(0, 0, 0)
+
+[node name="ZombieDeathBomb" type="Node2D"]
+script = ExtResource("1_o8h0l")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, -36)
+emitting = false
+amount = 13
+texture = ExtResource("2_p5grf")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 0.0
+draw_order = 0
+process_material = SubResource("ShaderMaterial_suiu1")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(0, -36)
+emitting = false
+amount = 10
+texture = ExtResource("2_p5grf")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ShaderMaterial_ymgkd")

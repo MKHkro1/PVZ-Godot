@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://qby4vrnkgom4"]
+
+[ext_resource type="PackedScene" uid="uid://cit8bsc5op7f0" path="res://scenes/bullet/bullet_000_linear_base.tscn" id="1_58nqe"]
+
+[node name="Bullet004Fume" instance=ExtResource("1_58nqe")]
+bullet_type = 4
+max_attack_num = -1
+speed = 450.0
+bullet_mode = 1
+max_distance = 350.0
+type_bullet_SFX = 0
+
+[node name="BulletShadow" parent="." index="0"]
+visible = false
+
+[node name="BulletEffect" parent="." index="2"]
+is_bullet_effect = false

@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2y2ygq62yaag"]
+
+[ext_resource type="Script" uid="uid://cc2pukv2rh1pk" path="res://scripts/main_game_item/ice_zombie_effect.gd" id="1_q33bu"]
+[ext_resource type="Texture2D" uid="uid://b8wyfl4uolim5" path="res://assets/image/main_game_item/icetrap.png" id="2_pnb1i"]
+[ext_resource type="Texture2D" uid="uid://dsfa44kvaul2b" path="res://assets/image/main_game_item/icetrap2.png" id="3_oux6n"]
+[ext_resource type="Texture2D" uid="uid://ce5qywnpuq2ob" path="res://assets/image/particles/icetrap_particles.png" id="4_05hx1"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_81wjr"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rbqi4"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(20, 1, 1)
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, -1, 0)
+spread = 30.0
+initial_velocity_min = 70.0
+initial_velocity_max = 90.0
+gravity = Vector3(0, 98, 0)
+anim_offset_max = 1.0
+
+[node name="IceEffect" type="Node2D"]
+script = ExtResource("1_q33bu")
+
+[node name="Icetrap" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_pnb1i")
+
+[node name="Icetrap2" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("3_oux6n")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 1
+material = SubResource("CanvasItemMaterial_81wjr")
+emitting = false
+amount = 10
+texture = ExtResource("4_05hx1")
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_rbqi4")

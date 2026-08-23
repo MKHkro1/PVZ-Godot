@@ -1,0 +1,143 @@
+[gd_scene load_steps=22 format=3 uid="uid://cv3iw5srgpusv"]
+
+[ext_resource type="Shader" uid="uid://c6bhrh1eaf7kg" path="res://shaders/my_shader/main_game_rain.gdshader" id="1_226xs"]
+[ext_resource type="Script" uid="uid://b3046a6pkwswm" path="res://scripts/main_game_item/back_ground/main_game_rain.gd" id="2_1e5if"]
+[ext_resource type="Shader" uid="uid://rose81jro0dj" path="res://shaders/my_shader/weather_fog.gdshader" id="3_ere4b"]
+[ext_resource type="Shader" uid="uid://b3itfb2rdekpl" path="res://shaders/my_shader/weather_fog2.gdshader" id="4_t3bv5"]
+[ext_resource type="Texture2D" uid="uid://bl3b3jltltajj" path="res://assets/image/particles/rain_drop.png" id="5_ke767"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0himu"]
+shader = ExtResource("1_226xs")
+shader_parameter/count = 1000
+shader_parameter/slant = 0.05
+shader_parameter/speed = 15.0
+shader_parameter/blur = 0.00050000002375
+shader_parameter/colour = Color(0.60112727, 0.94082373, 0.92723256, 1)
+shader_parameter/size = Vector2(0.008, 0.05)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_oy5mg"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q7f88"]
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_oy5mg")
+seamless = true
+normalize = false
+seamless_blend_skirt = 0.229
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t1ac0"]
+shader = ExtResource("3_ere4b")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_q7f88")
+shader_parameter/density = 0.25
+shader_parameter/speed = Vector2(0.02, 0.01)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_syqgh"]
+shader = ExtResource("4_t3bv5")
+shader_parameter/strength = 10.0
+shader_parameter/alpha_p = 10.0
+
+[sub_resource type="Gradient" id="Gradient_5w6kp"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vg3sw"]
+gradient = SubResource("Gradient_5w6kp")
+
+[sub_resource type="Curve" id="Curve_5iixj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_apk5l"]
+_limits = [0.0, 4.0, 0.0, 1.0]
+_data = [Vector2(0.0588235, 1.25843), 0.0, 0.0, 0, 0, Vector2(1, 2.83146), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_nvdun"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_n1mba"]
+curve_x = SubResource("Curve_5iixj")
+curve_y = SubResource("Curve_apk5l")
+curve_z = SubResource("Curve_nvdun")
+
+[sub_resource type="Curve" id="Curve_jwytd"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_jince"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.9771864, 0.42277074), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_k2426"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_obksj"]
+curve_x = SubResource("Curve_jwytd")
+curve_y = SubResource("Curve_jince")
+curve_z = SubResource("Curve_k2426")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i5812"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(700, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 2.0
+initial_velocity_min = 400.0
+initial_velocity_max = 1000.0
+scale_curve = SubResource("CurveXYZTexture_n1mba")
+scale_over_velocity_curve = SubResource("CurveXYZTexture_obksj")
+color = Color(0.784314, 0.858824, 0.894118, 1)
+color_initial_ramp = SubResource("GradientTexture1D_vg3sw")
+
+[node name="Rain" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -200.0
+offset_right = 1400.0
+offset_bottom = 600.0
+mouse_filter = 2
+script = ExtResource("2_1e5if")
+
+[node name="Rain" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_0himu")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Fog" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_t1ac0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.50140655, 0.5014065, 0.5014065, 0.46666667)
+metadata/_edit_lock_ = true
+
+[node name="Fog3" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_syqgh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="rainParticles" type="GPUParticles2D" parent="."]
+position = Vector2(772, 1)
+amount = 6000
+amount_ratio = 0.162
+texture = ExtResource("5_ke767")
+process_material = SubResource("ParticleProcessMaterial_i5812")

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ResourcePlantCondition" load_steps=2 format=3 uid="uid://cxe7tbdinlagl"]
+
+[ext_resource type="Script" uid="uid://lm6sv7e83ixs" path="res://scripts/resources/plant_condition/condition_000_plant_base.gd" id="1_bje6s"]
+
+[resource]
+script = ExtResource("1_bje6s")
+plant_condition = 63
+place_plant_in_cell = 4

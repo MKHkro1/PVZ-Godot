@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8u8ui7sehpv2"]
+
+[ext_resource type="PackedScene" uid="uid://cpv8ixg877ej5" path="res://scenes/ui/all_cards/card_base.tscn" id="1_ped3p"]
+[ext_resource type="Script" uid="uid://bqa7to8j6kx8h" path="res://scripts/ui/card/card_candidate_container.gd" id="2_bvvch"]
+
+[node name="CardCandidateContainer" instance=ExtResource("1_ped3p")]
+script = ExtResource("2_bvvch")
+
+[node name="CardBg" parent="." index="0"]
+unique_name_in_owner = false
+
+[node name="Cost" parent="CardBg" index="0"]
+unique_name_in_owner = false
+
+[node name="ProgressBar" parent="." index="1"]
+unique_name_in_owner = false

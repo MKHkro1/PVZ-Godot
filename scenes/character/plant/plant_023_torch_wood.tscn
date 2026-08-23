@@ -1,0 +1,146 @@
+[gd_scene load_steps=19 format=3 uid="uid://5cwbr83ymfog"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_t46j5"]
+[ext_resource type="Texture2D" uid="uid://bxf2w1rk7r03s" path="res://assets/reanim/Torchwood_spark.png" id="2_f3mgj"]
+[ext_resource type="Script" uid="uid://xmyk51geyxx8" path="res://scripts/character/plant/plant_023_torch_wood.gd" id="2_s1g5k"]
+[ext_resource type="Texture2D" uid="uid://dejh82cbf5y5q" path="res://assets/reanim/Torchwood_body.png" id="4_ji27e"]
+[ext_resource type="Texture2D" uid="uid://cg0kmdqyqdiu1" path="res://assets/reanim/Torchwood_fire1b.png" id="4_w81nd"]
+[ext_resource type="Texture2D" uid="uid://dskdfdfajmrkk" path="res://assets/reanim/Torchwood_mouth.png" id="5_w81nd"]
+[ext_resource type="Texture2D" uid="uid://cwhpp4e3mm63u" path="res://assets/reanim/Torchwood_eyes1.png" id="6_lpob7"]
+[ext_resource type="Animation" uid="uid://ccowvoaw57mbe" path="res://animation/character/plant/023_torch_wood/Torchwood_idle.tres" id="7_1e0vl"]
+[ext_resource type="Script" uid="uid://jl0nl4a234bc" path="res://scripts/resources/resource_body_change.gd" id="8_lpob7"]
+[ext_resource type="Texture2D" uid="uid://bw72ppt6vew5p" path="res://assets/reanim/Torchwood_eyes2.png" id="9_1e0vl"]
+[ext_resource type="Script" uid="uid://dlojdy8cdbdqn" path="res://scripts/character/components/component_fog_clearer.gd" id="11_lpob7"]
+
+[sub_resource type="Resource" id="Resource_7d34a"]
+script = ExtResource("8_lpob7")
+sprite_change = Array[NodePath]([NodePath("../Body/BodyCorrect/Torchwood_blink")])
+sprite_change_texture = Array[Texture2D]([ExtResource("6_lpob7"), ExtResource("9_1e0vl")])
+metadata/_custom_type_script = "uid://jl0nl4a234bc"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ytarc"]
+_data = {
+&"Torchwood_idle": ExtResource("7_1e0vl")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j55gq"]
+animation = &"Torchwood_idle"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_x6pvl"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_7d34a"]
+graph_offset = Vector2(-41, 37)
+nodes/output/position = Vector2(460, 120)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_j55gq")
+nodes/Animation/position = Vector2(40, 120)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_x6pvl")
+nodes/TimeScale/position = Vector2(260, 100)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3mgj"]
+size = Vector2(45, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1e0vl"]
+size = Vector2(66, 66)
+
+[node name="Plant023TorchWood" instance=ExtResource("1_t46j5")]
+script = ExtResource("2_s1g5k")
+plant_type = 23
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-40, -67)
+
+[node name="Anim_idle" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+centered = false
+
+[node name="Anim_blink" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+visible = false
+centered = false
+
+[node name="Layer 35" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+self_modulate = Color(1, 1, 1, 0.35417545)
+position = Vector2(39.7, 5.1618)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_f3mgj")
+centered = false
+
+[node name="Layer 33" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+self_modulate = Color(1, 1, 1, 0.9744252)
+position = Vector2(54.776398, 28.470121)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_f3mgj")
+centered = false
+
+[node name="Layer 34" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+self_modulate = Color(1, 1, 1, 0.51626325)
+position = Vector2(49.1, 13.311384)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_f3mgj")
+centered = false
+
+[node name="Torchwood_fire1" type="Sprite2D" parent="Body/BodyCorrect" index="5"]
+position = Vector2(18.42171, -2.7287064)
+scale = Vector2(0.7236002, 0.86544365)
+skew = 0.0067991107
+texture = ExtResource("4_w81nd")
+centered = false
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="6"]
+position = Vector2(6.3973904, 30.310438)
+scale = Vector2(0.7330522, 0.67986953)
+texture = ExtResource("4_ji27e")
+centered = false
+
+[node name="Torchwood_mouth" type="Sprite2D" parent="Body/BodyCorrect" index="7"]
+position = Vector2(22.094782, 43.1)
+rotation = -0.006981
+scale = Vector2(0.7781305, 0.8973393)
+skew = 0.006981
+texture = ExtResource("5_w81nd")
+centered = false
+
+[node name="Torchwood_blink" type="Sprite2D" parent="Body/BodyCorrect" index="8"]
+visible = false
+position = Vector2(30.261635, 40.997143)
+scale = Vector2(0.737, 0.787)
+texture = ExtResource("6_lpob7")
+centered = false
+
+[node name="BlinkComponent" parent="." index="5"]
+all_blink_body_change = Array[ExtResource("8_lpob7")]([SubResource("Resource_7d34a")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_ytarc")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+deterministic = false
+tree_root = SubResource("AnimationNodeBlendTree_7d34a")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0
+
+[node name="Area2DUpBullet" type="Area2D" parent="." index="10"]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DUpBullet" index="0"]
+position = Vector2(0, -25)
+shape = SubResource("RectangleShape2D_f3mgj")
+
+[node name="FogClearerComponent" type="Node2D" parent="." index="11"]
+unique_name_in_owner = true
+script = ExtResource("11_lpob7")
+
+[node name="Area2DFogClear" type="Area2D" parent="FogClearerComponent" index="0"]
+z_index = 1000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FogClearerComponent/Area2DFogClear" index="0"]
+position = Vector2(0, -40)
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_1e0vl")
+
+[connection signal="area_entered" from="Area2DUpBullet" to="." method="_on_area_2d_up_bullet_area_entered"]
+[connection signal="area_exited" from="Area2DUpBullet" to="." method="_on_area_2d_up_bullet_area_exited"]

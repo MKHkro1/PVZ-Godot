@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ResourcePlantConditionLilyPad" load_steps=2 format=3 uid="uid://bxaajpvpfqkho"]
+
+[ext_resource type="Script" uid="uid://c0sifbmowl2b2" path="res://scripts/resources/plant_condition/condition_017_lily_pad.gd" id="1_2v5ik"]
+
+[resource]
+script = ExtResource("1_2v5ik")
+plant_condition = 8
+place_plant_in_cell = 2
+is_special_plants = true
+is_purple_card = false
+metadata/_custom_type_script = "uid://lm6sv7e83ixs"

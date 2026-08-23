@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://gncshyivuwtb"]
+
+[ext_resource type="PackedScene" uid="uid://cit8bsc5op7f0" path="res://scenes/bullet/bullet_000_linear_base.tscn" id="1_hs85o"]
+[ext_resource type="Texture2D" uid="uid://c4rbih2yuv0vx" path="res://assets/image/projectile/ProjectilePea.png" id="2_0kdi0"]
+[ext_resource type="Script" uid="uid://b8deeas2k62vb" path="res://scripts/fx/bullet_effect/bullet_effect_001_norm.gd" id="3_womrk"]
+[ext_resource type="Texture2D" uid="uid://dexaplwj5wryv" path="res://assets/image/particles/bullet/pea_splats.png" id="4_og4bd"]
+[ext_resource type="Texture2D" uid="uid://b127q3vhqs7n8" path="res://assets/image/particles/bullet/Pea_particles.png" id="5_jvdm4"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jt8vs"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_ndetx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hs85o"]
+curve = SubResource("Curve_ndetx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m5utd"]
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 80.0
+gravity = Vector3(0, 100, 0)
+scale_curve = SubResource("CurveTexture_hs85o")
+anim_offset_max = 1.0
+
+[node name="Bullet001Pea" instance=ExtResource("1_hs85o")]
+bullet_type = 1
+is_can_up = true
+
+[node name="BulletBody" parent="Body" index="0"]
+texture = ExtResource("2_0kdi0")
+
+[node name="BulletEffect" parent="." index="2"]
+script = ExtResource("3_womrk")
+
+[node name="Splats" type="Sprite2D" parent="BulletEffect" index="0"]
+texture = ExtResource("4_og4bd")
+hframes = 4
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BulletEffect/AllParticles2D" index="0"]
+material = SubResource("CanvasItemMaterial_jt8vs")
+emitting = false
+amount = 10
+texture = ExtResource("5_jvdm4")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_m5utd")

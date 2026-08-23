@@ -1,0 +1,106 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgjb5lhdsspor"]
+
+[ext_resource type="PackedScene" uid="uid://bb3ca0a5g0fr0" path="res://scenes/character/plant/plant_008_pea_shooter_double.tscn" id="1_s1wyg"]
+
+[node name="Plant049PeaShooterDoubleReverse" instance=ExtResource("1_s1wyg")]
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(42, -72)
+scale = Vector2(-1, 1)
+
+[node name="Backleaf" parent="Body/BodyCorrect" index="0"]
+position = Vector2(27.5, 55.55652)
+scale = Vector2(0.6052607, 0.44191337)
+
+[node name="Backleaf_left_tip" parent="Body/BodyCorrect" index="1"]
+position = Vector2(24.143482, 56.913036)
+rotation = -0.10555346
+scale = Vector2(0.6520867, 0.515)
+
+[node name="Backleaf_right_tip" parent="Body/BodyCorrect" index="2"]
+position = Vector2(48.45652, 55.413036)
+rotation = 0.124296926
+scale = Vector2(0.6391741, 0.48460892)
+
+[node name="Stalk_bottom" parent="Body/BodyCorrect" index="3"]
+position = Vector2(42.06089, 50.173927)
+rotation = 0.61306846
+scale = Vector2(0.5658696, 0.6403036)
+skew = -0.22006416
+
+[node name="Stalk_top" parent="Body/BodyCorrect" index="4"]
+position = Vector2(42.869637, 38.491337)
+rotation = 0.39042377
+scale = Vector2(0.53708667, 0.7900867)
+skew = 0.08992479
+
+[node name="Frontleaf" parent="Body/BodyCorrect" index="5"]
+position = Vector2(21.7, 56.44348)
+scale = Vector2(0.5977393, 0.49039108)
+
+[node name="Frontleaf_right_tip" parent="Body/BodyCorrect" index="6"]
+position = Vector2(57.61741, 57.04348)
+rotation = -0.013810217
+scale = Vector2(0.6118688, 0.53613037)
+
+[node name="Frontleaf_tip_left" parent="Body/BodyCorrect" index="7"]
+position = Vector2(18.313036, 62.273926)
+rotation = -0.074823424
+scale = Vector2(0.5845215, 0.5780437)
+skew = -0.0034902869
+
+[node name="Anim_stem" parent="Body/BodyCorrect" index="8"]
+position = Vector2(46.608746, 45.847855)
+
+[node name="Idle_headleaf_farthest" parent="Body/BodyCorrect/Anim_stem/stem_correct" index="0"]
+position = Vector2(11.765182, 32.752224)
+rotation = 0.049321156
+scale = Vector2(0.71204454, 0.555)
+
+[node name="Idle_headleaf_3rdfarthest" parent="Body/BodyCorrect/Anim_stem/stem_correct" index="1"]
+position = Vector2(19.08259, 20.808746)
+rotation = -0.87517154
+scale = Vector2(0.55443484, 0.55443484)
+
+[node name="Idle_headleaf_2ndfarthest" parent="Body/BodyCorrect/Anim_stem/stem_correct" index="2"]
+position = Vector2(13.339109, 25.904373)
+rotation = 0.3591576
+scale = Vector2(0.5905222, 0.5568696)
+skew = 0.034982968
+
+[node name="Idle_headleaf_tip_bottom" parent="Body/BodyCorrect/Anim_stem/stem_correct" index="3"]
+position = Vector2(5.7216997, 29.865263)
+rotation = 0.10168025
+scale = Vector2(0.58952224, 0.5564348)
+skew = 0.03225079
+
+[node name="Idle_headleaf_nearest" parent="Body/BodyCorrect/Anim_stem/stem_correct" index="4"]
+position = Vector2(11.426073, 23.239191)
+rotation = -0.7713622
+scale = Vector2(0.58465266, 0.5651741)
+skew = -0.059493665
+
+[node name="Idle_headleaf_tip_top" parent="Body/BodyCorrect/Anim_stem/stem_correct" index="5"]
+position = Vector2(7.395627, 23.260891)
+rotation = -0.37865746
+scale = Vector2(0.6688713, 0.56417406)
+skew = -0.05926611
+
+[node name="Anim_face" parent="Body/BodyCorrect/Anim_stem/stem_correct" index="6"]
+position = Vector2(19.3, 16.5783)
+scale = Vector2(0.555, 0.51017326)
+
+[node name="Idle_mouth" parent="Body/BodyCorrect/Anim_stem/stem_correct" index="7"]
+position = Vector2(52.656517, 16.5783)
+rotation = -0.01676951
+scale = Vector2(0.54926074, 0.51017326)
+skew = 0.01676951
+
+[node name="Anim_blink" parent="Body/BodyCorrect/Anim_stem/stem_correct" index="9"]
+position = Vector2(37.89591, 21.857727)
+
+[node name="PeaShooter_eyebrow" parent="Body/BodyCorrect/Anim_stem/stem_correct" index="10"]
+position = Vector2(35.3, 17.643482)
+
+[node name="Area2D" parent="AttackComponent/DetectComponent" index="0"]
+rotation = 3.1415927

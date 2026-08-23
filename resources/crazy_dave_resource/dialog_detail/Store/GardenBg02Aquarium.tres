@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CrazyDaveDialogDetailResource" load_steps=2 format=3 uid="uid://fhaahw4pfs5d"]
+
+[ext_resource type="Script" uid="uid://7qucqjvdq78q" path="res://scripts/resources/crazy_dave_dialog_detail_resource.gd" id="1_tswk6"]
+
+[resource]
+script = ExtResource("1_tswk6")
+text = "水族馆能培植水生植物"
+is_crazy = false
+is_hand = false
+is_choosed = false
+metadata/_custom_type_script = "uid://7qucqjvdq78q"

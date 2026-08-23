@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://brbdbxg2tocla"]
+
+[ext_resource type="Script" uid="uid://b17126kyvx43n" path="res://scripts/ui/main_game_ui/ui_flag_progress_bar.gd" id="1_dtp4m"]
+[ext_resource type="Texture2D" uid="uid://de2yt1rux7boj" path="res://assets/image/ui/ui_progress_bar/FlagMeterParts.png" id="1_l32th"]
+[ext_resource type="Texture2D" uid="uid://cebvui8j81gxi" path="res://assets/image/ui/ui_progress_bar/FlagMeter.png" id="2_ea7cx"]
+[ext_resource type="Script" uid="uid://doq1iak45j5xk" path="res://scripts/ui/main_game_ui/ui_flag_progress_bar_flag.gd" id="3_dtp4m"]
+[ext_resource type="Texture2D" uid="uid://dvi4pcgdfyfim" path="res://assets/image/ui/ui_progress_bar/FlagMeterLevelProgress.png" id="5_bkxnl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42xtw"]
+atlas = ExtResource("2_ea7cx")
+region = Rect2(0, 0, 0, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_780bs"]
+atlas = ExtResource("2_ea7cx")
+region = Rect2(0, 27, 0, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abset"]
+atlas = ExtResource("1_l32th")
+region = Rect2(25, 4, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg8jo"]
+atlas = ExtResource("1_l32th")
+region = Rect2(50, 1, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hry0n"]
+atlas = ExtResource("1_l32th")
+region = Rect2(0, 0, 25, 25)
+
+[node name="FlagProgressBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_dtp4m")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 158.0
+offset_bottom = 27.0
+mouse_filter = 2
+step = 0.1
+value = 30.4
+fill_mode = 1
+texture_under = SubResource("AtlasTexture_42xtw")
+texture_progress = SubResource("AtlasTexture_780bs")
+
+[node name="Flag" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 2.0
+offset_right = 42.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("3_dtp4m")
+
+[node name="Pole" type="TextureRect" parent="Flag"]
+layout_mode = 0
+offset_right = 25.0
+offset_bottom = 25.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_abset")
+
+[node name="Flag" type="TextureRect" parent="Flag"]
+layout_mode = 0
+offset_right = 25.0
+offset_bottom = 25.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_wg8jo")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 15.0
+offset_right = 123.0
+offset_bottom = 26.0
+mouse_filter = 2
+texture = ExtResource("5_bkxnl")
+
+[node name="MiniZombie" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 142.0
+offset_top = -6.0
+offset_right = 167.0
+offset_bottom = 19.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_hry0n")

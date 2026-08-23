@@ -1,0 +1,245 @@
+[gd_scene load_steps=36 format=3 uid="uid://cnnk7boi2y8b8"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_jhhqw"]
+[ext_resource type="Script" uid="uid://b0p1b625yhylp" path="res://scripts/character/plant/plant_020_tanglekelp.gd" id="2_emppc"]
+[ext_resource type="Texture2D" uid="uid://cvnkhhw2kwhqf" path="res://assets/reanim/Tanglekelp_body.png" id="2_n0fa0"]
+[ext_resource type="Texture2D" uid="uid://bh61rwjcgjjaf" path="res://assets/reanim/Tanglekelp_arm1.png" id="4_emppc"]
+[ext_resource type="Texture2D" uid="uid://dxcbc8jk8xrij" path="res://assets/reanim/Tanglekelp_whitewater2.png" id="4_icm4b"]
+[ext_resource type="Texture2D" uid="uid://bpvt5hsrkwhwn" path="res://assets/reanim/Tanglekelp_arm2.png" id="5_f8t44"]
+[ext_resource type="Texture2D" uid="uid://13iffk72b514" path="res://assets/reanim/Tanglekelp_arm3.png" id="6_08x7m"]
+[ext_resource type="Texture2D" uid="uid://dvlvk4mwxcma7" path="res://assets/reanim/Tanglekelp_arm4.png" id="7_44l6r"]
+[ext_resource type="Texture2D" uid="uid://b65ehj75jy3vm" path="res://assets/reanim/Tanglekelp_arm5.png" id="8_ytogi"]
+[ext_resource type="Texture2D" uid="uid://brb1vdthom483" path="res://assets/reanim/Tanglekelp_arm6.png" id="9_icm4b"]
+[ext_resource type="Texture2D" uid="uid://iuat4exnictt" path="res://assets/reanim/Tanglekelp_arm7.png" id="10_28p6e"]
+[ext_resource type="Texture2D" uid="uid://ulvunu6chx1n" path="res://assets/reanim/Tanglekelp_arm 8.png" id="11_me61c"]
+[ext_resource type="Texture2D" uid="uid://nr65sy3ejdu8" path="res://assets/reanim/Tanglekelp_blink1.png" id="12_18tlf"]
+[ext_resource type="Animation" uid="uid://de2ywni806y6o" path="res://animation/character/plant/020_tanglekelp/Tanglekelp_idle.tres" id="13_s4e2w"]
+[ext_resource type="Script" uid="uid://jl0nl4a234bc" path="res://scripts/resources/resource_body_change.gd" id="14_28p6e"]
+[ext_resource type="Animation" uid="uid://b8ohi6ivmvjga" path="res://animation/character/plant/020_tanglekelp/Tanglekelp_idle_aquarium.tres" id="14_nuhg4"]
+[ext_resource type="Texture2D" uid="uid://bkxeedvr8gvil" path="res://assets/reanim/Tanglekelp_blink2.png" id="15_me61c"]
+[ext_resource type="Script" uid="uid://bpnjxk41tyshn" path="res://scripts/character/components/component_grap.gd" id="16_44l6r"]
+[ext_resource type="Texture2D" uid="uid://ckjv486u35x8i" path="res://assets/reanim/Tanglekelp_grab_back1.png" id="17_ytogi"]
+[ext_resource type="Texture2D" uid="uid://d0ouejxyysvbb" path="res://assets/reanim/Tanglekelp_grab_front1.png" id="18_icm4b"]
+[ext_resource type="Animation" uid="uid://d4j14at5jjq0x" path="res://animation/character/plant/020_tanglekelp/Tanglekelp_grab.tres" id="19_28p6e"]
+[ext_resource type="Script" uid="uid://bafp0ax1lmlge" path="res://scripts/character/components/detect_component/component_detect.gd" id="22_icm4b"]
+
+[sub_resource type="Resource" id="Resource_18tlf"]
+script = ExtResource("14_28p6e")
+sprite_change = Array[NodePath]([NodePath("../Body/BodyCorrect/Anim_blink1")])
+sprite_change_texture = Array[Texture2D]([ExtResource("12_18tlf"), ExtResource("15_me61c")])
+metadata/_custom_type_script = "uid://jl0nl4a234bc"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pqdke"]
+_data = {
+&"Tanglekelp_idle": ExtResource("13_s4e2w"),
+&"Tanglekelp_idle_aquarium": ExtResource("14_nuhg4")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_28p6e"]
+animation = &"Tanglekelp_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_me61c"]
+animation = &"Tanglekelp_idle_aquarium"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_18tlf"]
+advance_mode = 2
+advance_expression = "not is_garden_aquarium"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s4e2w"]
+advance_mode = 2
+advance_expression = "is_garden_aquarium"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nuhg4"]
+advance_mode = 2
+advance_expression = "not is_garden_aquarium"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nescp"]
+advance_mode = 2
+advance_expression = "is_garden_aquarium"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bwsto"]
+states/Tanglekelp_idle/node = SubResource("AnimationNodeAnimation_28p6e")
+states/Tanglekelp_idle/position = Vector2(453, 59)
+states/Tanglekelp_idle_aquarium/node = SubResource("AnimationNodeAnimation_me61c")
+states/Tanglekelp_idle_aquarium/position = Vector2(466, 158)
+transitions = ["Start", "Tanglekelp_idle", SubResource("AnimationNodeStateMachineTransition_18tlf"), "Start", "Tanglekelp_idle_aquarium", SubResource("AnimationNodeStateMachineTransition_s4e2w"), "Tanglekelp_idle_aquarium", "Tanglekelp_idle", SubResource("AnimationNodeStateMachineTransition_nuhg4"), "Tanglekelp_idle", "Tanglekelp_idle_aquarium", SubResource("AnimationNodeStateMachineTransition_nescp")]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_oqku0"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_nescp"]
+graph_offset = Vector2(-194.384, -10.7664)
+nodes/output/position = Vector2(600, 120)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_bwsto")
+nodes/StateMachine/position = Vector2(20, 100)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_oqku0")
+nodes/TimeScale/position = Vector2(380, 100)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"StateMachine"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_Tanglekelp_grab"]
+_data = {
+&"Tanglekelp_grab": ExtResource("19_28p6e")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytogi"]
+size = Vector2(150, 5)
+
+[node name="Plant020Tanglekelp" instance=ExtResource("1_jhhqw")]
+script = ExtResource("2_emppc")
+plant_type = 20
+
+[node name="Shadow" parent="." index="0"]
+visible = false
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-43, -62)
+
+[node name="Anim_blink" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+visible = false
+centered = false
+
+[node name="Anim_idle" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+centered = false
+
+[node name="Anim_grab" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+visible = false
+centered = false
+
+[node name="Anim_idle_aquarium" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+visible = false
+centered = false
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+position = Vector2(2.3, 14.128033)
+scale = Vector2(0.8, 0.7656262)
+texture = ExtResource("2_n0fa0")
+centered = false
+
+[node name="Anim_waterline" type="Sprite2D" parent="Body/BodyCorrect" index="5"]
+position = Vector2(2.937376, 54.803776)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_icm4b")
+centered = false
+
+[node name="Tanglekelp_arm1" type="Sprite2D" parent="Body/BodyCorrect" index="6"]
+position = Vector2(-5.9, 31.281311)
+rotation = -0.179557
+scale = Vector2(0.8137197, 0.754)
+skew = 0.179557
+texture = ExtResource("4_emppc")
+centered = false
+
+[node name="Tanglekelp_arm2" type="Sprite2D" parent="Body/BodyCorrect" index="7"]
+position = Vector2(12.281312, 25.6)
+rotation = -0.19538008
+scale = Vector2(0.801, 0.7655328)
+skew = 0.026572436
+texture = ExtResource("5_f8t44")
+centered = false
+
+[node name="Tanglekelp_arm3" type="Sprite2D" parent="Body/BodyCorrect" index="8"]
+position = Vector2(14.7, 17.884096)
+rotation = -0.19443226
+scale = Vector2(0.8192803, 0.71406555)
+skew = 0.19443226
+texture = ExtResource("6_08x7m")
+centered = false
+
+[node name="Tanglekelp_arm4" type="Sprite2D" parent="Body/BodyCorrect" index="9"]
+position = Vector2(15.909344, 13.084096)
+rotation = -0.17507112
+scale = Vector2(0.8080935, 0.69278526)
+skew = 0.13236776
+texture = ExtResource("7_44l6r")
+centered = false
+
+[node name="Tanglekelp_arm5" type="Sprite2D" parent="Body/BodyCorrect" index="10"]
+position = Vector2(42.02803, 7.637376)
+rotation = 0.26414844
+scale = Vector2(0.81262624, 0.7104016)
+skew = -0.17557773
+texture = ExtResource("8_ytogi")
+centered = false
+
+[node name="Tanglekelp_arm6" type="Sprite2D" parent="Body/BodyCorrect" index="11"]
+position = Vector2(52, 16.809343)
+rotation = 0.32965598
+scale = Vector2(0.8214394, 0.70549506)
+skew = -0.22728543
+texture = ExtResource("9_icm4b")
+centered = false
+
+[node name="Tanglekelp_arm7" type="Sprite2D" parent="Body/BodyCorrect" index="12"]
+position = Vector2(63.7, 26.3)
+rotation = 0.025364548
+scale = Vector2(0.8, 0.7249344)
+skew = -0.0118912
+texture = ExtResource("10_28p6e")
+centered = false
+
+[node name="Tanglekelp_arm8" type="Sprite2D" parent="Body/BodyCorrect" index="13"]
+position = Vector2(66.1, 30.918688)
+rotation = 0.17022665
+scale = Vector2(0.81281316, 0.7636262)
+skew = -0.17022665
+texture = ExtResource("11_me61c")
+centered = false
+
+[node name="Anim_blink1" type="Sprite2D" parent="Body/BodyCorrect" index="14"]
+visible = false
+position = Vector2(21.7, 43.64187)
+scale = Vector2(0.8, 0.770034)
+texture = ExtResource("12_18tlf")
+centered = false
+
+[node name="AnimComponent" parent="." index="2"]
+script = null
+
+[node name="BlinkComponent" parent="." index="5"]
+all_blink_body_change = Array[ExtResource("14_28p6e")]([SubResource("Resource_18tlf")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_pqdke")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+deterministic = false
+tree_root = SubResource("AnimationNodeBlendTree_nescp")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0
+
+[node name="GrapComponent" type="Node2D" parent="." index="10"]
+visible = false
+script = ExtResource("16_44l6r")
+
+[node name="Body" type="Node2D" parent="GrapComponent" index="0"]
+position = Vector2(-85, -86)
+
+[node name="Layer 29" type="Sprite2D" parent="GrapComponent/Body" index="0"]
+position = Vector2(56, 15.8)
+texture = ExtResource("17_ytogi")
+centered = false
+
+[node name="Layer 32" type="Sprite2D" parent="GrapComponent/Body" index="1"]
+position = Vector2(56, 15.9)
+texture = ExtResource("18_icm4b")
+centered = false
+
+[node name="Anim_Tanglekelp_grab" type="AnimationPlayer" parent="GrapComponent" index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_Tanglekelp_grab")
+}
+
+[node name="DetectComponent" type="Node2D" parent="." index="11"]
+script = ExtResource("22_icm4b")
+can_attack_zombie_status = 5
+plant_enemy_collision_lay = 20
+
+[node name="Area2D" type="Area2D" parent="DetectComponent" index="0"]
+position = Vector2(0, -25)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectComponent/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_ytogi")

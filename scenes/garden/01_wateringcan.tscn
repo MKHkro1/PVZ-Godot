@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://cuken451e2wr7"]
+
+[ext_resource type="Script" uid="uid://dowo1q457bpbx" path="res://scripts/garden/Item/garden_item_01_wateringcan.gd" id="1_pt7wm"]
+[ext_resource type="Texture2D" uid="uid://bggarg6vs83i0" path="res://assets/image/garden/Zen_GoldToolReticle_Result.png" id="2_a14cy"]
+[ext_resource type="Texture2D" uid="uid://d1e6xpww6dl16" path="res://assets/reanim/ZenGarden_wateringcan_water8.png" id="2_fxdlo"]
+[ext_resource type="Texture2D" uid="uid://c7an8u03em8yk" path="res://assets/reanim/ZenGarden_wateringcan1_gold.png" id="3_a14cy"]
+[ext_resource type="Animation" uid="uid://bfesdjwj1q4qc" path="res://animation/garden/wateringcan/ZenGarden_wateringcan_water.tres" id="17_620k8"]
+[ext_resource type="Animation" uid="uid://dxqxbim4v3ml2" path="res://animation/garden/wateringcan/ZenGarden_wateringcan_water_area.tres" id="18_40kmt"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l6a1w"]
+_data = {
+&"ALL_ANIMS": ExtResource("18_40kmt"),
+&"ZenGarden_wateringcan_water": ExtResource("17_620k8")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l6a1w"]
+radius = 62.0081
+
+[node name="WateringCan" type="Node2D"]
+script = ExtResource("1_pt7wm")
+plant_need_item = 1
+sfx_string_name = &"watering"
+
+[node name="ZenGoldToolReticleResult" type="Sprite2D" parent="."]
+texture = ExtResource("2_a14cy")
+
+[node name="Body" type="Node2D" parent="."]
+position = Vector2(-47, -53)
+
+[node name="Anim_water" type="Sprite2D" parent="Body"]
+visible = false
+rotation = 6.2221
+centered = false
+
+[node name="Anim_water_area" type="Sprite2D" parent="Body"]
+rotation = -0.059341
+centered = false
+
+[node name="Can" type="Sprite2D" parent="Body"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(2.9, -2.4)
+scale = Vector2(0.612, 1.143)
+texture = ExtResource("2_fxdlo")
+centered = false
+
+[node name="Water" type="Sprite2D" parent="Body"]
+position = Vector2(5.1, 4.9)
+texture = ExtResource("3_a14cy")
+centered = false
+
+[node name="AnimLib" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_l6a1w")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_l6a1w")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

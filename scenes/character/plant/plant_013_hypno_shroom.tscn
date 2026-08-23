@@ -1,0 +1,112 @@
+[gd_scene load_steps=19 format=3 uid="uid://ducs43rnkb4db"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_giqvm"]
+[ext_resource type="Texture2D" uid="uid://cbgu3a2jxkthd" path="res://assets/reanim/HypnoShroom_body.png" id="2_amy8e"]
+[ext_resource type="Script" uid="uid://b2cis2hmik3y4" path="res://scripts/character/plant/plant_013_hypno_shroom.gd" id="2_sgftx"]
+[ext_resource type="Texture2D" uid="uid://dmch2r8l3fn1c" path="res://assets/reanim/HypnoShroom_eye1.png" id="3_sgftx"]
+[ext_resource type="Texture2D" uid="uid://c3tp56xwnaj8k" path="res://assets/reanim/HypnoShroom_head.png" id="4_dxhke"]
+[ext_resource type="Texture2D" uid="uid://bm4iskcgxt1lx" path="res://assets/reanim/HypnoShroom_eye2.png" id="5_nimi2"]
+[ext_resource type="Animation" uid="uid://dty7dbaeyuw0t" path="res://animation/character/plant/013_hypno_shroom/HypnoShroom_idle.tres" id="6_a00dj"]
+[ext_resource type="Animation" uid="uid://30e20p4vcyww" path="res://animation/character/plant/013_hypno_shroom/HypnoShroom_sleep.tres" id="7_4w1dc"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ih1jw"]
+_data = {
+&"HypnoShroom_idle": ExtResource("6_a00dj"),
+&"HypnoShroom_sleep": ExtResource("7_4w1dc")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xmls6"]
+animation = &"HypnoShroom_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lusfa"]
+animation = &"HypnoShroom_sleep"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hrt0k"]
+advance_mode = 2
+advance_expression = "not is_show"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1dxyp"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "not is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lusfa"]
+advance_mode = 2
+advance_expression = "is_show"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_amy8e"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7ns8a"]
+states/HypnoShroom_idle/node = SubResource("AnimationNodeAnimation_xmls6")
+states/HypnoShroom_idle/position = Vector2(411, 174)
+states/HypnoShroom_sleep/node = SubResource("AnimationNodeAnimation_lusfa")
+states/HypnoShroom_sleep/position = Vector2(411, 60)
+transitions = ["Start", "HypnoShroom_sleep", SubResource("AnimationNodeStateMachineTransition_hrt0k"), "HypnoShroom_sleep", "HypnoShroom_idle", SubResource("AnimationNodeStateMachineTransition_1dxyp"), "Start", "HypnoShroom_idle", SubResource("AnimationNodeStateMachineTransition_lusfa"), "HypnoShroom_idle", "HypnoShroom_sleep", SubResource("AnimationNodeStateMachineTransition_amy8e")]
+graph_offset = Vector2(28, -28)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_0ou06"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_makqc"]
+graph_offset = Vector2(-49.92, -15.07)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_7ns8a")
+nodes/StateMachine/position = Vector2(40, 80)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_0ou06")
+nodes/TimeScale/position = Vector2(362, 83)
+nodes/output/position = Vector2(580, 120)
+node_connections = [&"TimeScale", 0, &"StateMachine", &"output", 0, &"TimeScale"]
+
+[node name="Plant013HypnoShroom" node_paths=PackedStringArray("node_no_change_direction") instance=ExtResource("1_giqvm")]
+script = ExtResource("2_sgftx")
+plant_type = 13
+is_sleep_in_day = true
+node_no_change_direction = [NodePath("HpComponent"), NodePath("SleepComponent"), null]
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-38, -72)
+
+[node name="Layer 1" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+position = Vector2(22.7716, 36.6373)
+scale = Vector2(0.8, 0.784769)
+skew = 0.0306736
+texture = ExtResource("2_amy8e")
+centered = false
+
+[node name="Layer 3" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+position = Vector2(39.4605, 49.4)
+rotation = 0.229329
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_sgftx")
+centered = false
+
+[node name="Layer 2" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+position = Vector2(15.0634, 2.02015)
+rotation = 0.0511224
+scale = Vector2(0.803687, 0.776739)
+skew = 0.00583539
+texture = ExtResource("4_dxhke")
+centered = false
+
+[node name="Layer 4" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+position = Vector2(48.4657, 52.2403)
+rotation = -0.22903
+scale = Vector2(0.671724, 0.671724)
+texture = ExtResource("5_nimi2")
+centered = false
+
+[node name="BlinkComponent" parent="." index="6"]
+is_enable_default = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_ih1jw")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+deterministic = false
+tree_root = SubResource("AnimationNodeBlendTree_makqc")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0

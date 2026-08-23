@@ -1,0 +1,105 @@
+[gd_scene load_steps=16 format=3 uid="uid://p2ospfmeb27t"]
+
+[ext_resource type="Texture2D" uid="uid://cpweorxgjagtw" path="res://assets/image/ui/ui_card/ConveyorBelt_backdrop.png" id="1_38655"]
+[ext_resource type="Texture2D" uid="uid://clu7agu73dxr8" path="res://assets/image/ui/ui_card/ConveyorBelt.png" id="2_jyq52"]
+[ext_resource type="Script" uid="uid://bhd301j1lfe7r" path="res://scripts/ui/card/card_slot/card_slot_conveyor/card_slot_conveyor_belt_gear.gd" id="2_nb3kr"]
+[ext_resource type="Script" uid="uid://h4kkw30hjgsr" path="res://scripts/ui/card/card_slot/card_slot_conveyor/card_slot_conveyor_belt.gd" id="2_p880x"]
+[ext_resource type="PackedScene" uid="uid://d1nnrhr8k1tel" path="res://scenes/card_slot/card_random_pool.tscn" id="5_aafbt"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3d12c"]
+texture = ExtResource("1_38655")
+texture_margin_left = 7.0
+texture_margin_top = 6.1698
+texture_margin_right = 7.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjx71"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyq52"]
+atlas = ExtResource("2_jyq52")
+region = Rect2(0, 0, 502, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nb3kr"]
+atlas = ExtResource("2_jyq52")
+region = Rect2(0, 16, 502, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p880x"]
+atlas = ExtResource("2_jyq52")
+region = Rect2(0, 32, 502, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s28tk"]
+atlas = ExtResource("2_jyq52")
+region = Rect2(0, 48, 502, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf5be"]
+atlas = ExtResource("2_jyq52")
+region = Rect2(0, 64, 502, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23jom"]
+atlas = ExtResource("2_jyq52")
+region = Rect2(0, 80, 502, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7h2fg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyq52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nb3kr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p880x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s28tk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lf5be")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23jom")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovmrh"]
+
+[node name="CardSlotConveyorBelt" type="PanelContainer"]
+custom_minimum_size = Vector2(516, 86)
+offset_left = -1.0
+offset_top = -100.0
+offset_right = 515.0
+offset_bottom = -14.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_3d12c")
+script = ExtResource("2_p880x")
+
+[node name="ConveyorBeltGear" type="Panel" parent="."]
+clip_children = 1
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_mjx71")
+script = ExtResource("2_nb3kr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ConveyorBeltGear"]
+position = Vector2(-0.452853, 5.02896)
+sprite_frames = SubResource("SpriteFrames_7h2fg")
+frame_progress = 0.111878
+centered = false
+
+[node name="NewCardArea" type="Panel" parent="."]
+clip_children = 1
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_ovmrh")
+
+[node name="CreateNewCardTimer" type="Timer" parent="."]
+
+[node name="CardRandomPool" parent="." instance=ExtResource("5_aafbt")]
+
+[connection signal="timeout" from="CreateNewCardTimer" to="." method="_on_create_new_card_timer_timeout"]

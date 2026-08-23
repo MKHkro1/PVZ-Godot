@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://bkx25sp71flk5"]
+
+[ext_resource type="Texture2D" uid="uid://d0hpo2yp78fwc" path="res://assets/image/plant/plantshadow.png" id="1_aoon1"]
+[ext_resource type="Script" uid="uid://bxklo5o011ly" path="res://scripts/character/character_000_base.gd" id="1_cr03h"]
+[ext_resource type="Script" uid="uid://deqe5y4hru4k" path="res://scripts/character/components/component_hurt_box.gd" id="3_0ann2"]
+[ext_resource type="Script" uid="uid://dx752kig120mj" path="res://scripts/character/components/body_character.gd" id="3_x2u1h"]
+[ext_resource type="Script" uid="uid://cmssv7d52kopd" path="res://scripts/character/components/hp_component/component_hp.gd" id="4_0ann2"]
+[ext_resource type="Script" uid="uid://d3l1u3o4am38y" path="res://scripts/character/components/anim_component/component_anim_norm.gd" id="6_8tq7l"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8tq7l"]
+radius = 20.0
+height = 80.0
+
+[node name="Character000Base" type="Node2D" node_paths=PackedStringArray("node_no_change_direction", "node_follow_body_direction", "node2d_detect_in_slope")]
+script = ExtResource("1_cr03h")
+node_no_change_direction = [NodePath("HpComponent")]
+node_follow_body_direction = [NodePath("Body"), NodePath("Shadow")]
+node2d_detect_in_slope = [NodePath("HurtBoxComponent/HurtBoxDetection")]
+
+[node name="Shadow" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("1_aoon1")
+
+[node name="Body" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_x2u1h")
+
+[node name="BodyCorrect" type="Node2D" parent="Body"]
+
+[node name="AnimComponent" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_8tq7l")
+
+[node name="HpComponent" type="Node2D" parent="."]
+unique_name_in_owner = true
+z_index = 10
+script = ExtResource("4_0ann2")
+
+[node name="HurtBoxComponent" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_0ann2")
+
+[node name="HurtBoxDetection" type="Area2D" parent="HurtBoxComponent"]
+unique_name_in_owner = true
+
+[node name="HurtBoxReal" type="Area2D" parent="HurtBoxComponent"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent/HurtBoxReal"]
+position = Vector2(0, -40)
+shape = SubResource("CapsuleShape2D_8tq7l")

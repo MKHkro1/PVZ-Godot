@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="ResourceLevelData" load_steps=3 format=3 uid="uid://d0m5k8pia0lot"]
+
+[ext_resource type="Script" uid="uid://bke3sg5otco7s" path="res://scripts/resources/level/pre_plant_in_level.gd" id="1_amowa"]
+[ext_resource type="Script" uid="uid://bjt3l56exxmdw" path="res://scripts/resources/level/level_data.gd" id="2_01ojp"]
+
+[resource]
+script = ExtResource("2_01ojp")
+game_BG = 1
+game_BGM = 7
+is_day = false
+is_day_sun = false
+is_lawn_mover = false
+look_show_zombie = false
+can_choosed_card = false
+monster_mode = 0
+zombie_refresh_types = Array[int]([1, 3, 4, 5, 6, 7, 8, 9])
+card_mode = 0
+is_pot_mode = true
+pot_mode = 2
+random_pot_plant = Dictionary[int, int]({
+1001: 5,
+1002: 1,
+1003: 1
+})
+random_pot_zombie = Dictionary[int, int]({
+1: 5,
+3: 3,
+4: 2,
+9: 1
+})
+plant_pot = Dictionary[int, int]({
+1001: 2,
+1002: 1
+})
+zombie_pot = Dictionary[int, int]({
+5: 2,
+8: 2
+})
+metadata/_custom_type_script = "uid://bjt3l56exxmdw"

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://vgg8iloyqu3e"]
+
+[ext_resource type="Script" uid="uid://bmdbvp327cg0q" path="res://scripts/fx/plant_effect/plant_start_effect.gd" id="1_ski41"]
+[ext_resource type="Texture2D" uid="uid://dokski45v5dh2" path="res://assets/reanim/splash_particle.png" id="2_5nnnb"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ofeam"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(20, 1, 1)
+velocity_pivot = Vector3(0, -1, 0)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 66.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.3
+
+[node name="PlantStartWaterEffect" type="Node2D"]
+script = ExtResource("1_ski41")
+is_pool = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 15
+texture = ExtResource("2_5nnnb")
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ofeam")

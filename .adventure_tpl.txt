@@ -1,0 +1,118 @@
+[node name="ChooseLevel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_dw7cd")
+script = ExtResource("1_qbhvk")
+game_mode = 101
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_77tr5")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -97.0
+offset_top = 18.0
+offset_right = 107.0
+offset_bottom = 68.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 6
+theme_override_font_sizes/font_size = 36
+text = "冒 险 模 式"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelPage" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 26.0
+offset_right = -40.0
+offset_bottom = 56.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 20
+text = "当前页数:1/5"
+horizontal_alignment = 2
+
+[node name="AllPage" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PrevPage" type="Button" parent="."]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 520.0
+offset_right = 210.0
+offset_bottom = 552.0
+theme_override_font_sizes/font_size = 18
+text = "〈 上一页"
+
+[node name="NextPage" type="Button" parent="."]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 520.0
+offset_right = 350.0
+offset_bottom = 552.0
+theme_override_font_sizes/font_size = 18
+text = "下一页 〉"
+
+[node name="MainMenu" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 669.0
+offset_top = 527.0
+offset_right = 758.0
+offset_bottom = 553.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("cb_n")
+texture_pressed = ExtResource("cb_p")
+texture_click_mask = ExtResource("cb_m")
+
+[node name="MenuLabel" type="Label" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = -10.0
+offset_right = 18.5
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "主菜单"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MainMenu" to="." method="back_start_menu"]
+[connection signal="pressed" from="PrevPage" to="." method="_on_last_pressed"]
+[connection signal="pressed" from="NextPage" to="." method="_on_next_pressed"]

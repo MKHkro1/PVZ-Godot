@@ -1,0 +1,2 @@
+extends BulletLinear000Base
+class_name Bullet008Star

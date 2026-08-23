@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://blly2ycuykg02"]
+
+[ext_resource type="Script" uid="uid://42p44atq8kh8" path="res://scripts/main_game_item/ladder.gd" id="1_7imw8"]
+[ext_resource type="Texture2D" uid="uid://btga2dyqmwvf0" path="res://assets/reanim/Zombie_ladder_5.png" id="2_7imw8"]
+[ext_resource type="Script" uid="uid://cgdy515nfukla" path="res://scripts/character/components/iron_node/iron_node.gd" id="3_0qafn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7imw8"]
+size = Vector2(35, 70)
+
+[node name="Ladder" type="Node2D"]
+script = ExtResource("1_7imw8")
+
+[node name="ZombieLadder" type="Sprite2D" parent="."]
+position = Vector2(16, -12)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("2_7imw8")
+centered = false
+
+[node name="Area2DDetect" type="Area2D" parent="."]
+collision_layer = 2048
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DDetect"]
+position = Vector2(50, 50)
+shape = SubResource("RectangleShape2D_7imw8")
+
+[node name="Area2DReal" type="Area2D" parent="."]
+collision_layer = 4096
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DReal"]
+position = Vector2(50, 50)
+shape = SubResource("RectangleShape2D_7imw8")
+
+[node name="IronNode" type="Node2D" parent="."]
+visible = false
+position = Vector2(55, 43)
+script = ExtResource("3_0qafn")
+
+[node name="Zombie_ladder_1" type="Sprite2D" parent="IronNode"]
+position = Vector2(-39, -56)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("2_7imw8")
+centered = false
+
+[connection signal="area_entered" from="Area2DDetect" to="." method="_on_area_2d_area_entered"]

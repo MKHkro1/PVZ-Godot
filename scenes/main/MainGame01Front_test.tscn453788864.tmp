@@ -1,0 +1,398 @@
+[gd_scene load_steps=15 format=3 uid="uid://dqinqcug7prmj"]
+
+[ext_resource type="PackedScene" uid="uid://b2soejmoqi7wd" path="res://scenes/main/MainGame00Base.tscn" id="1_ndy6r"]
+[ext_resource type="PackedScene" uid="uid://brnfbv2sxv2qh" path="res://scenes/ui/plant_cell.tscn" id="2_3llbo"]
+[ext_resource type="Resource" uid="uid://gyg2lqvcecn" path="res://resources/level_date_resource/mode_adventure/adventure_01_day_test.tres" id="2_q08lw"]
+[ext_resource type="PackedScene" uid="uid://dv5fiu4pkryba" path="res://scenes/item/game_scenes_item/lawn_mover/lawn_mower.tscn" id="3_q08lw"]
+[ext_resource type="Texture2D" uid="uid://css4w8rs4mm6l" path="res://assets/image/background/background1_gameover_interior_overlay.png" id="4_fl1jq"]
+[ext_resource type="Texture2D" uid="uid://b6gd58cnsxid2" path="res://assets/image/background/background2_gameover_interior_overlay.png" id="5_5pcta"]
+[ext_resource type="Texture2D" uid="uid://bter5jg6j45k" path="res://assets/image/background/background1_gameover_mask.png" id="6_206ji"]
+[ext_resource type="Texture2D" uid="uid://dltdtjwn6a800" path="res://assets/image/background/background2_gameover_mask.png" id="7_kkcu8"]
+[ext_resource type="Script" uid="uid://bkeu6j2ek3su7" path="res://scripts/main_game_item/zombies_row.gd" id="8_b6kli"]
+[ext_resource type="PackedScene" uid="uid://cfc5vrs1dcy0j" path="res://scenes/character/plant/plant_001_pea_shooter_single.tscn" id="10_fl1jq"]
+[ext_resource type="PackedScene" uid="uid://b72u5kwdpw4te" path="res://scenes/character/zombie/zombie_001_norm.tscn" id="11_5pcta"]
+[ext_resource type="PackedScene" uid="uid://wte35drumapp" path="res://scenes/character/plant/plant_002_sun_flower.tscn" id="11_206ji"]
+[ext_resource type="PackedScene" uid="uid://dqtpqeh1yldux" path="res://scenes/character/plant/plant_003_cherry_bomb.tscn" id="13_206ji"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivqex"]
+
+[node name="MainGame" instance=ExtResource("1_ndy6r")]
+game_para = ExtResource("2_q08lw")
+is_test = true
+
+[node name="PlantCells" parent="." index="0"]
+visible = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlantCells" index="0"]
+z_index = 10
+layout_direction = 3
+offset_left = -776.0
+offset_top = 82.0
+offset_right = -45.0
+offset_bottom = 178.0
+mouse_filter = 2
+
+[node name="PlantCell" parent="PlantCells/HBoxContainer" index="0" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell2" parent="PlantCells/HBoxContainer" index="1" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell3" parent="PlantCells/HBoxContainer" index="2" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell4" parent="PlantCells/HBoxContainer" index="3" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell5" parent="PlantCells/HBoxContainer" index="4" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell6" parent="PlantCells/HBoxContainer" index="5" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell7" parent="PlantCells/HBoxContainer" index="6" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell8" parent="PlantCells/HBoxContainer" index="7" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell9" parent="PlantCells/HBoxContainer" index="8" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PlantCells" index="1"]
+z_index = 20
+layout_direction = 3
+offset_left = -776.0
+offset_top = 181.0
+offset_right = -45.0
+offset_bottom = 277.0
+
+[node name="PlantCell" parent="PlantCells/HBoxContainer2" index="0" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell2" parent="PlantCells/HBoxContainer2" index="1" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell3" parent="PlantCells/HBoxContainer2" index="2" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell4" parent="PlantCells/HBoxContainer2" index="3" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell5" parent="PlantCells/HBoxContainer2" index="4" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell6" parent="PlantCells/HBoxContainer2" index="5" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell7" parent="PlantCells/HBoxContainer2" index="6" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell8" parent="PlantCells/HBoxContainer2" index="7" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell9" parent="PlantCells/HBoxContainer2" index="8" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PlantCells" index="2"]
+z_index = 30
+layout_direction = 3
+offset_left = -776.0
+offset_top = 281.0
+offset_right = -45.0
+offset_bottom = 377.0
+
+[node name="PlantCell" parent="PlantCells/HBoxContainer3" index="0" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell2" parent="PlantCells/HBoxContainer3" index="1" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell3" parent="PlantCells/HBoxContainer3" index="2" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell4" parent="PlantCells/HBoxContainer3" index="3" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell5" parent="PlantCells/HBoxContainer3" index="4" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell6" parent="PlantCells/HBoxContainer3" index="5" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell7" parent="PlantCells/HBoxContainer3" index="6" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell8" parent="PlantCells/HBoxContainer3" index="7" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell9" parent="PlantCells/HBoxContainer3" index="8" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="PlantCells" index="3"]
+z_index = 40
+layout_direction = 3
+offset_left = -776.0
+offset_top = 380.0
+offset_right = -45.0
+offset_bottom = 476.0
+
+[node name="PlantCell" parent="PlantCells/HBoxContainer4" index="0" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell2" parent="PlantCells/HBoxContainer4" index="1" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell3" parent="PlantCells/HBoxContainer4" index="2" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell4" parent="PlantCells/HBoxContainer4" index="3" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell5" parent="PlantCells/HBoxContainer4" index="4" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell6" parent="PlantCells/HBoxContainer4" index="5" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell7" parent="PlantCells/HBoxContainer4" index="6" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell8" parent="PlantCells/HBoxContainer4" index="7" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell9" parent="PlantCells/HBoxContainer4" index="8" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="PlantCells" index="4"]
+z_index = 50
+layout_direction = 3
+offset_left = -776.0
+offset_top = 478.0
+offset_right = -45.0
+offset_bottom = 574.0
+mouse_filter = 2
+
+[node name="PlantCell" parent="PlantCells/HBoxContainer5" index="0" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell2" parent="PlantCells/HBoxContainer5" index="1" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell3" parent="PlantCells/HBoxContainer5" index="2" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell4" parent="PlantCells/HBoxContainer5" index="3" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell5" parent="PlantCells/HBoxContainer5" index="4" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell6" parent="PlantCells/HBoxContainer5" index="5" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell7" parent="PlantCells/HBoxContainer5" index="6" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell8" parent="PlantCells/HBoxContainer5" index="7" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlantCell9" parent="PlantCells/HBoxContainer5" index="8" instance=ExtResource("2_3llbo")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LawnMover" parent="LawnMovers" index="0" instance=ExtResource("3_q08lw")]
+z_index = 15
+position = Vector2(25, 166)
+lane = 0
+
+[node name="LawnMover2" parent="LawnMovers" index="1" instance=ExtResource("3_q08lw")]
+z_index = 25
+position = Vector2(25, 258)
+lane = 1
+
+[node name="LawnMover3" parent="LawnMovers" index="2" instance=ExtResource("3_q08lw")]
+z_index = 35
+position = Vector2(25, 356)
+lane = 2
+
+[node name="LawnMover4" parent="LawnMovers" index="3" instance=ExtResource("3_q08lw")]
+z_index = 45
+position = Vector2(25, 454)
+lane = 3
+
+[node name="LawnMover5" parent="LawnMovers" index="4" instance=ExtResource("3_q08lw")]
+z_index = 55
+position = Vector2(25, 557)
+lane = 4
+
+[node name="Door" type="Node2D" parent="Background/Area2DHome" index="1"]
+position = Vector2(624, -8)
+
+[node name="DoorDown" type="Node2D" parent="Background/Area2DHome/Door" index="0"]
+
+[node name="Background1GameoverInteriorOverlay" type="Sprite2D" parent="Background/Area2DHome/Door/DoorDown" index="0"]
+visible = false
+position = Vector2(-570, 321)
+texture = ExtResource("4_fl1jq")
+
+[node name="Background2GameoverInteriorOverlay" type="Sprite2D" parent="Background/Area2DHome/Door/DoorDown" index="1"]
+visible = false
+position = Vector2(-550, 335)
+texture = ExtResource("5_5pcta")
+
+[node name="Panel" type="Panel" parent="Background/Area2DHome/Door/DoorDown" index="2"]
+clip_children = 1
+offset_left = -616.0
+offset_right = -416.0
+offset_bottom = 600.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ivqex")
+
+[node name="DoorMask" type="Node2D" parent="Background/Area2DHome/Door" index="1"]
+
+[node name="Background1GameoverMask" type="Sprite2D" parent="Background/Area2DHome/Door/DoorMask" index="0"]
+visible = false
+position = Vector2(-586, 326)
+texture = ExtResource("6_206ji")
+
+[node name="Background2GameoverMask" type="Sprite2D" parent="Background/Area2DHome/Door/DoorMask" index="1"]
+visible = false
+position = Vector2(-585, 328)
+texture = ExtResource("7_kkcu8")
+
+[node name="Zombies_row1" type="Node2D" parent="Zombies" index="0"]
+z_index = 10
+position = Vector2(850, 125)
+script = ExtResource("8_b6kli")
+
+[node name="ZombieCreatePosition" type="Node2D" parent="Zombies/Zombies_row1" index="0"]
+
+[node name="Zombies_row2" type="Node2D" parent="Zombies" index="1"]
+z_index = 20
+position = Vector2(850, 225)
+script = ExtResource("8_b6kli")
+
+[node name="ZombieCreatePosition" type="Node2D" parent="Zombies/Zombies_row2" index="0"]
+
+[node name="Zombies_row3" type="Node2D" parent="Zombies" index="2"]
+z_index = 30
+position = Vector2(850, 325)
+script = ExtResource("8_b6kli")
+
+[node name="ZombieCreatePosition" type="Node2D" parent="Zombies/Zombies_row3" index="0"]
+
+[node name="Zombies_row4" type="Node2D" parent="Zombies" index="3"]
+z_index = 40
+position = Vector2(850, 425)
+script = ExtResource("8_b6kli")
+
+[node name="ZombieCreatePosition" type="Node2D" parent="Zombies/Zombies_row4" index="0"]
+
+[node name="Zombies_row5" type="Node2D" parent="Zombies" index="4"]
+z_index = 50
+position = Vector2(850, 525)
+script = ExtResource("8_b6kli")
+
+[node name="ZombieCreatePosition" type="Node2D" parent="Zombies/Zombies_row5" index="0"]
+
+[node name="Plant001PeaShooterSingle" parent="." index="14" instance=ExtResource("10_fl1jq")]
+position = Vector2(164.272, 256.071)
+
+[node name="Plant002SunFlower" parent="." index="15" instance=ExtResource("11_206ji")]
+position = Vector2(331.346, 255.135)
+
+[node name="Plant003CherryBomb" parent="." index="16" instance=ExtResource("13_206ji")]
+position = Vector2(532.246, 334.843)
+
+[node name="Zombie001Norm" parent="." index="17" instance=ExtResource("11_5pcta")]
+position = Vector2(746.57, 278.3)

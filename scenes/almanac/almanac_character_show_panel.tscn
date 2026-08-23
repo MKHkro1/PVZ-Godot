@@ -1,0 +1,360 @@
+[gd_scene load_steps=6 format=3 uid="uid://dthq42y7g8j85"]
+
+[ext_resource type="Script" uid="uid://bhlpq22spa1sn" path="res://scripts/Almanac/panel_container.gd" id="1_a1io1"]
+[ext_resource type="Texture2D" uid="uid://hb4b6ujaahoc" path="res://assets/image/Almanac/Almanac_GroundDay.jpg" id="2_2g2oc"]
+[ext_resource type="Texture2D" uid="uid://b6t4ree7mqqnx" path="res://assets/image/Almanac/Almanac_PlantCard.png" id="3_kdrdk"]
+[ext_resource type="FontFile" uid="uid://bjnvl0v2ws21u" path="res://assets/fonts/SIMSUN.TTC" id="4_wmr3e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jly7p"]
+
+[node name="AlmanacCharacterShowPanel" type="Panel"]
+offset_right = 317.0
+offset_bottom = 476.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jly7p")
+script = ExtResource("1_a1io1")
+
+[node name="CharacterBg" type="TextureRect" parent="."]
+clip_children = 2
+layout_mode = 0
+offset_left = 59.0
+offset_top = 8.0
+offset_right = 259.0
+offset_bottom = 208.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_2g2oc")
+
+[node name="AllBg" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 324.0
+offset_bottom = 484.0
+texture = ExtResource("3_kdrdk")
+
+[node name="CharacterName" type="Label" parent="AllBg"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.0
+offset_top = 179.0
+offset_right = 101.0
+offset_bottom = 211.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.772549, 0.54902, 0.152941, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = -1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 23
+text = "名字"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="AllBg"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -135.0
+offset_top = -260.0
+offset_right = 126.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AllBg/ScrollContainer"]
+custom_minimum_size = Vector2(255, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 9
+
+[node name="CharacterText1" type="Label" parent="AllBg/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(255, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.156863, 0.196078, 0.352941, 1)
+theme_override_colors/font_outline_color = Color(0.156863, 0.196078, 0.352941, 1)
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_wmr3e")
+theme_override_font_sizes/font_size = 13
+text = "豌豆射手，你的第一道防线，发射豌豆攻击僵尸"
+autowrap_mode = 1
+
+[node name="CharacterText2Para" type="VBoxContainer" parent="AllBg/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlantPara" type="HBoxContainer" parent="AllBg/ScrollContainer/VBoxContainer/CharacterText2Para"]
+layout_mode = 2
+
+[node name="Key" type="Label" parent="AllBg/ScrollContainer/VBoxContainer/CharacterText2Para/PlantPara"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.560784, 0.262745, 0.105882, 1)
+theme_override_colors/font_outline_color = Color(0.560784, 0.262745, 0.105882, 1)
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_wmr3e")
+theme_override_font_sizes/font_size = 13
+text = "伤害: "
+
+[node name="Value" type="Label" parent="AllBg/ScrollContainer/VBoxContainer/CharacterText2Para/PlantPara"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.835294, 0.141176, 0.113725, 1)
+theme_override_colors/font_outline_color = Color(0.835294, 0.141176, 0.113725, 1)
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_wmr3e")
+theme_override_font_sizes/font_size = 13
+text = "中等"
+autowrap_mode = 1
+
+[node name="PlantPara2" type="HBoxContainer" parent="AllBg/ScrollContainer/VBoxContainer/CharacterText2Para"]
+layout_mode = 2
+
+[node name="Key" type="Label" parent="AllBg/ScrollContainer/VBoxContainer/CharacterText2Para/PlantPara2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.560784, 0.262745, 0.105882, 1)
+theme_override_colors/font_outline_color = Color(0.560784, 0.262745, 0.105882, 1)
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_wmr3e")
+theme_override_font_sizes/font_size = 13
+text = "伤害: "
+
+[node name="Value" type="Label" parent="AllBg/ScrollContainer/VBoxContainer/CharacterText2Para/PlantPara2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.835294, 0.141176, 0.113725, 1)
+theme_override_colors/font_outline_color = Color(0.835294, 0.141176, 0.113725, 1)
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_wmr3e")
+theme_override_font_sizes/font_size = 13
+text = "中等"
+autowrap_mode = 1
+
+[node name="PlantPara3" type="HBoxContainer" parent="AllBg/ScrollContainer/VBoxContainer/CharacterText2Para"]
+layout_mode = 2
+
+[node name="Key" type="Label" parent="AllBg/ScrollContainer/VBoxContainer/CharacterText2Para/PlantPara3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.560784, 0.262745, 0.105882, 1)
+theme_override_colors/font_outline_color = Color(0.560784, 0.262745, 0.105882, 1)
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_wmr3e")
+theme_override_font_sizes/font_size = 13
+text = "伤害: "
+
+[node name="Value" type="Label" parent="AllBg/ScrollContainer/VBoxContainer/CharacterText2Para/PlantPara3"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.835294, 0.141176, 0.113725, 1)
+theme_override_colors/font_outline_color = Color(0.835294, 0.141176, 0.113725, 1)
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_wmr3e")
+theme_override_font_sizes/font_size = 13
+text = "中等"
+autowrap_mode = 1
+
+[node name="PlantPara4" type="HBoxContainer" parent="AllBg/ScrollContainer/VBoxContainer/CharacterText2Para"]
+layout_mode = 2
+
+[node name="Key" type="Label" parent="AllBg/ScrollContainer/VBoxContainer/CharacterText2Para/PlantPara4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.560784, 0.262745, 0.105882, 1)
+theme_override_colors/font_outline_color = Color(0.560784, 0.262745, 0.105882, 1)
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_wmr3e")
+theme_override_font_sizes/font_size = 13
+text = "伤害: "
+
+[node name="Value" type="Label" parent="AllBg/ScrollContainer/VBoxContainer/CharacterText2Para/PlantPara4"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.835294, 0.141176, 0.113725, 1)
+theme_override_colors/font_outline_color = Color(0.835294, 0.141176, 0.113725, 1)
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_wmr3e")
+theme_override_font_sizes/font_size = 13
+text = "中等"
+autowrap_mode = 1
+
+[node name="PlantPara5" type="HBoxContainer" parent="AllBg/ScrollContainer/VBoxContainer/CharacterText2Para"]
+layout_mode = 2
+
+[node name="Key" type="Label" parent="AllBg/ScrollContainer/VBoxContainer/CharacterText2Para/PlantPara5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.560784, 0.262745, 0.105882, 1)
+theme_override_colors/font_outline_color = Color(0.560784, 0.262745, 0.105882, 1)
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_wmr3e")
+theme_override_font_sizes/font_size = 13
+text = "伤害: "
+
+[node name="Value" type="Label" parent="AllBg/ScrollContainer/VBoxContainer/CharacterText2Para/PlantPara5"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.835294, 0.141176, 0.113725, 1)
+theme_override_colors/font_outline_color = Color(0.835294, 0.141176, 0.113725, 1)
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_wmr3e")
+theme_override_font_sizes/font_size = 13
+text = "中等"
+autowrap_mode = 1
+
+[node name="CharacterText3Hint" type="Label" parent="AllBg/ScrollContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(255, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 0.196078, 0.666667, 1)
+theme_override_colors/font_outline_color = Color(0.533333, 0.196078, 0.666667, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_wmr3e")
+theme_override_font_sizes/font_size = 13
+autowrap_mode = 2
+
+[node name="CharacterText4Introduction" type="Label" parent="AllBg/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(255, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.560784, 0.262745, 0.105882, 1)
+theme_override_colors/font_outline_color = Color(0.560784, 0.262745, 0.105882, 1)
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_wmr3e")
+theme_override_font_sizes/font_size = 13
+text = "一棵植物，怎么能如此快地生长，并发射如此多的豌豆呢？豌豆射手说：“努力工作，奉献自己，加上一份阳光，高纤维和二氧化碳均衡搭配，这种健康早餐让一切管成可能。”"
+autowrap_mode = 1
+
+[node name="PlantEndPara" type="HBoxContainer" parent="AllBg"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 437.0
+offset_right = 287.0
+offset_bottom = 451.0
+
+[node name="Cost" type="HBoxContainer" parent="AllBg/PlantEndPara"]
+layout_mode = 2
+
+[node name="Key" type="Label" parent="AllBg/PlantEndPara/Cost"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.560784, 0.262745, 0.105882, 1)
+theme_override_colors/font_outline_color = Color(0.560784, 0.262745, 0.105882, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_wmr3e")
+theme_override_font_sizes/font_size = 13
+text = "花费: "
+
+[node name="Value" type="Label" parent="AllBg/PlantEndPara/Cost"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.835294, 0.141176, 0.113725, 1)
+theme_override_colors/font_outline_color = Color(0.835294, 0.141176, 0.113725, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_wmr3e")
+theme_override_font_sizes/font_size = 13
+text = "中等"
+
+[node name="Control" type="Control" parent="AllBg/PlantEndPara"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CoolTime" type="HBoxContainer" parent="AllBg/PlantEndPara"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Key" type="Label" parent="AllBg/PlantEndPara/CoolTime"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.560784, 0.262745, 0.105882, 1)
+theme_override_colors/font_outline_color = Color(0.560784, 0.262745, 0.105882, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_wmr3e")
+theme_override_font_sizes/font_size = 13
+text = "冷却时间: "
+
+[node name="Value" type="Label" parent="AllBg/PlantEndPara/CoolTime"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.835294, 0.141176, 0.113725, 1)
+theme_override_colors/font_outline_color = Color(0.835294, 0.141176, 0.113725, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_wmr3e")
+theme_override_font_sizes/font_size = 13
+text = "中等"

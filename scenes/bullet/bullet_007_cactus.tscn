@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dewmob4swv03e"]
+
+[ext_resource type="PackedScene" uid="uid://cit8bsc5op7f0" path="res://scenes/bullet/bullet_000_linear_base.tscn" id="1_vyo5q"]
+[ext_resource type="Script" uid="uid://dcgrp8qruxego" path="res://scripts/bullet/bullet_007_cactus.gd" id="2_djihw"]
+[ext_resource type="Texture2D" uid="uid://spfd63h0e5vv" path="res://assets/image/projectile/ProjectileCactus.png" id="2_je3po"]
+
+[node name="BulletLinear007Cactus" instance=ExtResource("1_vyo5q")]
+script = ExtResource("2_djihw")
+bullet_type = 7
+
+[node name="BulletBody" parent="Body" index="0"]
+texture = ExtResource("2_je3po")
+
+[node name="BulletEffect" parent="." index="2"]
+is_bullet_effect = false

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ResourceLevelData" load_steps=3 format=3 uid="uid://0xpi7ulb3x8x"]
+
+[ext_resource type="Script" uid="uid://bke3sg5otco7s" path="res://scripts/resources/level/pre_plant_in_level.gd" id="1_sj01w"]
+[ext_resource type="Script" uid="uid://bjt3l56exxmdw" path="res://scripts/resources/level/level_data.gd" id="2_n26t8"]
+
+[resource]
+script = ExtResource("2_n26t8")
+game_BG = 1
+game_BGM = 7
+is_day = false
+is_day_sun = false
+is_lawn_mover = false
+look_show_zombie = false
+can_choosed_card = false
+monster_mode = 0
+zombie_refresh_types = Array[int]([1, 3, 4, 5, 6, 7, 8, 9])
+start_sun = 300
+pre_choosed_card_list_zombie = Array[int]([1, 4, 5, 21, 7, 22])
+is_zombie_mode = true
+all_plants_weight_on_zombie_mode = Dictionary[int, int]({
+4: 1,
+6: 2,
+24: 2,
+41: 1,
+42: 2
+})
+is_bowling_stripe = true
+plant_cell_col_j = 3
+plant_cell_can_use = Dictionary[String, bool]({
+"left_can_plant": false,
+"left_can_zombie": false,
+"right_can_plant": false,
+"right_can_zombie": true
+})
+metadata/_custom_type_script = "uid://bjt3l56exxmdw"

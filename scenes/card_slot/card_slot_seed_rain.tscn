@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://g0h8yxb8q05u"]
+
+[ext_resource type="Script" uid="uid://cmcjcskwwbq7e" path="res://scripts/ui/card/card_slot/card_slot_seed_rain.gd" id="1_x337x"]
+[ext_resource type="PackedScene" uid="uid://d1nnrhr8k1tel" path="res://scenes/card_slot/card_random_pool.tscn" id="2_x337x"]
+
+[node name="CardSlotSeedRain" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_x337x")
+
+[node name="CardRandomPool" parent="." instance=ExtResource("2_x337x")]
+
+[node name="CreateNewCardTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="CreateNewCardTimer" to="." method="_on_create_new_card_timer_timeout"]

@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl0exgq5cc480"]
+
+[ext_resource type="Texture2D" uid="uid://bwd231ldqg7le" path="res://assets/image/garden/aquarium1_new.png" id="1_gaetq"]
+[ext_resource type="Script" uid="uid://r3i58bb3k04m" path="res://scripts/garden/garden_bg_page.gd" id="2_gaetq"]
+[ext_resource type="PackedScene" uid="uid://c37t6y03lap40" path="res://scenes/garden/plant_cell_garden_aquarium.tscn" id="3_gaetq"]
+
+[node name="Aquarium1" type="Sprite2D"]
+texture = ExtResource("1_gaetq")
+centered = false
+script = ExtResource("2_gaetq")
+garden_bg_type = 2
+
+[node name="GardenPlantCellAll" type="Node2D" parent="."]
+
+[node name="PlantCellGardenAquarium" parent="GardenPlantCellAll" instance=ExtResource("3_gaetq")]
+offset_left = 558.0
+offset_top = 119.0
+offset_right = 633.0
+offset_bottom = 194.0
+
+[node name="PlantCellGardenAquarium2" parent="GardenPlantCellAll" instance=ExtResource("3_gaetq")]
+offset_left = 769.0
+offset_top = 205.0
+offset_right = 844.0
+offset_bottom = 280.0
+
+[node name="PlantCellGardenAquarium3" parent="GardenPlantCellAll" instance=ExtResource("3_gaetq")]
+offset_left = 786.0
+offset_top = 351.0
+offset_right = 861.0
+offset_bottom = 426.0
+
+[node name="PlantCellGardenAquarium4" parent="GardenPlantCellAll" instance=ExtResource("3_gaetq")]
+offset_left = 643.0
+offset_top = 474.0
+offset_right = 718.0
+offset_bottom = 549.0
+
+[node name="PlantCellGardenAquarium5" parent="GardenPlantCellAll" instance=ExtResource("3_gaetq")]
+offset_left = 444.0
+offset_top = 451.0
+offset_right = 519.0
+offset_bottom = 526.0
+
+[node name="PlantCellGardenAquarium6" parent="GardenPlantCellAll" instance=ExtResource("3_gaetq")]
+offset_left = 252.0
+offset_top = 346.0
+offset_right = 327.0
+offset_bottom = 421.0
+
+[node name="PlantCellGardenAquarium7" parent="GardenPlantCellAll" instance=ExtResource("3_gaetq")]
+offset_left = 377.0
+offset_top = 156.0
+offset_right = 452.0
+offset_bottom = 231.0
+
+[node name="PlantCellGardenAquarium8" parent="GardenPlantCellAll" instance=ExtResource("3_gaetq")]
+offset_left = 531.0
+offset_top = 328.0
+offset_right = 606.0
+offset_bottom = 403.0

@@ -1,0 +1,93 @@
+[gd_scene load_steps=15 format=3 uid="uid://cs8yliy2wwfyu"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_ccail"]
+[ext_resource type="Texture2D" uid="uid://c20q8cl6mp08h" path="res://assets/reanim/Coffeebean_leaf.png" id="2_i7rq2"]
+[ext_resource type="Script" uid="uid://us75i4ho0aus" path="res://scripts/character/plant/plant_036_coffee_bean.gd" id="2_wi000"]
+[ext_resource type="Texture2D" uid="uid://dul4xr2apgok2" path="res://assets/reanim/Coffeebean_head1.png" id="3_wi000"]
+[ext_resource type="Animation" uid="uid://cem17q7yw0xp2" path="res://animation/character/plant/036_coffee_bean/Coffeebean_crumble.tres" id="4_r8u3f"]
+[ext_resource type="Animation" uid="uid://1bb2v7pbcxli" path="res://animation/character/plant/036_coffee_bean/Coffeebean_idle.tres" id="5_rb7r5"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lhahu"]
+_data = {
+&"Coffeebean_crumble": ExtResource("4_r8u3f"),
+&"Coffeebean_idle": ExtResource("5_rb7r5")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u0e3e"]
+animation = &"Coffeebean_crumble"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uqyg8"]
+animation = &"Coffeebean_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ccail"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i7rq2"]
+break_loop_at_end = true
+switch_mode = 2
+advance_mode = 2
+advance_expression = "not is_idle"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_wi000"]
+states/Coffeebean_crumble/node = SubResource("AnimationNodeAnimation_u0e3e")
+states/Coffeebean_crumble/position = Vector2(578, 100)
+states/Coffeebean_idle/node = SubResource("AnimationNodeAnimation_uqyg8")
+states/Coffeebean_idle/position = Vector2(359, 100)
+states/Start/position = Vector2(192, 100)
+transitions = ["Start", "Coffeebean_idle", SubResource("AnimationNodeStateMachineTransition_ccail"), "Coffeebean_idle", "Coffeebean_crumble", SubResource("AnimationNodeStateMachineTransition_i7rq2")]
+graph_offset = Vector2(28, 4)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_r8u3f"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_rb7r5"]
+graph_offset = Vector2(-131.38, 49.2397)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_wi000")
+nodes/StateMachine/position = Vector2(20, 120)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_r8u3f")
+nodes/TimeScale/position = Vector2(360, 120)
+nodes/output/position = Vector2(560, 140)
+node_connections = [&"TimeScale", 0, &"StateMachine", &"output", 0, &"TimeScale"]
+
+[node name="Plant036CoffeeBean" instance=ExtResource("1_ccail")]
+z_index = 2
+script = ExtResource("2_wi000")
+plant_type = 36
+
+[node name="Shadow" parent="." index="0"]
+visible = false
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-41, -81)
+
+[node name="Anim_crumble" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+visible = false
+centered = false
+
+[node name="Coffeebean_leaf" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+position = Vector2(17.1901, 6.66054)
+rotation = 0.0111927
+scale = Vector2(0.500789, 0.5)
+skew = -0.0111927
+texture = ExtResource("2_i7rq2")
+centered = false
+
+[node name="Coffeebean_head" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+position = Vector2(18.2, 12.2987)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_wi000")
+centered = false
+
+[node name="HpControl" parent="HpComponent" index="0"]
+offset_top = -40.0
+offset_bottom = -40.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_lhahu")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+tree_root = SubResource("AnimationNodeBlendTree_rb7r5")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0

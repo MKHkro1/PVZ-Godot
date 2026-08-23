@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CrazyDaveDialogDetailResource" load_steps=2 format=3 uid="uid://bi52bqkur7pd1"]
+
+[ext_resource type="Script" uid="uid://7qucqjvdq78q" path="res://scripts/resources/crazy_dave_dialog_detail_resource.gd" id="1_th2la"]
+
+[resource]
+script = ExtResource("1_th2la")
+text = "你的花园可以获得一株新植物"
+is_crazy = false
+is_hand = false
+is_choosed = false
+metadata/_custom_type_script = "uid://7qucqjvdq78q"

@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://6fujba7kxnjg"]
+
+[ext_resource type="PackedScene" uid="uid://p2fwghratmjl" path="res://scenes/bullet/bullet_000_parabola_base.tscn" id="1_py6d0"]
+[ext_resource type="Script" uid="uid://ccjnjnre8jwfq" path="res://scripts/bullet/bullet_012_melon.gd" id="2_itde2"]
+[ext_resource type="Texture2D" uid="uid://cyq6qjfok78qm" path="res://assets/reanim/Melonpult_melon.png" id="2_py6d0"]
+[ext_resource type="Script" uid="uid://b8deeas2k62vb" path="res://scripts/fx/bullet_effect/bullet_effect_001_norm.gd" id="3_itde2"]
+[ext_resource type="Texture2D" uid="uid://bx81ebcqxmly2" path="res://assets/image/particles/bullet/Melonpult_particles.png" id="4_py6d0"]
+[ext_resource type="Script" uid="uid://kr4r24a1l80x" path="res://scripts/bullet/component/spatter_component.gd" id="5_d0acj"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o220a"]
+particles_animation = true
+particles_anim_h_frames = 9
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_itde2"]
+emission_shape_offset = Vector3(0, -10, 0)
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 80.0
+gravity = Vector3(0, 100, 0)
+scale_min = 0.5
+scale_max = 0.7
+anim_offset_max = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wo6mn"]
+radius = 20.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_itde2"]
+radius = 60.0
+height = 300.0
+
+[node name="Bullet012Melon" instance=ExtResource("1_py6d0")]
+script = ExtResource("2_itde2")
+parabola_height = -500.0
+bullet_type = 12
+is_rotate = true
+attack_value = 80
+bullet_mode = 1
+type_bullet_SFX = 5
+can_attack_zombie_status = 5
+
+[node name="BulletShadow" parent="." index="0"]
+scale = Vector2(1.90476, 1.33333)
+
+[node name="BulletBody" parent="Body" index="0"]
+texture = ExtResource("2_py6d0")
+
+[node name="BulletEffect" parent="." index="2"]
+script = ExtResource("3_itde2")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BulletEffect/AllParticles2D" index="0"]
+material = SubResource("CanvasItemMaterial_o220a")
+emitting = false
+amount = 13
+texture = ExtResource("4_py6d0")
+lifetime = 0.66
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_itde2")
+
+[node name="CollisionShape2D" parent="Area2DAttack" index="0"]
+shape = SubResource("CircleShape2D_wo6mn")
+
+[node name="SpatterComponent" type="Node2D" parent="." index="4"]
+script = ExtResource("5_d0acj")
+sum_attack_value = 574
+range_attack_value = Vector2i(1, 26)
+spatter_lane_up_down = 1
+
+[node name="Area2DSpatter" type="Area2D" parent="SpatterComponent" index="0"]
+collision_layer = 8
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpatterComponent/Area2DSpatter" index="0"]
+shape = SubResource("CapsuleShape2D_itde2")

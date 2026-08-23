@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CrazyDaveDialogDetailResource" load_steps=2 format=3 uid="uid://dbujykqt6bbfc"]
+
+[ext_resource type="Script" uid="uid://7qucqjvdq78q" path="res://scripts/resources/crazy_dave_dialog_detail_resource.gd" id="1_mtea4"]
+
+[resource]
+script = ExtResource("1_mtea4")
+text = "智慧树，没做"
+is_crazy = false
+is_hand = false
+is_choosed = false
+metadata/_custom_type_script = "uid://7qucqjvdq78q"

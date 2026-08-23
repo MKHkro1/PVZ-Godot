@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://hj1x0e6bu1c7"]
+
+[ext_resource type="PackedScene" uid="uid://bhjnqm3kqr2fq" path="res://scenes/choose_level/choose_level_button.tscn" id="1_lxp35"]
+[ext_resource type="Texture2D" uid="uid://blvk8me08qh44" path="res://assets/image/garden/Present.png" id="2_3rusv"]
+[ext_resource type="Script" uid="uid://edjiiur3gi7p" path="res://scripts/choose_level/choose_level_button_customize.gd" id="2_i0kqb"]
+[ext_resource type="Texture2D" uid="uid://hb4b6ujaahoc" path="res://assets/image/Almanac/Almanac_GroundDay.jpg" id="2_p0g7x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0kqb"]
+
+[node name="ChooseLevelButtonCustomize" instance=ExtResource("1_lxp35")]
+script = ExtResource("2_i0kqb")
+
+[node name="Panel" type="Panel" parent="." index="3"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.3976
+offset_top = 4.3855286
+offset_right = 42.6024
+offset_bottom = 70.3855
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i0kqb")
+
+[node name="TextureRect" type="TextureRect" parent="Panel" index="0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = -39.0
+offset_right = 145.0
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("2_p0g7x")
+
+[node name="TextureRect2" type="TextureRect" parent="Panel" index="1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.6024
+offset_top = 11.614471
+offset_right = 56.3976
+offset_bottom = 55.61447
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("2_3rusv")
+expand_mode = 3
+stretch_mode = 5

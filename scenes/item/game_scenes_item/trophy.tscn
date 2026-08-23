@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://dpaa326ftym5a"]
+
+[ext_resource type="Script" uid="uid://csqombr7s87dx" path="res://scripts/ui/main_game_ui/trophy.gd" id="1_46dpp"]
+[ext_resource type="Texture2D" uid="uid://dsx7x222200ae" path="res://assets/image/ui/ui_trophy/AwardGlow.png" id="2_qvwtp"]
+[ext_resource type="Texture2D" uid="uid://1c5obsgr22ds" path="res://assets/image/ui/ui_trophy/trophy_hi_res.png" id="3_loqis"]
+[ext_resource type="BitMap" uid="uid://dcuafu0rbe4b5" path="res://assets/image/ui/ui_trophy/trophy_hi_res_mask.png" id="4_7a6s0"]
+[ext_resource type="Texture2D" uid="uid://dutnf2k8nkqlf" path="res://assets/image/ui/ui_trophy/AwardRays1.png" id="5_6dn24"]
+[ext_resource type="Texture2D" uid="uid://cev77yt3o6wn5" path="res://assets/image/ui/ui_trophy/AwardRays2.png" id="6_i7ok3"]
+[ext_resource type="Texture2D" uid="uid://yk66wnfu0ye8" path="res://assets/image/ui/ui_trophy/AwardRays.png" id="7_87gxn"]
+[ext_resource type="Texture2D" uid="uid://ck3qd7qu37g43" path="res://assets/image/ui/ui_trophy/AwardPickupGlow.png" id="8_mcse2"]
+[ext_resource type="Texture2D" uid="uid://c8kyjcgv2a6vr" path="res://assets/image/ui/ui_trophy/AwardRays_star.png" id="9_o13aw"]
+[ext_resource type="AudioStream" uid="uid://bouhg13qcaawh" path="res://assets/audio/SFX/progress/winmusic.ogg" id="10_qvwtp"]
+
+[node name="Trophy" type="Node2D"]
+z_index = 2000
+z_as_relative = false
+script = ExtResource("1_46dpp")
+
+[node name="PickUpGlow" type="Sprite2D" parent="."]
+texture = ExtResource("8_mcse2")
+
+[node name="AllRays" type="Node2D" parent="."]
+visible = false
+
+[node name="Rays1" type="Sprite2D" parent="AllRays"]
+rotation = -4.18879
+scale = Vector2(0.265, 0.265)
+texture = ExtResource("5_6dn24")
+
+[node name="Rays2" type="Sprite2D" parent="AllRays"]
+rotation = 0.785398
+scale = Vector2(0.265, 0.265)
+texture = ExtResource("6_i7ok3")
+
+[node name="Rays" type="Sprite2D" parent="AllRays"]
+scale = Vector2(0.265, 0.265)
+texture = ExtResource("7_87gxn")
+
+[node name="Rays_star" type="Sprite2D" parent="AllRays"]
+scale = Vector2(0.265, 0.265)
+texture = ExtResource("9_o13aw")
+
+[node name="TrophyButton" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -33.0
+offset_right = 123.0
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_loqis")
+texture_pressed = ExtResource("3_loqis")
+texture_hover = ExtResource("3_loqis")
+texture_disabled = ExtResource("3_loqis")
+texture_click_mask = ExtResource("4_7a6s0")
+
+[node name="Glow" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(100, 100)
+texture = ExtResource("2_qvwtp")
+
+[node name="Winmusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_qvwtp")
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="TrophyButton" to="." method="_on_trophy_button_mouse_entered"]
+[connection signal="pressed" from="TrophyButton" to="." method="_on_trophy_button_pressed"]

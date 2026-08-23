@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://bhjnqm3kqr2fq"]
+
+[ext_resource type="Texture2D" uid="uid://ders1ogcvovet" path="res://assets/image/ui/ui_challenge/Challenge_Blank.png" id="1_xlup7"]
+[ext_resource type="Script" uid="uid://cnagiy3yxjooh" path="res://scripts/choose_level/choose_level_button.gd" id="2_cv4rv"]
+[ext_resource type="FontFile" uid="uid://dqb8lum530s2f" path="res://assets/fonts/方正少儿_GBK.ttf" id="6_cc2hn"]
+[ext_resource type="Texture2D" uid="uid://bnwwtx66naab1" path="res://assets/image/ui/ui_challenge/Challenge_Window.png" id="6_o7rat"]
+[ext_resource type="Texture2D" uid="uid://vwk4r0yu588v" path="res://assets/image/ui/ui_challenge/Challenge_Window_Highlight.png" id="7_63bjb"]
+[ext_resource type="Texture2D" uid="uid://vi5ld75dko0v" path="res://assets/image/main_game_item/lock.png" id="7_80wmn"]
+[ext_resource type="Texture2D" uid="uid://c6mjipiwidgou" path="res://assets/image/ui/ui_challenge/MiniGame_trophy.png" id="8_w37fl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oxhwj"]
+font = ExtResource("6_cc2hn")
+font_size = 18
+font_color = Color(1, 1, 0.45490196, 1)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="ChooseLevelButton" type="TextureRect"]
+texture = ExtResource("1_xlup7")
+script = ExtResource("2_cv4rv")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -60.0
+offset_right = 59.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_o7rat")
+texture_pressed = ExtResource("7_63bjb")
+texture_focused = ExtResource("6_o7rat")
+
+[node name="Label" type="Label" parent="TextureButton"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -38.5
+offset_bottom = -15.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "白天"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="success" type="TextureRect" parent="."]
+z_index = 2
+layout_mode = 1
+offset_left = -7.0
+offset_top = -3.0
+offset_right = 47.0
+offset_bottom = 51.0
+mouse_filter = 2
+texture = ExtResource("8_w37fl")
+expand_mode = 1
+
+[node name="RoundNum" type="Label" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -30.5
+offset_bottom = -7.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "1轮"
+label_settings = SubResource("LabelSettings_oxhwj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lock" type="TextureRect" parent="."]
+visible = false
+z_index = 10
+layout_mode = 0
+offset_left = 9.0
+offset_top = 16.0
+offset_right = 89.0
+offset_bottom = 96.0
+texture = ExtResource("7_80wmn")

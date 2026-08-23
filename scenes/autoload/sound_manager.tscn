@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://batejflfm7jxj"]
+
+[ext_resource type="Script" uid="uid://b2p2bkr2jdfep" path="res://scripts/autoload/sound_manager.gd" id="1_yi7ou"]
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_yi7ou")
+
+[node name="BGMPlay" type="AudioStreamPlayer" parent="."]
+bus = &"BGM"
+
+[node name="SFXAll" type="Node" parent="."]
+
+[node name="CrazyDavePlayer" type="AudioStreamPlayer" parent="SFXAll"]
+bus = &"SFX"
+
+[node name="RainPlayer" type="AudioStreamPlayer" parent="SFXAll"]
+bus = &"SFX"

@@ -1,0 +1,409 @@
+[gd_resource type="Animation" load_steps=6 format=3 uid="uid://b46fv0d5ot0mh"]
+
+[ext_resource type="Texture2D" uid="uid://dvlvifhp7gqg6" path="res://assets/reanim/SnowPea_crystals1.png" id="8_fuck"]
+[ext_resource type="Texture2D" uid="uid://cwt4uqjqsibcq" path="res://assets/reanim/SnowPea_crystals2.png" id="9_fuck"]
+[ext_resource type="Texture2D" uid="uid://djckbtre6csg1" path="res://assets/reanim/SnowPea_crystals3.png" id="10_fuck"]
+[ext_resource type="Texture2D" uid="uid://btm8ff66rlov2" path="res://assets/reanim/SnowPea_head.png" id="11_fuck"]
+[ext_resource type="Texture2D" uid="uid://duih4ey3fvuom" path="res://assets/reanim/SnowPea_mouth.png" id="12_fuck"]
+
+[resource]
+resource_name = "SnowPea_head_idle"
+length = 2.0
+loop_mode = 1
+step = 0.083333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/SnowPea_crystals1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10.2, 15.9), Vector2(9.5, 13.3), Vector2(8.8, 11.7), Vector2(8.2, 9.9), Vector2(8.2, 9.7), Vector2(8.2, 9.5), Vector2(8.2, 9.2), Vector2(8, 10.5), Vector2(7.8, 11.9), Vector2(7.6, 13.3), Vector2(7.4, 14.3), Vector2(7.1, 15.3), Vector2(7, 16.4), Vector2(7, 15.3), Vector2(7, 14.9), Vector2(7, 14.4), Vector2(7.2, 13.3), Vector2(7.5, 12.4), Vector2(7.6, 11.4), Vector2(7.9, 11.4), Vector2(8, 11.4), Vector2(8.2, 11.5), Vector2(8.8, 13), Vector2(9.5, 14.4), Vector2(10.2, 15.9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/SnowPea_crystals1:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.050615, -0.075049, -0.003491, 0.064577, 0.05236, 0.043633, 0.033161, -0.003491, -0.041888, -0.08203, -0.08203, -0.085521, -0.090757, -0.139626, -0.125664, -0.109956, -0.099484, -0.090757, -0.085521, -0.055851, -0.024435, 0.0, -0.012217, -0.029671, -0.050615]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/SnowPea_crystals1:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.551, 0.503), Vector2(0.569, 0.55), Vector2(0.585, 0.55), Vector2(0.601, 0.55), Vector2(0.601, 0.558), Vector2(0.601, 0.565), Vector2(0.6, 0.573), Vector2(0.601, 0.565), Vector2(0.601, 0.557), Vector2(0.602, 0.549), Vector2(0.602, 0.537), Vector2(0.602, 0.525), Vector2(0.603, 0.513), Vector2(0.606, 0.546), Vector2(0.605, 0.546), Vector2(0.604, 0.547), Vector2(0.603, 0.557), Vector2(0.603, 0.567), Vector2(0.602, 0.578), Vector2(0.601, 0.568), Vector2(0.601, 0.559), Vector2(0.6, 0.55), Vector2(0.584, 0.534), Vector2(0.567, 0.519), Vector2(0.551, 0.503)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/SnowPea_crystals1:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.050615, 0.075049, 0.003491, -0.064577, -0.05236, -0.043633, -0.033161, -0.0034903, 0.02618, 0.0523594, 0.0401421, 0.0296705, 0.0209438, 0.0750488, 0.0610868, 0.0453788, 0.0488695, 0.0523598, 0.0575957, 0.040143, 0.0174537, 0.0, 0.012217, 0.029671, 0.050615]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/SnowPea_crystals1:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("8_fuck"), ExtResource("8_fuck")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/SnowPea_crystals2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(11, 18.3), Vector2(10.5, 15.9), Vector2(10, 14.5), Vector2(9.6, 13.1), Vector2(9.3, 12.7), Vector2(8.9, 12.4), Vector2(8.4, 12), Vector2(8.1, 13.7), Vector2(7.8, 15.2), Vector2(7.5, 16.9), Vector2(7.3, 18.1), Vector2(7, 19.3), Vector2(6.8, 20.6), Vector2(6.9, 19.8), Vector2(6.8, 19.4), Vector2(6.8, 18.9), Vector2(7.1, 17.6), Vector2(7.3, 16.4), Vector2(7.5, 15.2), Vector2(8.2, 15), Vector2(8.8, 14.7), Vector2(9.6, 14.6), Vector2(10, 15.8), Vector2(10.5, 17), Vector2(11, 18.3)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/SnowPea_crystals2:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.050615, -0.075049, -0.003491, 0.064577, 0.061087, 0.061087, 0.061087, 0.0, -0.050615, -0.10821, -0.129154, -0.148353, -0.171042, -0.223402, -0.207694, -0.195477, -0.165806, -0.137881, -0.113446, -0.073304, -0.034907, 0.0, -0.012217, -0.029671, -0.050615]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/SnowPea_crystals2:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.551, 0.503), Vector2(0.568, 0.542), Vector2(0.582, 0.534), Vector2(0.597, 0.526), Vector2(0.608, 0.534), Vector2(0.619, 0.542), Vector2(0.631, 0.55), Vector2(0.636, 0.542), Vector2(0.642, 0.533), Vector2(0.647, 0.525), Vector2(0.653, 0.514), Vector2(0.658, 0.503), Vector2(0.664, 0.492), Vector2(0.671, 0.523), Vector2(0.669, 0.524), Vector2(0.667, 0.525), Vector2(0.66, 0.534), Vector2(0.654, 0.543), Vector2(0.648, 0.553), Vector2(0.63, 0.544), Vector2(0.613, 0.535), Vector2(0.596, 0.526), Vector2(0.581, 0.518), Vector2(0.566, 0.511), Vector2(0.551, 0.503)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/SnowPea_crystals2:skew")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.050615, 0.075049, 0.003491, -0.064577, -0.0698136, -0.082031, -0.0977389, -0.0471239, -0.0087262, 0.0349062, 0.0418875, 0.0453786, 0.0506143, 0.111701, 0.0959929, 0.0820306, 0.0663222, 0.0558505, 0.0436328, 0.0296708, 0.013963, 0.0, 0.012217, 0.029671, 0.050615]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/SnowPea_crystals2:texture")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("9_fuck"), ExtResource("9_fuck")]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/SnowPea_crystals3:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(7.7, 26.3), Vector2(7.7, 25.1), Vector2(7.7, 23.9), Vector2(7.7, 22.7), Vector2(7.7, 22.4), Vector2(7.7, 22.2), Vector2(7.7, 22), Vector2(7.7, 23.2), Vector2(7.7, 24.5), Vector2(7.7, 25.7), Vector2(7.7, 26.5), Vector2(7.7, 27.2), Vector2(7.7, 28.1), Vector2(7.7, 27.7), Vector2(7.7, 27.2), Vector2(7.7, 26.9), Vector2(7.7, 26.1), Vector2(7.7, 25.3), Vector2(7.7, 24.5), Vector2(7.7, 24.5), Vector2(7.7, 24.3), Vector2(7.7, 24.3), Vector2(7.7, 25), Vector2(7.7, 25.6), Vector2(7.7, 26.3)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/SnowPea_crystals3:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.050615, -0.113446, -0.07854, -0.047124, -0.059341, -0.073304, -0.085521, -0.120428, -0.16057, -0.200713, -0.204204, -0.207694, -0.214675, -0.268781, -0.253073, -0.23911, -0.230383, -0.218166, -0.211185, -0.178024, -0.143117, -0.113446, -0.090757, -0.068068, -0.050615]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/SnowPea_crystals3:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.551, 0.503), Vector2(0.554, 0.55), Vector2(0.552, 0.55), Vector2(0.551, 0.55), Vector2(0.551, 0.558), Vector2(0.551, 0.565), Vector2(0.552, 0.573), Vector2(0.555, 0.565), Vector2(0.558, 0.558), Vector2(0.562, 0.55), Vector2(0.562, 0.538), Vector2(0.562, 0.527), Vector2(0.563, 0.515), Vector2(0.571, 0.55), Vector2(0.568, 0.55), Vector2(0.566, 0.55), Vector2(0.565, 0.56), Vector2(0.564, 0.569), Vector2(0.563, 0.579), Vector2(0.559, 0.569), Vector2(0.556, 0.56), Vector2(0.554, 0.55), Vector2(0.552, 0.534), Vector2(0.552, 0.519), Vector2(0.551, 0.503)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/SnowPea_crystals3:skew")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.050615, 0.113446, 0.07854, 0.047124, 0.059341, 0.073304, 0.085521, 0.120428, 0.16057, 0.200713, 0.204204, 0.207694, 0.214675, 0.268781, 0.253073, 0.23911, 0.230383, 0.218166, 0.211185, 0.178024, 0.143117, 0.113446, 0.090757, 0.068068, 0.050615]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/SnowPea_crystals3:texture")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("10_fuck"), ExtResource("10_fuck")]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/Anim_face:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(19.2, 17.8), Vector2(19.3, 16.3), Vector2(19.3, 14.7), Vector2(19.4, 13.1), Vector2(19.3, 12.9), Vector2(19.3, 12.7), Vector2(19.2, 12.5), Vector2(19.3, 12.9), Vector2(19.4, 13.3), Vector2(19.4, 13.8), Vector2(19.4, 15), Vector2(19.3, 16.1), Vector2(19.3, 17.2), Vector2(19.2, 16.1), Vector2(19.2, 15), Vector2(19.1, 13.9), Vector2(19.2, 13.3), Vector2(19.2, 12.7), Vector2(19.3, 12), Vector2(19.3, 12.3), Vector2(19.3, 12.6), Vector2(19.4, 13), Vector2(19.3, 14.6), Vector2(19.3, 16.3), Vector2(19.2, 17.8)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/Anim_face:rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/Anim_face:scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.555, 0.5), Vector2(0.555, 0.522), Vector2(0.555, 0.545), Vector2(0.555, 0.567), Vector2(0.555, 0.57), Vector2(0.555, 0.572), Vector2(0.555, 0.575), Vector2(0.555, 0.568), Vector2(0.555, 0.562), Vector2(0.555, 0.555), Vector2(0.555, 0.537), Vector2(0.555, 0.518), Vector2(0.555, 0.5), Vector2(0.555, 0.518), Vector2(0.555, 0.537), Vector2(0.555, 0.555), Vector2(0.555, 0.565), Vector2(0.555, 0.575), Vector2(0.555, 0.585), Vector2(0.555, 0.579), Vector2(0.555, 0.573), Vector2(0.555, 0.567), Vector2(0.555, 0.545), Vector2(0.555, 0.522), Vector2(0.555, 0.5)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/Anim_face:skew")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/Anim_face:texture")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("11_fuck"), ExtResource("11_fuck")]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/SnowPea_mouth:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(52.4, 17.8), Vector2(53, 16.3), Vector2(52.8, 14.7), Vector2(52.6, 13.1), Vector2(52.6, 12.8), Vector2(52.5, 12.5), Vector2(52.5, 12.2), Vector2(52.5, 12.8), Vector2(52.6, 13.4), Vector2(52.7, 13.9), Vector2(52.7, 15), Vector2(52.7, 16.1), Vector2(52.6, 17.2), Vector2(52.6, 15.8), Vector2(52.5, 14.8), Vector2(52.4, 13.9), Vector2(52.5, 13.2), Vector2(52.5, 12.6), Vector2(52.5, 12), Vector2(52.6, 12.3), Vector2(52.6, 12.6), Vector2(52.6, 12.9), Vector2(52.5, 14.6), Vector2(52.5, 16.2), Vector2(52.4, 17.8)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/SnowPea_mouth:rotation")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.172788, 0.083776, 0.0, 0.0, 0.0, 0.0, -0.029671, -0.064577, -0.099484, -0.064577, -0.029671, 0.0, 0.158825, 0.07854, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/SnowPea_mouth:scale")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.555, 0.5), Vector2(0.564, 0.517), Vector2(0.559, 0.542), Vector2(0.555, 0.567), Vector2(0.555, 0.573), Vector2(0.555, 0.579), Vector2(0.555, 0.585), Vector2(0.556, 0.575), Vector2(0.557, 0.565), Vector2(0.558, 0.555), Vector2(0.554, 0.537), Vector2(0.551, 0.518), Vector2(0.547, 0.5), Vector2(0.557, 0.518), Vector2(0.556, 0.537), Vector2(0.555, 0.555), Vector2(0.555, 0.565), Vector2(0.555, 0.575), Vector2(0.555, 0.585), Vector2(0.555, 0.579), Vector2(0.555, 0.573), Vector2(0.555, 0.567), Vector2(0.555, 0.545), Vector2(0.555, 0.522), Vector2(0.555, 0.5)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/SnowPea_mouth:skew")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.172788, -0.083776, 0.0, 0.0, 0.0, 0.0, 0.029671, 0.064577, 0.099484, 0.064577, 0.029671, 0.0, -0.158825, -0.07854, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/SnowPea_mouth:texture")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("12_fuck"), ExtResource("12_fuck")]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/Idle_shoot_blink:position")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/Idle_shoot_blink:rotation")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/Idle_shoot_blink:scale")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/Idle_shoot_blink:skew")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/Anim_blink:rotation")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/Anim_blink:scale")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555), Vector2(0.555, 0.555)]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/Anim_blink:skew")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("Body/BodyCorrect/Anim_stem/stem_correct/Anim_blink:position")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.916667, 1, 1.08333, 1.33333, 1.5, 1.75, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(37.5, 23.5), Vector2(37.9957, 20.0183), Vector2(37.631, 19.2267), Vector2(37.9957, 21.0183), Vector2(37.7041, 22.0393), Vector2(37.5167, 21.3932), Vector2(37.6163, 19.9359), Vector2(37.7435, 19.0556), Vector2(37.6739, 19.6627), Vector2(37.5, 23.5)]
+}

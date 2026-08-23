@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="ResourceLevelData" load_steps=11 format=3 uid="uid://b5oxrfwynij8w"]
+
+[ext_resource type="Script" uid="uid://bke3sg5otco7s" path="res://scripts/resources/level/pre_plant_in_level.gd" id="1_s53qs"]
+[ext_resource type="Script" uid="uid://bjt3l56exxmdw" path="res://scripts/resources/level/level_data.gd" id="2_1bvvj"]
+
+[sub_resource type="Resource" id="Resource_7w3rb"]
+script = ExtResource("1_s53qs")
+plant_type = 17
+plant_cell_pos = Vector2i(3, 1)
+metadata/_custom_type_script = "uid://bke3sg5otco7s"
+
+[sub_resource type="Resource" id="Resource_fdrr7"]
+script = ExtResource("1_s53qs")
+plant_type = 17
+plant_cell_pos = Vector2i(3, 2)
+metadata/_custom_type_script = "uid://bke3sg5otco7s"
+
+[sub_resource type="Resource" id="Resource_clk7j"]
+script = ExtResource("1_s53qs")
+plant_type = 17
+plant_cell_pos = Vector2i(3, 3)
+metadata/_custom_type_script = "uid://bke3sg5otco7s"
+
+[sub_resource type="Resource" id="Resource_wj2vu"]
+script = ExtResource("1_s53qs")
+plant_type = 17
+plant_cell_pos = Vector2i(3, 4)
+metadata/_custom_type_script = "uid://bke3sg5otco7s"
+
+[sub_resource type="Resource" id="Resource_s53qs"]
+script = ExtResource("1_s53qs")
+plant_type = 17
+plant_cell_pos = Vector2i(4, 1)
+metadata/_custom_type_script = "uid://bke3sg5otco7s"
+
+[sub_resource type="Resource" id="Resource_1bvvj"]
+script = ExtResource("1_s53qs")
+plant_type = 17
+plant_cell_pos = Vector2i(4, 2)
+metadata/_custom_type_script = "uid://bke3sg5otco7s"
+
+[sub_resource type="Resource" id="Resource_vjb8i"]
+script = ExtResource("1_s53qs")
+plant_type = 17
+plant_cell_pos = Vector2i(4, 3)
+metadata/_custom_type_script = "uid://bke3sg5otco7s"
+
+[sub_resource type="Resource" id="Resource_lvdka"]
+script = ExtResource("1_s53qs")
+plant_type = 17
+plant_cell_pos = Vector2i(4, 4)
+metadata/_custom_type_script = "uid://bke3sg5otco7s"
+
+[resource]
+script = ExtResource("2_1bvvj")
+game_sences = 1
+game_BG = 3
+game_BGM = 7
+is_day = false
+is_day_sun = false
+is_lawn_mover = false
+all_pre_plant_data = Array[ExtResource("1_s53qs")]([SubResource("Resource_7w3rb"), SubResource("Resource_fdrr7"), SubResource("Resource_clk7j"), SubResource("Resource_wj2vu"), SubResource("Resource_s53qs"), SubResource("Resource_1bvvj"), SubResource("Resource_vjb8i"), SubResource("Resource_lvdka")])
+look_show_zombie = false
+can_choosed_card = false
+monster_mode = 0
+zombie_refresh_types = Array[int]([1, 3, 4, 5, 6, 7, 8, 9])
+start_sun = 100
+pre_choosed_card_list_zombie = Array[int]([1, 3, 5])
+is_zombie_mode = true
+all_plants_weight_on_zombie_mode = Dictionary[int, int]({
+1: 1,
+2: 1
+})
+is_bowling_stripe = true
+plant_cell_col_j = 3
+plant_cell_can_use = Dictionary[String, bool]({
+"left_can_plant": false,
+"left_can_zombie": false,
+"right_can_plant": false,
+"right_can_zombie": true
+})
+metadata/_custom_type_script = "uid://bjt3l56exxmdw"

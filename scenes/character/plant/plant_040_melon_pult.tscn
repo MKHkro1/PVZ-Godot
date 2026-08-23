@@ -1,0 +1,198 @@
+[gd_scene load_steps=25 format=3 uid="uid://cpwpymho34iuq"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_vrn5c"]
+[ext_resource type="Texture2D" uid="uid://nj6m28m6k5p1" path="res://assets/reanim/PeaShooter_frontleaf_righttip.png" id="2_ese8j"]
+[ext_resource type="Script" uid="uid://wf0yg55yekfx" path="res://scripts/character/plant/plant_040_melon_pult.gd" id="2_myj7b"]
+[ext_resource type="Texture2D" uid="uid://dit0i5evvco14" path="res://assets/reanim/PeaShooter_frontleaf_lefttip.png" id="3_g6087"]
+[ext_resource type="Texture2D" uid="uid://b7uqfdos6ocy7" path="res://assets/reanim/Cabbagepult_basket.png" id="4_myj7b"]
+[ext_resource type="Texture2D" uid="uid://cyq6qjfok78qm" path="res://assets/reanim/Melonpult_melon.png" id="5_ien23"]
+[ext_resource type="Texture2D" uid="uid://ypi3oybr0n66" path="res://assets/reanim/Cabbagepult_basket_overlay.png" id="6_3h8kf"]
+[ext_resource type="Texture2D" uid="uid://bfprc4gnain57" path="res://assets/reanim/Melonpult_stalk.png" id="7_y7nur"]
+[ext_resource type="Texture2D" uid="uid://jc04bawcark1" path="res://assets/reanim/Melonpult_body.png" id="8_lue24"]
+[ext_resource type="Texture2D" uid="uid://b545xxdmuws6t" path="res://assets/reanim/Melonpult_blink1.png" id="9_5c13o"]
+[ext_resource type="Texture2D" uid="uid://bw5pn01hh1dfv" path="res://assets/reanim/Melonpult_eyebrow.png" id="10_ru083"]
+[ext_resource type="Texture2D" uid="uid://300aew7liup" path="res://assets/reanim/PeaShooter_frontleaf.png" id="11_42var"]
+[ext_resource type="Animation" uid="uid://bkp3alta7lpu0" path="res://animation/character/plant/040_melon_pult/MelonPult_idle.tres" id="12_41ay8"]
+[ext_resource type="Animation" uid="uid://mthlll85nupo" path="res://animation/character/plant/040_melon_pult/MelonPult_shooting.tres" id="13_186uu"]
+[ext_resource type="Script" uid="uid://b5t3ejxgko6nc" path="res://scripts/character/components/attack_behavior_component/component_attack_bullet_pult_base.gd" id="14_g6087"]
+[ext_resource type="Script" uid="uid://bafp0ax1lmlge" path="res://scripts/character/components/detect_component/component_detect.gd" id="15_myj7b"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o3ogr"]
+_data = {
+&"MelonPult_idle": ExtResource("12_41ay8"),
+&"MelonPult_shooting": ExtResource("13_186uu")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vrn5c"]
+animation = &"MelonPult_shooting"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ese8j"]
+animation = &"MelonPult_idle"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_g6087"]
+fadein_time = 0.2
+fadeout_time = 0.2
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_myj7b"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_ien23"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_3h8kf"]
+graph_offset = Vector2(-209.87, 156.776)
+nodes/output/position = Vector2(640, 220)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_ese8j")
+nodes/Animation/position = Vector2(6.05, 107.69)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_vrn5c")
+"nodes/Animation 2/position" = Vector2(-260, 360)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_g6087")
+nodes/OneShot/position = Vector2(220, 140)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_ien23")
+nodes/TimeScale/position = Vector2(436.81, 187.55)
+"nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_myj7b")
+"nodes/TimeScale 2/position" = Vector2(40, 320)
+node_connections = [&"output", 0, &"TimeScale", &"OneShot", 0, &"Animation", &"OneShot", 1, &"TimeScale 2", &"TimeScale", 0, &"OneShot", &"TimeScale 2", 0, &"Animation 2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ien23"]
+size = Vector2(1000, 5)
+
+[node name="Plant040MelonPult" node_paths=PackedStringArray("node2d_detect_in_slope") instance=ExtResource("1_vrn5c")]
+script = ExtResource("2_myj7b")
+plant_type = 40
+node2d_detect_in_slope = [NodePath("HurtBoxComponent/HurtBoxDetection"), NodePath("AttackComponent/DetectComponent")]
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-42, -65)
+
+[node name="Frontleaf_right_tip" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+position = Vector2(27.64337, 59.386738)
+rotation = -2.5382056
+scale = Vector2(0.5737735, 0.44388676)
+skew = 3.2190738
+texture = ExtResource("2_ese8j")
+centered = false
+
+[node name="Frontleaf_tip_left" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+position = Vector2(65.06602, 49.498066)
+rotation = 2.555062
+scale = Vector2(0.5711132, 0.498)
+skew = -3.1212728
+texture = ExtResource("3_g6087")
+centered = false
+
+[node name="Cabbagepult_basket" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+position = Vector2(-25.498066, 16.003588)
+rotation = -0.12648295
+scale = Vector2(0.7991133, 0.7991133)
+texture = ExtResource("4_myj7b")
+centered = false
+
+[node name="Melonpult_mellon" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+position = Vector2(-39.960217, -5.411607)
+rotation = -0.16754706
+scale = Vector2(0.999, 0.999)
+texture = ExtResource("5_ien23")
+centered = false
+
+[node name="Cabbagepult_basket_overlay" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+position = Vector2(-25.498066, 16.003588)
+rotation = -0.12648295
+scale = Vector2(0.7991133, 0.7991133)
+texture = ExtResource("6_3h8kf")
+centered = false
+
+[node name="Melonpult_stalk" type="Sprite2D" parent="Body/BodyCorrect" index="5"]
+position = Vector2(16.033978, 22.898066)
+rotation = -0.04764984
+scale = Vector2(0.80088675, 0.8)
+skew = 0.021503637
+texture = ExtResource("7_y7nur")
+centered = false
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="6"]
+position = Vector2(14.922652, 34.432045)
+scale = Vector2(0.8142072, 0.7735857)
+texture = ExtResource("8_lue24")
+centered = false
+
+[node name="Melonpult_blink" type="Sprite2D" parent="Body/BodyCorrect" index="7"]
+visible = false
+position = Vector2(35.3, 47.7)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("9_5c13o")
+centered = false
+
+[node name="Melonpult_eyebrow1" type="Sprite2D" parent="Body/BodyCorrect" index="8"]
+position = Vector2(53.4, 46.04337)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_ru083")
+centered = false
+
+[node name="Melonpult_eyebrow2" type="Sprite2D" parent="Body/BodyCorrect" index="9"]
+position = Vector2(35.5, 47.754696)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_ru083")
+centered = false
+
+[node name="Frontleaf" type="Sprite2D" parent="Body/BodyCorrect" index="10"]
+position = Vector2(23.488674, 55.077347)
+rotation = 0.101229
+scale = Vector2(0.572, 0.43079284)
+skew = 0.0034908
+texture = ExtResource("11_42var")
+centered = false
+
+[node name="Frontleaf_right_tip1" type="Sprite2D" parent="Body/BodyCorrect" index="11"]
+position = Vector2(57.045303, 59.488674)
+rotation = 0.027037976
+scale = Vector2(0.5776602, 0.44022653)
+texture = ExtResource("2_ese8j")
+centered = false
+
+[node name="Frontleaf_tip_left1" type="Sprite2D" parent="Body/BodyCorrect" index="12"]
+position = Vector2(20.243368, 59.288673)
+rotation = 0.15895545
+scale = Vector2(0.57854694, 0.46869892)
+skew = 0.011623913
+texture = ExtResource("3_g6087")
+centered = false
+
+[node name="Marker2DBullet" type="Marker2D" parent="Body/BodyCorrect" index="13"]
+position = Vector2(54, -30)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_o3ogr")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+tree_root = SubResource("AnimationNodeBlendTree_3h8kf")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
+parameters/TimeScale/scale = 1.0
+"parameters/TimeScale 2/scale" = 2.0
+
+[node name="AttackComponent" type="Node2D" parent="." index="10" node_paths=PackedStringArray("markers_2d_bullet")]
+script = ExtResource("14_g6087")
+can_attack_zombie_status = 5
+attack_cd = 3.0
+attack_bullet_type = 12
+markers_2d_bullet = [NodePath("../Body/BodyCorrect/Marker2DBullet")]
+
+[node name="BulletAttackCdTimer" type="Timer" parent="AttackComponent" index="0"]
+
+[node name="DetectComponent" type="Node2D" parent="AttackComponent" index="1"]
+script = ExtResource("15_myj7b")
+
+[node name="Area2D" type="Area2D" parent="AttackComponent/DetectComponent" index="0"]
+position = Vector2(0, -25)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/DetectComponent/Area2D" index="0"]
+position = Vector2(500, 0)
+shape = SubResource("RectangleShape2D_ien23")
+
+[connection signal="timeout" from="AttackComponent/BulletAttackCdTimer" to="AttackComponent" method="_on_bullet_attack_cd_timer_timeout"]

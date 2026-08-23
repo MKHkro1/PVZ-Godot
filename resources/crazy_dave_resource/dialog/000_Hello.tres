@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CrazyDaveDialogResource" load_steps=6 format=3 uid="uid://dfej0f5gi8osq"]
+
+[ext_resource type="Script" uid="uid://dlfnh7fjqyil6" path="res://scripts/resources/crazy_dave_dialog_resource.gd" id="1_xcycs"]
+[ext_resource type="Script" uid="uid://7qucqjvdq78q" path="res://scripts/resources/crazy_dave_dialog_detail_resource.gd" id="1_ycufd"]
+[ext_resource type="Resource" uid="uid://du4gh7a0o4fyb" path="res://resources/crazy_dave_resource/dialog_detail/000_Hello.tres" id="3_33ygh"]
+[ext_resource type="Resource" uid="uid://urishti8iy5w" path="res://resources/crazy_dave_resource/dialog_detail/001_Crazy.tres" id="4_flfar"]
+[ext_resource type="Resource" uid="uid://fiospxsoyr78" path="res://resources/crazy_dave_resource/dialog_detail/002_LookMyHand.tres" id="5_em7fq"]
+
+[resource]
+script = ExtResource("1_xcycs")
+dialog_detail_list = Array[ExtResource("1_ycufd")]([ExtResource("3_33ygh"), ExtResource("4_flfar"), ExtResource("5_em7fq")])
+dialog_detail_long_time_idle_list = Array[ExtResource("1_ycufd")]([ExtResource("3_33ygh"), ExtResource("4_flfar")])
+metadata/_custom_type_script = "uid://dlfnh7fjqyil6"

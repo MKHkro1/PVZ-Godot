@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://i10hyw6gredy"]
+
+[ext_resource type="Script" uid="uid://lmskm3crn773" path="res://scripts/manager/day_suns_manager.gd" id="1_e0hdi"]
+
+[node name="DaySunsManager" type="Node"]
+script = ExtResource("1_e0hdi")
+
+[node name="ProductionTimer" type="Timer" parent="."]

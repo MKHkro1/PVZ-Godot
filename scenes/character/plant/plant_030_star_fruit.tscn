@@ -1,0 +1,219 @@
+[gd_scene load_steps=21 format=3 uid="uid://bo2laq3egm6ic"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_nndnm"]
+[ext_resource type="Script" uid="uid://ufhh4gtgm5my" path="res://scripts/character/plant/plant_030_star_fruit.gd" id="2_ds8om"]
+[ext_resource type="Texture2D" uid="uid://h5yqjc7mrtnq" path="res://assets/reanim/Starfruit_body.png" id="2_j1qv8"]
+[ext_resource type="Texture2D" uid="uid://k8arpkjanpdw" path="res://assets/reanim/Starfruit_mouth.png" id="3_ds8om"]
+[ext_resource type="Texture2D" uid="uid://h7nxedbfin5i" path="res://assets/reanim/Starfruit_smile.png" id="3_us3df"]
+[ext_resource type="Texture2D" uid="uid://wf2x5qqmfvn4" path="res://assets/reanim/Starfruit_leaf.png" id="4_ds8om"]
+[ext_resource type="Texture2D" uid="uid://c0vuf4cwcahb" path="res://assets/reanim/Starfruit_stem.png" id="5_uefxc"]
+[ext_resource type="Texture2D" uid="uid://uv0xujpwswfl" path="res://assets/reanim/Starfruit_eyes1.png" id="6_0ews2"]
+[ext_resource type="Animation" uid="uid://cnyy74xwbja8u" path="res://animation/character/plant/030_star_fruit/StarFruit_idle.tres" id="8_ryetw"]
+[ext_resource type="Animation" uid="uid://xbwv3dnuagpi" path="res://animation/character/plant/030_star_fruit/StarFruit_shoot.tres" id="9_2bi5b"]
+[ext_resource type="Script" uid="uid://d27ifln7bjwup" path="res://scripts/character/components/attack_behavior_component/component_attack_bullet_base.gd" id="9_j1qv8"]
+[ext_resource type="Script" uid="uid://bafp0ax1lmlge" path="res://scripts/character/components/detect_component/component_detect.gd" id="10_us3df"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_el77c"]
+_data = {
+&"StarFruit_idle": ExtResource("8_ryetw"),
+&"StarFruit_shoot": ExtResource("9_2bi5b")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yn2qs"]
+animation = &"StarFruit_shoot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_el77c"]
+animation = &"StarFruit_idle"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_h7tqp"]
+fadein_time = 0.2
+fadeout_time = 0.2
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_w8ucd"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_65373"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lia21"]
+graph_offset = Vector2(-179.334, 73.7962)
+nodes/output/position = Vector2(560, 300)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_el77c")
+nodes/Animation/position = Vector2(-80, 300)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_yn2qs")
+"nodes/Animation 2/position" = Vector2(-320, 500)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_h7tqp")
+nodes/OneShot/position = Vector2(140, 280)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_65373")
+nodes/TimeScale/position = Vector2(360, 300)
+"nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_w8ucd")
+"nodes/TimeScale 2/position" = Vector2(-40, 500)
+node_connections = [&"output", 0, &"TimeScale", &"OneShot", 0, &"Animation", &"OneShot", 1, &"TimeScale 2", &"TimeScale", 0, &"OneShot", &"TimeScale 2", 0, &"Animation 2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ds8om"]
+size = Vector2(1200, 5)
+
+[node name="Plant030StarFruit" instance=ExtResource("1_nndnm")]
+script = ExtResource("2_ds8om")
+plant_type = 30
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-40, -59)
+
+[node name="Anim_blink" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+visible = false
+centered = false
+
+[node name="Anim_idle" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+centered = false
+
+[node name="Anim_shoot" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+visible = false
+centered = false
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+position = Vector2(3.0973063, 9.702693)
+scale = Vector2(0.7060628, 0.7059461)
+texture = ExtResource("2_j1qv8")
+centered = false
+
+[node name="Starfruit_mouth" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+position = Vector2(43.3, 41.6)
+scale = Vector2(0.329, 0.256)
+texture = ExtResource("3_ds8om")
+centered = false
+
+[node name="Starfruit_smile" type="Sprite2D" parent="Body/BodyCorrect" index="5"]
+position = Vector2(34.59551, 35.3)
+scale = Vector2(0.70621544, 0.70599097)
+skew = -0.00014103805
+texture = ExtResource("3_us3df")
+centered = false
+
+[node name="Starfruit_leaf" type="Sprite2D" parent="Body/BodyCorrect" index="6"]
+position = Vector2(26.70449, 5.197306)
+rotation = 0.00048579474
+scale = Vector2(0.706, 0.70623344)
+skew = -0.00025073224
+texture = ExtResource("4_ds8om")
+centered = false
+
+[node name="Starfruit_stem" type="Sprite2D" parent="Body/BodyCorrect" index="7"]
+position = Vector2(29.3, 6.401796)
+scale = Vector2(0.7061257, 0.70605385)
+texture = ExtResource("5_uefxc")
+centered = false
+
+[node name="Starfruit_eyes" type="Sprite2D" parent="Body/BodyCorrect" index="8"]
+visible = false
+position = Vector2(29.2, 25.8)
+scale = Vector2(0.706, 0.714)
+texture = ExtResource("6_0ews2")
+centered = false
+
+[node name="Starfruit_eyes2" type="Sprite2D" parent="Body/BodyCorrect" index="9"]
+visible = false
+position = Vector2(28.999132, 26)
+scale = Vector2(0.70604956, 0.714)
+texture = ExtResource("6_0ews2")
+centered = false
+
+[node name="Marker2DBullet" type="Marker2D" parent="Body/BodyCorrect" index="10"]
+position = Vector2(63, 24)
+scale = Vector2(0.5, 0.592593)
+
+[node name="Marker2DBullet2" type="Marker2D" parent="Body/BodyCorrect" index="11"]
+position = Vector2(45, 9)
+scale = Vector2(0.5, 0.592593)
+
+[node name="Marker2DBullet3" type="Marker2D" parent="Body/BodyCorrect" index="12"]
+position = Vector2(14, 28)
+scale = Vector2(0.5, 0.592593)
+
+[node name="Marker2DBullet4" type="Marker2D" parent="Body/BodyCorrect" index="13"]
+position = Vector2(35, 63)
+scale = Vector2(0.5, 0.592593)
+
+[node name="Marker2DBullet5" type="Marker2D" parent="Body/BodyCorrect" index="14"]
+position = Vector2(70, 56)
+scale = Vector2(0.5, 0.592593)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_el77c")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+deterministic = false
+tree_root = SubResource("AnimationNodeBlendTree_lia21")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
+parameters/TimeScale/scale = 1.0
+"parameters/TimeScale 2/scale" = 2.0
+
+[node name="AttackComponent" type="Node2D" parent="." index="10" node_paths=PackedStringArray("markers_2d_bullet")]
+script = ExtResource("9_j1qv8")
+is_lane = false
+attack_bullet_type = 8
+markers_2d_bullet = [NodePath("../Body/BodyCorrect/Marker2DBullet"), NodePath("../Body/BodyCorrect/Marker2DBullet2"), NodePath("../Body/BodyCorrect/Marker2DBullet3"), NodePath("../Body/BodyCorrect/Marker2DBullet4"), NodePath("../Body/BodyCorrect/Marker2DBullet5")]
+
+[node name="BulletAttackCdTimer" type="Timer" parent="AttackComponent" index="0"]
+
+[node name="DetectComponent" type="Node2D" parent="AttackComponent" index="1"]
+script = ExtResource("10_us3df")
+is_lane = false
+plant_enemy_collision_lay = 512
+zomie_enemy_collision_lay = 1280
+
+[node name="Area2D" type="Area2D" parent="AttackComponent/DetectComponent" index="0"]
+position = Vector2(0, -25)
+rotation = -0.3418
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/DetectComponent/Area2D" index="0"]
+position = Vector2(600, 0)
+shape = SubResource("RectangleShape2D_ds8om")
+
+[node name="Area2D2" type="Area2D" parent="AttackComponent/DetectComponent" index="1"]
+position = Vector2(0, -25)
+rotation = -1.5708
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/DetectComponent/Area2D2" index="0"]
+position = Vector2(600, 0)
+shape = SubResource("RectangleShape2D_ds8om")
+
+[node name="Area2D3" type="Area2D" parent="AttackComponent/DetectComponent" index="2"]
+position = Vector2(0, -25)
+rotation = -3.14159
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/DetectComponent/Area2D3" index="0"]
+position = Vector2(600, 0)
+shape = SubResource("RectangleShape2D_ds8om")
+
+[node name="Area2D4" type="Area2D" parent="AttackComponent/DetectComponent" index="3"]
+position = Vector2(0, -25)
+rotation = -4.42851
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/DetectComponent/Area2D4" index="0"]
+position = Vector2(600, 0)
+shape = SubResource("RectangleShape2D_ds8om")
+
+[node name="Area2D5" type="Area2D" parent="AttackComponent/DetectComponent" index="4"]
+position = Vector2(0, -25)
+rotation = -5.41052
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/DetectComponent/Area2D5" index="0"]
+position = Vector2(600, 0)
+shape = SubResource("RectangleShape2D_ds8om")
+
+[connection signal="timeout" from="AttackComponent/BulletAttackCdTimer" to="AttackComponent" method="_on_bullet_attack_cd_timer_timeout"]

@@ -1,0 +1,207 @@
+[gd_scene load_steps=30 format=3 uid="uid://prux5sri4p8i"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_o8j4c"]
+[ext_resource type="Texture2D" uid="uid://8othbxgdaxqc" path="res://assets/reanim/PuffShroom_body.png" id="2_7rmee"]
+[ext_resource type="Script" uid="uid://dhgm65uqy38wr" path="res://scripts/character/plant/plant_009_puff.gd" id="2_wddx6"]
+[ext_resource type="Texture2D" uid="uid://7o5qmisxmqhk" path="res://assets/reanim/PuffShroom_stem.png" id="3_t2sgi"]
+[ext_resource type="Texture2D" uid="uid://bp35mb8xfhk3r" path="res://assets/reanim/PuffShroom_tip.png" id="4_57i3y"]
+[ext_resource type="Texture2D" uid="uid://c1s61ypq4l5s7" path="res://assets/reanim/PuffShroom_head.png" id="5_wddx6"]
+[ext_resource type="Texture2D" uid="uid://b3ddxb6ikwr4q" path="res://assets/reanim/PuffShroom_blink2.png" id="6_exn8h"]
+[ext_resource type="Script" uid="uid://jl0nl4a234bc" path="res://scripts/resources/resource_body_change.gd" id="7_57i3y"]
+[ext_resource type="Animation" uid="uid://g2qcnpjpttmx" path="res://animation/character/plant/009_puff_shroom/PuffShroom_idle.tres" id="8_3wmhr"]
+[ext_resource type="Texture2D" uid="uid://chp5oagqacrw2" path="res://assets/reanim/PuffShroom_blink1.png" id="8_wddx6"]
+[ext_resource type="Animation" uid="uid://6n7yf3akvtw1" path="res://animation/character/plant/009_puff_shroom/PuffShroom_shooting.tres" id="9_b678d"]
+[ext_resource type="Animation" uid="uid://dwapvt7508kup" path="res://animation/character/plant/009_puff_shroom/PuffShroom_sleep.tres" id="10_63whx"]
+[ext_resource type="Script" uid="uid://bafp0ax1lmlge" path="res://scripts/character/components/detect_component/component_detect.gd" id="11_57i3y"]
+[ext_resource type="Script" uid="uid://d27ifln7bjwup" path="res://scripts/character/components/attack_behavior_component/component_attack_bullet_base.gd" id="12_wddx6"]
+
+[sub_resource type="Resource" id="Resource_exn8h"]
+script = ExtResource("7_57i3y")
+sprite_change = Array[NodePath]([NodePath("../Body/BodyCorrect/Anim_blink")])
+sprite_change_texture = Array[Texture2D]([ExtResource("8_wddx6"), ExtResource("6_exn8h")])
+metadata/_custom_type_script = "uid://jl0nl4a234bc"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kf1mc"]
+_data = {
+&"PuffShroom_idle": ExtResource("8_3wmhr"),
+&"PuffShroom_shooting": ExtResource("9_b678d"),
+&"PuffShroom_sleep": ExtResource("10_63whx")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_54vaa"]
+animation = &"PuffShroom_shooting"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_jxqfk"]
+sync = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sr8f0"]
+animation = &"PuffShroom_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rexsj"]
+animation = &"PuffShroom_sleep"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kf1mc"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "not is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tm5gy"]
+advance_mode = 2
+advance_expression = "not is_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mc8sy"]
+advance_mode = 2
+advance_expression = "is_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t2sgi"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_31qs1"]
+states/PuffShroom_idle/node = SubResource("AnimationNodeAnimation_sr8f0")
+states/PuffShroom_idle/position = Vector2(422, 51)
+states/PuffShroom_sleep/node = SubResource("AnimationNodeAnimation_rexsj")
+states/PuffShroom_sleep/position = Vector2(422, 176)
+transitions = ["PuffShroom_sleep", "PuffShroom_idle", SubResource("AnimationNodeStateMachineTransition_kf1mc"), "Start", "PuffShroom_sleep", SubResource("AnimationNodeStateMachineTransition_tm5gy"), "Start", "PuffShroom_idle", SubResource("AnimationNodeStateMachineTransition_mc8sy"), "PuffShroom_idle", "PuffShroom_sleep", SubResource("AnimationNodeStateMachineTransition_t2sgi")]
+graph_offset = Vector2(-67.785, -46)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_7p5dm"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_3gdsv"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_uqyc5"]
+graph_offset = Vector2(-429.035, 54.2933)
+nodes/output/position = Vector2(420, 160)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_54vaa")
+nodes/Animation/position = Vector2(-540, 420)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_jxqfk")
+nodes/OneShot/position = Vector2(-20, 160)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_31qs1")
+nodes/StateMachine/position = Vector2(-420, 160)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_3gdsv")
+nodes/TimeScale/position = Vector2(240, 140)
+"nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_7p5dm")
+"nodes/TimeScale 2/position" = Vector2(-260, 400)
+node_connections = [&"output", 0, &"TimeScale", &"OneShot", 0, &"StateMachine", &"OneShot", 1, &"TimeScale 2", &"TimeScale", 0, &"OneShot", &"TimeScale 2", 0, &"Animation"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57i3y"]
+size = Vector2(249, 5)
+
+[node name="Plant009Puff" node_paths=PackedStringArray("node2d_detect_in_slope") instance=ExtResource("1_o8j4c")]
+script = ExtResource("2_wddx6")
+plant_type = 9
+is_sleep_in_day = true
+node2d_detect_in_slope = [NodePath("HurtBoxComponent/HurtBoxDetection"), NodePath("AttackComponent/DetectComponent")]
+
+[node name="Shadow" parent="." index="0"]
+scale = Vector2(0.576, 0.5)
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-41, -63)
+
+[node name="Anim_sleep" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+visible = false
+centered = false
+
+[node name="Anim_shooting" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+visible = false
+centered = false
+
+[node name="Anim_idle" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+centered = false
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+position = Vector2(29.3, 45.513187)
+scale = Vector2(0.44, 0.47098175)
+texture = ExtResource("2_7rmee")
+centered = false
+
+[node name="PuffShroom_stem" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+position = Vector2(47.6, 50.213184)
+scale = Vector2(0.45, 0.48160446)
+texture = ExtResource("3_t2sgi")
+centered = false
+
+[node name="PuffShroom_tip" type="Sprite2D" parent="Body/BodyCorrect" index="5"]
+position = Vector2(49.4, 48.175457)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("4_57i3y")
+centered = false
+
+[node name="PuffShroom_head" type="Sprite2D" parent="Body/BodyCorrect" index="6"]
+position = Vector2(22.824543, 26.22637)
+scale = Vector2(0.42813185, 0.47198173)
+texture = ExtResource("5_wddx6")
+centered = false
+
+[node name="PuffShroom_eyes" type="Sprite2D" parent="Body/BodyCorrect" index="7"]
+visible = false
+centered = false
+
+[node name="Anim_blink" type="Sprite2D" parent="Body/BodyCorrect" index="8"]
+visible = false
+position = Vector2(43.94377, 48.891727)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("6_exn8h")
+centered = false
+
+[node name="Marker2DBullet" type="Marker2D" parent="Body/BodyCorrect" index="9"]
+position = Vector2(55, 55)
+scale = Vector2(0.5, 0.592593)
+
+[node name="SleepComponent" parent="." index="4" node_paths=PackedStringArray("sleep_influence_components")]
+sleep_influence_components = [NodePath("../BlinkComponent"), NodePath("../AttackComponent")]
+
+[node name="Zzz" parent="SleepComponent/Body" index="0"]
+visible = false
+modulate = Color(1, 1, 1, 0.243137)
+position = Vector2(18.8516, -20.3193)
+
+[node name="Zzz2" parent="SleepComponent/Body" index="1"]
+modulate = Color(1, 1, 1, 1)
+position = Vector2(17.4496, -60.2756)
+
+[node name="Zzz3" parent="SleepComponent/Body" index="2"]
+modulate = Color(1, 1, 1, 1)
+position = Vector2(37.4278, -35.741)
+
+[node name="BlinkComponent" parent="." index="5"]
+all_blink_body_change = Array[ExtResource("7_57i3y")]([SubResource("Resource_exn8h")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_kf1mc")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+deterministic = false
+tree_root = SubResource("AnimationNodeBlendTree_uqyc5")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
+parameters/TimeScale/scale = 1.0
+"parameters/TimeScale 2/scale" = 2.0
+
+[node name="AttackComponent" type="Node2D" parent="." index="10" node_paths=PackedStringArray("markers_2d_bullet")]
+script = ExtResource("12_wddx6")
+attack_bullet_type = 3
+markers_2d_bullet = [NodePath("../Body/BodyCorrect/Marker2DBullet")]
+
+[node name="BulletAttackCdTimer" type="Timer" parent="AttackComponent" index="0"]
+
+[node name="DetectComponent" type="Node2D" parent="AttackComponent" index="1"]
+script = ExtResource("11_57i3y")
+
+[node name="Area2D" type="Area2D" parent="AttackComponent/DetectComponent" index="0"]
+position = Vector2(0, -25)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/DetectComponent/Area2D" index="0"]
+position = Vector2(124.5, 0)
+shape = SubResource("RectangleShape2D_57i3y")
+
+[connection signal="timeout" from="AttackComponent/BulletAttackCdTimer" to="AttackComponent" method="_on_bullet_attack_cd_timer_timeout"]

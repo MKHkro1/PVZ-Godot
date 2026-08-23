@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=3 uid="uid://ba2vcncmrkykj"]
+
+[ext_resource type="PackedScene" uid="uid://cit8bsc5op7f0" path="res://scenes/bullet/bullet_000_linear_base.tscn" id="1_db74q"]
+[ext_resource type="Script" uid="uid://c7bv1alkdp20n" path="res://scripts/bullet/bullet_008_star.gd" id="2_cyj1w"]
+[ext_resource type="Texture2D" uid="uid://dreggrqvdh5x6" path="res://assets/image/projectile/Projectile_star.png" id="2_iiikx"]
+[ext_resource type="Texture2D" uid="uid://bmqp4pihrelkm" path="res://assets/image/particles/bullet/Star_splats.png" id="3_hbw56"]
+[ext_resource type="Script" uid="uid://b8deeas2k62vb" path="res://scripts/fx/bullet_effect/bullet_effect_001_norm.gd" id="3_oss8m"]
+[ext_resource type="Texture2D" uid="uid://d3dop6rp8kn7b" path="res://assets/image/particles/bullet/Star_particles.png" id="4_oss8m"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cyj1w"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_ivotu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pddgq"]
+curve = SubResource("Curve_ivotu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oyxs8"]
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 80.0
+gravity = Vector3(0, 100, 0)
+scale_curve = SubResource("CurveTexture_pddgq")
+anim_offset_max = 1.0
+
+[node name="Bullet008Star" instance=ExtResource("1_db74q")]
+script = ExtResource("2_cyj1w")
+bullet_type = 8
+is_rotate = true
+
+[node name="BulletBody" parent="Body" index="0"]
+texture = ExtResource("2_iiikx")
+
+[node name="BulletEffect" parent="." index="2"]
+script = ExtResource("3_oss8m")
+
+[node name="Splats" type="Sprite2D" parent="BulletEffect" index="0"]
+texture = ExtResource("3_hbw56")
+hframes = 4
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BulletEffect/AllParticles2D" index="0"]
+material = SubResource("CanvasItemMaterial_cyj1w")
+emitting = false
+amount = 10
+texture = ExtResource("4_oss8m")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_oyxs8")

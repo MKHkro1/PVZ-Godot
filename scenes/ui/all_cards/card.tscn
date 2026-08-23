@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjuiaaq33o5aa"]
+
+[ext_resource type="PackedScene" uid="uid://cpv8ixg877ej5" path="res://scenes/ui/all_cards/card_base.tscn" id="1_dnear"]
+[ext_resource type="Script" uid="uid://bucd2k4pt4m5r" path="res://scripts/ui/card/card.gd" id="2_xdnjt"]
+[ext_resource type="FontFile" uid="uid://bjnvl0v2ws21u" path="res://assets/fonts/SIMSUN.TTC" id="3_dnear"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ltj6w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ltj6w"]
+font = ExtResource("3_dnear")
+font_size = 19
+font_color = Color(0, 1, 0, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 1)
+
+[node name="Card" instance=ExtResource("1_dnear")]
+script = ExtResource("2_xdnjt")
+
+[node name="CardBg" parent="." index="0"]
+unique_name_in_owner = false
+clip_children = 2
+
+[node name="Cost" parent="CardBg" index="0"]
+unique_name_in_owner = false
+
+[node name="CharacterStatic" type="Node2D" parent="CardBg" index="1"]
+position = Vector2(24, 30)
+
+[node name="ProgressBar" parent="." index="1"]
+unique_name_in_owner = false
+visible = false
+max_value = 7.5
+value = 3.39
+
+[node name="Button" type="Button" parent="." index="2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ltj6w")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ltj6w")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ltj6w")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ltj6w")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ltj6w")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_ltj6w")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ltj6w")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_ltj6w")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ltj6w")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_ltj6w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ltj6w")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+
+[node name="ShortCut" type="Label" parent="." index="3"]
+visible = false
+layout_mode = 0
+offset_top = 50.0
+offset_right = 17.0
+offset_bottom = 70.0
+text = "0"
+label_settings = SubResource("LabelSettings_ltj6w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

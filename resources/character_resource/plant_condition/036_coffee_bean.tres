@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourcePlantConditionCoffeeBean" load_steps=2 format=3 uid="uid://cveurcgupyu41"]
+
+[ext_resource type="Script" uid="uid://i1oao4fyvpmi" path="res://scripts/resources/plant_condition/condition_036_coffee_bean.gd" id="1_erx55"]
+
+[resource]
+script = ExtResource("1_erx55")
+plant_condition = 63
+place_plant_in_cell = 3
+is_special_plants = true
+is_purple_card = false

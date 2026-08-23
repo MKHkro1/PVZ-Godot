@@ -1,0 +1,329 @@
+[gd_scene load_steps=43 format=3 uid="uid://br23cxiijg77s"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_lv0cd"]
+[ext_resource type="Texture2D" uid="uid://bxi5txsx8yu3x" path="res://assets/reanim/Chomper_groundleaf4.png" id="2_b40dc"]
+[ext_resource type="Script" uid="uid://ndby176l8utj" path="res://scripts/characters/plant/plant_007_chomper.gd" id="2_kp108"]
+[ext_resource type="Texture2D" uid="uid://x1iiuc81dxov" path="res://assets/reanim/Chomper_groundleaf3.png" id="3_kp108"]
+[ext_resource type="Texture2D" uid="uid://dpldve0cdg4md" path="res://assets/reanim/Chomper_stem3.png" id="4_tovg4"]
+[ext_resource type="Texture2D" uid="uid://cwve7jn8g2ab0" path="res://assets/reanim/Chomper_stem2.png" id="5_wt05k"]
+[ext_resource type="Texture2D" uid="uid://chfafv4kl20eo" path="res://assets/reanim/Chomper_stem1.png" id="6_vl70c"]
+[ext_resource type="Texture2D" uid="uid://bht0olrtfwmu0" path="res://assets/reanim/Chomper_groundleaf1.png" id="7_3acb7"]
+[ext_resource type="Texture2D" uid="uid://dk286nihksjx8" path="res://assets/reanim/Chomper_groundleaf1tip.png" id="8_3if25"]
+[ext_resource type="Texture2D" uid="uid://b0skfagpdpsv2" path="res://assets/reanim/Chomper_Headleaf4.png" id="9_6l8u6"]
+[ext_resource type="Texture2D" uid="uid://bcu2d35xi6q11" path="res://assets/reanim/Chomper_Headleaf3.png" id="10_2jsc5"]
+[ext_resource type="Texture2D" uid="uid://bjd1h032nkggy" path="res://assets/reanim/Chomper_Headleaf2.png" id="11_6p2n4"]
+[ext_resource type="Texture2D" uid="uid://htohny1gtb75" path="res://assets/reanim/Chomper_Headleaf1.png" id="12_emqlo"]
+[ext_resource type="Texture2D" uid="uid://df6twhnyyfhsm" path="res://assets/reanim/Chomper_insidemouth.png" id="13_br8ei"]
+[ext_resource type="Texture2D" uid="uid://ch8qytdyotlrl" path="res://assets/reanim/Chomper_tongue.png" id="14_yvawh"]
+[ext_resource type="Texture2D" uid="uid://eel4e8ca5e42" path="res://assets/reanim/Chomper_underjaw.png" id="15_reeev"]
+[ext_resource type="Texture2D" uid="uid://ciabjou0lxvtw" path="res://assets/reanim/Chomper_bottomlip.png" id="16_kb4as"]
+[ext_resource type="Texture2D" uid="uid://d0jsmbm05wgmd" path="res://assets/reanim/Chomper_groundleaf2.png" id="17_snkij"]
+[ext_resource type="Texture2D" uid="uid://dywcasy6pilto" path="res://assets/reanim/Chomper_groundleaf2tip.png" id="18_g0lqu"]
+[ext_resource type="Texture2D" uid="uid://dnracm7r1oeef" path="res://assets/reanim/Chomper_spike.png" id="19_en88k"]
+[ext_resource type="Texture2D" uid="uid://bdxru0taei1fn" path="res://assets/reanim/Chomper_topjaw.png" id="20_d2j2x"]
+[ext_resource type="Script" uid="uid://bafp0ax1lmlge" path="res://scripts/characters/components/attack_ray_component.gd" id="21_08u4b"]
+[ext_resource type="Script" uid="uid://w8xfkowcu6gj" path="res://scripts/characters/components/attack_behavior_component/attack_component_chomper.gd" id="22_j4047"]
+[ext_resource type="Animation" uid="uid://kesquo6q8o1g" path="res://animation/character/plant/007_chomper/Chomper_bite.tres" id="24_pcljh"]
+[ext_resource type="Animation" uid="uid://cflbeqrn7kyjr" path="res://animation/character/plant/007_chomper/Chomper_chew.tres" id="25_s8c0p"]
+[ext_resource type="Animation" uid="uid://dpnljdqkvf18k" path="res://animation/character/plant/007_chomper/Chomper_idle.tres" id="26_y67wm"]
+[ext_resource type="Animation" uid="uid://dfffuw3ycaia7" path="res://animation/character/plant/007_chomper/Chomper_swallow.tres" id="27_4yyv1"]
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_1apq1"]
+length = 100.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4r8se"]
+_data = {
+&"Chomper_bite": ExtResource("24_pcljh"),
+&"Chomper_chew": ExtResource("25_s8c0p"),
+&"Chomper_idle": ExtResource("26_y67wm"),
+&"Chomper_swallow": ExtResource("27_4yyv1")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aro8k"]
+animation = &"Chomper_bite"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4r8se"]
+animation = &"Chomper_chew"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hqk0n"]
+animation = &"Chomper_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3ucpj"]
+animation = &"Chomper_swallow"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ufum8"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_stps3"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "is_bite"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ftrc7"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "is_chewing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pdf5d"]
+break_loop_at_end = true
+switch_mode = 2
+advance_mode = 2
+advance_expression = "not is_chewing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5jwl4"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fqxjt"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "not is_chewing"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_r7nim"]
+states/Chomper_bite/node = SubResource("AnimationNodeAnimation_aro8k")
+states/Chomper_bite/position = Vector2(618, 100)
+states/Chomper_chew/node = SubResource("AnimationNodeAnimation_4r8se")
+states/Chomper_chew/position = Vector2(618, 198)
+states/Chomper_idle/node = SubResource("AnimationNodeAnimation_hqk0n")
+states/Chomper_idle/position = Vector2(358, 100)
+states/Chomper_swallow/node = SubResource("AnimationNodeAnimation_3ucpj")
+states/Chomper_swallow/position = Vector2(358, 198)
+transitions = ["Start", "Chomper_idle", SubResource("AnimationNodeStateMachineTransition_ufum8"), "Chomper_idle", "Chomper_bite", SubResource("AnimationNodeStateMachineTransition_stps3"), "Chomper_bite", "Chomper_chew", SubResource("AnimationNodeStateMachineTransition_ftrc7"), "Chomper_chew", "Chomper_swallow", SubResource("AnimationNodeStateMachineTransition_pdf5d"), "Chomper_swallow", "Chomper_idle", SubResource("AnimationNodeStateMachineTransition_5jwl4"), "Chomper_bite", "Chomper_idle", SubResource("AnimationNodeStateMachineTransition_fqxjt")]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_aifuo"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_xkcom"]
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_r7nim")
+nodes/StateMachine/position = Vector2(0, 100)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_aifuo")
+nodes/TimeScale/position = Vector2(380, 80)
+nodes/output/position = Vector2(620, 120)
+node_connections = [&"TimeScale", 0, &"StateMachine", &"output", 0, &"TimeScale"]
+
+[node name="Plant007Chomper" instance=ExtResource("1_lv0cd")]
+script = ExtResource("2_kp108")
+plant_type = 7
+is_idle = true
+
+[node name="Shadow" parent="." index="0"]
+unique_name_in_owner = false
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-33, -79)
+
+[node name="Chomper_groundleaf4" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+position = Vector2(32.6, 63.3684)
+rotation = -0.100898
+scale = Vector2(0.639658, 0.885)
+texture = ExtResource("2_b40dc")
+centered = false
+
+[node name="Chomper_groundleaf3" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+position = Vector2(7.73671, 60.6924)
+rotation = 0.10673
+scale = Vector2(0.639658, 0.818949)
+texture = ExtResource("3_kp108")
+centered = false
+
+[node name="Chomper_stem3" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+position = Vector2(29.9658, 63.9367)
+rotation = 0.171572
+scale = Vector2(0.72662, 0.879456)
+skew = 6.11283
+texture = ExtResource("4_tovg4")
+centered = false
+
+[node name="Chomper_stem2" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+position = Vector2(18.6709, 41.4316)
+rotation = 0.34235
+scale = Vector2(0.788127, 0.774)
+skew = 6.20652
+texture = ExtResource("5_wt05k")
+centered = false
+
+[node name="Chomper_stem1" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+position = Vector2(20.8127, 31.6684)
+rotation = 0.424314
+scale = Vector2(0.817304, 0.743139)
+skew = 6.18489
+texture = ExtResource("6_vl70c")
+centered = false
+
+[node name="Chomper_stomach" type="Sprite2D" parent="Body/BodyCorrect" index="5"]
+visible = false
+centered = false
+
+[node name="Chomper_groundleaf1" type="Sprite2D" parent="Body/BodyCorrect" index="6"]
+position = Vector2(8.23671, 61.8608)
+rotation = 0.25674
+scale = Vector2(0.639, 0.639)
+texture = ExtResource("7_3acb7")
+centered = false
+
+[node name="Chomper_groundleaf1tip" type="Sprite2D" parent="Body/BodyCorrect" index="7"]
+position = Vector2(-6.23165, 74.8266)
+rotation = 5.95804
+scale = Vector2(0.64, 0.637)
+skew = 0.0722878
+texture = ExtResource("8_3if25")
+centered = false
+
+[node name="Chomper_Headleaf4" type="Sprite2D" parent="Body/BodyCorrect" index="8"]
+position = Vector2(22.8316, 33.9127)
+rotation = 6.54803
+scale = Vector2(0.966127, 0.808975)
+skew = -0.194262
+texture = ExtResource("9_6l8u6")
+centered = false
+
+[node name="Chomper_Headleaf3" type="Sprite2D" parent="Body/BodyCorrect" index="9"]
+position = Vector2(22.7861, 23.5557)
+rotation = 5.90478
+scale = Vector2(0.925595, 0.855139)
+skew = -0.248787
+texture = ExtResource("10_2jsc5")
+centered = false
+
+[node name="Chomper_Headleaf2" type="Sprite2D" parent="Body/BodyCorrect" index="10"]
+position = Vector2(17.5468, 23.9924)
+rotation = 5.92519
+scale = Vector2(0.921937, 0.829899)
+skew = -0.0521832
+texture = ExtResource("11_6p2n4")
+centered = false
+
+[node name="Chomper_Headleaf1" type="Sprite2D" parent="Body/BodyCorrect" index="11"]
+position = Vector2(14.3367, 26.9544)
+rotation = 6.46048
+scale = Vector2(0.938228, 0.829899)
+skew = -0.355495
+texture = ExtResource("12_emqlo")
+centered = false
+
+[node name="Chomper_insidemouth" type="Sprite2D" parent="Body/BodyCorrect" index="12"]
+position = Vector2(37.8734, 32.1076)
+rotation = 6.06738
+scale = Vector2(0.813658, 0.767684)
+texture = ExtResource("13_br8ei")
+centered = false
+
+[node name="Chomper_tongue" type="Sprite2D" parent="Body/BodyCorrect" index="13"]
+position = Vector2(43.3076, 35.7443)
+rotation = 0.0954627
+scale = Vector2(0.799658, 0.799658)
+texture = ExtResource("14_yvawh")
+centered = false
+
+[node name="Chomper_underjaw" type="Sprite2D" parent="Body/BodyCorrect" index="14"]
+position = Vector2(24.4418, 28.0025)
+rotation = 5.95959
+scale = Vector2(0.754684, 0.733)
+texture = ExtResource("15_reeev")
+centered = false
+
+[node name="Chomper_bottomlip" type="Sprite2D" parent="Body/BodyCorrect" index="15"]
+position = Vector2(35.8759, 29.2709)
+rotation = 5.96794
+scale = Vector2(0.795, 0.795)
+skew = 0.00523597
+texture = ExtResource("16_kb4as")
+centered = false
+
+[node name="Zombie_outerarm_hand" type="Sprite2D" parent="Body/BodyCorrect" index="16"]
+visible = false
+centered = false
+
+[node name="Zombie_outerarm_lower" type="Sprite2D" parent="Body/BodyCorrect" index="17"]
+visible = false
+centered = false
+
+[node name="Chomper_groundleaf2" type="Sprite2D" parent="Body/BodyCorrect" index="18"]
+position = Vector2(29.6684, 68.8316)
+rotation = -0.193378
+scale = Vector2(0.639, 0.639)
+texture = ExtResource("17_snkij")
+centered = false
+
+[node name="Chomper_groundleaf2tip" type="Sprite2D" parent="Body/BodyCorrect" index="19"]
+position = Vector2(54.6266, 68.7392)
+rotation = 0.541229
+scale = Vector2(0.809316, 1.00496)
+skew = -0.138213
+texture = ExtResource("18_g0lqu")
+centered = false
+
+[node name="Chomper_tongue_lick" type="Sprite2D" parent="Body/BodyCorrect" index="20"]
+visible = false
+centered = false
+
+[node name="Chomper_spike4" type="Sprite2D" parent="Body/BodyCorrect" index="21"]
+position = Vector2(56.162, -3.72152)
+rotation = 5.98831
+scale = Vector2(0.798, 0.798)
+texture = ExtResource("19_en88k")
+centered = false
+
+[node name="Chomper_spike3" type="Sprite2D" parent="Body/BodyCorrect" index="22"]
+position = Vector2(43.4595, 0.102532)
+rotation = 5.65697
+scale = Vector2(0.795, 0.795)
+texture = ExtResource("19_en88k")
+centered = false
+
+[node name="Chomper_spike2" type="Sprite2D" parent="Body/BodyCorrect" index="23"]
+position = Vector2(32.4861, 9.42911)
+rotation = 5.29573
+scale = Vector2(0.793, 0.793)
+texture = ExtResource("19_en88k")
+centered = false
+
+[node name="Chomper_spike1" type="Sprite2D" parent="Body/BodyCorrect" index="24"]
+position = Vector2(25.6127, 19.3266)
+rotation = 5.03742
+scale = Vector2(0.793, 0.793)
+texture = ExtResource("19_en88k")
+centered = false
+
+[node name="Chomper_topjaw" type="Sprite2D" parent="Body/BodyCorrect" index="25"]
+position = Vector2(27.3177, 7.77089)
+rotation = 6.13233
+scale = Vector2(0.876, 0.799)
+texture = ExtResource("20_d2j2x")
+centered = false
+
+[node name="AttackRayComponent" type="Node2D" parent="." index="4"]
+unique_name_in_owner = true
+script = ExtResource("21_08u4b")
+
+[node name="Area2D" type="Area2D" parent="AttackRayComponent" index="0"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRayComponent/Area2D" index="0"]
+position = Vector2(0, -25)
+rotation = -1.5708
+shape = SubResource("SeparationRayShape2D_1apq1")
+
+[node name="AttackComponent" type="Node2D" parent="." index="5"]
+unique_name_in_owner = true
+script = ExtResource("22_j4047")
+eat_CD = null
+
+[node name="ChewTimer" type="Timer" parent="AttackComponent" index="0"]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_4r8se")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="7"]
+unique_name_in_owner = true
+root_node = NodePath("%AnimationTree/..")
+tree_root = SubResource("AnimationNodeBlendTree_xkcom")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0
+
+[connection signal="timeout" from="AttackComponent/ChewTimer" to="AttackComponent" method="_on_eat_timer_timeout"]

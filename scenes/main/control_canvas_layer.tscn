@@ -1,0 +1,185 @@
+[gd_scene load_steps=7 format=3 uid="uid://5v0fdtao52jl"]
+
+[ext_resource type="Script" uid="uid://b3aqc01slj7m" path="res://scripts/ui/ui_main_game_menu/canvas_layer_control.gd" id="1_urijc"]
+[ext_resource type="Theme" uid="uid://em12la0rqibq" path="res://data/PVZ_theme.tres" id="2_b2pgd"]
+[ext_resource type="Texture2D" uid="uid://bb18ns7vpgnom" path="res://assets/image/ui/ui_level/Challenge_Background.jpg" id="3_mxft5"]
+[ext_resource type="Texture2D" uid="uid://xc3kqag3vqlq" path="res://assets/image/ui/ui_level/Almanac_CloseButton.png" id="4_78h4s"]
+[ext_resource type="Texture2D" uid="uid://c82uuprowr5d" path="res://assets/image/ui/ui_level/Almanac_CloseButtonHighlight.png" id="5_4s1si"]
+[ext_resource type="BitMap" uid="uid://bc7yq02xscrlr" path="res://assets/image/ui/ui_level/Almanac_CloseButton_Mask.png" id="6_g2rg4"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 128
+script = ExtResource("1_urijc")
+
+[node name="OptionBG" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_b2pgd")
+texture = ExtResource("3_mxft5")
+
+[node name="Label" type="Label" parent="OptionBG"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.0
+offset_top = 30.0
+offset_right = 49.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 29
+text = "控制台"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionBG"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 130.0
+offset_right = 637.0
+offset_bottom = 281.0
+theme_override_constants/separation = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionBG/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="CheckBox" type="CheckBox" parent="OptionBG/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+tooltip_text = "自动收集阳光"
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+text = "自动收集阳光"
+
+[node name="CheckBox2" type="CheckBox" parent="OptionBG/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+tooltip_text = "自动收集金币（没做）"
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+text = "自动收集金币"
+
+[node name="CheckBox3" type="CheckBox" parent="OptionBG/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+tooltip_text = "游戏开始后，若选择植物卡片未满，将多余游戏卡槽隐藏"
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+text = "隐藏未选择植物卡槽"
+
+[node name="CheckBox4" type="CheckBox" parent="OptionBG/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+tooltip_text = "游戏全屏"
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+text = "游戏全屏"
+
+[node name="CheckBox5" type="CheckBox" parent="OptionBG/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+tooltip_text = "显示植物血量"
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+text = "显示植物血量"
+
+[node name="CheckBox6" type="CheckBox" parent="OptionBG/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+tooltip_text = "显示僵尸血量"
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+text = "显示僵尸血量"
+
+[node name="CheckBox7" type="CheckBox" parent="OptionBG/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+tooltip_text = "鼠标移动到卡槽时，将卡槽置顶，避免选卡时卡槽被遮挡"
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+text = "焦点卡槽自动置顶"
+
+[node name="CheckBox8" type="CheckBox" parent="OptionBG/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+tooltip_text = "游戏有浓雾时，选择静态或动态浓雾"
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+text = "静态浓雾"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="OptionBG/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="CheckBox9" type="CheckBox" parent="OptionBG/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+tooltip_text = "铲子预铲除植物时，将该植物高亮同时在本格置顶，方便观察被铲除的植物"
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+text = "预铲除植物置顶"
+
+[node name="CheckBox10" type="CheckBox" parent="OptionBG/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+tooltip_text = "铲子预铲除植物时，将该植物高亮同时在本格置顶，方便观察被铲除的植物"
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+text = "开放所有关卡"
+
+[node name="TextureButton" type="TextureButton" parent="OptionBG"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -142.0
+offset_top = -37.0
+offset_right = -43.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_78h4s")
+texture_pressed = ExtResource("5_4s1si")
+texture_hover = ExtResource("5_4s1si")
+texture_focused = ExtResource("5_4s1si")
+texture_click_mask = ExtResource("6_g2rg4")
+
+[node name="Label" type="Label" parent="OptionBG/TextureButton"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 2.0
+offset_right = 58.0
+offset_bottom = 23.0
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+text = "关闭"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="toggled" from="OptionBG/HBoxContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="toggled" from="OptionBG/HBoxContainer/VBoxContainer/CheckBox2" to="." method="_on_check_box_2_toggled"]
+[connection signal="toggled" from="OptionBG/HBoxContainer/VBoxContainer/CheckBox3" to="." method="_on_check_box_3_toggled"]
+[connection signal="toggled" from="OptionBG/HBoxContainer/VBoxContainer/CheckBox4" to="." method="_on_check_box_4_toggled"]
+[connection signal="toggled" from="OptionBG/HBoxContainer/VBoxContainer/CheckBox5" to="." method="_on_check_box_5_toggled"]
+[connection signal="toggled" from="OptionBG/HBoxContainer/VBoxContainer/CheckBox6" to="." method="_on_check_box_6_toggled"]
+[connection signal="toggled" from="OptionBG/HBoxContainer/VBoxContainer/CheckBox7" to="." method="_on_check_box_7_toggled"]
+[connection signal="toggled" from="OptionBG/HBoxContainer/VBoxContainer/CheckBox8" to="." method="_on_check_box_8_toggled"]
+[connection signal="toggled" from="OptionBG/HBoxContainer/VBoxContainer2/CheckBox9" to="." method="_on_check_box_9_toggled"]
+[connection signal="toggled" from="OptionBG/HBoxContainer/VBoxContainer2/CheckBox10" to="." method="_on_check_box_10_toggled"]
+[connection signal="pressed" from="OptionBG/TextureButton" to="." method="_on_texture_button_pressed"]

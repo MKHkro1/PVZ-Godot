@@ -1,0 +1,147 @@
+[gd_scene load_steps=11 format=3 uid="uid://bf3f2io0ad8lh"]
+
+[ext_resource type="Script" uid="uid://bkopbncyqn4en" path="res://scripts/util/image_combiner.gd" id="1_l64ei"]
+[ext_resource type="Texture2D" uid="uid://dcgu4h48qqr76" path="res://assets/image/ui/ui_main_game_menu/UI_BG_original/dialog_bottomleft.png" id="2_arxeb"]
+[ext_resource type="Texture2D" uid="uid://c6ei7mfigy6r8" path="res://assets/image/ui/ui_main_game_menu/UI_BG_original/dialog_bottommiddle.png" id="3_w2vpx"]
+[ext_resource type="Texture2D" uid="uid://bkugl657ldk8" path="res://assets/image/ui/ui_main_game_menu/UI_BG_original/dialog_bottomright.png" id="4_abqca"]
+[ext_resource type="Texture2D" uid="uid://ccbf1hy3b7oii" path="res://assets/image/ui/ui_main_game_menu/UI_BG_original/dialog_centerleft.png" id="5_4f0x6"]
+[ext_resource type="Texture2D" uid="uid://bn2jeob07x1kb" path="res://assets/image/ui/ui_main_game_menu/UI_BG_original/dialog_centermiddle.png" id="6_gjoye"]
+[ext_resource type="Texture2D" uid="uid://dwhrshrytbf8n" path="res://assets/image/ui/ui_main_game_menu/UI_BG_original/dialog_centerright.png" id="7_vumux"]
+[ext_resource type="Texture2D" uid="uid://d3ox63npo2mod" path="res://assets/image/ui/ui_main_game_menu/UI_BG_original/dialog_topleft.png" id="8_5c3ro"]
+[ext_resource type="Texture2D" uid="uid://dy751j71ybfeb" path="res://assets/image/ui/ui_main_game_menu/UI_BG_original/dialog_topmiddle.png" id="9_a0clm"]
+[ext_resource type="Texture2D" uid="uid://bw0pvw75tk8mj" path="res://assets/image/ui/ui_main_game_menu/UI_BG_original/dialog_topright.png" id="10_m17x8"]
+
+[node name="ImageCombiner" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_l64ei")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = -19.0
+offset_top = 68.0
+offset_right = 811.0
+offset_bottom = 728.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="PanelContainer/MarginContainer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(350, 280)
+render_target_update_mode = 4
+
+[node name="BG" type="Control" parent="PanelContainer/MarginContainer/SubViewportContainer/SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 3.0
+offset_top = -68.0
+offset_right = 3.0
+offset_bottom = -68.0
+
+[node name="Bottom" type="Control" parent="PanelContainer/MarginContainer/SubViewportContainer/SubViewport/BG"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/SubViewportContainer/SubViewport/BG/Bottom"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 230.0
+offset_right = 123.0
+offset_bottom = 342.0
+scale = Vector2(1, 0.3199988)
+texture = ExtResource("2_arxeb")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/MarginContainer/SubViewportContainer/SubViewport/BG/Bottom"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 230.0
+offset_right = 216.0
+offset_bottom = 344.0
+scale = Vector2(1, 0.3199988)
+texture = ExtResource("3_w2vpx")
+
+[node name="TextureRect3" type="TextureRect" parent="PanelContainer/MarginContainer/SubViewportContainer/SubViewport/BG/Bottom"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 230.0
+offset_right = 336.0
+offset_bottom = 344.0
+scale = Vector2(1, 0.3199988)
+texture = ExtResource("4_abqca")
+
+[node name="Center" type="Control" parent="PanelContainer/MarginContainer/SubViewportContainer/SubViewport/BG"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/SubViewportContainer/SubViewport/BG/Center"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 176.0
+offset_right = 123.0
+offset_bottom = 230.0
+texture = ExtResource("5_4f0x6")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/MarginContainer/SubViewportContainer/SubViewport/BG/Center"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 176.0
+offset_right = 216.0
+offset_bottom = 230.0
+texture = ExtResource("6_gjoye")
+
+[node name="TextureRect3" type="TextureRect" parent="PanelContainer/MarginContainer/SubViewportContainer/SubViewport/BG/Center"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 176.0
+offset_right = 333.0
+offset_bottom = 230.0
+texture = ExtResource("7_vumux")
+
+[node name="Top" type="Control" parent="PanelContainer/MarginContainer/SubViewportContainer/SubViewport/BG"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/SubViewportContainer/SubViewport/BG/Top"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 79.0
+offset_right = 123.0
+offset_bottom = 176.0
+texture = ExtResource("8_5c3ro")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/MarginContainer/SubViewportContainer/SubViewport/BG/Top"]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 79.0
+offset_right = 215.0
+offset_bottom = 176.0
+texture = ExtResource("9_a0clm")
+
+[node name="TextureRect3" type="TextureRect" parent="PanelContainer/MarginContainer/SubViewportContainer/SubViewport/BG/Top"]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 79.0
+offset_right = 335.0
+offset_bottom = 176.0
+texture = ExtResource("10_m17x8")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 22.0
+offset_right = 547.0
+offset_bottom = 53.0
+text = "button
+"

@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvkf684uy2mmw"]
+
+[ext_resource type="Script" uid="uid://cp2qykfx8e2d1" path="res://scripts/main_game_item/brain_on_zombie_mode.gd" id="1_u2o0m"]
+[ext_resource type="Script" uid="uid://vs3uec8tkg75" path="res://scripts/main_game_item/brain_body.gd" id="2_l7i8f"]
+[ext_resource type="Texture2D" uid="uid://c5trsg2kf0hmk" path="res://assets/image/main_game_item/brain.png" id="2_quov6"]
+[ext_resource type="Script" uid="uid://c84r00ur563m8" path="res://scripts/character/components/component_drop_item.gd" id="3_quov6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2o0m"]
+size = Vector2(30, 40)
+
+[node name="BrainOnZombieMode" type="Node2D"]
+script = ExtResource("1_u2o0m")
+
+[node name="BrainBody" type="Node2D" parent="."]
+script = ExtResource("2_l7i8f")
+
+[node name="Brain" type="Sprite2D" parent="BrainBody"]
+position = Vector2(0, -16)
+texture = ExtResource("2_quov6")
+
+[node name="Area2DDetect" type="Area2D" parent="."]
+collision_layer = 2048
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DDetect"]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_u2o0m")
+
+[node name="Area2DReal" type="Area2D" parent="."]
+collision_layer = 4096
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DReal"]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_u2o0m")
+
+[node name="DropItemComponent" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_quov6")
+drop_coin_rate = 1.0
+correct_y = 50.0
+target_move_y_range = Vector2(30, 40)

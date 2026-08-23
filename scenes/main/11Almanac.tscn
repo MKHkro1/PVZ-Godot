@@ -1,0 +1,434 @@
+[gd_scene load_steps=25 format=3 uid="uid://colkdhubp27eq"]
+
+[ext_resource type="Script" uid="uid://b16fmyyjt3mej" path="res://scripts/Almanac/main_almanac.gd" id="1_fstyb"]
+[ext_resource type="Theme" uid="uid://em12la0rqibq" path="res://data/PVZ_theme.tres" id="1_pt714"]
+[ext_resource type="Texture2D" uid="uid://dwpq6yo6ma8wc" path="res://assets/image/Almanac/Almanac_IndexBack.jpg" id="2_db05o"]
+[ext_resource type="Texture2D" uid="uid://cxg73c4c5e3mw" path="res://assets/image/ui/ui_card/SeedChooser_Button.png" id="4_ikq35"]
+[ext_resource type="BitMap" uid="uid://ccmgmr2kpk10u" path="res://assets/image/ui/ui_card/SeedChooser_Button_Mask.png" id="5_db05o"]
+[ext_resource type="Texture2D" uid="uid://b48l4yjq0j5mo" path="res://assets/image/ui/ui_main_game_menu/UI_BG/button_BG.png" id="6_pt714"]
+[ext_resource type="BitMap" uid="uid://cxokl66i7qyda" path="res://assets/image/ui/ui_main_game_menu/UI_BG/button_BG_mask.png" id="7_2p4k2"]
+[ext_resource type="PackedScene" uid="uid://wte35drumapp" path="res://scenes/character/plant/plant_002_sun_flower.tscn" id="8_pt714"]
+[ext_resource type="Texture2D" uid="uid://cqdma5cmebu84" path="res://assets/image/Almanac/Almanac_CloseButton.png" id="8_u1nrc"]
+[ext_resource type="Texture2D" uid="uid://gm7pwyw5fmdc" path="res://assets/image/Almanac/Almanac_CloseButtonHighlight.png" id="9_ji74r"]
+[ext_resource type="BitMap" uid="uid://dpjf3mqsip8ql" path="res://assets/image/Almanac/Almanac_CloseButton_Mask.png" id="10_dyjda"]
+[ext_resource type="PackedScene" uid="uid://b72u5kwdpw4te" path="res://scenes/character/zombie/zombie_001_norm.tscn" id="11_2p4k2"]
+[ext_resource type="Script" uid="uid://parybxg7tb1k" path="res://scripts/ui/PVZ_button_base.gd" id="11_pn30t"]
+[ext_resource type="FontFile" uid="uid://bjnvl0v2ws21u" path="res://assets/fonts/SIMSUN.TTC" id="12_jlxhy"]
+[ext_resource type="Texture2D" uid="uid://bqji4moxjit66" path="res://assets/image/Almanac/Almanac_PlantBack_New.png" id="12_u1nrc"]
+[ext_resource type="Script" uid="uid://dwfqmpx1wwbvb" path="res://scripts/Almanac/plant_page.gd" id="13_pt714"]
+[ext_resource type="PackedScene" uid="uid://dthq42y7g8j85" path="res://scenes/almanac/almanac_character_show_panel.tscn" id="14_ji74r"]
+[ext_resource type="Texture2D" uid="uid://dsaa0bforjqoc" path="res://assets/image/Almanac/Almanac_IndexButton.png" id="15_0vkb5"]
+[ext_resource type="Texture2D" uid="uid://cy68aplkty3cc" path="res://assets/image/Almanac/Almanac_IndexButtonHighlight.png" id="16_pt714"]
+[ext_resource type="BitMap" uid="uid://bu8dpvt5qxwnc" path="res://assets/image/Almanac/Almanac_IndexButton_Mask.png" id="17_2p4k2"]
+[ext_resource type="Texture2D" uid="uid://b3uyrr2kg0xam" path="res://assets/image/Almanac/Almanac_ZombieBack_New.png" id="18_ji74r"]
+[ext_resource type="Script" uid="uid://bb1xg8pc7k07h" path="res://scripts/Almanac/zombie_page.gd" id="20_u1nrc"]
+[ext_resource type="Texture2D" uid="uid://ccpgan6lpyb76" path="res://assets/image/Almanac/Almanac_ZombieCard.png" id="54_lse7w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fi68g"]
+
+[node name="Almanac" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pt714")
+script = ExtResource("1_fstyb")
+
+[node name="StartPage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_db05o")
+
+[node name="Label" type="Label" parent="StartPage"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.0
+offset_top = 30.0
+offset_right = 89.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.77084, 0.770839, 0.770839, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("12_jlxhy")
+theme_override_font_sizes/font_size = 33
+text = "图鉴--索引"
+
+[node name="Panel" type="Panel" parent="StartPage"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -424.0
+offset_top = -112.0
+offset_right = -82.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fi68g")
+
+[node name="PlantButton" type="TextureButton" parent="StartPage/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -86.0
+offset_top = -60.0
+offset_right = 70.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_ikq35")
+texture_pressed = ExtResource("4_ikq35")
+texture_click_mask = ExtResource("5_db05o")
+script = ExtResource("11_pn30t")
+
+[node name="Label" type="Label" parent="StartPage/Panel/PlantButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.5
+offset_right = 32.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "查看植物"
+
+[node name="Plant002SunFlower" parent="StartPage/Panel" node_paths=PackedStringArray("node_no_change_direction") instance=ExtResource("8_pt714")]
+position = Vector2(162, 125)
+node_no_change_direction = [NodePath("HpComponent"), NodePath("SleepComponent"), null]
+character_init_type = 1
+
+[node name="Panel2" type="Panel" parent="StartPage"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 108.0
+offset_top = -99.0
+offset_right = 412.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fi68g")
+
+[node name="ZombieButton" type="TextureButton" parent="StartPage/Panel2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -89.0
+offset_top = -51.0
+offset_right = 90.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_pt714")
+texture_pressed = ExtResource("6_pt714")
+texture_click_mask = ExtResource("7_2p4k2")
+stretch_mode = 0
+script = ExtResource("11_pn30t")
+
+[node name="Label" type="Label" parent="StartPage/Panel2/ZombieButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.5
+offset_top = -13.0
+offset_right = 32.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.917647, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "查看僵尸"
+
+[node name="Zombie001Norm" parent="StartPage/Panel2" instance=ExtResource("11_2p4k2")]
+position = Vector2(157, 141)
+character_init_type = 1
+
+[node name="PlantPage" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("12_u1nrc")
+script = ExtResource("13_pt714")
+
+[node name="Label" type="Label" parent="PlantPage"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -86.0
+offset_top = 21.0
+offset_right = 64.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.7058824, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("12_jlxhy")
+theme_override_font_sizes/font_size = 30
+text = "图鉴--植物"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardGridContainer" type="GridContainer" parent="PlantPage"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 89.0
+offset_right = 441.0
+offset_bottom = 559.0
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 9
+columns = 8
+
+[node name="AlmanacCharacterShowPanel" parent="PlantPage" instance=ExtResource("14_ji74r")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -474.0
+offset_top = -212.0
+offset_right = -157.0
+offset_bottom = 264.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ReturnButton" type="TextureButton" parent="PlantPage"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -33.0
+offset_right = 180.0
+offset_bottom = -7.0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("15_0vkb5")
+texture_pressed = ExtResource("16_pt714")
+texture_hover = ExtResource("16_pt714")
+texture_click_mask = ExtResource("17_2p4k2")
+script = ExtResource("11_pn30t")
+
+[node name="Label" type="Label" parent="PlantPage/ReturnButton"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 5.0
+offset_right = 117.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.352941, 1)
+theme_override_colors/font_outline_color = Color(0.164706, 0.164706, 0.352941, 1)
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("12_jlxhy")
+theme_override_font_sizes/font_size = 16
+text = "图鉴索引"
+
+[node name="ZombiePage" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("18_ji74r")
+script = ExtResource("20_u1nrc")
+
+[node name="Label" type="Label" parent="ZombiePage"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -86.0
+offset_top = 25.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("12_jlxhy")
+theme_override_font_sizes/font_size = 30
+text = "图鉴--僵尸"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardGridContainer" type="GridContainer" parent="ZombiePage"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 89.0
+offset_right = 443.0
+offset_bottom = 633.0
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 9
+columns = 5
+
+[node name="AlmanacCharacterShowPanel" parent="ZombiePage" instance=ExtResource("14_ji74r")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -225.0
+offset_right = -163.0
+offset_bottom = 251.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="CharacterBg" parent="ZombiePage/AlmanacCharacterShowPanel" index="0"]
+offset_left = 64.0
+offset_top = 41.0
+offset_right = 264.0
+offset_bottom = 241.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="AllBg" parent="ZombiePage/AlmanacCharacterShowPanel" index="1"]
+texture = ExtResource("54_lse7w")
+
+[node name="CharacterName" parent="ZombiePage/AlmanacCharacterShowPanel/AllBg" index="0"]
+offset_left = -116.0
+offset_top = 260.0
+offset_right = 110.0
+offset_bottom = 292.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 1
+
+[node name="ScrollContainer" parent="ZombiePage/AlmanacCharacterShowPanel/AllBg" index="1"]
+offset_left = -133.0
+offset_top = -195.0
+offset_right = 127.0
+offset_bottom = -40.0
+
+[node name="PlantPara3" parent="ZombiePage/AlmanacCharacterShowPanel/AllBg/ScrollContainer/VBoxContainer/CharacterText2Para" index="2"]
+visible = false
+
+[node name="PlantPara4" parent="ZombiePage/AlmanacCharacterShowPanel/AllBg/ScrollContainer/VBoxContainer/CharacterText2Para" index="3"]
+visible = false
+
+[node name="PlantPara5" parent="ZombiePage/AlmanacCharacterShowPanel/AllBg/ScrollContainer/VBoxContainer/CharacterText2Para" index="4"]
+visible = false
+
+[node name="PlantEndPara" parent="ZombiePage/AlmanacCharacterShowPanel/AllBg" index="2"]
+visible = false
+
+[node name="ReturnButton" type="TextureButton" parent="ZombiePage"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -33.0
+offset_right = 180.0
+offset_bottom = -7.0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("15_0vkb5")
+texture_pressed = ExtResource("16_pt714")
+texture_hover = ExtResource("16_pt714")
+texture_click_mask = ExtResource("17_2p4k2")
+script = ExtResource("11_pn30t")
+
+[node name="Label" type="Label" parent="ZombiePage/ReturnButton"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 5.0
+offset_right = 117.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.352941, 1)
+theme_override_colors/font_outline_color = Color(0.164706, 0.164706, 0.352941, 1)
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("12_jlxhy")
+theme_override_font_sizes/font_size = 16
+text = "图鉴索引"
+
+[node name="ExitButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -178.0
+offset_top = -32.0
+offset_right = -89.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_u1nrc")
+texture_pressed = ExtResource("9_ji74r")
+texture_hover = ExtResource("9_ji74r")
+texture_click_mask = ExtResource("10_dyjda")
+script = ExtResource("11_pn30t")
+
+[node name="Label" type="Label" parent="ExitButton"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 3.0
+offset_right = 59.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.352941, 1)
+theme_override_colors/font_outline_color = Color(0.164706, 0.164706, 0.352941, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("12_jlxhy")
+theme_override_font_sizes/font_size = 16
+text = "关闭"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="StartPage/Panel/PlantButton" to="." method="_on_plant_button_pressed"]
+[connection signal="pressed" from="StartPage/Panel2/ZombieButton" to="." method="_on_zombie_button_pressed"]
+[connection signal="pressed" from="PlantPage/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="ZombiePage/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+
+[editable path="ZombiePage/AlmanacCharacterShowPanel"]

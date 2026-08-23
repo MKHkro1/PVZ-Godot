@@ -1,0 +1,116 @@
+[gd_scene load_steps=5 format=3 uid="uid://brnfbv2sxv2qh"]
+
+[ext_resource type="Script" uid="uid://c5ndd0ab746h3" path="res://scripts/main_game_item/plant_cell.gd" id="1_66flf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_12gte"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3evvn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_66flf"]
+
+[node name="PlantCell" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 76.0
+offset_bottom = 95.0
+mouse_filter = 2
+script = ExtResource("1_66flf")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_12gte")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_12gte")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_12gte")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3evvn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_66flf")
+
+[node name="PlantArea2dPosition" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 27.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Marker2D" type="Marker2D" parent="PlantArea2dPosition"]
+
+[node name="PlantDownContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Marker2D" type="Marker2D" parent="PlantDownContainer"]
+
+[node name="PlantFloatContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 41.0
+offset_bottom = 41.0
+grow_horizontal = 2
+
+[node name="Marker2D" type="Marker2D" parent="PlantFloatContainer"]
+
+[node name="PlantNormContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Marker2D" type="Marker2D" parent="PlantNormContainer"]
+
+[node name="PlantShellContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Marker2D" type="Marker2D" parent="PlantShellContainer"]
+
+[node name="PlantImitaterContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Marker2D" type="Marker2D" parent="PlantImitaterContainer"]
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

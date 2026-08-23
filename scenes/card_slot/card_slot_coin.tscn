@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://cxun4d8gklat0"]
+
+[ext_resource type="Script" uid="uid://cg2s1s84y3hcq" path="res://scripts/ui/card/card_slot/card_slot_coin/card_slot_coin.gd" id="1_hgy7c"]
+[ext_resource type="Texture2D" uid="uid://hvvk2fdgo3pw" path="res://assets/image/ui/ui_card/SeedBank.png" id="2_31flj"]
+[ext_resource type="Script" uid="uid://becjh1wme8ip7" path="res://scripts/ui/card/card_slot/card_slot_coin/card_slot_battle_coin.gd" id="3_hgy7c"]
+[ext_resource type="Texture2D" uid="uid://dw6btivnki0kt" path="res://assets/image/ui/ui_card/SeedPacketSilhouette.png" id="4_da020"]
+[ext_resource type="Texture2D" uid="uid://ck3qd7qu37g43" path="res://assets/image/ui/ui_trophy/AwardPickupGlow.png" id="5_ka0vb"]
+[ext_resource type="Texture2D" uid="uid://wkqjmktx0gr5" path="res://assets/image/ui/ui_trophy/moneybag_hi_res.png" id="6_6m7s1"]
+[ext_resource type="FontFile" uid="uid://dqb8lum530s2f" path="res://assets/fonts/方正少儿_GBK.ttf" id="7_ka0vb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x628s"]
+texture = ExtResource("2_31flj")
+texture_margin_left = 78.0
+texture_margin_top = 10.0
+texture_margin_right = 12.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_6m7s1"]
+font = ExtResource("7_ka0vb")
+font_size = 22
+font_color = Color(0, 0, 0, 1)
+
+[node name="CardSlotCoin" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_hgy7c")
+
+[node name="CardSlotBattleCoin" type="PanelContainer" parent="."]
+layout_mode = 2
+offset_top = -100.0
+offset_right = 140.0
+offset_bottom = -10.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_x628s")
+script = ExtResource("3_hgy7c")
+
+[node name="CoinLabelControl" type="Control" parent="CardSlotBattleCoin"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="CurrCoinValue" type="Label" parent="CardSlotBattleCoin/CoinLabelControl"]
+layout_mode = 2
+offset_left = -101.0
+offset_top = 51.0
+offset_right = 14.0
+offset_bottom = 79.0
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "999990"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelInfo" type="Label" parent="CardSlotBattleCoin/CoinLabelControl"]
+layout_mode = 2
+offset_left = 68.0
+offset_top = -7.0
+offset_right = 233.0
+offset_bottom = 77.0
+text = "当前波次:0
+当前波次卡片:1
+雪人逃跑概率:0.2"
+label_settings = SubResource("LabelSettings_6m7s1")
+
+[node name="CardUiList" type="HBoxContainer" parent="CardSlotBattleCoin"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="CardPlaceholder_ori" type="TextureRect" parent="CardSlotBattleCoin/CardUiList"]
+layout_mode = 2
+texture = ExtResource("4_da020")
+
+[node name="AwardPickupGlow" type="Sprite2D" parent="CardSlotBattleCoin"]
+position = Vector2(39, 34)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_ka0vb")
+
+[node name="MoneybagHiRes" type="Sprite2D" parent="CardSlotBattleCoin"]
+position = Vector2(40, 33)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_6m7s1")
+
+[node name="NextWaveTimer" type="Timer" parent="CardSlotBattleCoin"]
+wait_time = 20.0
+one_shot = true
+
+[node name="ReplenishLawnMoverTimer" type="Timer" parent="CardSlotBattleCoin"]
+autostart = true
+
+[connection signal="timeout" from="CardSlotBattleCoin/NextWaveTimer" to="CardSlotBattleCoin" method="_on_next_wave_timer_timeout"]
+[connection signal="timeout" from="CardSlotBattleCoin/ReplenishLawnMoverTimer" to="CardSlotBattleCoin" method="_on_replenish_lawn_mover_timer_timeout"]

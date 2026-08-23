@@ -1,0 +1,122 @@
+[gd_scene load_steps=21 format=3 uid="uid://b1v66mko466vx"]
+
+[ext_resource type="PackedScene" uid="uid://cit8bsc5op7f0" path="res://scenes/bullet/bullet_000_linear_base.tscn" id="1_uicea"]
+[ext_resource type="Script" uid="uid://daxd600dwctm4" path="res://scripts/bullet/bullet_002_pea_snow.gd" id="2_pfv8q"]
+[ext_resource type="Texture2D" uid="uid://m0oy3dctwdwv" path="res://assets/image/projectile/ProjectileSnowPea.png" id="3_vwdsc"]
+[ext_resource type="Script" uid="uid://b8deeas2k62vb" path="res://scripts/fx/bullet_effect/bullet_effect_001_norm.gd" id="4_tnflx"]
+[ext_resource type="Texture2D" uid="uid://lndqqlaj355d" path="res://assets/image/particles/bullet/SnowPea_splats.png" id="5_vvprd"]
+[ext_resource type="Texture2D" uid="uid://b2dna0tdjekah" path="res://assets/image/particles/bullet/SnowPea_particles.png" id="6_rdav1"]
+[ext_resource type="Texture2D" uid="uid://barututfhosa7" path="res://assets/image/particles/bullet/SnowPea_puff.png" id="7_8bp4q"]
+[ext_resource type="Texture2D" uid="uid://bifx1ttlwu3bw" path="res://assets/image/particles/bullet/SnowFlakes.png" id="8_fvejc"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_57jy6"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_qgciu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pddgq"]
+curve = SubResource("Curve_qgciu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l3gfd"]
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 80.0
+gravity = Vector3(0, 100, 0)
+scale_curve = SubResource("CurveTexture_pddgq")
+anim_offset_max = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vebj3"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_bwoqd"]
+_data = [Vector2(0, 0.52809), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jsxne"]
+curve = SubResource("Curve_bwoqd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_juo3x"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 9.67
+angle_min = -180.0
+angle_max = 180.0
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_jsxne")
+anim_offset_max = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8wxh0"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_nku2s"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.16037, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_j7vtg"]
+curve = SubResource("Curve_nku2s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oogsf"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 10.0
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(-1, 0, 0)
+spread = 20.0
+gravity = Vector3(0, 200, 0)
+scale_min = 0.5
+scale_max = 0.5
+alpha_curve = SubResource("CurveTexture_j7vtg")
+anim_offset_max = 1.0
+
+[node name="Bullet002PeaSnow" instance=ExtResource("1_uicea")]
+script = ExtResource("2_pfv8q")
+time_be_decelerated = 3.0
+bullet_type = 2
+is_can_up = true
+
+[node name="BulletBody" parent="Body" index="0"]
+texture = ExtResource("3_vwdsc")
+
+[node name="BulletEffect" parent="." index="2"]
+script = ExtResource("4_tnflx")
+
+[node name="Splats" type="Sprite2D" parent="BulletEffect" index="0"]
+texture = ExtResource("5_vvprd")
+hframes = 4
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BulletEffect/AllParticles2D" index="0"]
+material = SubResource("CanvasItemMaterial_57jy6")
+emitting = false
+amount = 10
+texture = ExtResource("6_rdav1")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_l3gfd")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="4"]
+material = SubResource("CanvasItemMaterial_vebj3")
+texture = ExtResource("7_8bp4q")
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_juo3x")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." index="5"]
+material = SubResource("CanvasItemMaterial_8wxh0")
+texture = ExtResource("8_fvejc")
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_oogsf")

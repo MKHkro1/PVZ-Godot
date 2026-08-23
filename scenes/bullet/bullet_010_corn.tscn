@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d24cn74ohttaw"]
+
+[ext_resource type="PackedScene" uid="uid://p2fwghratmjl" path="res://scenes/bullet/bullet_000_parabola_base.tscn" id="1_02pep"]
+[ext_resource type="Texture2D" uid="uid://bqviq28gmuns3" path="res://assets/reanim/Cornpult_kernal.png" id="2_u3g04"]
+[ext_resource type="Script" uid="uid://b8deeas2k62vb" path="res://scripts/fx/bullet_effect/bullet_effect_001_norm.gd" id="3_88k1t"]
+
+[node name="Bullet010Corn" instance=ExtResource("1_02pep")]
+parabola_height = -500.0
+bullet_type = 10
+is_rotate = true
+bullet_mode = 2
+type_bullet_SFX = 3
+can_attack_zombie_status = 5
+
+[node name="BulletBody" parent="Body" index="0"]
+texture = ExtResource("2_u3g04")
+
+[node name="BulletEffect" parent="." index="2"]
+script = ExtResource("3_88k1t")
+is_bullet_effect = false

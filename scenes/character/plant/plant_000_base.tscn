@@ -1,0 +1,280 @@
+[gd_scene load_steps=14 format=3 uid="uid://c5cke4cm02um7"]
+
+[ext_resource type="PackedScene" uid="uid://bkx25sp71flk5" path="res://scenes/character/character_000_base.tscn" id="1_e772o"]
+[ext_resource type="Script" uid="uid://bawv4f7mswb7k" path="res://scripts/character/plant/plant_000_base.gd" id="2_4jr4d"]
+[ext_resource type="FontFile" uid="uid://cchqc1dtcle23" path="res://assets/fonts/Bake_Soda.otf" id="2_bie68"]
+[ext_resource type="Script" uid="uid://c3nylhst3lmnp" path="res://scripts/character/components/component_sleep.gd" id="5_813jy"]
+[ext_resource type="Script" uid="uid://c2r327riinrkk" path="res://scripts/character/components/component_blink.gd" id="6_813jy"]
+[ext_resource type="Texture2D" uid="uid://ewujfngualde" path="res://assets/image/plant/zzz.png" id="6_at3ho"]
+[ext_resource type="Script" uid="uid://bv8m5ldv6i00l" path="res://scripts/character/components/garden/component_garden.gd" id="7_at3ho"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2lon"]
+bg_color = Color(0.137255, 0.0196078, 0.027451, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxhcc"]
+bg_color = Color(1, 0.290196, 0.454902, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.137255, 0.0196078, 0.027451, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="LabelSettings" id="LabelSettings_813jy"]
+font = ExtResource("2_bie68")
+
+[sub_resource type="Animation" id="Animation_6pj1d"]
+resource_name = "zzz"
+length = 3.00001
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Zzz:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 2.91667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Zzz2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.916667, 1, 1.08333, 3, 3.91667, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, true, true, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/Zzz3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.38419e-07, 1, 1.91667, 2, 2.08333, 3, 4, 4.91667, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, false, true, true, true, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body/Zzz:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 1, 2, 2.91667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(18.8516, -20.3193), Vector2(20.3996, -21.6044), Vector2(37.4278, -35.741), Vector2(17.4496, -60.2756), Vector2(57.2891, -78.5889), Vector2(60.9109, -80.2537)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Body/Zzz2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(4.76837e-07, 0.916667, 1, 1.08333, 2, 3, 3.91667, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(17.4496, -60.2756), Vector2(57.2891, -78.5889), Vector2(60.9109, -80.2537), Vector2(20.3996, -21.6044), Vector2(37.4278, -35.741), Vector2(17.4496, -60.2756), Vector2(57.2891, -78.5889), Vector2(60.9109, -80.2537)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Body/Zzz:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 1, 2, 2.91667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.243137), Color(1, 1, 1, 0.306209), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.306209), Color(1, 1, 1, 0.243137)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Body/Zzz2:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4.76837e-07, 0.916667, 1, 1.08333, 2, 3, 3.91667, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.306209), Color(1, 1, 1, 0.243137), Color(1, 1, 1, 0.306209), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.306209), Color(1, 1, 1, 0.243137)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Body/Zzz3:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2.38419e-07, 1, 1.91667, 2, 2.08333, 3, 4, 4.91667, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(37.4278, -35.741), Vector2(17.4496, -60.2756), Vector2(57.2891, -78.5889), Vector2(60.9109, -80.2537), Vector2(20.3996, -21.6044), Vector2(37.4278, -35.741), Vector2(17.4496, -60.2756), Vector2(57.2891, -78.5889), Vector2(60.9109, -80.2537)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Body/Zzz3:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1, 1.91667, 2, 2.08333, 3, 4, 4.91667, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.306209), Color(1, 1, 1, 0.243137), Color(1, 1, 1, 0.306209), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.306209), Color(1, 1, 1, 0.243137)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vonjk"]
+_data = {
+&"zzz": SubResource("Animation_6pj1d")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bie68"]
+size = Vector2(40, 80)
+
+[node name="Plant000Base" node_paths=PackedStringArray("node_no_change_direction") instance=ExtResource("1_e772o")]
+script = ExtResource("2_4jr4d")
+plant_type = 0
+init_be_attack_status = 1
+is_sleep_in_day = false
+is_can_ladder = false
+is_sleeping = false
+is_garden_aquarium = false
+node_no_change_direction = [NodePath("HpComponent"), NodePath("SleepComponent"), NodePath("GardenComponent")]
+
+[node name="HpComponent" parent="." index="3"]
+max_hp = 300
+
+[node name="HpControl" type="Control" parent="HpComponent" index="0"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_top = -25.0
+offset_bottom = -25.0
+mouse_filter = 2
+
+[node name="ProgressBarHp" type="ProgressBar" parent="HpComponent/HpControl" index="0"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.192157)
+custom_minimum_size = Vector2(66, 20)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -10.0
+offset_right = 33.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_x2lon")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mxhcc")
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
+[node name="LabelHp" type="Label" parent="HpComponent/HpControl" index="1"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -11.5
+offset_right = 36.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "300"
+label_settings = SubResource("LabelSettings_813jy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SleepComponent" type="Node2D" parent="." index="4" node_paths=PackedStringArray("sleep_influence_components")]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("5_813jy")
+sleep_influence_components = [NodePath("../BlinkComponent")]
+
+[node name="Body" type="Node2D" parent="SleepComponent" index="0"]
+
+[node name="Zzz" type="Sprite2D" parent="SleepComponent/Body" index="0"]
+position = Vector2(26.6553, -48.9704)
+scale = Vector2(0.119835, 0.126722)
+texture = ExtResource("6_at3ho")
+
+[node name="Zzz2" type="Sprite2D" parent="SleepComponent/Body" index="1"]
+modulate = Color(1, 1, 1, 0.651249)
+position = Vector2(28.8682, -28.6349)
+scale = Vector2(0.119835, 0.126722)
+texture = ExtResource("6_at3ho")
+
+[node name="Zzz3" type="Sprite2D" parent="SleepComponent/Body" index="2"]
+modulate = Color(1, 1, 1, 0.591891)
+position = Vector2(40.8844, -71.048)
+scale = Vector2(0.119835, 0.126722)
+texture = ExtResource("6_at3ho")
+
+[node name="AnimSleep" type="AnimationPlayer" parent="SleepComponent" index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_vonjk")
+}
+
+[node name="BlinkComponent" type="Node2D" parent="." index="5"]
+unique_name_in_owner = true
+script = ExtResource("6_813jy")
+
+[node name="BlinkTimer" type="Timer" parent="BlinkComponent" index="0"]
+
+[node name="GardenComponent" type="Node2D" parent="." index="6"]
+unique_name_in_owner = true
+z_index = 1
+script = ExtResource("7_at3ho")
+
+[node name="NeedTimer" type="Timer" parent="GardenComponent" index="0"]
+one_shot = true
+
+[node name="CreateCoinTimer" type="Timer" parent="GardenComponent" index="1"]
+one_shot = true
+
+[node name="HurtBoxDetection" parent="HurtBoxComponent" index="0"]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent/HurtBoxDetection" index="0"]
+position = Vector2(0, -40)
+shape = SubResource("RectangleShape2D_bie68")
+
+[node name="HurtBoxReal" parent="HurtBoxComponent" index="1"]
+collision_layer = 256
+
+[connection signal="timeout" from="BlinkComponent/BlinkTimer" to="BlinkComponent" method="_on_blink_timer_timeout"]
+[connection signal="timeout" from="GardenComponent/NeedTimer" to="GardenComponent" method="_on_need_timer_timeout"]
+[connection signal="timeout" from="GardenComponent/CreateCoinTimer" to="GardenComponent" method="_on_coin_timer_timeout"]

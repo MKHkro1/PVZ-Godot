@@ -1,0 +1,172 @@
+[gd_scene load_steps=27 format=3 uid="uid://fmk5e5and3xb"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_afx53"]
+[ext_resource type="Script" uid="uid://d06bkdtjy2a5d" path="res://scripts/character/plant/plant_022_caltrop.gd" id="2_5b05c"]
+[ext_resource type="Texture2D" uid="uid://djsyco71dq21c" path="res://assets/reanim/Caltrop_body.png" id="3_qfs8i"]
+[ext_resource type="Texture2D" uid="uid://bt8vfd40soar2" path="res://assets/reanim/Caltrop_horn1.png" id="4_taal7"]
+[ext_resource type="Texture2D" uid="uid://fa60cdkuf7oe" path="res://assets/reanim/Caltrop_horn2.png" id="5_w0kwl"]
+[ext_resource type="Texture2D" uid="uid://dbjgn3in4at66" path="res://assets/reanim/Caltrop_horn3.png" id="6_8g1ka"]
+[ext_resource type="Texture2D" uid="uid://dsvk38sshl42f" path="res://assets/reanim/Caltrop_horn4.png" id="7_4imoc"]
+[ext_resource type="Texture2D" uid="uid://b4dihaqonj4k4" path="res://assets/reanim/Caltrop_blink1.png" id="8_0t614"]
+[ext_resource type="Animation" uid="uid://b5e22xmdjw0hk" path="res://animation/character/plant/022_caltrop/Caltrop_attack.tres" id="9_5elg4"]
+[ext_resource type="Script" uid="uid://jl0nl4a234bc" path="res://scripts/resources/resource_body_change.gd" id="9_taal7"]
+[ext_resource type="Animation" uid="uid://7fxwqolj20m8" path="res://animation/character/plant/022_caltrop/Caltrop_idle.tres" id="10_qukgk"]
+[ext_resource type="Texture2D" uid="uid://b8f2aqes8jf56" path="res://assets/reanim/Caltrop_blink2.png" id="10_w0kwl"]
+[ext_resource type="Script" uid="uid://bafp0ax1lmlge" path="res://scripts/character/components/attack_ray_component/component_attack_ray.gd" id="11_5b05c"]
+
+[sub_resource type="Resource" id="Resource_8g1ka"]
+script = ExtResource("9_taal7")
+sprite_change = Array[NodePath]([NodePath("../Body/BodyCorrect/Anim_blink")])
+sprite_change_texture = Array[Texture2D]([ExtResource("8_0t614"), ExtResource("10_w0kwl")])
+sprite_appear = Array[NodePath]([])
+sprite_disappear = Array[NodePath]([])
+node_drop = NodePath("")
+metadata/_custom_type_script = "uid://jl0nl4a234bc"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xhn8r"]
+_data = {
+&"Caltrop_attack": ExtResource("9_5elg4"),
+&"Caltrop_idle": ExtResource("10_qukgk")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_70i3s"]
+animation = &"Caltrop_attack"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_yps7o"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_06lw8"]
+graph_offset = Vector2(-275.764, 105.65)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_70i3s")
+nodes/Animation/position = Vector2(40, 120)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_yps7o")
+nodes/TimeScale/position = Vector2(280, 100)
+nodes/output/position = Vector2(460, 120)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l5i5t"]
+animation = &"Caltrop_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_70i3s"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_525yu"]
+xfade_time = 0.2
+break_loop_at_end = true
+advance_mode = 2
+advance_expression = "not is_attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0vn61"]
+xfade_time = 0.2
+break_loop_at_end = true
+advance_mode = 2
+advance_expression = "is_attack"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0vn61"]
+states/BlendTree/node = SubResource("AnimationNodeBlendTree_06lw8")
+states/BlendTree/position = Vector2(686, 100)
+states/Caltrop_idle/node = SubResource("AnimationNodeAnimation_l5i5t")
+states/Caltrop_idle/position = Vector2(401, 100)
+transitions = ["Start", "Caltrop_idle", SubResource("AnimationNodeStateMachineTransition_70i3s"), "BlendTree", "Caltrop_idle", SubResource("AnimationNodeStateMachineTransition_525yu"), "Caltrop_idle", "BlendTree", SubResource("AnimationNodeStateMachineTransition_0vn61")]
+graph_offset = Vector2(23, -28)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_525yu"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_f6by2"]
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_0vn61")
+nodes/StateMachine/position = Vector2(60, 100)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_525yu")
+nodes/TimeScale/position = Vector2(420, 100)
+nodes/output/position = Vector2(600, 140)
+node_connections = [&"TimeScale", 0, &"StateMachine", &"output", 0, &"TimeScale"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_taal7"]
+size = Vector2(75, 5)
+
+[node name="Plant022Caltrop" instance=ExtResource("1_afx53")]
+script = ExtResource("2_5b05c")
+attack_value = 20
+is_attack = false
+plant_type = 22
+init_be_attack_status = 4
+
+[node name="Shadow" parent="." index="0"]
+scale = Vector2(1.23256, 0.888889)
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-39, -63)
+
+[node name="Anim_attack" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+visible = false
+centered = false
+
+[node name="Anim_idle" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+centered = false
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+position = Vector2(-1.65956, 46.2659)
+scale = Vector2(0.823723, 0.750554)
+texture = ExtResource("3_qfs8i")
+centered = false
+
+[node name="Caltrop_horn1" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+position = Vector2(5.48087, 48.0255)
+rotation = -0.126776
+scale = Vector2(0.799, 0.755617)
+texture = ExtResource("4_taal7")
+centered = false
+
+[node name="Caltrop_horn2" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+position = Vector2(22.1341, 43.4723)
+rotation = -0.11805
+scale = Vector2(0.799468, 0.781809)
+texture = ExtResource("5_w0kwl")
+centered = false
+
+[node name="Caltrop_horn3" type="Sprite2D" parent="Body/BodyCorrect" index="5"]
+position = Vector2(46.7659, 43.3064)
+rotation = 0.0889737
+scale = Vector2(0.799468, 0.799468)
+texture = ExtResource("6_8g1ka")
+centered = false
+
+[node name="Caltrop_horn4" type="Sprite2D" parent="Body/BodyCorrect" index="6"]
+position = Vector2(57.6596, 49.9)
+rotation = 0.0644279
+scale = Vector2(0.799, 0.799)
+texture = ExtResource("7_4imoc")
+centered = false
+
+[node name="Anim_blink" type="Sprite2D" parent="Body/BodyCorrect" index="7"]
+visible = false
+position = Vector2(18.7643, 60.8825)
+scale = Vector2(0.830712, 0.8)
+texture = ExtResource("8_0t614")
+centered = false
+
+[node name="BlinkComponent" parent="." index="6"]
+all_blink_body_change = Array[ExtResource("9_taal7")]([SubResource("Resource_8g1ka")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_xhn8r")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+deterministic = false
+tree_root = SubResource("AnimationNodeBlendTree_f6by2")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/StateMachine/BlendTree/TimeScale/scale = 0.7
+parameters/TimeScale/scale = 1.0
+
+[node name="AttackRayComponent" type="Node2D" parent="." index="10"]
+script = ExtResource("11_5b05c")
+plant_enemy_collision_lay = 20
+
+[node name="Area2D" type="Area2D" parent="AttackRayComponent" index="0"]
+position = Vector2(0, -25)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRayComponent/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_taal7")

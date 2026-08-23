@@ -1,0 +1,84 @@
+[gd_scene load_steps=14 format=3 uid="uid://w2cplfosy68e"]
+
+[ext_resource type="PackedScene" uid="uid://n2y27ai1nm5f" path="res://scenes/character/plant/plant_000_down_base.tscn" id="1_fjhlc"]
+[ext_resource type="Script" uid="uid://crduuvgrpopay" path="res://scripts/character/plant/plant_017_lily_pad.gd" id="2_13n6p"]
+[ext_resource type="Texture2D" uid="uid://d0hpo2yp78fwc" path="res://assets/image/plant/plantshadow.png" id="2_b2353"]
+[ext_resource type="Texture2D" uid="uid://cbhaawnc37cwe" path="res://assets/reanim/LilyPad_body.png" id="3_13n6p"]
+[ext_resource type="Texture2D" uid="uid://dmmcjbsd028oj" path="res://assets/reanim/LilyPad_blink1.png" id="4_pknwq"]
+[ext_resource type="Animation" uid="uid://bt0dx7u5axpxp" path="res://animation/character/plant/017_lily_pad/LilyPad_idle.tres" id="5_taohl"]
+[ext_resource type="Script" uid="uid://jl0nl4a234bc" path="res://scripts/resources/resource_body_change.gd" id="6_taohl"]
+[ext_resource type="Texture2D" uid="uid://blj21d64csfsk" path="res://assets/reanim/LilyPad_blink2.png" id="7_iaqk1"]
+
+[sub_resource type="Resource" id="Resource_wqhw3"]
+script = ExtResource("6_taohl")
+sprite_change = Array[NodePath]([NodePath("../Body/BodyCorrect/Anim_blink")])
+sprite_change_texture = Array[Texture2D]([ExtResource("4_pknwq"), ExtResource("7_iaqk1")])
+sprite_appear = Array[NodePath]([])
+sprite_disappear = Array[NodePath]([])
+node_drop = NodePath("")
+metadata/_custom_type_script = "uid://jl0nl4a234bc"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gmjy2"]
+_data = {
+&"LilyPad_idle": ExtResource("5_taohl")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3puwi"]
+animation = &"LilyPad_idle"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_36qgt"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_iaqk1"]
+graph_offset = Vector2(-166.231, -5.6116)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_3puwi")
+nodes/Animation/position = Vector2(20, 100)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_36qgt")
+nodes/TimeScale/position = Vector2(280, 80)
+nodes/output/position = Vector2(480, 120)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[node name="Plant017LilyPad" instance=ExtResource("1_fjhlc")]
+script = ExtResource("2_13n6p")
+plant_up_position = Vector2(0, 10)
+plant_type = 17
+
+[node name="Shadow" parent="." index="0"]
+visible = false
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-44, -67)
+
+[node name="shadow" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+visible = false
+position = Vector2(40, 61)
+texture = ExtResource("2_b2353")
+
+[node name="Anim_idle" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+position = Vector2(-0.2, 5.5)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_13n6p")
+centered = false
+
+[node name="Anim_blink" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+position = Vector2(47, 51)
+scale = Vector2(0.735294, 0.695652)
+texture = ExtResource("4_pknwq")
+centered = false
+
+[node name="BlinkComponent" parent="." index="6"]
+all_blink_body_change = Array[ExtResource("6_taohl")]([SubResource("Resource_wqhw3")])
+
+[node name="DownPlantContainer" parent="." index="7"]
+position = Vector2(0, -9)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
+libraries = {
+&"": SubResource("AnimationLibrary_gmjy2")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="10"]
+deterministic = false
+tree_root = SubResource("AnimationNodeBlendTree_iaqk1")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0

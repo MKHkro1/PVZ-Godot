@@ -1,0 +1,1233 @@
+[gd_scene load_steps=64 format=3 uid="uid://b2soejmoqi7wd"]
+
+[ext_resource type="Script" uid="uid://c7dr2016dfdoo" path="res://scripts/manager/main_game_manager.gd" id="1_7dde3"]
+[ext_resource type="AudioStream" uid="uid://duvijencyf7mi" path="res://assets/audio/BGM/choose_card.mp3" id="2_8fvtd"]
+[ext_resource type="Script" uid="uid://b2rst408m72au" path="res://scripts/manager/hand_manager/hand_manager.gd" id="3_acpf0"]
+[ext_resource type="Script" uid="uid://duphb7sb466c0" path="res://scripts/manager/hand_manager/hm_character.gd" id="4_ee3wa"]
+[ext_resource type="Texture2D" uid="uid://dh1c6v7dpaxmd" path="res://assets/image/ui/ui_card/Shovel.png" id="4_w5iw5"]
+[ext_resource type="Script" uid="uid://wbd5do6m44f2" path="res://scripts/manager/hand_manager/hm_item.gd" id="5_3d12c"]
+[ext_resource type="Script" uid="uid://cdcjkojcv1r2v" path="res://scripts/manager/zombie_manager/zombie_manager.gd" id="5_j3aa3"]
+[ext_resource type="Script" uid="uid://bwla64adrag6e" path="res://scripts/manager/zombie_manager/zm_zombie_wave_manager.gd" id="5_qfhda"]
+[ext_resource type="Script" uid="uid://bkwrkp13gfh6e" path="res://scripts/manager/zombie_manager/zm_zombie_wave_refresh_manager.gd" id="6_ee3wa"]
+[ext_resource type="Script" uid="uid://ba811qtwbkyd0" path="res://scripts/manager/zombie_manager/zm_zombie_wave_create_manager.gd" id="7_3d12c"]
+[ext_resource type="Script" uid="uid://dqus20puuxano" path="res://scripts/manager/zombie_manager/zm_zombie_show_in_start.gd" id="8_ha6fd"]
+[ext_resource type="Script" uid="uid://cruc1xp1mskml" path="res://scripts/manager/game_item_manager.gd" id="11_f06xn"]
+[ext_resource type="Script" uid="uid://cr3h2c27i2jrx" path="res://scripts/manager/plant_cell_manager/plant_cell_manager.gd" id="12_hgtxc"]
+[ext_resource type="Script" uid="uid://g4mhhnrtydhd" path="res://scripts/manager/plant_cell_manager/tomb_stone_manager.gd" id="13_3d12c"]
+[ext_resource type="Script" uid="uid://bh3rft7vb6xch" path="res://scripts/main_game_item/back_ground/main_game_background.gd" id="14_0mfp0"]
+[ext_resource type="Script" uid="uid://7rl0u85kxat1" path="res://scripts/main_game_item/back_ground/main_game_home.gd" id="15_tsrbg"]
+[ext_resource type="Texture2D" uid="uid://css4w8rs4mm6l" path="res://assets/image/background/background1_gameover_interior_overlay.png" id="15_uinqq"]
+[ext_resource type="Texture2D" uid="uid://b6gd58cnsxid2" path="res://assets/image/background/background2_gameover_interior_overlay.png" id="16_7eijg"]
+[ext_resource type="PackedScene" uid="uid://brbdbxg2tocla" path="res://scenes/ui/flag_progress_bar.tscn" id="16_dc1ex"]
+[ext_resource type="Texture2D" uid="uid://bter5jg6j45k" path="res://assets/image/background/background1_gameover_mask.png" id="17_0mfp0"]
+[ext_resource type="Script" uid="uid://cyutow4qwsjq5" path="res://scripts/ui/main_game_ui/ui_remind_word.gd" id="17_ybhi1"]
+[ext_resource type="Texture2D" uid="uid://dd8pmf7hpwm0a" path="res://assets/image/background/background3_gameover_interior_overlay.png" id="18_g0ofp"]
+[ext_resource type="Texture2D" uid="uid://bll1o67ycmid6" path="res://assets/image/ui/ui_remind_word/StartReady.png" id="18_gyila"]
+[ext_resource type="Texture2D" uid="uid://dltdtjwn6a800" path="res://assets/image/background/background2_gameover_mask.png" id="18_tsrbg"]
+[ext_resource type="Texture2D" uid="uid://daqyr7g1dgckt" path="res://assets/image/ui/ui_remind_word/StartSet.png" id="19_3tcal"]
+[ext_resource type="Texture2D" uid="uid://d4bxwn6mmndtj" path="res://assets/image/background/background4_gameover_interior_overlay.png" id="19_470oe"]
+[ext_resource type="Texture2D" uid="uid://bcv81qevn5hpt" path="res://assets/image/ui/ui_remind_word/StartPlant.png" id="20_2b7lk"]
+[ext_resource type="Texture2D" uid="uid://uh50cdkqdl67" path="res://assets/image/background/background1.jpg" id="20_ifnc6"]
+[ext_resource type="Texture2D" uid="uid://c4jwi8yjt7hmd" path="res://assets/image/ui/ui_remind_word/Approaching.png" id="21_48j6u"]
+[ext_resource type="Texture2D" uid="uid://bp2ironyexkgp" path="res://assets/image/ui/ui_remind_word/FinalWave.png" id="22_httmh"]
+[ext_resource type="Texture2D" uid="uid://cdoiwcmaapdkm" path="res://assets/image/background/background3_gameover_mask.png" id="22_xh73d"]
+[ext_resource type="Texture2D" uid="uid://dfpr4h80b1qyx" path="res://assets/image/background/background4_gameover_mask.png" id="23_401pl"]
+[ext_resource type="Texture2D" uid="uid://vcaw16pvdqga" path="res://assets/image/ui/ui_remind_word/ZombiesWon.png" id="23_vyo3a"]
+[ext_resource type="Script" uid="uid://dhkfw0onmxcyf" path="res://scripts/camera/main_game_camera.gd" id="24_b4qea"]
+[ext_resource type="Script" uid="uid://0num78yxy82x" path="res://scripts/manager/zombie_manager/zm_hammer_zombie_manager.gd" id="24_iuyhw"]
+[ext_resource type="Theme" uid="uid://em12la0rqibq" path="res://data/PVZ_theme.tres" id="25_aop5g"]
+[ext_resource type="Script" uid="uid://duv8spyw6f44n" path="res://scripts/manager/zombie_manager/zm_zombie_choose_row_system.gd" id="25_iuyhw"]
+[ext_resource type="Script" uid="uid://3j46ottso760" path="res://scripts/ui/main_game_ui/main_game_menu_button.gd" id="26_84h1o"]
+[ext_resource type="Texture2D" uid="uid://toxyk2jadqam" path="res://assets/image/ui/ui_main_game_menu/option_dialog.png" id="27_w5iw5"]
+[ext_resource type="Script" uid="uid://c6mc0k0vhb4ad" path="res://scripts/manager/lawn_mover_manager.gd" id="28_3uxdp"]
+[ext_resource type="Texture2D" uid="uid://dfjdwrmbaotyx" path="res://assets/image/background/background5_gameover_mask.png" id="28_71hfq"]
+[ext_resource type="Script" uid="uid://djkmy1xylm8hs" path="res://scripts/ui/ui_main_game_menu/main_game_menu_option_dialog.gd" id="28_mddbc"]
+[ext_resource type="Script" uid="uid://parybxg7tb1k" path="res://scripts/ui/PVZ_button_base.gd" id="29_8fvtd"]
+[ext_resource type="Script" uid="uid://lu0twrv0u1t0" path="res://scripts/main_game_canvas_layer/canvas_layer_card_slot.gd" id="30_b6ai2"]
+[ext_resource type="PackedScene" uid="uid://b2xxhep8oyipk" path="res://scenes/item/coin_bank_label.tscn" id="30_xh73d"]
+[ext_resource type="BitMap" uid="uid://bhg7gejfpw036" path="res://assets/image/ui/ui_main_game_menu/btn_dialog_back_2_mask.png" id="30_xvvqk"]
+[ext_resource type="Texture2D" uid="uid://blge6mwmus5fv" path="res://assets/image/ui/ui_main_game_menu/btn_dialog_back_2.png" id="33_w0404"]
+[ext_resource type="Script" uid="uid://c5llwle352r6f" path="res://scripts/manager/card_manager.gd" id="34_5pjpf"]
+[ext_resource type="PackedScene" uid="uid://cp0kgnsx20pyh" path="res://scenes/ui/dialog.tscn" id="34_8fvtd"]
+[ext_resource type="PackedScene" uid="uid://5v0fdtao52jl" path="res://scenes/main/control_canvas_layer.tscn" id="34_ifnc6"]
+[ext_resource type="Script" uid="uid://2kldvd28hidq" path="res://scripts/ui/card/card_slot/card_slot_root.gd" id="35_ee3wa"]
+[ext_resource type="Script" uid="uid://bw0stsbito4w" path="res://scripts/main_game_item/real_shovel.gd" id="35_mjx71"]
+[ext_resource type="Texture2D" uid="uid://47ixd5hsddft" path="res://assets/image/ui/ui_card/ShovelBank.png" id="42_pmw6j"]
+[ext_resource type="Script" uid="uid://drl7ywtxslsbm" path="res://scripts/ui/card/shovel_in_ui.gd" id="43_erab5"]
+[ext_resource type="Script" uid="uid://5unqafehbil7" path="res://scripts/fx/other_effect/canvas_layer_effect.gd" id="51_qfhda"]
+[ext_resource type="Script" uid="uid://pqbu71xw5ngn" path="res://scripts/character/components/attack_ray_component/component_attack_ray_global.gd" id="55_l4e4o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yy6tc"]
+size = Vector2(150, 600)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqw4g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ha6fd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_41ccn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jbbka"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ybhi1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6ai2"]
+size = Vector2(900, 600)
+
+[node name="MainGame" type="Node2D"]
+script = ExtResource("1_7dde3")
+bgm_choose_card = ExtResource("2_8fvtd")
+
+[node name="Manager" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="HandManager" type="Node" parent="Manager"]
+unique_name_in_owner = true
+script = ExtResource("3_acpf0")
+
+[node name="HM_Character" type="Node" parent="Manager/HandManager"]
+script = ExtResource("4_ee3wa")
+
+[node name="HM_Item" type="Node" parent="Manager/HandManager"]
+script = ExtResource("5_3d12c")
+
+[node name="ZombieManager" type="Node" parent="Manager"]
+unique_name_in_owner = true
+script = ExtResource("5_j3aa3")
+
+[node name="ZombieWaveManager" type="Node" parent="Manager/ZombieManager"]
+script = ExtResource("5_qfhda")
+
+[node name="ZombieWaveRefreshManager" type="Node" parent="Manager/ZombieManager/ZombieWaveManager"]
+script = ExtResource("6_ee3wa")
+
+[node name="WaveNormRefreshTimer" type="Timer" parent="Manager/ZombieManager/ZombieWaveManager/ZombieWaveRefreshManager"]
+one_shot = true
+
+[node name="WaveMinTimeTimer" type="Timer" parent="Manager/ZombieManager/ZombieWaveManager/ZombieWaveRefreshManager"]
+one_shot = true
+
+[node name="ZombieWaveCreateManager" type="Node" parent="Manager/ZombieManager/ZombieWaveManager"]
+script = ExtResource("7_3d12c")
+
+[node name="ZombieChooseRowSystem" type="Node" parent="Manager/ZombieManager/ZombieWaveManager/ZombieWaveCreateManager"]
+unique_name_in_owner = true
+script = ExtResource("25_iuyhw")
+
+[node name="EveryWaveProgressTimer" type="Timer" parent="Manager/ZombieManager/ZombieWaveManager"]
+
+[node name="ZombieShowInStart" type="Node" parent="Manager/ZombieManager"]
+script = ExtResource("8_ha6fd")
+
+[node name="HammerZombieManager" type="Node" parent="Manager/ZombieManager"]
+script = ExtResource("24_iuyhw")
+
+[node name="HammerZombieTimer" type="Timer" parent="Manager/ZombieManager/HammerZombieManager"]
+
+[node name="CheckZombieEndWaveTimer" type="Timer" parent="Manager/ZombieManager"]
+
+[node name="GameItemManager" type="Node" parent="Manager"]
+unique_name_in_owner = true
+script = ExtResource("11_f06xn")
+
+[node name="PlantCellManager" type="Node" parent="Manager"]
+unique_name_in_owner = true
+script = ExtResource("12_hgtxc")
+
+[node name="TombStoneManager" type="Node" parent="Manager/PlantCellManager"]
+script = ExtResource("13_3d12c")
+
+[node name="CardManager" type="Node" parent="Manager"]
+unique_name_in_owner = true
+script = ExtResource("34_5pjpf")
+
+[node name="LawnMoverManager" type="Node" parent="Manager"]
+unique_name_in_owner = true
+script = ExtResource("28_3uxdp")
+
+[node name="CanvasLayerBG" type="CanvasLayer" parent="."]
+layer = -10
+follow_viewport_enabled = true
+
+[node name="Background" type="Sprite2D" parent="CanvasLayerBG"]
+unique_name_in_owner = true
+process_mode = 3
+position = Vector2(-210, 0)
+texture = ExtResource("20_ifnc6")
+centered = false
+script = ExtResource("14_0mfp0")
+
+[node name="Home" type="Node2D" parent="CanvasLayerBG/Background"]
+unique_name_in_owner = true
+script = ExtResource("15_tsrbg")
+
+[node name="Area2DHome" type="Area2D" parent="CanvasLayerBG/Background/Home"]
+process_mode = 3
+position = Vector2(132.306, 8)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayerBG/Background/Home/Area2DHome"]
+position = Vector2(-28.93, 290.79)
+shape = SubResource("RectangleShape2D_yy6tc")
+
+[node name="Door" type="Node2D" parent="CanvasLayerBG/Background/Home"]
+
+[node name="DoorDown" type="Node2D" parent="CanvasLayerBG/Background/Home/Door"]
+
+[node name="Background1GameoverInteriorOverlay" type="Sprite2D" parent="CanvasLayerBG/Background/Home/Door/DoorDown"]
+visible = false
+position = Vector2(130.311, 321)
+texture = ExtResource("15_uinqq")
+
+[node name="Background2GameoverInteriorOverlay" type="Sprite2D" parent="CanvasLayerBG/Background/Home/Door/DoorDown"]
+visible = false
+position = Vector2(150.311, 335)
+texture = ExtResource("16_7eijg")
+
+[node name="Background3GameoverInteriorOverlay" type="Sprite2D" parent="CanvasLayerBG/Background/Home/Door/DoorDown"]
+visible = false
+position = Vector2(107, 327)
+texture = ExtResource("18_g0ofp")
+
+[node name="Background4GameoverInteriorOverlay" type="Sprite2D" parent="CanvasLayerBG/Background/Home/Door/DoorDown"]
+visible = false
+position = Vector2(101, 327)
+texture = ExtResource("19_470oe")
+
+[node name="PanelZombieGoHome" type="Panel" parent="CanvasLayerBG/Background/Home/Door/DoorDown"]
+unique_name_in_owner = true
+clip_children = 1
+offset_left = 84.3106
+offset_right = 284.311
+offset_bottom = 600.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iqw4g")
+
+[node name="DoorMask" type="Node2D" parent="CanvasLayerBG/Background/Home/Door"]
+
+[node name="Background1GameoverMask" type="Sprite2D" parent="CanvasLayerBG/Background/Home/Door/DoorMask"]
+visible = false
+position = Vector2(113.59, 326)
+texture = ExtResource("17_0mfp0")
+
+[node name="Background2GameoverMask" type="Sprite2D" parent="CanvasLayerBG/Background/Home/Door/DoorMask"]
+visible = false
+position = Vector2(114.59, 328)
+texture = ExtResource("18_tsrbg")
+
+[node name="Background3GameoverMask" type="Sprite2D" parent="CanvasLayerBG/Background/Home/Door/DoorMask"]
+visible = false
+position = Vector2(113, 343.5)
+texture = ExtResource("22_xh73d")
+
+[node name="Background4GameoverMask" type="Sprite2D" parent="CanvasLayerBG/Background/Home/Door/DoorMask"]
+visible = false
+position = Vector2(179, 304.5)
+texture = ExtResource("23_401pl")
+
+[node name="Background5GameoverMask" type="Sprite2D" parent="CanvasLayerBG/Background/Home/Door/DoorMask"]
+visible = false
+position = Vector2(50, 196)
+texture = ExtResource("28_71hfq")
+
+[node name="ShowZombiePanel" type="Panel" parent="CanvasLayerBG/Background"]
+unique_name_in_owner = true
+z_index = 700
+y_sort_enabled = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_top = 180.0
+offset_right = -20.0
+offset_bottom = 580.0
+grow_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ha6fd")
+
+[node name="ShowZombiePanel2" type="Panel" parent="CanvasLayerBG/Background"]
+unique_name_in_owner = true
+z_index = 710
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_top = 180.0
+offset_right = -20.0
+offset_bottom = 580.0
+grow_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ha6fd")
+
+[node name="GameItemsInBg" type="Node2D" parent="CanvasLayerBG/Background"]
+unique_name_in_owner = true
+
+[node name="CanvasLayerCardSlot" type="CanvasLayer" parent="."]
+script = ExtResource("30_b6ai2")
+
+[node name="CardSlotRoot" type="Control" parent="CanvasLayerCardSlot"]
+unique_name_in_owner = true
+process_mode = 1
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("35_ee3wa")
+
+[node name="Marker2DSunTargetDefault" type="Marker2D" parent="CanvasLayerCardSlot/CardSlotRoot"]
+unique_name_in_owner = true
+position = Vector2(40, 35)
+
+[node name="CardSlotContainer" type="PanelContainer" parent="CanvasLayerCardSlot/CardSlotRoot"]
+unique_name_in_owner = true
+layout_mode = 1
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_41ccn")
+
+[node name="ShovelContainer" type="Control" parent="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="UIShovel" type="TextureRect" parent="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_right = 70.0
+offset_bottom = 72.0
+grow_horizontal = 0
+texture = ExtResource("42_pmw6j")
+script = ExtResource("43_erab5")
+
+[node name="Shovel" type="TextureRect" parent="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer/UIShovel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -4.0
+offset_right = 5.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_w5iw5")
+
+[node name="Button" type="Button" parent="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer/UIShovel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jbbka")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jbbka")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_jbbka")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jbbka")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jbbka")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jbbka")
+
+[node name="Label" type="Label" parent="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer/UIShovel"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 50.0
+offset_right = 72.0
+offset_bottom = 73.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "F"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayerFG" type="CanvasLayer" parent="."]
+layer = 10
+follow_viewport_enabled = true
+
+[node name="CanvasLayerTemp" type="CanvasLayer" parent="."]
+layer = 20
+follow_viewport_enabled = true
+
+[node name="TemporaryPlants" type="Node2D" parent="CanvasLayerTemp"]
+unique_name_in_owner = true
+z_index = 1000
+
+[node name="TemporaryZombies" type="Node2D" parent="CanvasLayerTemp"]
+unique_name_in_owner = true
+z_index = 1000
+
+[node name="RealShovel" type="Sprite2D" parent="CanvasLayerTemp"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(687, 67)
+texture = ExtResource("4_w5iw5")
+centered = false
+offset = Vector2(-14, -70)
+script = ExtResource("35_mjx71")
+
+[node name="CanvasLayerEffect" type="CanvasLayer" parent="."]
+layer = 30
+script = ExtResource("51_qfhda")
+
+[node name="Panel_Ice" type="Panel" parent="CanvasLayerEffect"]
+modulate = Color(0, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ybhi1")
+
+[node name="Panel_Doom" type="Panel" parent="CanvasLayerEffect"]
+modulate = Color(0.619608, 0, 0.623529, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ybhi1")
+
+[node name="CanvasLayerConsole" parent="." instance=ExtResource("34_ifnc6")]
+unique_name_in_owner = true
+layer = 128
+visible = false
+
+[node name="CanvasLayerUI" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="CoinBankLabel" parent="CanvasLayerUI" instance=ExtResource("30_xh73d")]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 245.0
+offset_top = -41.0
+offset_right = 245.0
+offset_bottom = -41.0
+grow_vertical = 0
+
+[node name="UIRemindWord" type="Control" parent="CanvasLayerUI"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 800.0
+offset_bottom = 600.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("17_ybhi1")
+
+[node name="Ready" type="TextureRect" parent="CanvasLayerUI/UIRemindWord"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -66.5
+offset_right = 150.0
+offset_bottom = 66.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("18_gyila")
+
+[node name="Set" type="TextureRect" parent="CanvasLayerUI/UIRemindWord"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -66.5
+offset_right = 150.0
+offset_bottom = 66.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("19_3tcal")
+
+[node name="Plant" type="TextureRect" parent="CanvasLayerUI/UIRemindWord"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -66.5
+offset_right = 150.0
+offset_bottom = 66.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("20_2b7lk")
+
+[node name="Approaching" type="TextureRect" parent="CanvasLayerUI/UIRemindWord"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -246.0
+offset_top = -40.0
+offset_right = 246.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("21_48j6u")
+
+[node name="FinalWave" type="TextureRect" parent="CanvasLayerUI/UIRemindWord"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.5
+offset_top = -40.0
+offset_right = 170.5
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("22_httmh")
+
+[node name="ZombiesWon" type="TextureRect" parent="CanvasLayerUI/UIRemindWord"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -282.0
+offset_top = -234.0
+offset_right = 282.0
+offset_bottom = 234.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("23_vyo3a")
+
+[node name="All_UI" type="Control" parent="CanvasLayerUI"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("25_aop5g")
+metadata/_edit_use_anchors_ = true
+
+[node name="MainGameMenuButton" type="BaseButton" parent="CanvasLayerUI/All_UI"]
+_import_path = NodePath("")
+unique_name_in_owner = true
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 2
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 0)
+layout_direction = 0
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 694.0
+offset_top = 0.0
+offset_right = 798.0
+offset_bottom = 38.0
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 0.0
+scale = Vector2(1, 1)
+pivot_offset = Vector2(0, 0)
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+localize_numeral_system = true
+tooltip_text = ""
+tooltip_auto_translate_mode = 0
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+theme = null
+theme_type_variation = &""
+disabled = false
+toggle_mode = false
+button_pressed = false
+action_mode = 1
+button_mask = 1
+keep_pressed_outside = false
+button_group = null
+shortcut = null
+shortcut_feedback = true
+shortcut_in_tooltip = true
+script = ExtResource("26_84h1o")
+metadata/_custom_type_script = "uid://parybxg7tb1k"
+
+[node name="Panel" type="Panel" parent="CanvasLayerUI/All_UI/MainGameMenuButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"PanelButtonBG"
+
+[node name="Label" type="Label" parent="CanvasLayerUI/All_UI/MainGameMenuButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "菜单"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainGameMenuOptionDialog" type="TextureRect" parent="CanvasLayerUI/All_UI"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_w5iw5")
+expand_mode = 1
+stretch_mode = 3
+script = ExtResource("28_mddbc")
+
+[node name="Option" type="Control" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog"]
+anchors_preset = 0
+offset_left = 300.0
+offset_top = 173.0
+offset_right = 518.0
+offset_bottom = 431.0
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 10
+
+[node name="Music" type="Control" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/VBoxContainer"]
+custom_minimum_size = Vector2(220, 30)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/VBoxContainer/Music"]
+layout_mode = 0
+offset_left = 7.71088
+offset_top = 4.20592
+offset_right = 47.7109
+offset_bottom = 27.2059
+theme_type_variation = &"Label2"
+text = "音乐"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/VBoxContainer/Music"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 1.0
+offset_right = 212.0
+offset_bottom = 31.0
+mouse_filter = 1
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="SoundEffect" type="Control" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/VBoxContainer"]
+custom_minimum_size = Vector2(220, 30)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/VBoxContainer/SoundEffect"]
+layout_mode = 0
+offset_left = 7.71088
+offset_top = 4.20592
+offset_right = 47.7109
+offset_bottom = 27.2059
+theme_type_variation = &"Label2"
+text = "音效"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/VBoxContainer/SoundEffect"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 1.0
+offset_right = 212.0
+offset_bottom = 30.0
+mouse_filter = 1
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="TimeScale" type="Control" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/VBoxContainer"]
+custom_minimum_size = Vector2(220, 30)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/VBoxContainer/TimeScale"]
+layout_mode = 0
+offset_left = 7.71088
+offset_top = 4.20592
+offset_right = 106.711
+offset_bottom = 27.2059
+theme_type_variation = &"Label2"
+text = "倍速 1.0 倍"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/VBoxContainer/TimeScale"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 1.0
+offset_right = 212.0
+offset_bottom = 30.0
+mouse_filter = 1
+min_value = 0.5
+max_value = 3.0
+step = 0.5
+value = 1.0
+
+[node name="Button1" type="BaseButton" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 2
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 0)
+layout_direction = 0
+layout_mode = 3
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 6.0
+offset_top = 123.5
+offset_right = 94.0
+offset_bottom = 160.5
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 0.0
+scale = Vector2(1, 1)
+pivot_offset = Vector2(0, 0)
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+localize_numeral_system = true
+tooltip_text = ""
+tooltip_auto_translate_mode = 0
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+theme = null
+theme_type_variation = &""
+disabled = false
+toggle_mode = false
+button_pressed = false
+action_mode = 1
+button_mask = 1
+keep_pressed_outside = false
+button_group = null
+shortcut = null
+shortcut_feedback = true
+shortcut_in_tooltip = true
+script = ExtResource("29_8fvtd")
+metadata/_custom_type_script = "uid://parybxg7tb1k"
+
+[node name="Panel" type="Panel" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/Button1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"PanelButtonBG"
+
+[node name="Label" type="Label" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/Button1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "查看图鉴"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button4" type="BaseButton" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 2
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 0)
+layout_direction = 0
+layout_mode = 3
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 113.0
+offset_top = 124.0
+offset_right = 201.0
+offset_bottom = 161.0
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 0.0
+scale = Vector2(1, 1)
+pivot_offset = Vector2(0, 0)
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+localize_numeral_system = true
+tooltip_text = ""
+tooltip_auto_translate_mode = 0
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+theme = null
+theme_type_variation = &""
+disabled = false
+toggle_mode = false
+button_pressed = false
+action_mode = 1
+button_mask = 1
+keep_pressed_outside = false
+button_group = null
+shortcut = null
+shortcut_feedback = true
+shortcut_in_tooltip = true
+script = ExtResource("29_8fvtd")
+metadata/_custom_type_script = "uid://parybxg7tb1k"
+
+[node name="Panel" type="Panel" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/Button4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"PanelButtonBG"
+
+[node name="Label" type="Label" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/Button4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "选项设置"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="BaseButton" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 2
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 0)
+layout_direction = 0
+layout_mode = 3
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 5.0
+offset_top = 167.0
+offset_right = 200.0
+offset_bottom = 204.0
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 0.0
+scale = Vector2(1, 1)
+pivot_offset = Vector2(0, 0)
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+localize_numeral_system = true
+tooltip_text = ""
+tooltip_auto_translate_mode = 0
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+theme = null
+theme_type_variation = &""
+disabled = false
+toggle_mode = false
+button_pressed = false
+action_mode = 1
+button_mask = 1
+keep_pressed_outside = false
+button_group = null
+shortcut = null
+shortcut_feedback = true
+shortcut_in_tooltip = true
+script = ExtResource("29_8fvtd")
+metadata/_custom_type_script = "uid://parybxg7tb1k"
+
+[node name="Panel" type="Panel" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"PanelButtonBG"
+
+[node name="Label" type="Label" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "重新开始"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button3" type="BaseButton" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 2
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 0)
+layout_direction = 0
+layout_mode = 3
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 5.0
+offset_top = 211.0
+offset_right = 200.0
+offset_bottom = 248.0
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 0.0
+scale = Vector2(1, 1)
+pivot_offset = Vector2(0, 0)
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+localize_numeral_system = true
+tooltip_text = ""
+tooltip_auto_translate_mode = 0
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+theme = null
+theme_type_variation = &""
+disabled = false
+toggle_mode = false
+button_pressed = false
+action_mode = 1
+button_mask = 1
+keep_pressed_outside = false
+button_group = null
+shortcut = null
+shortcut_feedback = true
+shortcut_in_tooltip = true
+script = ExtResource("29_8fvtd")
+metadata/_custom_type_script = "uid://parybxg7tb1k"
+
+[node name="Panel" type="Panel" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/Button3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"PanelButtonBG"
+
+[node name="Label" type="Label" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/Button3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "主菜单"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Return" type="TextureButton" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -175.0
+offset_top = -161.0
+offset_right = 185.0
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("33_w0404")
+texture_pressed = ExtResource("33_w0404")
+texture_click_mask = ExtResource("30_xvvqk")
+script = ExtResource("29_8fvtd")
+
+[node name="Label" type="Label" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Return"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -26.5
+offset_right = 100.0
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "返回游戏"
+
+[node name="Dialog" parent="CanvasLayerUI/All_UI" instance=ExtResource("34_8fvtd")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+offset_left = 242.0
+offset_top = 162.0
+offset_right = 242.0
+offset_bottom = 162.0
+
+[node name="Label" type="Label" parent="CanvasLayerUI/All_UI/Dialog"]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 132.0
+offset_right = 169.0
+offset_bottom = 155.0
+text = "没做"
+
+[node name="FlagProgressBar" parent="CanvasLayerUI" instance=ExtResource("16_dc1ex")]
+unique_name_in_owner = true
+offset_left = 614.0
+offset_top = 575.0
+offset_right = 614.0
+offset_bottom = 575.0
+
+[node name="LabelZombieSum" type="Label" parent="CanvasLayerUI"]
+unique_name_in_owner = true
+offset_left = 27.7894
+offset_top = 575.477
+offset_right = 215.789
+offset_bottom = 601.477
+theme = ExtResource("25_aop5g")
+theme_type_variation = &"Label3"
+text = "当前僵尸数量：0"
+
+[node name="LawnMovers" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="PlantCellsRoot" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="ZombiesRoot" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Bullets" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Bombs" type="Node2D" parent="."]
+unique_name_in_owner = true
+z_index = 4001
+
+[node name="Suns" type="Node2D" parent="."]
+unique_name_in_owner = true
+z_index = 4002
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+anchor_mode = 0
+script = ExtResource("24_b4qea")
+
+[node name="DetectComponentGlobal" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("55_l4e4o")
+is_lane = false
+
+[node name="Area2D" type="Area2D" parent="DetectComponentGlobal"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectComponentGlobal/Area2D"]
+position = Vector2(420, 300)
+shape = SubResource("RectangleShape2D_b6ai2")
+
+[connection signal="timeout" from="Manager/ZombieManager/ZombieWaveManager/ZombieWaveRefreshManager/WaveNormRefreshTimer" to="Manager/ZombieManager/ZombieWaveManager/ZombieWaveRefreshManager" method="_on_wave_norm_refresh_timer_timeout"]
+[connection signal="timeout" from="Manager/ZombieManager/ZombieWaveManager/ZombieWaveRefreshManager/WaveMinTimeTimer" to="Manager/ZombieManager/ZombieWaveManager/ZombieWaveRefreshManager" method="_on_wave_min_time_timer_timeout"]
+[connection signal="timeout" from="Manager/ZombieManager/ZombieWaveManager/EveryWaveProgressTimer" to="Manager/ZombieManager/ZombieWaveManager" method="_on_every_wave_progress_timer_timeout"]
+[connection signal="timeout" from="Manager/ZombieManager/ZombieWaveManager/EveryWaveProgressTimer" to="Manager/ZombieManager/ZombieWaveManager" method="_on_one_wave_progress_timer_timeout"]
+[connection signal="timeout" from="Manager/ZombieManager/HammerZombieManager/HammerZombieTimer" to="Manager/ZombieManager/HammerZombieManager" method="_on_hammer_zombie_timer_timeout"]
+[connection signal="timeout" from="Manager/ZombieManager/CheckZombieEndWaveTimer" to="Manager/ZombieManager" method="_on_check_zombie_end_wave_timer_timeout"]
+[connection signal="area_entered" from="CanvasLayerBG/Background/Home/Area2DHome" to="CanvasLayerBG/Background/Home" method="_on_area_2d_home_area_entered"]
+[connection signal="pressed" from="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer/UIShovel/Button" to="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer/UIShovel" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayerUI/All_UI/MainGameMenuButton" to="CanvasLayerUI/All_UI/MainGameMenuOptionDialog" method="appear_menu"]
+[connection signal="pressed" from="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/Button1" to="CanvasLayerUI/All_UI/MainGameMenuOptionDialog" method="encyclopedia"]
+[connection signal="pressed" from="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/Button4" to="CanvasLayerUI/All_UI/MainGameMenuOptionDialog" method="_on_button_console_pressed"]
+[connection signal="pressed" from="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/Button2" to="CanvasLayerUI/All_UI/MainGameMenuOptionDialog" method="resume_game"]
+[connection signal="pressed" from="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/Button3" to="CanvasLayerUI/All_UI/MainGameMenuOptionDialog" method="return_main_menu"]
+[connection signal="pressed" from="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Return" to="CanvasLayerUI/All_UI/MainGameMenuOptionDialog" method="return_button_pressed"]

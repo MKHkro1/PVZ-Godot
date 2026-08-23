@@ -1,0 +1,297 @@
+[gd_scene load_steps=18 format=3 uid="uid://cktksmdbn2nmn"]
+
+[ext_resource type="PackedScene" uid="uid://bkx25sp71flk5" path="res://scenes/character/character_000_base.tscn" id="1_q5all"]
+[ext_resource type="Script" uid="uid://dqppqdw4n40ts" path="res://scripts/characters/zombie/zombie_000_base.gd" id="2_72xfp"]
+[ext_resource type="FontFile" uid="uid://cchqc1dtcle23" path="res://assets/fonts/Bake_Soda.otf" id="2_p5arj"]
+[ext_resource type="Script" uid="uid://d0w7rpih1wyo6" path="res://scripts/characters/components/hp_component/component_hp_zombie.gd" id="3_rdbr5"]
+[ext_resource type="Script" uid="uid://b3wavy585v5p1" path="res://scripts/characters/components/component_be_attacked_box_zombie.gd" id="3_t14t4"]
+[ext_resource type="Script" uid="uid://bafp0ax1lmlge" path="res://scripts/characters/components/attack_ray_component/component_attack_ray.gd" id="5_b1t0g"]
+[ext_resource type="Script" uid="uid://4o1wtnifn4tq" path="res://scripts/characters/components/hp_component/component_hp_stage_change.gd" id="6_in461"]
+[ext_resource type="Script" uid="uid://b2atnvuqp1kcr" path="res://scripts/characters/components/attack_behavior_component/component_attack_zombie_norm.gd" id="7_b1t0g"]
+[ext_resource type="Script" uid="uid://dmydsf6020r5f" path="res://scripts/characters/components/component_move_ground.gd" id="8_yye2l"]
+[ext_resource type="Script" uid="uid://cqjynadpvsk20" path="res://scripts/characters/components/component_charred.gd" id="9_yye2l"]
+[ext_resource type="Script" uid="uid://bk802l8n0pnjb" path="res://scripts/characters/components/component_swim_box.gd" id="12_kbcr1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdwn0"]
+bg_color = Color(0.137255, 0.0196078, 0.027451, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdbr5"]
+bg_color = Color(1, 0.290196, 0.454902, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.137255, 0.0196078, 0.027451, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="LabelSettings" id="LabelSettings_72xfp"]
+font = ExtResource("2_p5arj")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t14t4"]
+size = Vector2(6.99971, 50.0001)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xdwn0"]
+radius = 20.0
+height = 100.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ewfmg"]
+size = Vector2(40, 20)
+
+[node name="Zombie000Base" node_paths=PackedStringArray("speech_influence_components") instance=ExtResource("1_q5all")]
+script = ExtResource("2_72xfp")
+zombie_type = 0
+init_be_attack_status = 1
+zombie_row_type = 2
+body_change_on_pool = null
+is_walk = true
+is_attack = false
+is_swimming = false
+speech_influence_components = [NodePath("AttackComponent")]
+
+[node name="HpComponent" parent="." index="0"]
+script = ExtResource("3_rdbr5")
+max_hp_armor1 = 0
+max_hp_armor2 = 0
+sfx_be_attack_armor1 = 0
+sfx_be_attack_armor2 = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HpComponent" index="0"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -64.0
+offset_right = 20.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Armor2Control" type="Control" parent="HpComponent/VBoxContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ProgressBarHpArmor2" type="ProgressBar" parent="HpComponent/VBoxContainer/Armor2Control" index="0"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.176471)
+custom_minimum_size = Vector2(66, 20)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -10.0
+offset_right = 33.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_xdwn0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rdbr5")
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
+[node name="LabelHpArmor2" type="Label" parent="HpComponent/VBoxContainer/Armor2Control" index="1"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -11.5
+offset_right = 36.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "1100"
+label_settings = SubResource("LabelSettings_72xfp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Armor1Control" type="Control" parent="HpComponent/VBoxContainer" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ProgressBarHpArmor1" type="ProgressBar" parent="HpComponent/VBoxContainer/Armor1Control" index="0"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.176471)
+custom_minimum_size = Vector2(66, 20)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -10.0
+offset_right = 33.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_xdwn0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rdbr5")
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
+[node name="LabelHpArmor1" type="Label" parent="HpComponent/VBoxContainer/Armor1Control" index="1"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -11.5
+offset_right = 36.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "600"
+label_settings = SubResource("LabelSettings_72xfp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HpControl" type="Control" parent="HpComponent/VBoxContainer" index="2"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ProgressBarHp" type="ProgressBar" parent="HpComponent/VBoxContainer/HpControl" index="0"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.176471)
+custom_minimum_size = Vector2(66, 20)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -10.0
+offset_right = 33.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_xdwn0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rdbr5")
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
+[node name="LabelHp" type="Label" parent="HpComponent/VBoxContainer/HpControl" index="1"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -11.5
+offset_right = 36.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "300"
+label_settings = SubResource("LabelSettings_72xfp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HpStageChangeComponent" type="Node2D" parent="." index="1"]
+unique_name_in_owner = true
+script = ExtResource("6_in461")
+
+[node name="NodeDrop" type="Node2D" parent="." index="4"]
+unique_name_in_owner = true
+
+[node name="CharredComponent" type="Node2D" parent="." index="5"]
+unique_name_in_owner = true
+script = ExtResource("9_yye2l")
+
+[node name="ZombieCharred" type="Node2D" parent="CharredComponent" index="0"]
+unique_name_in_owner = true
+visible = false
+
+[node name="CharredCorrect" type="Node2D" parent="CharredComponent/ZombieCharred" index="0"]
+position = Vector2(-43, -117)
+
+[node name="AttackComponent" type="Node2D" parent="." index="6"]
+unique_name_in_owner = true
+script = ExtResource("7_b1t0g")
+
+[node name="AttackRayComponent" type="Node2D" parent="AttackComponent" index="0"]
+unique_name_in_owner = true
+script = ExtResource("5_b1t0g")
+
+[node name="Area2d" type="Area2D" parent="AttackComponent/AttackRayComponent" index="0"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/AttackRayComponent/Area2d" index="0"]
+position = Vector2(-13, -43)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_t14t4")
+
+[node name="MoveComponent" type="Node2D" parent="." index="7"]
+unique_name_in_owner = true
+script = ExtResource("8_yye2l")
+
+[node name="BeAttackedBoxComponent" parent="." index="8"]
+script = ExtResource("3_t14t4")
+
+[node name="Area2D" parent="BeAttackedBoxComponent" index="0"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeAttackedBoxComponent/Area2D" index="0"]
+position = Vector2(0, -50)
+shape = SubResource("CapsuleShape2D_xdwn0")
+
+[node name="Area2DAttackAppear" type="Area2D" parent="BeAttackedBoxComponent" index="1"]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeAttackedBoxComponent/Area2DAttackAppear" index="0"]
+position = Vector2(0, -50)
+shape = SubResource("CapsuleShape2D_xdwn0")
+
+[node name="SwimBoxComponent" type="Node2D" parent="." index="9"]
+unique_name_in_owner = true
+script = ExtResource("12_kbcr1")
+
+[node name="Area2D" type="Area2D" parent="SwimBoxComponent" index="0"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwimBoxComponent/Area2D" index="0"]
+position = Vector2(0, -40)
+shape = SubResource("RectangleShape2D_ewfmg")
+debug_color = Color(0.974132, 0, 0.429002, 0.42)
+
+[connection signal="area_entered" from="SwimBoxComponent/Area2D" to="SwimBoxComponent" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="SwimBoxComponent/Area2D" to="SwimBoxComponent" method="_on_area_2d_area_exited"]

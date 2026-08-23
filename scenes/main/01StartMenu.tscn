@@ -1,0 +1,3054 @@
+[gd_scene load_steps=107 format=3 uid="uid://dc1xvxus2co66"]
+
+[ext_resource type="Script" uid="uid://dkbq8o27gtu37" path="res://scripts/ui/start_menu/start_menu_root.gd" id="1_2isde"]
+[ext_resource type="Texture2D" uid="uid://cd1em7514pqef" path="res://assets/image/ui/ui_start_menu/SelectorScreen_BG.jpg" id="1_s2p02"]
+[ext_resource type="Texture2D" uid="uid://s50psykd6k1t" path="res://assets/image/ui/ui_start_menu/SelectorScreen_BG_Right.png" id="2_j2mjb"]
+[ext_resource type="Texture2D" uid="uid://dxwjoggjnramu" path="res://assets/image/ui/ui_start_menu/SelectorScreen_BG_Center.png" id="2_jjhxv"]
+[ext_resource type="Texture2D" uid="uid://cl2tgson8w7c7" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Cloud1.png" id="2_xll4c"]
+[ext_resource type="AudioStream" uid="uid://bhwjr5o1d2cb8" path="res://assets/audio/BGM/start_menu_bgm.mp3" id="2_yl4bl"]
+[ext_resource type="Texture2D" uid="uid://drbnues8jmlse" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Cloud2.png" id="3_2isde"]
+[ext_resource type="Texture2D" uid="uid://bweanewc7021q" path="res://assets/image/ui/ui_start_menu/SelectorScreen_StartAdventure_Button1.png" id="3_jrmm2"]
+[ext_resource type="Texture2D" uid="uid://du6dgpribm2vw" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Cloud4.png" id="4_at8of"]
+[ext_resource type="Texture2D" uid="uid://yhsrg3xe463w" path="res://assets/image/ui/ui_start_menu/SelectorScreen_StartAdventure_Highlight.png" id="4_qq5l0"]
+[ext_resource type="Texture2D" uid="uid://cxg4u0r2mhy32" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Cloud5.png" id="5_fbvip"]
+[ext_resource type="Script" uid="uid://parybxg7tb1k" path="res://scripts/ui/PVZ_button_base.gd" id="5_j2mjb"]
+[ext_resource type="BitMap" uid="uid://dait70qma6c1u" path="res://assets/image/ui/ui_start_menu/SelectorScreen_StartAdventure_Button1_Mask.png" id="5_jrmm2"]
+[ext_resource type="Texture2D" uid="uid://dbp3mh6ihyl5g" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Cloud6.png" id="6_qphvj"]
+[ext_resource type="Texture2D" uid="uid://vue1u5my8uq5" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Cloud7.png" id="7_6enlx"]
+[ext_resource type="Texture2D" uid="uid://ddtj1p0m4vc5p" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Survival_button.png" id="7_udhvq"]
+[ext_resource type="Texture2D" uid="uid://bi2gixoipald4" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Survival_highlight.png" id="8_kfgfy"]
+[ext_resource type="BitMap" uid="uid://bfavwrykaa6kh" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Survival_button_Mask.png" id="9_cppkq"]
+[ext_resource type="Texture2D" uid="uid://i4nwttep0g64" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Challenges_button.png" id="10_intoo"]
+[ext_resource type="Texture2D" uid="uid://dw6dwfa4si12v" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Challenges_highlight.png" id="11_kjwot"]
+[ext_resource type="BitMap" uid="uid://bqs3fvtgj7ub2" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Challenges_button_Mask.png" id="12_sb5fe"]
+[ext_resource type="Texture2D" uid="uid://dyq7okcnlnigd" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Vasebreaker_button.png" id="13_f134t"]
+[ext_resource type="Texture2D" uid="uid://kwu0okl012tv" path="res://assets/image/ui/ui_start_menu/SelectorScreen_vasebreaker_highlight.png" id="14_614ej"]
+[ext_resource type="BitMap" uid="uid://g4wl1of4q8sx" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Vasebreaker_button_Mask.png" id="15_k7y68"]
+[ext_resource type="Texture2D" uid="uid://guonyleqdb0g" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Flower1.png" id="16_oe188"]
+[ext_resource type="BitMap" uid="uid://6aej6sucjx4a" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Flower1_Mask.png" id="17_bkc8k"]
+[ext_resource type="Texture2D" uid="uid://jxspeykurniq" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Flower2.png" id="18_p37de"]
+[ext_resource type="BitMap" uid="uid://bndwnonimphr5" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Flower2_Mask.png" id="19_0gy64"]
+[ext_resource type="Texture2D" uid="uid://csp3ona16nnrp" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Flower3.png" id="20_rdc4m"]
+[ext_resource type="BitMap" uid="uid://w2jtfego7tpg" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Flower3_Mask.png" id="21_we678"]
+[ext_resource type="Texture2D" uid="uid://c507rl01uyqmg" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Options1.png" id="22_fkqsy"]
+[ext_resource type="Texture2D" uid="uid://bm2w5mn3oskys" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Options2.png" id="23_c836s"]
+[ext_resource type="Texture2D" uid="uid://bcbh8nxk0eyxb" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Help1.png" id="24_2ir4x"]
+[ext_resource type="Texture2D" uid="uid://8rgyovu881ui" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Help2.png" id="25_0it6s"]
+[ext_resource type="Texture2D" uid="uid://bn2nx3r7lb3qn" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Quit1.png" id="26_0sp34"]
+[ext_resource type="Texture2D" uid="uid://dgtn0ijtgsxu" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Quit2.png" id="27_jjhxv"]
+[ext_resource type="Texture2D" uid="uid://ccx3fdicdur3a" path="res://assets/image/ui/ui_start_menu/SelectorScreen_ZenGarden.png" id="28_0sp34"]
+[ext_resource type="Script" uid="uid://dcleglawsa2mw" path="res://scripts/start_menu/start_menu_flower_button.gd" id="28_lvy6c"]
+[ext_resource type="Texture2D" uid="uid://ncavqnta7rdx" path="res://assets/image/ui/ui_start_menu/SelectorScreen_ZenGardenHighlight.png" id="29_jjhxv"]
+[ext_resource type="BitMap" uid="uid://c6dx0o3boywqr" path="res://assets/image/ui/ui_start_menu/SelectorScreen_ZenGarden_Mask.png" id="30_3w04d"]
+[ext_resource type="Texture2D" uid="uid://cl31cxpwg5y84" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Almanac.png" id="31_sxpcx"]
+[ext_resource type="Texture2D" uid="uid://b2fq50reclr1l" path="res://assets/image/ui/ui_start_menu/SelectorScreen_AlmanacHighlight.png" id="32_ortyp"]
+[ext_resource type="BitMap" uid="uid://dmojvwlyh8417" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Almanac_Mask.png" id="33_qniwh"]
+[ext_resource type="Texture2D" uid="uid://dup7h3yp7mvuw" path="res://assets/image/ui/ui_start_menu/SelectorScreen_BG_Left.png" id="37_at8of"]
+[ext_resource type="Texture2D" uid="uid://54rpfashjbpk" path="res://assets/image/garden/plantspeechbubble.png" id="41_l67l0"]
+[ext_resource type="Script" uid="uid://i4n5co3domph" path="res://scripts/start_menu/garden_water_flag.gd" id="42_lvy6c"]
+[ext_resource type="Texture2D" uid="uid://ce2m54cahv50v" path="res://assets/image/garden/waterdrop.png" id="43_sa52e"]
+[ext_resource type="Texture2D" uid="uid://bilk171gldfxp" path="res://assets/reanim/PotatoMine_rock3.png" id="44_wymjr"]
+[ext_resource type="Texture2D" uid="uid://bjkgc0td8i23h" path="res://assets/reanim/sprout_body.png" id="45_ojqr6"]
+[ext_resource type="Texture2D" uid="uid://cjcxcoyiynd74" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Leaves.png" id="46_i4128"]
+[ext_resource type="Texture2D" uid="uid://ck7klwgfbu35w" path="res://assets/reanim/sprout_body1.png" id="46_ito2j"]
+[ext_resource type="Texture2D" uid="uid://cts63qpxp3gme" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Leaf1.png" id="47_2k56d"]
+[ext_resource type="Texture2D" uid="uid://kigsuqanr648" path="res://assets/reanim/sprout_body2.png" id="47_nu6d8"]
+[ext_resource type="Texture2D" uid="uid://cbb7ey5xtmefw" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Leaf2.png" id="48_10pji"]
+[ext_resource type="Texture2D" uid="uid://co2k82lctyh32" path="res://assets/reanim/PotatoMine_rock1.png" id="48_altii"]
+[ext_resource type="Texture2D" uid="uid://x5esr2uunpao" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Leaf3.png" id="49_8optn"]
+[ext_resource type="Texture2D" uid="uid://c620ijywrq2sl" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Leaf4.png" id="50_sch2t"]
+[ext_resource type="Texture2D" uid="uid://rq2ssd2a40lc" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Leaf5.png" id="51_63h8x"]
+[ext_resource type="Texture2D" uid="uid://nufi5fifmvu1" path="res://assets/image/ui/ui_start_menu/SelectorScreen_WoodSign1.png" id="52_63h8x"]
+[ext_resource type="Texture2D" uid="uid://up3tsdg4wlss" path="res://assets/image/ui/ui_start_menu/SelectorScreen_WoodSign2.png" id="53_ry5e1"]
+[ext_resource type="Texture2D" uid="uid://xsu0epbjdx8o" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Store.png" id="53_wymjr"]
+[ext_resource type="FontFile" uid="uid://dqb8lum530s2f" path="res://assets/fonts/方正少儿_GBK.ttf" id="54_343qg"]
+[ext_resource type="Texture2D" uid="uid://c7hm6tgjy1fbs" path="res://assets/image/ui/ui_start_menu/SelectorScreen_StoreHighlight.png" id="54_ojqr6"]
+[ext_resource type="Texture2D" uid="uid://b0b3qkcasp6py" path="res://assets/image/ui/ui_start_menu/SelectorScreen_WoodSign2_press.png" id="54_yl4bl"]
+[ext_resource type="BitMap" uid="uid://mu5gublnox4q" path="res://assets/image/ui/ui_start_menu/SelectorScreen_WoodSign2_Mask.png" id="55_31n4o"]
+[ext_resource type="BitMap" uid="uid://cra43htuprgvi" path="res://assets/image/ui/ui_start_menu/SelectorScreen_Store_Mask.png" id="55_ito2j"]
+[ext_resource type="Texture2D" uid="uid://bttkqw7l87kyw" path="res://assets/image/ui/ui_start_menu/SelectorScreen_WoodSign3.png" id="56_b7wor"]
+[ext_resource type="PackedScene" uid="uid://cp0kgnsx20pyh" path="res://scenes/ui/dialog.tscn" id="57_ry5e1"]
+[ext_resource type="PackedScene" uid="uid://cngkuh03v6yty" path="res://scenes/ui/dialog_confirm.tscn" id="58_confirm"]
+[ext_resource type="Theme" uid="uid://em12la0rqibq" path="res://data/PVZ_theme.tres" id="59_e0j7q"]
+[ext_resource type="Texture2D" uid="uid://toxyk2jadqam" path="res://assets/image/ui/ui_main_game_menu/option_dialog.png" id="60_343qg"]
+[ext_resource type="Script" uid="uid://batxx0jfofa74" path="res://scripts/ui/start_menu/start_menu_option_dialog.gd" id="61_pnpk5"]
+[ext_resource type="Texture2D" uid="uid://blge6mwmus5fv" path="res://assets/image/ui/ui_main_game_menu/btn_dialog_back_2.png" id="62_5qe3w"]
+[ext_resource type="PackedScene" uid="uid://5v0fdtao52jl" path="res://scenes/main/control_canvas_layer.tscn" id="62_e0j7q"]
+[ext_resource type="Script" uid="uid://byfoq607wecwj" path="res://scripts/start_menu/wood_sign.gd" id="63_gis02"]
+[ext_resource type="BitMap" uid="uid://bhg7gejfpw036" path="res://assets/image/ui/ui_main_game_menu/btn_dialog_back_2_mask.png" id="63_xxpiq"]
+[ext_resource type="Script" uid="uid://61qhr6plpibr" path="res://scripts/start_menu/user.gd" id="75_altii"]
+[ext_resource type="Texture2D" uid="uid://dsobv4ixy06yp" path="res://assets/image/ui/ui_main_game_menu/UI_BG/combined_result.png" id="75_ito2j"]
+[ext_resource type="Texture2D" uid="uid://bcq3pj58odr4i" path="res://assets/image/ui/ui_main_game_menu/UI_BG_original/dialog_header.png" id="76_nu6d8"]
+[ext_resource type="Texture2D" uid="uid://b48l4yjq0j5mo" path="res://assets/image/ui/ui_main_game_menu/UI_BG/button_BG.png" id="77_nu6d8"]
+[ext_resource type="Script" uid="uid://bubdoydqtlc6d" path="res://scripts/start_menu/panel_create_new_user.gd" id="79_xqlaa"]
+[ext_resource type="Script" uid="uid://b6dhsamdijupk" path="res://scripts/start_menu/panel_rename_user.gd" id="81_dj5t5"]
+[ext_resource type="Script" uid="uid://cwusfudks6mhf" path="res://scripts/ui/dialog_error.gd" id="82_krdmy"]
+[ext_resource type="Texture2D" uid="uid://ctpsdjku0juuj" path="res://assets/image/ui/ui_start_menu/Present.png" id="83_tf8pn"]
+[ext_resource type="BitMap" uid="uid://d3xxtmghn6vi4" path="res://assets/image/ui/ui_start_menu/Present_mask.png" id="84_mpctx"]
+[ext_resource type="Texture2D" uid="uid://dygmxfnai40iw" path="res://assets/image/ui/ui_start_menu/PresentOpen.png" id="84_x7dp7"]
+
+[sub_resource type="Animation" id="Animation_xll4c"]
+resource_name = "Idle"
+length = 10.0
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(220, 206), Vector2(220, 206), Vector2(220, 206), Vector2(220, 206), Vector2(220, 206), Vector2(220, 206)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-418, 103), Vector2(-1017, 231), Vector2(-991, 867), Vector2(478, 836), Vector2(620, 11.9999695), Vector2(-418, 103)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.515888, 0.515888, 0.515888, 0.515888, 0.515888, 0.515888]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect2:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(152, 121), Vector2(152, 121), Vector2(152, 121), Vector2(152, 121), Vector2(152, 121)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 4, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(176, 46), Vector2(-1022, 189), Vector2(-976, 935), Vector2(399, 821), Vector2(579.00006, 51)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextureRect2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 4, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.574227, 0.164448, 0.437634]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TextureRect4:size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(239, 91), Vector2(239, 91), Vector2(239, 91), Vector2(239, 91), Vector2(239, 91)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TextureRect4:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(555, 109), Vector2(-472, 231), Vector2(-1117, 425), Vector2(-1117, 1050), Vector2(278, 1087), Vector2(518, 121)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TextureRect4:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.180061, -0.370305, -0.663566, -0.663566, -0.180062]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TextureRect5:size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(434, 144), Vector2(434, 144), Vector2(434, 144), Vector2(434, 144), Vector2(434, 144)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TextureRect5:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 2, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(228, 826), Vector2(630, 88), Vector2(-1273, 429), Vector2(-1253, 1048), Vector2(227.994, 826.001)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("TextureRect5:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 2, 6, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0687487, 0.0687487, -0.264314, 0.068748]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TextureRect6:size")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 2, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(76, 44), Vector2(76, 44), Vector2(76, 44), Vector2(76, 44), Vector2(76, 44)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("TextureRect6:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 2, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-944, 1001), Vector2(400, 964), Vector2(149, 157), Vector2(-941, 391), Vector2(-944, 1001)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("TextureRect6:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 2, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.408184, 0.408184, 0.408184, 0.155613, 0.408183]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("TextureRect7:size")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(211, 73), Vector2(211, 73), Vector2(211, 73), Vector2(211, 73), Vector2(211, 73)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("TextureRect7:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1080, 57), Vector2(-1063, 916), Vector2(277, 898), Vector2(541, 135), Vector2(-1080, 57.0001)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("TextureRect7:rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 2, 4, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.322623, -0.322623, -0.322623, -0.322623]
+}
+
+[sub_resource type="Animation" id="Animation_i4128"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(220, 206)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(152, 121)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect4:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(239, 91)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect5:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(434, 144)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect6:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(76, 44)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextureRect7:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(211, 73)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TextureRect:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-418, 103)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TextureRect2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(36, 63)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TextureRect4:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(296, 112)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TextureRect5:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(417, 763)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TextureRect6:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-427, 924)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("TextureRect7:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-876, 790)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TextureRect:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.515888]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("TextureRect2:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.574227]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("TextureRect4:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.131762]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("TextureRect5:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.64718]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("TextureRect6:rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-2.43669]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("TextureRect7:rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.91408]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2k56d"]
+_data = {
+&"Idle": SubResource("Animation_xll4c"),
+&"RESET": SubResource("Animation_i4128")
+}
+
+[sub_resource type="Animation" id="Animation_ry5e1"]
+resource_name = "Idle"
+length = 0.333337
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(40, 41), Vector2(40, 41), Vector2(40, 41)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(40, 40), Vector2(40, 40), Vector2(40, 40)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect3:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(49, 66), Vector2(49, 66), Vector2(49, 66)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect4:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(40, 45), Vector2(40, 45), Vector2(40, 45)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect5:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(40, 40), Vector2(40, 40), Vector2(40, 40)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextureRect7:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(40, 41), Vector2(40, 41), Vector2(40, 41)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TextureRect8:size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(40, 40), Vector2(40, 40), Vector2(40, 40)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TextureRect9:size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(49, 66), Vector2(49, 66), Vector2(49, 66)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TextureRect10:size")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(40, 45), Vector2(40, 45), Vector2(40, 45)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TextureRect11:size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(40, 40), Vector2(40, 40), Vector2(40, 40)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TextureRect:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(231, 33), Vector2(231, 33), Vector2(231, 33)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("TextureRect2:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(211, 15), Vector2(211, 15), Vector2(211, 15)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TextureRect3:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(155, 11), Vector2(155, 11), Vector2(155, 11)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("TextureRect4:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(81, 24), Vector2(81, 24), Vector2(81, 24)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("TextureRect5:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(32, 32), Vector2(32, 32), Vector2(32, 32)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("TextureRect7:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(128, 31), Vector2(128, 31), Vector2(128, 31)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("TextureRect8:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(14, 31), Vector2(14, 31), Vector2(14, 31)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("TextureRect9:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(51, 8), Vector2(51, 8), Vector2(51, 8)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("TextureRect10:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(195, 28), Vector2(195, 28), Vector2(195, 28)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("TextureRect11:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(188, 37), Vector2(188, 37), Vector2(188, 37)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("TextureRect:rotation")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.165096, 0.0]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("TextureRect2:rotation")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.165096, 0.0]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("TextureRect3:rotation")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.165096, 0.0]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("TextureRect4:rotation")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.165096, 0.0]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("TextureRect5:rotation")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.165096, 0.0]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("TextureRect7:rotation")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.10663, 0.0]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("TextureRect8:rotation")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.10663, 0.0]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("TextureRect9:rotation")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.10663, 0.0]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("TextureRect10:rotation")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.10663, 0.0]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("TextureRect11:rotation")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.10663, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_yl4bl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 41)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 40)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect3:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(49, 66)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect4:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 45)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect5:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 40)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextureRect7:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 41)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TextureRect8:size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 40)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TextureRect9:size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(49, 66)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TextureRect10:size")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 45)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TextureRect11:size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 40)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TextureRect:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(231, 33)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("TextureRect2:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(211, 15)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TextureRect3:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(155, 11)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("TextureRect4:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(81, 24)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("TextureRect5:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(32, 32)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("TextureRect7:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 31)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("TextureRect8:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(14, 31)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("TextureRect9:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(51, 8)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("TextureRect10:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(195, 28)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("TextureRect11:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(188, 37)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("TextureRect:rotation")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("TextureRect2:rotation")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("TextureRect3:rotation")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("TextureRect4:rotation")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("TextureRect5:rotation")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("TextureRect7:rotation")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("TextureRect8:rotation")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("TextureRect9:rotation")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("TextureRect10:rotation")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("TextureRect11:rotation")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_31n4o"]
+_data = {
+&"Idle": SubResource("Animation_ry5e1"),
+&"RESET": SubResource("Animation_yl4bl")
+}
+
+[sub_resource type="GDScript" id="GDScript_mpctx"]
+script/source = "extends TextureButton
+
+
+@onready var mouse: TextureRect = $mouse
+@onready var default: TextureRect = $default
+
+func _ready() -> void:
+	texture_normal = null
+	_on_mouse_exited()
+
+func _on_mouse_entered() -> void:
+	mouse.visible = true
+	default.visible = false
+
+func _on_mouse_exited() -> void:
+	mouse.visible = false
+	default.visible = true
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_x7dp7"]
+font = ExtResource("54_343qg")
+font_size = 19
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_343qg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xqlaa"]
+font = ExtResource("54_343qg")
+font_color = Color(1, 1, 0.62352943, 1)
+
+[sub_resource type="Animation" id="Animation_63h8x"]
+resource_name = "Idle"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG_Right:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(340, 550), Vector2(340, 40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG_Left:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, -40)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BG_Center:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(40, 271), Vector2(40, 250)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WoodSign:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(47, -249), Vector2(47, -249), Vector2(47, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WoodSign/TextureRect:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.933333, 1.06667, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -7), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WoodSign/ButtonUserUpdate:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.933333, 1.06667, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(4, 140), Vector2(4, 140), Vector2(4, 126), Vector2(4, 140)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("WoodSign/TextureRect3:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.933333, 1.06667, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(6, 200), Vector2(6, 200), Vector2(6, 180), Vector2(6, 200)]
+}
+
+[sub_resource type="Animation" id="Animation_x7dp7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG_Right:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(340, 550)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b7wor"]
+_data = {
+&"Idle": SubResource("Animation_63h8x"),
+&"RESET": SubResource("Animation_x7dp7")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_altii"]
+texture = ExtResource("75_ito2j")
+texture_margin_left = 60.0
+texture_margin_top = 60.0
+texture_margin_right = 60.0
+texture_margin_bottom = 130.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ito2j"]
+font = ExtResource("54_343qg")
+font_size = 34
+font_color = Color(0.9071311, 0.7868838, 7.70092e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_altii"]
+bg_color = Color(0.09019608, 0.09411765, 0.13725491, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gis02"]
+font = ExtResource("54_343qg")
+font_size = 24
+font_color = Color(1, 1, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_altii"]
+font = ExtResource("54_343qg")
+font_size = 21
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dj5t5"]
+font = ExtResource("54_343qg")
+font_size = 24
+font_color = Color(0.9071311, 0.7868838, 7.70092e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqlaa"]
+bg_color = Color(0.3882353, 0.25490198, 0.0627451, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.87058824, 0.79607844, 0.41960785, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 6.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[node name="StartMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("59_e0j7q")
+script = ExtResource("1_2isde")
+bgm = ExtResource("2_yl4bl")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_s2p02")
+
+[node name="Cloud" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 744.0
+offset_top = -64.0
+offset_right = 744.0
+offset_bottom = 362.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Cloud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -951.0
+offset_top = -110.0
+offset_right = -731.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.515888
+texture = ExtResource("2_xll4c")
+
+[node name="TextureRect2" type="TextureRect" parent="Cloud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -497.0
+offset_top = -150.0
+offset_right = -345.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.574227
+texture = ExtResource("3_2isde")
+
+[node name="TextureRect4" type="TextureRect" parent="Cloud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.0
+offset_top = -101.0
+offset_right = 2.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.131762
+texture = ExtResource("4_at8of")
+
+[node name="TextureRect5" type="TextureRect" parent="Cloud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = 550.0
+offset_right = 318.0
+offset_bottom = 694.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 2.64718
+texture = ExtResource("5_fbvip")
+
+[node name="TextureRect6" type="TextureRect" parent="Cloud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = 711.0
+offset_right = -884.0
+offset_bottom = 755.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -2.43669
+texture = ExtResource("6_qphvj")
+
+[node name="TextureRect7" type="TextureRect" parent="Cloud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1409.0
+offset_top = 577.0
+offset_right = -1198.0
+offset_bottom = 650.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.91408
+texture = ExtResource("7_6enlx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cloud"]
+libraries = {
+&"": SubResource("AnimationLibrary_2k56d")
+}
+speed_scale = 0.2
+
+[node name="BG_Center" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -493.0
+offset_top = -350.0
+offset_right = 286.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_jjhxv")
+
+[node name="BG_Left" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -340.0
+offset_right = 476.0
+offset_bottom = 340.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("37_at8of")
+
+[node name="BG_Right" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -726.0
+offset_top = -50.0
+offset_right = 4.0
+offset_bottom = 510.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_j2mjb")
+
+[node name="Menu" type="Control" parent="BG_Right"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Button1" type="TextureButton" parent="BG_Right/Menu"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -389.0
+offset_top = 14.0
+offset_right = -58.0
+offset_bottom = 160.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_jrmm2")
+texture_pressed = ExtResource("4_qq5l0")
+texture_hover = ExtResource("4_qq5l0")
+texture_click_mask = ExtResource("5_jrmm2")
+script = ExtResource("5_j2mjb")
+
+[node name="Button2" type="TextureButton" parent="BG_Right/Menu"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -392.0
+offset_top = 119.0
+offset_right = -61.0
+offset_bottom = 265.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7_udhvq")
+texture_pressed = ExtResource("8_kfgfy")
+texture_hover = ExtResource("8_kfgfy")
+texture_click_mask = ExtResource("9_cppkq")
+script = ExtResource("5_j2mjb")
+
+[node name="Button3" type="TextureButton" parent="BG_Right/Menu"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -388.0
+offset_top = 209.0
+offset_right = -57.0
+offset_bottom = 355.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("10_intoo")
+texture_pressed = ExtResource("11_kjwot")
+texture_hover = ExtResource("11_kjwot")
+texture_click_mask = ExtResource("12_sb5fe")
+script = ExtResource("5_j2mjb")
+
+[node name="Button4" type="TextureButton" parent="BG_Right/Menu"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -393.0
+offset_top = 283.0
+offset_right = -62.0
+offset_bottom = 429.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("13_f134t")
+texture_pressed = ExtResource("14_614ej")
+texture_hover = ExtResource("14_614ej")
+texture_click_mask = ExtResource("15_k7y68")
+script = ExtResource("5_j2mjb")
+
+[node name="Flower" type="Control" parent="BG_Right"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -251.0
+offset_top = -173.0
+offset_right = -19.0
+offset_bottom = -29.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Button1" type="TextureButton" parent="BG_Right/Flower"]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 2.0
+offset_right = 169.0
+offset_bottom = 49.0
+pivot_offset = Vector2(21, 28)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("16_oe188")
+texture_pressed = ExtResource("16_oe188")
+texture_hover = ExtResource("16_oe188")
+texture_click_mask = ExtResource("17_bkc8k")
+script = ExtResource("28_lvy6c")
+
+[node name="Button2" type="TextureButton" parent="BG_Right/Flower"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 14.0
+offset_right = 135.0
+offset_bottom = 57.0
+rotation = 0.293139
+pivot_offset = Vector2(22.3893, 19.4856)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("18_p37de")
+texture_pressed = ExtResource("18_p37de")
+texture_hover = ExtResource("18_p37de")
+texture_click_mask = ExtResource("19_0gy64")
+script = ExtResource("28_lvy6c")
+
+[node name="Button3" type="TextureButton" parent="BG_Right/Flower"]
+layout_mode = 1
+offset_left = 184.0
+offset_top = 23.0
+offset_right = 230.0
+offset_bottom = 76.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("20_rdc4m")
+texture_pressed = ExtResource("20_rdc4m")
+texture_hover = ExtResource("20_rdc4m")
+texture_click_mask = ExtResource("21_we678")
+script = ExtResource("28_lvy6c")
+
+[node name="Option" type="Control" parent="BG_Right"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -251.0
+offset_top = -176.0
+offset_right = -16.0
+offset_bottom = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="TextureButton" type="TextureButton" parent="BG_Right/Option"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 64.99963
+offset_right = 91.0
+offset_bottom = 97.99963
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("22_fkqsy")
+texture_pressed = ExtResource("23_c836s")
+texture_hover = ExtResource("23_c836s")
+script = ExtResource("5_j2mjb")
+
+[node name="TextureButton2" type="TextureButton" parent="BG_Right/Option"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 98.0
+offset_right = 149.0
+offset_bottom = 124.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("24_2ir4x")
+texture_pressed = ExtResource("25_0it6s")
+texture_hover = ExtResource("25_0it6s")
+script = ExtResource("5_j2mjb")
+
+[node name="TextureButton3" type="TextureButton" parent="BG_Right/Option"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 85.0
+offset_right = 218.0
+offset_bottom = 116.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("26_0sp34")
+texture_pressed = ExtResource("27_jjhxv")
+texture_hover = ExtResource("27_jjhxv")
+script = ExtResource("5_j2mjb")
+
+[node name="Item" type="Control" parent="BG_Right"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -692.0
+offset_top = -164.0
+offset_right = -211.0
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="TextureButton" type="TextureButton" parent="BG_Right/Item"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = -11.000366
+offset_right = 216.0
+offset_bottom = 151.99963
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("28_0sp34")
+texture_pressed = ExtResource("29_jjhxv")
+texture_hover = ExtResource("29_jjhxv")
+texture_click_mask = ExtResource("30_3w04d")
+script = ExtResource("5_j2mjb")
+
+[node name="GardenConditionFlag" type="TextureRect" parent="BG_Right/Item/TextureButton"]
+layout_mode = 0
+offset_left = 102.371
+offset_top = 32.2858
+offset_right = 152.371
+offset_bottom = 82.2858
+texture = ExtResource("41_l67l0")
+script = ExtResource("42_lvy6c")
+
+[node name="Water" type="TextureRect" parent="BG_Right/Item/TextureButton/GardenConditionFlag"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.5
+offset_top = -17.1651
+offset_right = 8.5
+offset_bottom = 7.8349
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("43_sa52e")
+
+[node name="Sprout" type="TextureRect" parent="BG_Right/Item/TextureButton/GardenConditionFlag"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.5
+offset_top = -17.1651
+offset_right = 8.5
+offset_bottom = 7.8349
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Rock" type="Sprite2D" parent="BG_Right/Item/TextureButton/GardenConditionFlag/Sprout"]
+position = Vector2(6.52679, 18.9344)
+rotation = 0.261799
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("44_wymjr")
+centered = false
+
+[node name="Sprout" type="Sprite2D" parent="BG_Right/Item/TextureButton/GardenConditionFlag/Sprout"]
+visible = false
+position = Vector2(33.2, 46.6)
+scale = Vector2(0.8, 0.753)
+texture = ExtResource("45_ojqr6")
+centered = false
+
+[node name="Layer 26" type="Sprite2D" parent="BG_Right/Item/TextureButton/GardenConditionFlag/Sprout"]
+position = Vector2(1.7254, 2.78324)
+rotation = 0.0200588
+scale = Vector2(0.798502, 0.688042)
+skew = 0.0636601
+texture = ExtResource("46_ito2j")
+centered = false
+
+[node name="Layer 27" type="Sprite2D" parent="BG_Right/Item/TextureButton/GardenConditionFlag/Sprout"]
+position = Vector2(6.47423, 2.98323)
+rotation = 0.0575554
+scale = Vector2(0.804995, 0.789507)
+skew = 0.171805
+texture = ExtResource("47_nu6d8")
+centered = false
+
+[node name="Rock1" type="Sprite2D" parent="BG_Right/Item/TextureButton/GardenConditionFlag/Sprout"]
+position = Vector2(0.326798, 25.9344)
+rotation = -2.09265
+scale = Vector2(0.424, 0.424)
+texture = ExtResource("44_wymjr")
+centered = false
+
+[node name="Rock2" type="Sprite2D" parent="BG_Right/Item/TextureButton/GardenConditionFlag/Sprout"]
+position = Vector2(7.4268, 18.8344)
+scale = Vector2(0.382, 0.359)
+texture = ExtResource("44_wymjr")
+centered = false
+
+[node name="Rock3" type="Sprite2D" parent="BG_Right/Item/TextureButton/GardenConditionFlag/Sprout"]
+position = Vector2(2.52679, 20.4344)
+rotation = 0.261799
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("44_wymjr")
+centered = false
+
+[node name="Rock4" type="Sprite2D" parent="BG_Right/Item/TextureButton/GardenConditionFlag/Sprout"]
+position = Vector2(7.82679, 21.2344)
+rotation = 0.261799
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("44_wymjr")
+centered = false
+
+[node name="Rock5" type="Sprite2D" parent="BG_Right/Item/TextureButton/GardenConditionFlag/Sprout"]
+position = Vector2(3.5268, 25.2344)
+rotation = -1.83085
+scale = Vector2(0.555, 0.555)
+texture = ExtResource("48_altii")
+centered = false
+
+[node name="TextureButton2" type="TextureButton" parent="BG_Right/Item"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 14.999634
+offset_right = 275.0
+offset_bottom = 113.99963
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("31_sxpcx")
+texture_pressed = ExtResource("32_ortyp")
+texture_hover = ExtResource("32_ortyp")
+texture_click_mask = ExtResource("33_qniwh")
+script = ExtResource("5_j2mjb")
+
+[node name="TextureButton3" type="TextureButton" parent="BG_Right/Item"]
+layout_mode = 0
+offset_left = 287.0
+offset_top = 56.999626
+offset_right = 418.68
+offset_bottom = 152.43936
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("53_wymjr")
+texture_pressed = ExtResource("54_ojqr6")
+texture_hover = ExtResource("54_ojqr6")
+texture_click_mask = ExtResource("55_ito2j")
+ignore_texture_size = true
+script = ExtResource("5_j2mjb")
+
+[node name="Leaf" type="Control" parent="BG_Right"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -83.0
+offset_top = -72.0
+offset_right = 313.0
+offset_bottom = -1.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="TextureRect6" type="TextureRect" parent="BG_Right/Leaf"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 248.0
+offset_bottom = 71.0
+mouse_filter = 2
+texture = ExtResource("46_i4128")
+
+[node name="TextureRect" type="TextureRect" parent="BG_Right/Leaf"]
+layout_mode = 0
+offset_left = 231.0
+offset_top = 33.0
+offset_right = 271.0
+offset_bottom = 74.0
+pivot_offset = Vector2(21, 36)
+mouse_filter = 2
+texture = ExtResource("47_2k56d")
+
+[node name="TextureRect2" type="TextureRect" parent="BG_Right/Leaf"]
+layout_mode = 0
+offset_left = 211.0
+offset_top = 15.0
+offset_right = 251.0
+offset_bottom = 55.0
+pivot_offset = Vector2(24, 37)
+mouse_filter = 2
+texture = ExtResource("48_10pji")
+
+[node name="TextureRect3" type="TextureRect" parent="BG_Right/Leaf"]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 11.0
+offset_right = 204.0
+offset_bottom = 77.0
+pivot_offset = Vector2(31, 58)
+mouse_filter = 2
+texture = ExtResource("49_8optn")
+
+[node name="TextureRect4" type="TextureRect" parent="BG_Right/Leaf"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 24.0
+offset_right = 121.0
+offset_bottom = 69.0
+pivot_offset = Vector2(28, 41)
+mouse_filter = 2
+texture = ExtResource("50_sch2t")
+
+[node name="TextureRect5" type="TextureRect" parent="BG_Right/Leaf"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 72.0
+offset_bottom = 72.0
+pivot_offset = Vector2(8, 36)
+mouse_filter = 2
+texture = ExtResource("51_63h8x")
+
+[node name="TextureRect7" type="TextureRect" parent="BG_Right/Leaf"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 31.0
+offset_right = 168.0
+offset_bottom = 72.0
+pivot_offset = Vector2(20, 40)
+mouse_filter = 2
+texture = ExtResource("47_2k56d")
+
+[node name="TextureRect8" type="TextureRect" parent="BG_Right/Leaf"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 31.0
+offset_right = 54.0
+offset_bottom = 71.0
+pivot_offset = Vector2(23, 37)
+mouse_filter = 2
+texture = ExtResource("48_10pji")
+
+[node name="TextureRect9" type="TextureRect" parent="BG_Right/Leaf"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 8.0
+offset_right = 100.0
+offset_bottom = 74.0
+pivot_offset = Vector2(28, 63)
+mouse_filter = 2
+texture = ExtResource("49_8optn")
+
+[node name="TextureRect10" type="TextureRect" parent="BG_Right/Leaf"]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 28.0
+offset_right = 235.0
+offset_bottom = 73.0
+pivot_offset = Vector2(33, 44)
+mouse_filter = 2
+texture = ExtResource("50_sch2t")
+
+[node name="TextureRect11" type="TextureRect" parent="BG_Right/Leaf"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 37.0
+offset_right = 228.0
+offset_bottom = 77.0
+pivot_offset = Vector2(12, 39)
+mouse_filter = 2
+texture = ExtResource("51_63h8x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BG_Right/Leaf"]
+libraries = {
+&"": SubResource("AnimationLibrary_31n4o")
+}
+speed_scale = 0.1
+
+[node name="CustomButton" type="TextureButton" parent="BG_Right"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -38.0
+offset_top = 356.0
+offset_right = 42.0
+offset_bottom = 436.0
+grow_horizontal = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("83_tf8pn")
+texture_click_mask = ExtResource("84_mpctx")
+stretch_mode = 5
+script = SubResource("GDScript_mpctx")
+
+[node name="default" type="TextureRect" parent="BG_Right/CustomButton"]
+layout_mode = 1
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("83_tf8pn")
+stretch_mode = 2
+
+[node name="mouse" type="TextureRect" parent="BG_Right/CustomButton"]
+visible = false
+layout_mode = 1
+offset_left = -14.0
+offset_top = -21.0
+offset_right = 94.0
+offset_bottom = 96.0
+texture = ExtResource("84_x7dp7")
+stretch_mode = 2
+
+[node name="Version" type="Label" parent="BG_Right"]
+layout_mode = 0
+offset_left = 425.0
+offset_top = 389.0
+offset_right = 488.06622
+offset_bottom = 414.48242
+rotation = 0.30697444
+text = "v 1.1.1"
+label_settings = SubResource("LabelSettings_x7dp7")
+
+[node name="WoodSign" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 47.0
+offset_right = 351.0
+offset_bottom = 249.0
+script = ExtResource("63_gis02")
+
+[node name="TextureRect" type="TextureRect" parent="WoodSign"]
+layout_mode = 0
+offset_right = 293.0
+offset_bottom = 150.0
+texture = ExtResource("52_63h8x")
+
+[node name="Panel" type="Panel" parent="WoodSign/TextureRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -117.5
+offset_top = 86.1205
+offset_right = 123.5
+offset_bottom = 126.12
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_343qg")
+
+[node name="Label" type="Label" parent="WoodSign/TextureRect/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("54_343qg")
+theme_override_font_sizes/font_size = 20
+text = "Player"
+label_settings = SubResource("LabelSettings_xqlaa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonUserUpdate" type="TextureButton" parent="WoodSign"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 140.0
+offset_right = 295.0
+offset_bottom = 211.00002
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("53_ry5e1")
+texture_pressed = ExtResource("54_yl4bl")
+texture_hover = ExtResource("54_yl4bl")
+texture_click_mask = ExtResource("55_31n4o")
+script = ExtResource("5_j2mjb")
+
+[node name="TextureRect3" type="TextureRect" parent="WoodSign"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 200.0
+offset_right = 98.0
+offset_bottom = 240.0
+texture = ExtResource("56_b7wor")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_b7wor")
+}
+
+[node name="StartMenuOptionDialog" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -206.0
+offset_top = -241.5
+offset_right = 206.0
+offset_bottom = 241.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("59_e0j7q")
+texture = ExtResource("60_343qg")
+script = ExtResource("61_pnpk5")
+
+[node name="Option" type="Control" parent="StartMenuOptionDialog"]
+anchors_preset = 0
+offset_left = 102.0
+offset_top = 115.0
+offset_right = 320.0
+offset_bottom = 373.0
+
+[node name="Music" type="Control" parent="StartMenuOptionDialog/Option"]
+custom_minimum_size = Vector2(0, 30)
+anchors_preset = 0
+offset_left = 4.0
+offset_top = -0.5
+offset_right = 216.0
+offset_bottom = 29.5
+
+[node name="Label" type="Label" parent="StartMenuOptionDialog/Option/Music"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_type_variation = &"Label2"
+text = "音乐"
+
+[node name="HSlider" type="HSlider" parent="StartMenuOptionDialog/Option/Music"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 1.0
+offset_right = 212.0
+offset_bottom = 31.0
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="SoundEffect" type="Control" parent="StartMenuOptionDialog/Option"]
+custom_minimum_size = Vector2(0, 30)
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 33.5
+offset_right = 216.0
+offset_bottom = 63.5
+
+[node name="Label" type="Label" parent="StartMenuOptionDialog/Option/SoundEffect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_type_variation = &"Label2"
+text = "音效"
+
+[node name="HSlider" type="HSlider" parent="StartMenuOptionDialog/Option/SoundEffect"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 1.0
+offset_right = 212.0
+offset_bottom = 30.0
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="FullScreen" type="Control" parent="StartMenuOptionDialog/Option"]
+custom_minimum_size = Vector2(0, 50)
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 67.5
+offset_right = 216.0
+offset_bottom = 117.5
+
+[node name="Label" type="Label" parent="StartMenuOptionDialog/Option/FullScreen"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_top = -13.5
+offset_right = 137.0
+offset_bottom = 14.5
+grow_vertical = 2
+theme_type_variation = &"Label2"
+text = "全屏"
+
+[node name="CheckButton" type="CheckButton" parent="StartMenuOptionDialog/Option/FullScreen"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -69.0
+offset_top = -19.5
+offset_right = -15.0
+offset_bottom = 27.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Return" type="TextureButton" parent="StartMenuOptionDialog"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -179.0
+offset_top = -102.5
+offset_right = 181.0
+offset_bottom = -2.5
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("62_5qe3w")
+texture_pressed = ExtResource("62_5qe3w")
+texture_click_mask = ExtResource("63_xxpiq")
+script = ExtResource("5_j2mjb")
+
+[node name="Label" type="Label" parent="StartMenuOptionDialog/Return"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 13.0
+offset_right = 279.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 50
+text = "返回游戏"
+vertical_alignment = 1
+
+[node name="Button4" type="BaseButton" parent="StartMenuOptionDialog"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 2
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 0)
+layout_direction = 0
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 124.0
+offset_top = 247.0
+offset_right = 301.0
+offset_bottom = 287.0
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 0.0
+scale = Vector2(1, 1)
+pivot_offset = Vector2(0, 0)
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+localize_numeral_system = true
+tooltip_text = ""
+tooltip_auto_translate_mode = 0
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 2
+focus_behavior_recursive = 0
+mouse_filter = 0
+mouse_behavior_recursive = 0
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 2
+accessibility_name = ""
+accessibility_description = ""
+accessibility_live = 0
+accessibility_controls_nodes = Array[NodePath]([])
+accessibility_described_by_nodes = Array[NodePath]([])
+accessibility_labeled_by_nodes = Array[NodePath]([])
+accessibility_flow_to_nodes = Array[NodePath]([])
+theme = null
+theme_type_variation = &""
+disabled = false
+toggle_mode = false
+button_pressed = false
+action_mode = 1
+button_mask = 1
+keep_pressed_outside = false
+button_group = null
+shortcut = null
+shortcut_feedback = true
+shortcut_in_tooltip = true
+script = ExtResource("5_j2mjb")
+metadata/_custom_type_script = "uid://parybxg7tb1k"
+
+[node name="Panel" type="Panel" parent="StartMenuOptionDialog/Button4"]
+modulate = Color(0.93845, 0.93845, 0.93845, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"PanelButtonBG"
+
+[node name="Label" type="Label" parent="StartMenuOptionDialog/Button4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "选项设置"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayer" parent="StartMenuOptionDialog/Button4" instance=ExtResource("62_e0j7q")]
+visible = false
+
+[node name="Dialog_Help" parent="." instance=ExtResource("57_ry5e1")]
+visible = false
+layout_mode = 0
+offset_left = 225.0
+offset_top = 124.0
+offset_right = 225.0
+offset_bottom = 124.0
+
+[node name="Label" type="Label" parent="Dialog_Help"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 123.0
+offset_right = 241.0
+offset_bottom = 172.0
+text = "僵尸打开了你的天灵盖
+摇了摇头就走了"
+
+[node name="Dialog" parent="." instance=ExtResource("57_ry5e1")]
+visible = false
+layout_mode = 0
+offset_left = 337.0
+offset_top = 136.0
+offset_right = 337.0
+offset_bottom = 136.0
+
+[node name="Label" type="Label" parent="Dialog"]
+layout_mode = 1
+offset_left = 134.0
+offset_top = 128.0
+offset_right = 174.0
+offset_bottom = 151.0
+text = "没做"
+
+[node name="User" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("75_altii")
+
+[node name="Panel" type="Panel" parent="User"]
+custom_minimum_size = Vector2(617, 492)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.0
+offset_top = -233.0
+offset_right = 310.0
+offset_bottom = 267.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_altii")
+
+[node name="TextureRect" type="TextureRect" parent="User/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -93.0
+offset_top = -37.0
+offset_right = 94.0
+offset_bottom = 27.0
+grow_horizontal = 2
+texture = ExtResource("76_nu6d8")
+
+[node name="Label" type="Label" parent="User/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 54.0
+offset_bottom = 94.0
+grow_horizontal = 2
+text = "你叫啥？"
+label_settings = SubResource("LabelSettings_ito2j")
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="User/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.5
+offset_top = -142.0
+offset_right = 225.5
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_altii")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="User/Panel/PanelContainer"]
+custom_minimum_size = Vector2(350, 260)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="User/Panel/PanelContainer/ScrollContainer"]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="ButtonCreate" type="Button" parent="User/Panel/PanelContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="User/Panel/PanelContainer/ScrollContainer/VBoxContainer/ButtonCreate"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "（建立一位新用户）"
+label_settings = SubResource("LabelSettings_gis02")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="User/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -246.0
+offset_top = -90.0
+offset_right = 246.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureButtonRename" type="TextureButton" parent="User/Panel/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("77_nu6d8")
+script = ExtResource("5_j2mjb")
+
+[node name="Label" type="Label" parent="User/Panel/HBoxContainer/TextureButtonRename"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "重命名"
+label_settings = SubResource("LabelSettings_altii")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButtonOk" type="TextureButton" parent="User/Panel/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("77_nu6d8")
+script = ExtResource("5_j2mjb")
+
+[node name="Label" type="Label" parent="User/Panel/HBoxContainer/TextureButtonOk"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "好"
+label_settings = SubResource("LabelSettings_altii")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButtonDel" type="TextureButton" parent="User/Panel/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("77_nu6d8")
+script = ExtResource("5_j2mjb")
+
+[node name="Label" type="Label" parent="User/Panel/HBoxContainer/TextureButtonDel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "删除"
+label_settings = SubResource("LabelSettings_altii")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButtonCancel" type="TextureButton" parent="User/Panel/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("77_nu6d8")
+script = ExtResource("5_j2mjb")
+
+[node name="Label" type="Label" parent="User/Panel/HBoxContainer/TextureButtonCancel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "取消"
+label_settings = SubResource("LabelSettings_altii")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DialogCreateUser" parent="User/Panel" instance=ExtResource("57_ry5e1")]
+visible = false
+layout_mode = 0
+offset_left = 164.0
+offset_top = 65.0
+offset_right = 164.0
+offset_bottom = 65.0
+
+[node name="Label" type="Label" parent="User/Panel/DialogCreateUser"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 92.0
+offset_top = 136.0
+offset_right = 218.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "请选择一个用户，
+并点击“好”"
+horizontal_alignment = 1
+
+[node name="DialogChooseNull" parent="User/Panel" instance=ExtResource("57_ry5e1")]
+visible = false
+layout_mode = 0
+offset_left = 164.0
+offset_top = 65.0
+offset_right = 164.0
+offset_bottom = 65.0
+
+[node name="Label" type="Label" parent="User/Panel/DialogChooseNull"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 92.0
+offset_top = 136.0
+offset_right = 218.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "请选择一个用户"
+horizontal_alignment = 1
+
+[node name="PanelCreateNewUser" type="Panel" parent="User"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -157.0
+offset_right = 238.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_altii")
+script = ExtResource("79_xqlaa")
+
+[node name="TextureRect" type="TextureRect" parent="User/PanelCreateNewUser"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -93.0
+offset_top = -37.0
+offset_right = 94.0
+offset_bottom = 27.0
+grow_horizontal = 2
+texture = ExtResource("76_nu6d8")
+
+[node name="Label" type="Label" parent="User/PanelCreateNewUser"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -3.0
+offset_top = 50.0
+offset_right = -3.0
+offset_bottom = 90.0
+grow_horizontal = 2
+text = "新用户"
+label_settings = SubResource("LabelSettings_ito2j")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="User/PanelCreateNewUser"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = 101.0
+offset_right = 4.0
+offset_bottom = 130.0
+grow_horizontal = 2
+text = "请输入你的名字："
+label_settings = SubResource("LabelSettings_dj5t5")
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="User/PanelCreateNewUser"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 149.0
+offset_right = 401.0
+offset_bottom = 191.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xqlaa")
+
+[node name="LineEdit" type="LineEdit" parent="User/PanelCreateNewUser/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0.1882353, 1)
+theme_override_fonts/font = ExtResource("54_343qg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="User/PanelCreateNewUser"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -147.0
+offset_top = -89.0
+offset_right = 147.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="ButtonOK" type="TextureButton" parent="User/PanelCreateNewUser/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("77_nu6d8")
+script = ExtResource("5_j2mjb")
+
+[node name="Label" type="Label" parent="User/PanelCreateNewUser/HBoxContainer/ButtonOK"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "好"
+label_settings = SubResource("LabelSettings_altii")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonCancel" type="TextureButton" parent="User/PanelCreateNewUser/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("77_nu6d8")
+script = ExtResource("5_j2mjb")
+
+[node name="Label" type="Label" parent="User/PanelCreateNewUser/HBoxContainer/ButtonCancel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "取消"
+label_settings = SubResource("LabelSettings_altii")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DialogError" parent="User/PanelCreateNewUser" instance=ExtResource("57_ry5e1")]
+visible = false
+layout_mode = 0
+offset_left = 76.0
+offset_top = -25.0
+offset_right = 76.0
+offset_bottom = -25.0
+script = ExtResource("82_krdmy")
+
+[node name="Label" type="Label" parent="User/PanelCreateNewUser/DialogError"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 92.0
+offset_top = 136.0
+offset_right = 218.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "用户名不能为空"
+
+[node name="PanelRenameUser" type="Panel" parent="User"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -157.0
+offset_right = 238.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_altii")
+script = ExtResource("81_dj5t5")
+
+[node name="TextureRect" type="TextureRect" parent="User/PanelRenameUser"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -93.0
+offset_top = -37.0
+offset_right = 94.0
+offset_bottom = 27.0
+grow_horizontal = 2
+texture = ExtResource("76_nu6d8")
+
+[node name="Label" type="Label" parent="User/PanelRenameUser"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -3.0
+offset_top = 50.0
+offset_right = -3.0
+offset_bottom = 90.0
+grow_horizontal = 2
+text = "新用户"
+label_settings = SubResource("LabelSettings_ito2j")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="User/PanelRenameUser"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = 101.0
+offset_right = 4.0
+offset_bottom = 130.0
+grow_horizontal = 2
+text = "请输入你的名字："
+label_settings = SubResource("LabelSettings_dj5t5")
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="User/PanelRenameUser"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 149.0
+offset_right = 401.0
+offset_bottom = 191.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xqlaa")
+
+[node name="LineEdit" type="LineEdit" parent="User/PanelRenameUser/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0.1882353, 1)
+theme_override_fonts/font = ExtResource("54_343qg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="User/PanelRenameUser"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -147.0
+offset_top = -89.0
+offset_right = 147.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="ButtonOK" type="TextureButton" parent="User/PanelRenameUser/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("77_nu6d8")
+script = ExtResource("5_j2mjb")
+
+[node name="Label" type="Label" parent="User/PanelRenameUser/HBoxContainer/ButtonOK"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "好"
+label_settings = SubResource("LabelSettings_altii")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonCancel" type="TextureButton" parent="User/PanelRenameUser/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("77_nu6d8")
+script = ExtResource("5_j2mjb")
+
+[node name="Label" type="Label" parent="User/PanelRenameUser/HBoxContainer/ButtonCancel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "取消"
+label_settings = SubResource("LabelSettings_altii")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DialogError" parent="User/PanelRenameUser" instance=ExtResource("57_ry5e1")]
+visible = false
+layout_mode = 0
+offset_left = 76.0
+offset_top = -25.0
+offset_right = 76.0
+offset_bottom = -25.0
+script = ExtResource("82_krdmy")
+
+[node name="Label" type="Label" parent="User/PanelRenameUser/DialogError"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 92.0
+offset_top = 136.0
+offset_right = 218.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "用户名不能为空"
+
+[node name="DialogError" parent="User" instance=ExtResource("57_ry5e1")]
+visible = false
+layout_mode = 0
+offset_left = -156.0
+offset_top = -179.0
+offset_right = -156.0
+offset_bottom = -179.0
+script = ExtResource("82_krdmy")
+
+[node name="Label" type="Label" parent="User/DialogError"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 92.0
+offset_top = 136.0
+offset_right = 218.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "用户名不能为空"
+
+[node name="DialogConfirmDel" parent="User" instance=ExtResource("58_confirm")]
+visible = false
+layout_mode = 0
+offset_left = -191.0
+offset_top = -178.0
+offset_right = -191.0
+offset_bottom = -178.0
+
+[connection signal="pressed" from="BG_Right/Menu/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="BG_Right/Menu/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="BG_Right/Menu/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="BG_Right/Menu/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="BG_Right/Option/TextureButton" to="." method="_on_option_button_1_pressed"]
+[connection signal="pressed" from="BG_Right/Option/TextureButton2" to="." method="_on_option_button_2_pressed"]
+[connection signal="pressed" from="BG_Right/Option/TextureButton3" to="." method="_on_option_button_3_pressed"]
+[connection signal="pressed" from="BG_Right/Item/TextureButton" to="." method="_on_item_button_1_pressed"]
+[connection signal="pressed" from="BG_Right/Item/TextureButton2" to="." method="_on_item_button_2_pressed"]
+[connection signal="pressed" from="BG_Right/Item/TextureButton3" to="." method="_on_item_button_3_pressed"]
+[connection signal="mouse_entered" from="BG_Right/CustomButton" to="BG_Right/CustomButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BG_Right/CustomButton" to="BG_Right/CustomButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="BG_Right/CustomButton" to="." method="_on_custom_button_pressed"]
+[connection signal="pressed" from="WoodSign/ButtonUserUpdate" to="." method="_on_button_update_user_pressed"]
+[connection signal="toggled" from="StartMenuOptionDialog/Option/FullScreen/CheckButton" to="." method="_on_full_screen_button_toggled"]
+[connection signal="pressed" from="StartMenuOptionDialog/Return" to="StartMenuOptionDialog" method="return_button_pressed"]
+[connection signal="pressed" from="StartMenuOptionDialog/Button4" to="StartMenuOptionDialog/Button4/CanvasLayer" method="appear_canvas_layer_control"]

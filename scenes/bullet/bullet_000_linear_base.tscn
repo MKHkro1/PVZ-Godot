@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cit8bsc5op7f0"]
+
+[ext_resource type="PackedScene" uid="uid://dlwaiybjqakk1" path="res://scenes/bullet/bullet_000_base.tscn" id="1_kmknu"]
+[ext_resource type="Script" uid="uid://cyun8j164vix7" path="res://scripts/bullet/bullet_000_linear_base.gd" id="2_w62tt"]
+
+[node name="BulletLinear000Base" instance=ExtResource("1_kmknu")]
+script = ExtResource("2_w62tt")
+
+[node name="Area2DAttack" parent="." index="3"]
+collision_mask = 513

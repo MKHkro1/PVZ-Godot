@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ResourcePlantConditionCobCannon" load_steps=2 format=3 uid="uid://xn8cruugul3t"]
+
+[ext_resource type="Script" uid="uid://ct5cnsf523c81" path="res://scripts/resources/plant_condition/condition_048_CobCannon.gd" id="1_1bj2t"]
+
+[resource]
+script = ExtResource("1_1bj2t")
+plant_condition = 22
+place_plant_in_cell = 0
+is_special_plants = true
+is_purple_card = true
+metadata/_custom_type_script = "uid://ct5cnsf523c81"

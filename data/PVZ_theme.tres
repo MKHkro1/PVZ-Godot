@@ -1,0 +1,126 @@
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://em12la0rqibq"]
+
+[ext_resource type="Texture2D" uid="uid://cw8k7bqxg6s10" path="res://assets/image/ui/ui_main_game_menu/options_checkbox1.png" id="1_5qcbn"]
+[ext_resource type="FontFile" uid="uid://bjnvl0v2ws21u" path="res://assets/fonts/SIMSUN.TTC" id="1_d76qg"]
+[ext_resource type="Texture2D" uid="uid://q2gba6cd82mw" path="res://assets/image/ui/ui_main_game_menu/options_checkbox0.png" id="2_e2ehk"]
+[ext_resource type="Texture2D" uid="uid://damwsmpdph32t" path="res://assets/image/ui/ui_main_game_menu/options_sliderknob2.png" id="3_1f77c"]
+[ext_resource type="Texture2D" uid="uid://b3pdxhaofjedv" path="res://assets/image/ui/ui_main_game_menu/options_sliderslot.png" id="4_0hdwo"]
+[ext_resource type="Texture2D" uid="uid://b48l4yjq0j5mo" path="res://assets/image/ui/ui_main_game_menu/UI_BG/button_BG.png" id="5_e2ehk"]
+[ext_resource type="Texture2D" uid="uid://26y8gomy80nq" path="res://assets/image/ui/ui_main_game_menu/UI_BG/dialog_BG.png" id="6_1f77c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1f77c"]
+atlas = ExtResource("1_5qcbn")
+region = Rect2(0, 0, 40, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hdwo"]
+atlas = ExtResource("2_e2ehk")
+region = Rect2(0, 0, 40, 35)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8xgp5"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1f77c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8xgp5"]
+texture = ExtResource("4_0hdwo")
+texture_margin_top = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0hdwo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1f77c"]
+texture = ExtResource("5_e2ehk")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 20.0
+expand_margin_left = 8.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5qcbn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e2ehk"]
+texture = ExtResource("5_e2ehk")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0hdwo"]
+texture = ExtResource("6_1f77c")
+texture_margin_left = 40.0
+texture_margin_top = 90.0
+texture_margin_right = 56.0
+texture_margin_bottom = 110.0
+
+[resource]
+default_font = ExtResource("1_d76qg")
+CheckBox/colors/font_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_disabled_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_focus_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_hover_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_outline_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_pressed_color = Color(0, 0, 0, 1)
+CheckBox/constants/outline_size = 1
+CheckBox/font_sizes/font_size = 24
+CheckBox/fonts/font = ExtResource("1_d76qg")
+CheckBox/icons/checked = SubResource("AtlasTexture_1f77c")
+CheckBox/icons/unchecked = SubResource("AtlasTexture_0hdwo")
+CheckBox/styles/focus = SubResource("StyleBoxEmpty_8xgp5")
+CheckButton/icons/checked = ExtResource("1_5qcbn")
+CheckButton/icons/unchecked = ExtResource("2_e2ehk")
+CheckButton/styles/focus = SubResource("StyleBoxEmpty_1f77c")
+HSlider/icons/grabber = ExtResource("3_1f77c")
+HSlider/icons/grabber_highlight = ExtResource("3_1f77c")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_8xgp5")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_8xgp5")
+HSlider/styles/slider = SubResource("StyleBoxTexture_8xgp5")
+Label/colors/font_color = Color(0, 1, 0, 1)
+Label/colors/font_outline_color = Color(0, 1, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 2
+Label/constants/shadow_offset_x = -1
+Label/constants/shadow_offset_y = -1
+Label/constants/shadow_outline_size = 2
+Label/font_sizes/font_size = 18
+Label2/base_type = &"Label"
+Label2/colors/font_color = Color(0.380392, 0.384314, 0.501961, 1)
+Label2/colors/font_outline_color = Color(0.380392, 0.384314, 0.501961, 1)
+Label2/constants/outline_size = 2
+Label2/constants/shadow_offset_x = -2
+Label2/constants/shadow_offset_y = -2
+Label2/constants/shadow_outline_size = 0
+Label2/fonts/font = ExtResource("1_d76qg")
+Label3/base_type = &"Label"
+Label3/colors/font_color = Color(0, 0, 0, 1)
+Label3/colors/font_outline_color = Color(0, 0, 0, 1)
+Label3/constants/shadow_outline_size = 0
+Label3/font_sizes/font_size = 25
+LineEdit/colors/font_color = Color(8.30255e-07, 0.322009, 0.189494, 1)
+LineEdit/constants/minimum_character_width = 3
+LineEdit/font_sizes/font_size = 25
+LineEdit/styles/normal = SubResource("StyleBoxEmpty_0hdwo")
+MenuLabel/base_type = &"Label"
+MenuLabel/colors/font_color = Color(0.419608, 0.427451, 0.568627, 1)
+MenuLabel/font_sizes/font_size = 20
+PanelButtonBG/base_type = &"Panel"
+PanelButtonBG/styles/panel = SubResource("StyleBoxTexture_1f77c")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_5qcbn")
+PanelContainerButtonBG/base_type = &"PanelContainer"
+PanelContainerButtonBG/styles/panel = SubResource("StyleBoxTexture_e2ehk")
+PanelDialogBG/base_type = &"Panel"
+PanelDialogBG/styles/panel = SubResource("StyleBoxTexture_0hdwo")
+SpinBox/colors/down_disabled_icon_modulate = Color(0, 0, 0, 1)
+SpinBox/colors/down_hover_icon_modulate = Color(8.30255e-07, 0.322009, 0.189494, 1)
+SpinBox/colors/down_icon_modulate = Color(8.30255e-07, 0.322009, 0.189494, 1)
+SpinBox/colors/down_pressed_icon_modulate = Color(0, 1, 0, 1)
+SpinBox/colors/up_disabled_icon_modulate = Color(0, 0, 0, 1)
+SpinBox/colors/up_hover_icon_modulate = Color(8.30255e-07, 0.322009, 0.189494, 1)
+SpinBox/colors/up_icon_modulate = Color(0, 0.37798, 0.225791, 1)
+SpinBox/colors/up_pressed_icon_modulate = Color(0, 1, 0, 1)

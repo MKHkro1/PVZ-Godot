@@ -1,0 +1,206 @@
+[gd_scene load_steps=23 format=3 uid="uid://dx1qceb42wfil"]
+
+[ext_resource type="Script" uid="uid://wejmpo18dtnc" path="res://scripts/main_game_item/tombstone.gd" id="1_34xhw"]
+[ext_resource type="Texture2D" uid="uid://hl74vdgxdih2" path="res://assets/image/main_game_item/Tombstones.png" id="2_fendi"]
+[ext_resource type="Texture2D" uid="uid://bxkoutl6ne7bt" path="res://assets/image/main_game_item/Tombstone_mounds.png" id="3_4gxsu"]
+[ext_resource type="Texture2D" uid="uid://dhawpqhvsxd83" path="res://assets/image/particles/dirtsmall.png" id="4_k66uw"]
+[ext_resource type="AudioStream" uid="uid://cen767dg5fuva" path="res://assets/audio/SFX/zombie/dirt_rise.ogg" id="5_jeiep"]
+[ext_resource type="PackedScene" uid="uid://dajgv0lrme2e5" path="res://scenes/character/zombie/001_zombie_norm.tscn" id="6_igvmn"]
+[ext_resource type="Script" uid="uid://qf80xhqf2ko6" path="res://scripts/fx/dirt_new_zombie_appear_from_ground.gd" id="7_0is8d"]
+[ext_resource type="Texture2D" uid="uid://igrk4hwpobli" path="res://assets/image/particles/dirtbig.png" id="8_ii21w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eg40l"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_48j6u"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_httmh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.09025, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vyo3a"]
+curve = SubResource("Curve_httmh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b4qea"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(30, 5, 1)
+direction = Vector3(0, -1, 0)
+spread = 30.0
+initial_velocity_min = 75.0
+initial_velocity_max = 75.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_vyo3a")
+anim_offset_max = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uiv8m"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d86ws"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_1blnm"]
+_limits = [0.0, 1.0, 0.0, 2.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1.09538, 0.68059), -0.57336, -0.57336, 0, 0, Vector2(2, 0), -0.88337, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_17vcl"]
+curve = SubResource("Curve_1blnm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cavfb"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(30, 10, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 80, 0)
+scale_min = 0.6
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_17vcl")
+anim_offset_max = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_32mjs"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_kw0or"]
+_limits = [-10.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.0643382, 10), 0.0, 0.0, 0, 0, Vector2(0.154412, -10), 0.0, 0.0, 0, 0, Vector2(0.229779, 10), 0.0, 0.0, 0, 0, Vector2(0.330882, -10), 0.0, 0.0, 0, 0, Vector2(0.446691, 10), 0.0, 0.0, 0, 0, Vector2(0.643382, -10), 0.0, 0.0, 0, 0, Vector2(0.748162, 10), 0.0, 0.0, 0, 0, Vector2(0.886029, -10), 0.0, 0.0, 0, 0, Vector2(0.948529, 9.91162), 0.0, 0.0, 0, 0, Vector2(1, -10), 0.0, 0.0, 0, 0]
+point_count = 12
+
+[sub_resource type="CurveTexture" id="CurveTexture_51u13"]
+curve = SubResource("Curve_kw0or")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_skbew"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(20, 3, 1)
+direction = Vector3(0, -1, 0)
+radial_velocity_min = -10.0
+radial_velocity_max = 9.99998
+radial_velocity_curve = SubResource("CurveTexture_51u13")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.8
+anim_offset_max = 1.0
+
+[node name="Tombstone" type="Node2D"]
+z_index = 150
+z_as_relative = false
+script = ExtResource("1_34xhw")
+
+[node name="TombstoneMask" type="Panel" parent="."]
+clip_children = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -48.0
+offset_right = 40.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eg40l")
+
+[node name="tombstone" type="Sprite2D" parent="TombstoneMask"]
+position = Vector2(39, 48)
+texture = ExtResource("2_fendi")
+hframes = 5
+vframes = 4
+
+[node name="MoundMask" type="Panel" parent="."]
+clip_children = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -45.0
+offset_right = 40.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eg40l")
+
+[node name="mound" type="Sprite2D" parent="MoundMask"]
+position = Vector2(39, 49)
+texture = ExtResource("3_4gxsu")
+hframes = 5
+vframes = 4
+frame = 3
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_48j6u")
+position = Vector2(0, 34)
+emitting = false
+amount = 100
+texture = ExtResource("4_k66uw")
+lifetime = 3.0
+interp_to_end = 0.05
+one_shot = true
+speed_scale = 2.0
+process_material = SubResource("ParticleProcessMaterial_b4qea")
+
+[node name="DirtRise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jeiep")
+
+[node name="NewZombieMask" type="Panel" parent="."]
+clip_children = 1
+offset_left = -115.0
+offset_top = -162.0
+offset_right = 116.0
+offset_bottom = 46.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uiv8m")
+
+[node name="ZombieNorm" parent="NewZombieMask" instance=ExtResource("6_igvmn")]
+position = Vector2(113, 162)
+
+[node name="Dirt" type="Node2D" parent="."]
+position = Vector2(3, 44)
+script = ExtResource("7_0is8d")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Dirt"]
+material = SubResource("CanvasItemMaterial_d86ws")
+emitting = false
+amount = 30
+texture = ExtResource("4_k66uw")
+lifetime = 1.5
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_cavfb")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Dirt"]
+material = SubResource("CanvasItemMaterial_32mjs")
+emitting = false
+amount = 10
+texture = ExtResource("8_ii21w")
+lifetime = 1.5
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_skbew")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -33.0
+offset_top = 11.0
+offset_right = 39.0
+offset_bottom = 42.0
+text = "出现僵尸"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

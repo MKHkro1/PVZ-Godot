@@ -1,0 +1,2506 @@
+[gd_scene load_steps=103 format=3 uid="uid://mcad1jl5d1ui"]
+
+[ext_resource type="Texture2D" uid="uid://bwevuvs5nnwfx" path="res://assets/image/ui/ui_challenge/Challenge_Background.jpg" id="1_77tr5"]
+[ext_resource type="Theme" uid="uid://cx302yraw066y" path="res://data/ChooesLevel.tres" id="1_dw7cd"]
+[ext_resource type="Script" uid="uid://jru6xfv7g4f1" path="res://scripts/choose_level/choose_level.gd" id="1_qbhvk"]
+[ext_resource type="PackedScene" uid="uid://bhjnqm3kqr2fq" path="res://scenes/choose_level/choose_level_button.tscn" id="4_nodl8"]
+[ext_resource type="Texture2D" uid="uid://hb4b6ujaahoc" path="res://assets/image/Almanac/Almanac_GroundDay.jpg" id="g_day"]
+[ext_resource type="Texture2D" uid="uid://bvp2j68muqgm8" path="res://assets/image/Almanac/Almanac_GroundNight.jpg" id="g_night"]
+[ext_resource type="Texture2D" uid="uid://bx8xtt6oantp1" path="res://assets/image/Almanac/Almanac_GroundPool.jpg" id="g_pool"]
+[ext_resource type="Texture2D" uid="uid://dwva3w3r5kjvb" path="res://assets/image/Almanac/Almanac_GroundNightPool.jpg" id="g_fog"]
+[ext_resource type="Texture2D" uid="uid://bj57iq2dgnb0g" path="res://assets/image/Almanac/Almanac_GroundRoof.jpg" id="g_roof"]
+[ext_resource type="Texture2D" uid="uid://xc3kqag3vqlq" path="res://assets/image/ui/ui_level/Almanac_CloseButton.png" id="cb_n"]
+[ext_resource type="Texture2D" uid="uid://c82uuprowr5d" path="res://assets/image/ui/ui_level/Almanac_CloseButtonHighlight.png" id="cb_p"]
+[ext_resource type="BitMap" uid="uid://bc7yq02xscrlr" path="res://assets/image/ui/ui_level/Almanac_CloseButton_Mask.png" id="cb_m"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_002_sun_flower.tscn" id="pl_002_sun_flower"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_003_cherry_bomb.tscn" id="pl_003_cherry_bomb"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_004_wall_nut.tscn" id="pl_004_wall_nut"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_005_potato_mine.tscn" id="pl_005_potato_mine"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_006_snow_pea.tscn" id="pl_006_snow_pea"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_007_chomper.tscn" id="pl_007_chomper"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_008_pea_shooter_double.tscn" id="pl_008_pea_shooter_double"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_009_puff.tscn" id="pl_009_puff"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_010_sun_shroom.tscn" id="pl_010_sun_shroom"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_011_fume_shroom.tscn" id="pl_011_fume_shroom"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_012_grave_buster.tscn" id="pl_012_grave_buster"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_013_hypno_shroom.tscn" id="pl_013_hypno_shroom"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_014_scaredy_shroom.tscn" id="pl_014_scaredy_shroom"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_015_ice_shroom.tscn" id="pl_015_ice_shroom"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_016_doom_shroom.tscn" id="pl_016_doom_shroom"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_017_lily_pad.tscn" id="pl_017_lily_pad"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_018_squash.tscn" id="pl_018_squash"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_019_three_peater.tscn" id="pl_019_three_peater"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_020_tanglekelp.tscn" id="pl_020_tanglekelp"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_022_caltrop.tscn" id="pl_022_caltrop"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_021_jalapeno.tscn" id="pl_021_jalapeno"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_023_torch_wood.tscn" id="pl_023_torch_wood"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_024_tall_nut.tscn" id="pl_024_tall_nut"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_025_sea_shroom.tscn" id="pl_025_sea_shroom"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_026_plantern.tscn" id="pl_026_plantern"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_027_cactus.tscn" id="pl_027_cactus"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_028_blover.tscn" id="pl_028_blover"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_029_split_pea.tscn" id="pl_029_split_pea"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_030_star_fruit.tscn" id="pl_030_star_fruit"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_031_pumpkin.tscn" id="pl_031_pumpkin"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_032_magnet_shroom.tscn" id="pl_032_magnet_shroom"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_033_cabbage_pult.tscn" id="pl_033_cabbage_pult"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_034_flower_pot.tscn" id="pl_034_flower_pot"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_035_corn_pult.tscn" id="pl_035_corn_pult"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_036_coffee_bean.tscn" id="pl_036_coffee_bean"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_037_garlic.tscn" id="pl_037_garlic"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_038_umbrella_leaf.tscn" id="pl_038_umbrella_leaf"]
+[ext_resource type="PackedScene" path="res://scenes/character/plant/plant_040_melon_pult.tscn" id="pl_040_melon_pult"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_1_01.tres" id="L11"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_1_02.tres" id="L12"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_1_03.tres" id="L13"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_1_04.tres" id="L14"]
+[ext_resource type="Resource" uid="uid://c8yt6n65ponc6" path="res://resources/level_date_resource/mode_minigame/minigame_01_bowling.tres" id="MG1"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_1_05.tres" id="L15"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_1_06.tres" id="L16"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_1_07.tres" id="L17"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_1_08.tres" id="L18"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_1_09.tres" id="L19"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_1_10.tres" id="L110"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_2_01.tres" id="L21"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_2_02.tres" id="L22"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_2_03.tres" id="L23"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_2_04.tres" id="L24"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_2_05.tres" id="L25"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_2_06.tres" id="L26"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_2_07.tres" id="L27"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_2_08.tres" id="L28"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_2_09.tres" id="L29"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_2_10.tres" id="L210"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_3_01.tres" id="L31"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_3_02.tres" id="L32"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_3_03.tres" id="L33"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_3_04.tres" id="L34"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_3_05.tres" id="L35"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_3_06.tres" id="L36"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_3_07.tres" id="L37"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_3_08.tres" id="L38"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_3_09.tres" id="L39"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_3_10.tres" id="L310"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_4_01.tres" id="L41"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_4_02.tres" id="L42"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_4_03.tres" id="L43"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_4_04.tres" id="L44"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_4_05.tres" id="L45"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_4_06.tres" id="L46"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_4_07.tres" id="L47"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_4_08.tres" id="L48"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_4_09.tres" id="L49"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_4_10.tres" id="L410"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_5_01.tres" id="L51"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_5_02.tres" id="L52"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_5_03.tres" id="L53"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_5_04.tres" id="L54"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_5_05.tres" id="L55"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_5_06.tres" id="L56"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_5_07.tres" id="L57"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_5_08.tres" id="L58"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_5_09.tres" id="L59"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_5_10.tres" id="L510"]
+
+[sub_resource type="StyleBoxFlat" id="SB_frame"]
+
+[node name="ChooseLevel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_dw7cd")
+script = ExtResource("1_qbhvk")
+game_mode = 101
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_77tr5")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -97.0
+offset_top = 18.0
+offset_right = 107.0
+offset_bottom = 68.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 6
+theme_override_font_sizes/font_size = 36
+text = "冒 险 模 式"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelPage" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 26.0
+offset_right = -40.0
+offset_bottom = 56.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 20
+text = "当前页数:1/5"
+horizontal_alignment = 2
+
+[node name="AllPage" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PrevPage" type="Button" parent="."]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 520.0
+offset_right = 210.0
+offset_bottom = 552.0
+theme_override_font_sizes/font_size = 18
+text = "〈 上一页"
+
+[node name="NextPage" type="Button" parent="."]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 520.0
+offset_right = 350.0
+offset_bottom = 552.0
+theme_override_font_sizes/font_size = 18
+text = "下一页 〉"
+
+[node name="MainMenu" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 669.0
+offset_top = 527.0
+offset_right = 758.0
+offset_bottom = 553.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("cb_n")
+texture_pressed = ExtResource("cb_p")
+texture_click_mask = ExtResource("cb_m")
+
+[node name="MenuLabel" type="Label" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = -10.0
+offset_right = 18.5
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "主菜单"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MainMenu" to="." method="back_start_menu"]
+[connection signal="pressed" from="PrevPage" to="." method="_on_last_pressed"]
+[connection signal="pressed" from="NextPage" to="." method="_on_next_pressed"]
+
+[node name="GridS1" type="GridContainer" parent="AllPage"]
+visible = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_top = 100.0
+offset_right = 350.0
+offset_bottom = 505.0
+grow_horizontal = 2
+theme_override_constants/h_separation = 42
+theme_override_constants/v_separation = 24
+columns = 5
+
+[node name="B1_01" parent="AllPage/GridS1" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L11")
+
+[node name="Label" parent="AllPage/GridS1/B1_01/TextureButton" index="0"]
+text = "1-1"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS1/B1_01"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS1/B1_01/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_day")
+
+[node name="Preview" parent="AllPage/GridS1/B1_01/Panel/Ground" node_paths=PackedStringArray("node_no_change_direction")] instance=ExtResource("pl_002_sun_flower")
+position = Vector2(93, 100)
+node_no_change_direction = [NodePath("HpComponent"), NodePath("SleepComponent"), null]
+character_init_type = 1
+
+[node name="B1_02" parent="AllPage/GridS1" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L12")
+
+[node name="Label" parent="AllPage/GridS1/B1_02/TextureButton" index="0"]
+text = "1-2"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS1/B1_02"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS1/B1_02/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_day")
+
+[node name="Preview" parent="AllPage/GridS1/B1_02/Panel/Ground"] instance=ExtResource("pl_003_cherry_bomb")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B1_03" parent="AllPage/GridS1" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L13")
+
+[node name="Label" parent="AllPage/GridS1/B1_03/TextureButton" index="0"]
+text = "1-3"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS1/B1_03"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS1/B1_03/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_day")
+
+[node name="Preview" parent="AllPage/GridS1/B1_03/Panel/Ground"] instance=ExtResource("pl_004_wall_nut")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B1_04" parent="AllPage/GridS1" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L14")
+
+[node name="Label" parent="AllPage/GridS1/B1_04/TextureButton" index="0"]
+text = "1-4"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS1/B1_04"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS1/B1_04/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_day")
+
+[node name="Preview" parent="AllPage/GridS1/B1_04/Panel/Ground"] instance=ExtResource("pl_004_wall_nut")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B1_05" parent="AllPage/GridS1" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("MG1")
+
+[node name="Label" parent="AllPage/GridS1/B1_05/TextureButton" index="0"]
+text = "1-5"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS1/B1_05"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS1/B1_05/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_day")
+
+[node name="Preview" parent="AllPage/GridS1/B1_05/Panel/Ground"] instance=ExtResource("pl_005_potato_mine")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B1_06" parent="AllPage/GridS1" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L16")
+
+[node name="Label" parent="AllPage/GridS1/B1_06/TextureButton" index="0"]
+text = "1-6"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS1/B1_06"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS1/B1_06/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_day")
+
+[node name="Preview" parent="AllPage/GridS1/B1_06/Panel/Ground"] instance=ExtResource("pl_006_snow_pea")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B1_07" parent="AllPage/GridS1" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L17")
+
+[node name="Label" parent="AllPage/GridS1/B1_07/TextureButton" index="0"]
+text = "1-7"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS1/B1_07"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS1/B1_07/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_day")
+
+[node name="Preview" parent="AllPage/GridS1/B1_07/Panel/Ground"] instance=ExtResource("pl_007_chomper")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B1_08" parent="AllPage/GridS1" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L18")
+
+[node name="Label" parent="AllPage/GridS1/B1_08/TextureButton" index="0"]
+text = "1-8"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS1/B1_08"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS1/B1_08/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_day")
+
+[node name="Preview" parent="AllPage/GridS1/B1_08/Panel/Ground"] instance=ExtResource("pl_008_pea_shooter_double")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B1_09" parent="AllPage/GridS1" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L19")
+
+[node name="Label" parent="AllPage/GridS1/B1_09/TextureButton" index="0"]
+text = "1-9"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS1/B1_09"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS1/B1_09/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_day")
+
+[node name="Preview" parent="AllPage/GridS1/B1_09/Panel/Ground"] instance=ExtResource("pl_008_pea_shooter_double")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B1_10" parent="AllPage/GridS1" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L110")
+
+[node name="Label" parent="AllPage/GridS1/B1_10/TextureButton" index="0"]
+text = "1-10"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS1/B1_10"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS1/B1_10/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_day")
+
+[node name="Preview" parent="AllPage/GridS1/B1_10/Panel/Ground"] instance=ExtResource("pl_009_puff")
+position = Vector2(93, 100)
+character_init_type = 1
+
+
+[node name="GridS2" type="GridContainer" parent="AllPage"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_top = 100.0
+offset_right = 350.0
+offset_bottom = 505.0
+grow_horizontal = 2
+theme_override_constants/h_separation = 42
+theme_override_constants/v_separation = 24
+columns = 5
+
+[node name="B2_01" parent="AllPage/GridS2" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L21")
+
+[node name="Label" parent="AllPage/GridS2/B2_01/TextureButton" index="0"]
+text = "2-1"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS2/B2_01"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS2/B2_01/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_night")
+
+[node name="Preview" parent="AllPage/GridS2/B2_01/Panel/Ground"] instance=ExtResource("pl_010_sun_shroom")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B2_02" parent="AllPage/GridS2" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L22")
+
+[node name="Label" parent="AllPage/GridS2/B2_02/TextureButton" index="0"]
+text = "2-2"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS2/B2_02"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS2/B2_02/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_night")
+
+[node name="Preview" parent="AllPage/GridS2/B2_02/Panel/Ground"] instance=ExtResource("pl_011_fume_shroom")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B2_03" parent="AllPage/GridS2" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L23")
+
+[node name="Label" parent="AllPage/GridS2/B2_03/TextureButton" index="0"]
+text = "2-3"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS2/B2_03"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS2/B2_03/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_night")
+
+[node name="Preview" parent="AllPage/GridS2/B2_03/Panel/Ground"] instance=ExtResource("pl_012_grave_buster")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B2_04" parent="AllPage/GridS2" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L24")
+
+[node name="Label" parent="AllPage/GridS2/B2_04/TextureButton" index="0"]
+text = "2-4"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS2/B2_04"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS2/B2_04/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_night")
+
+[node name="Preview" parent="AllPage/GridS2/B2_04/Panel/Ground"] instance=ExtResource("pl_013_hypno_shroom")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B2_05" parent="AllPage/GridS2" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L25")
+
+[node name="Label" parent="AllPage/GridS2/B2_05/TextureButton" index="0"]
+text = "2-5"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS2/B2_05"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS2/B2_05/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_night")
+
+[node name="Preview" parent="AllPage/GridS2/B2_05/Panel/Ground"] instance=ExtResource("pl_013_hypno_shroom")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B2_06" parent="AllPage/GridS2" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L26")
+
+[node name="Label" parent="AllPage/GridS2/B2_06/TextureButton" index="0"]
+text = "2-6"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS2/B2_06"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS2/B2_06/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_night")
+
+[node name="Preview" parent="AllPage/GridS2/B2_06/Panel/Ground"] instance=ExtResource("pl_014_scaredy_shroom")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B2_07" parent="AllPage/GridS2" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L27")
+
+[node name="Label" parent="AllPage/GridS2/B2_07/TextureButton" index="0"]
+text = "2-7"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS2/B2_07"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS2/B2_07/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_night")
+
+[node name="Preview" parent="AllPage/GridS2/B2_07/Panel/Ground"] instance=ExtResource("pl_015_ice_shroom")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B2_08" parent="AllPage/GridS2" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L28")
+
+[node name="Label" parent="AllPage/GridS2/B2_08/TextureButton" index="0"]
+text = "2-8"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS2/B2_08"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS2/B2_08/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_night")
+
+[node name="Preview" parent="AllPage/GridS2/B2_08/Panel/Ground"] instance=ExtResource("pl_016_doom_shroom")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B2_09" parent="AllPage/GridS2" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L29")
+
+[node name="Label" parent="AllPage/GridS2/B2_09/TextureButton" index="0"]
+text = "2-9"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS2/B2_09"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS2/B2_09/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_night")
+
+[node name="Preview" parent="AllPage/GridS2/B2_09/Panel/Ground"] instance=ExtResource("pl_016_doom_shroom")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B2_10" parent="AllPage/GridS2" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L210")
+
+[node name="Label" parent="AllPage/GridS2/B2_10/TextureButton" index="0"]
+text = "2-10"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS2/B2_10"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS2/B2_10/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_night")
+
+[node name="Preview" parent="AllPage/GridS2/B2_10/Panel/Ground"] instance=ExtResource("pl_016_doom_shroom")
+position = Vector2(93, 100)
+character_init_type = 1
+
+
+[node name="GridS3" type="GridContainer" parent="AllPage"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_top = 100.0
+offset_right = 350.0
+offset_bottom = 505.0
+grow_horizontal = 2
+theme_override_constants/h_separation = 42
+theme_override_constants/v_separation = 24
+columns = 5
+
+[node name="B3_01" parent="AllPage/GridS3" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L31")
+
+[node name="Label" parent="AllPage/GridS3/B3_01/TextureButton" index="0"]
+text = "3-1"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS3/B3_01"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS3/B3_01/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_pool")
+
+[node name="Preview" parent="AllPage/GridS3/B3_01/Panel/Ground"] instance=ExtResource("pl_017_lily_pad")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B3_02" parent="AllPage/GridS3" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L32")
+
+[node name="Label" parent="AllPage/GridS3/B3_02/TextureButton" index="0"]
+text = "3-2"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS3/B3_02"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS3/B3_02/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_pool")
+
+[node name="Preview" parent="AllPage/GridS3/B3_02/Panel/Ground"] instance=ExtResource("pl_018_squash")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B3_03" parent="AllPage/GridS3" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L33")
+
+[node name="Label" parent="AllPage/GridS3/B3_03/TextureButton" index="0"]
+text = "3-3"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS3/B3_03"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS3/B3_03/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_pool")
+
+[node name="Preview" parent="AllPage/GridS3/B3_03/Panel/Ground"] instance=ExtResource("pl_019_three_peater")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B3_04" parent="AllPage/GridS3" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L34")
+
+[node name="Label" parent="AllPage/GridS3/B3_04/TextureButton" index="0"]
+text = "3-4"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS3/B3_04"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS3/B3_04/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_pool")
+
+[node name="Preview" parent="AllPage/GridS3/B3_04/Panel/Ground"] instance=ExtResource("pl_020_tanglekelp")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B3_05" parent="AllPage/GridS3" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L35")
+
+[node name="Label" parent="AllPage/GridS3/B3_05/TextureButton" index="0"]
+text = "3-5"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS3/B3_05"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS3/B3_05/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_pool")
+
+[node name="Preview" parent="AllPage/GridS3/B3_05/Panel/Ground"] instance=ExtResource("pl_022_caltrop")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B3_06" parent="AllPage/GridS3" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L36")
+
+[node name="Label" parent="AllPage/GridS3/B3_06/TextureButton" index="0"]
+text = "3-6"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS3/B3_06"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS3/B3_06/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_pool")
+
+[node name="Preview" parent="AllPage/GridS3/B3_06/Panel/Ground"] instance=ExtResource("pl_021_jalapeno")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B3_07" parent="AllPage/GridS3" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L37")
+
+[node name="Label" parent="AllPage/GridS3/B3_07/TextureButton" index="0"]
+text = "3-7"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS3/B3_07"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS3/B3_07/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_pool")
+
+[node name="Preview" parent="AllPage/GridS3/B3_07/Panel/Ground"] instance=ExtResource("pl_023_torch_wood")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B3_08" parent="AllPage/GridS3" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L38")
+
+[node name="Label" parent="AllPage/GridS3/B3_08/TextureButton" index="0"]
+text = "3-8"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS3/B3_08"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS3/B3_08/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_pool")
+
+[node name="Preview" parent="AllPage/GridS3/B3_08/Panel/Ground"] instance=ExtResource("pl_024_tall_nut")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B3_09" parent="AllPage/GridS3" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L39")
+
+[node name="Label" parent="AllPage/GridS3/B3_09/TextureButton" index="0"]
+text = "3-9"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS3/B3_09"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS3/B3_09/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_pool")
+
+[node name="Preview" parent="AllPage/GridS3/B3_09/Panel/Ground"] instance=ExtResource("pl_024_tall_nut")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B3_10" parent="AllPage/GridS3" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L310")
+
+[node name="Label" parent="AllPage/GridS3/B3_10/TextureButton" index="0"]
+text = "3-10"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS3/B3_10"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS3/B3_10/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_pool")
+
+[node name="Preview" parent="AllPage/GridS3/B3_10/Panel/Ground"] instance=ExtResource("pl_020_tanglekelp")
+position = Vector2(93, 100)
+character_init_type = 1
+
+
+[node name="GridS4" type="GridContainer" parent="AllPage"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_top = 100.0
+offset_right = 350.0
+offset_bottom = 505.0
+grow_horizontal = 2
+theme_override_constants/h_separation = 42
+theme_override_constants/v_separation = 24
+columns = 5
+
+[node name="B4_01" parent="AllPage/GridS4" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L41")
+
+[node name="Label" parent="AllPage/GridS4/B4_01/TextureButton" index="0"]
+text = "4-1"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS4/B4_01"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS4/B4_01/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_fog")
+
+[node name="Preview" parent="AllPage/GridS4/B4_01/Panel/Ground"] instance=ExtResource("pl_025_sea_shroom")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B4_02" parent="AllPage/GridS4" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L42")
+
+[node name="Label" parent="AllPage/GridS4/B4_02/TextureButton" index="0"]
+text = "4-2"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS4/B4_02"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS4/B4_02/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_fog")
+
+[node name="Preview" parent="AllPage/GridS4/B4_02/Panel/Ground"] instance=ExtResource("pl_026_plantern")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B4_03" parent="AllPage/GridS4" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L43")
+
+[node name="Label" parent="AllPage/GridS4/B4_03/TextureButton" index="0"]
+text = "4-3"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS4/B4_03"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS4/B4_03/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_fog")
+
+[node name="Preview" parent="AllPage/GridS4/B4_03/Panel/Ground"] instance=ExtResource("pl_027_cactus")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B4_04" parent="AllPage/GridS4" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L44")
+
+[node name="Label" parent="AllPage/GridS4/B4_04/TextureButton" index="0"]
+text = "4-4"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS4/B4_04"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS4/B4_04/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_fog")
+
+[node name="Preview" parent="AllPage/GridS4/B4_04/Panel/Ground"] instance=ExtResource("pl_028_blover")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B4_05" parent="AllPage/GridS4" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L45")
+
+[node name="Label" parent="AllPage/GridS4/B4_05/TextureButton" index="0"]
+text = "4-5"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS4/B4_05"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS4/B4_05/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_fog")
+
+[node name="Preview" parent="AllPage/GridS4/B4_05/Panel/Ground"] instance=ExtResource("pl_029_split_pea")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B4_06" parent="AllPage/GridS4" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L46")
+
+[node name="Label" parent="AllPage/GridS4/B4_06/TextureButton" index="0"]
+text = "4-6"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS4/B4_06"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS4/B4_06/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_fog")
+
+[node name="Preview" parent="AllPage/GridS4/B4_06/Panel/Ground"] instance=ExtResource("pl_030_star_fruit")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B4_07" parent="AllPage/GridS4" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L47")
+
+[node name="Label" parent="AllPage/GridS4/B4_07/TextureButton" index="0"]
+text = "4-7"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS4/B4_07"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS4/B4_07/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_fog")
+
+[node name="Preview" parent="AllPage/GridS4/B4_07/Panel/Ground"] instance=ExtResource("pl_031_pumpkin")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B4_08" parent="AllPage/GridS4" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L48")
+
+[node name="Label" parent="AllPage/GridS4/B4_08/TextureButton" index="0"]
+text = "4-8"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS4/B4_08"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS4/B4_08/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_fog")
+
+[node name="Preview" parent="AllPage/GridS4/B4_08/Panel/Ground"] instance=ExtResource("pl_032_magnet_shroom")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B4_09" parent="AllPage/GridS4" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L49")
+
+[node name="Label" parent="AllPage/GridS4/B4_09/TextureButton" index="0"]
+text = "4-9"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS4/B4_09"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS4/B4_09/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_fog")
+
+[node name="Preview" parent="AllPage/GridS4/B4_09/Panel/Ground"] instance=ExtResource("pl_032_magnet_shroom")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B4_10" parent="AllPage/GridS4" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L410")
+
+[node name="Label" parent="AllPage/GridS4/B4_10/TextureButton" index="0"]
+text = "4-10"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS4/B4_10"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS4/B4_10/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_fog")
+
+[node name="Preview" parent="AllPage/GridS4/B4_10/Panel/Ground"] instance=ExtResource("pl_026_plantern")
+position = Vector2(93, 100)
+character_init_type = 1
+
+
+[node name="GridS5" type="GridContainer" parent="AllPage"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_top = 100.0
+offset_right = 350.0
+offset_bottom = 505.0
+grow_horizontal = 2
+theme_override_constants/h_separation = 42
+theme_override_constants/v_separation = 24
+columns = 5
+
+[node name="B5_01" parent="AllPage/GridS5" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L51")
+
+[node name="Label" parent="AllPage/GridS5/B5_01/TextureButton" index="0"]
+text = "5-1"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS5/B5_01"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS5/B5_01/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_roof")
+
+[node name="Preview" parent="AllPage/GridS5/B5_01/Panel/Ground"] instance=ExtResource("pl_033_cabbage_pult")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B5_02" parent="AllPage/GridS5" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L52")
+
+[node name="Label" parent="AllPage/GridS5/B5_02/TextureButton" index="0"]
+text = "5-2"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS5/B5_02"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS5/B5_02/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_roof")
+
+[node name="Preview" parent="AllPage/GridS5/B5_02/Panel/Ground"] instance=ExtResource("pl_034_flower_pot")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B5_03" parent="AllPage/GridS5" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L53")
+
+[node name="Label" parent="AllPage/GridS5/B5_03/TextureButton" index="0"]
+text = "5-3"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS5/B5_03"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS5/B5_03/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_roof")
+
+[node name="Preview" parent="AllPage/GridS5/B5_03/Panel/Ground"] instance=ExtResource("pl_035_corn_pult")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B5_04" parent="AllPage/GridS5" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L54")
+
+[node name="Label" parent="AllPage/GridS5/B5_04/TextureButton" index="0"]
+text = "5-4"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS5/B5_04"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS5/B5_04/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_roof")
+
+[node name="Preview" parent="AllPage/GridS5/B5_04/Panel/Ground"] instance=ExtResource("pl_036_coffee_bean")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B5_05" parent="AllPage/GridS5" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L55")
+
+[node name="Label" parent="AllPage/GridS5/B5_05/TextureButton" index="0"]
+text = "5-5"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS5/B5_05"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS5/B5_05/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_roof")
+
+[node name="Preview" parent="AllPage/GridS5/B5_05/Panel/Ground"] instance=ExtResource("pl_037_garlic")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B5_06" parent="AllPage/GridS5" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L56")
+
+[node name="Label" parent="AllPage/GridS5/B5_06/TextureButton" index="0"]
+text = "5-6"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS5/B5_06"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS5/B5_06/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_roof")
+
+[node name="Preview" parent="AllPage/GridS5/B5_06/Panel/Ground"] instance=ExtResource("pl_038_umbrella_leaf")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B5_07" parent="AllPage/GridS5" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L57")
+
+[node name="Label" parent="AllPage/GridS5/B5_07/TextureButton" index="0"]
+text = "5-7"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS5/B5_07"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS5/B5_07/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_roof")
+
+[node name="Preview" parent="AllPage/GridS5/B5_07/Panel/Ground"] instance=ExtResource("pl_040_melon_pult")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B5_08" parent="AllPage/GridS5" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L58")
+
+[node name="Label" parent="AllPage/GridS5/B5_08/TextureButton" index="0"]
+text = "5-8"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS5/B5_08"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS5/B5_08/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_roof")
+
+[node name="Preview" parent="AllPage/GridS5/B5_08/Panel/Ground"] instance=ExtResource("pl_040_melon_pult")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B5_09" parent="AllPage/GridS5" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L59")
+
+[node name="Label" parent="AllPage/GridS5/B5_09/TextureButton" index="0"]
+text = "5-9"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS5/B5_09"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS5/B5_09/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_roof")
+
+[node name="Preview" parent="AllPage/GridS5/B5_09/Panel/Ground"] instance=ExtResource("pl_040_melon_pult")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[node name="B5_10" parent="AllPage/GridS5" instance=ExtResource("4_nodl8")]
+layout_mode = 2
+curr_level_data_game_para = ExtResource("L510")
+
+[node name="Label" parent="AllPage/GridS5/B5_10/TextureButton" index="0"]
+text = "5-10"
+
+[node name="Panel" type="Panel" parent="AllPage/GridS5/B5_10"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 73.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_frame")
+
+[node name="Ground" type="TextureRect" parent="AllPage/GridS5/B5_10/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.683
+offset_top = -59.9414
+offset_right = 141.317
+offset_bottom = 140.059
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("g_roof")
+
+[node name="Preview" parent="AllPage/GridS5/B5_10/Panel/Ground"] instance=ExtResource("pl_033_cabbage_pult")
+position = Vector2(93, 100)
+character_init_type = 1
+
+[editable path="AllPage/GridS1/B1_01"]
+[editable path="AllPage/GridS1/B1_02"]
+[editable path="AllPage/GridS1/B1_03"]
+[editable path="AllPage/GridS1/B1_04"]
+[editable path="AllPage/GridS1/B1_05"]
+[editable path="AllPage/GridS1/B1_06"]
+[editable path="AllPage/GridS1/B1_07"]
+[editable path="AllPage/GridS1/B1_08"]
+[editable path="AllPage/GridS1/B1_09"]
+[editable path="AllPage/GridS1/B1_10"]
+[editable path="AllPage/GridS2/B2_01"]
+[editable path="AllPage/GridS2/B2_02"]
+[editable path="AllPage/GridS2/B2_03"]
+[editable path="AllPage/GridS2/B2_04"]
+[editable path="AllPage/GridS2/B2_05"]
+[editable path="AllPage/GridS2/B2_06"]
+[editable path="AllPage/GridS2/B2_07"]
+[editable path="AllPage/GridS2/B2_08"]
+[editable path="AllPage/GridS2/B2_09"]
+[editable path="AllPage/GridS2/B2_10"]
+[editable path="AllPage/GridS3/B3_01"]
+[editable path="AllPage/GridS3/B3_02"]
+[editable path="AllPage/GridS3/B3_03"]
+[editable path="AllPage/GridS3/B3_04"]
+[editable path="AllPage/GridS3/B3_05"]
+[editable path="AllPage/GridS3/B3_06"]
+[editable path="AllPage/GridS3/B3_07"]
+[editable path="AllPage/GridS3/B3_08"]
+[editable path="AllPage/GridS3/B3_09"]
+[editable path="AllPage/GridS3/B3_10"]
+[editable path="AllPage/GridS4/B4_01"]
+[editable path="AllPage/GridS4/B4_02"]
+[editable path="AllPage/GridS4/B4_03"]
+[editable path="AllPage/GridS4/B4_04"]
+[editable path="AllPage/GridS4/B4_05"]
+[editable path="AllPage/GridS4/B4_06"]
+[editable path="AllPage/GridS4/B4_07"]
+[editable path="AllPage/GridS4/B4_08"]
+[editable path="AllPage/GridS4/B4_09"]
+[editable path="AllPage/GridS4/B4_10"]
+[editable path="AllPage/GridS5/B5_01"]
+[editable path="AllPage/GridS5/B5_02"]
+[editable path="AllPage/GridS5/B5_03"]
+[editable path="AllPage/GridS5/B5_04"]
+[editable path="AllPage/GridS5/B5_05"]
+[editable path="AllPage/GridS5/B5_06"]
+[editable path="AllPage/GridS5/B5_07"]
+[editable path="AllPage/GridS5/B5_08"]
+[editable path="AllPage/GridS5/B5_09"]
+[editable path="AllPage/GridS5/B5_10"]
+

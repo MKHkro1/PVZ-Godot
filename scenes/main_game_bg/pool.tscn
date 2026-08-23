@@ -1,0 +1,137 @@
+[gd_scene load_steps=15 format=3 uid="uid://bq5t78cjcpj7y"]
+
+[ext_resource type="Script" uid="uid://cmnt7djyt1387" path="res://scripts/main_game_item/pool.gd" id="1_h0rrj"]
+[ext_resource type="Texture2D" uid="uid://1n27xoaqkwyu" path="res://assets/image/background/pool_base.jpg" id="2_wjd4q"]
+[ext_resource type="Shader" uid="uid://bew3j0byymgpy" path="res://shaders/my_shader/main_game_pool.gdshader" id="3_exjdu"]
+[ext_resource type="Texture2D" uid="uid://dod75n76awrvg" path="res://assets/image/background/pool.jpg" id="4_op0xy"]
+[ext_resource type="Shader" uid="uid://1wkg6t4ewiw0" path="res://shaders/my_shader/pool_drop.gdshader" id="5_ie0cy"]
+[ext_resource type="Texture2D" uid="uid://72dwq6gmdyw0" path="res://assets/image/particles/PoolSparkly.png" id="5_k3fql"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_71hfq"]
+shader = ExtResource("3_exjdu")
+shader_parameter/ripple_speed = 0.3
+shader_parameter/ripple_scale = 4.0
+shader_parameter/ripple_strength = 0.0
+shader_parameter/ripple_blur = 1.0
+shader_parameter/water_color = Color(0.2, 0.5, 0.8, 0.6)
+shader_parameter/color_blend = 0.2
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_huk7e"]
+shader = ExtResource("5_ie0cy")
+shader_parameter/drop_count = 8
+shader_parameter/spawn_rate = 0.50000002049012
+shader_parameter/drop_life = 0.9
+shader_parameter/drop_speed = 0.010000000475
+shader_parameter/drop_size = 0.0050000002375
+shader_parameter/drop_thickness = 0.00950000045125
+shader_parameter/drop_color = Color(0, 0.9137255, 0.9411765, 1)
+shader_parameter/global_alpha = 1.0
+shader_parameter/randomness_seed = 12.34
+
+[sub_resource type="Curve" id="Curve_l4e4o"]
+_limits = [0.0, 1.0, 0.0, 2.0]
+_data = [Vector2(0, 0), 0.0, 1.68265, 0, 0, Vector2(0.469136, 0.786517), 0.0, 0.0, 0, 0, Vector2(2, 0), -0.417135, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_12i41"]
+curve = SubResource("Curve_l4e4o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b6ai2"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(70, 60, 1)
+direction = Vector3(-1, -1, 0)
+spread = 20.0
+initial_velocity_max = 1.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 0.999984
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 0.999978
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+scale_max = 0.6
+alpha_curve = SubResource("CurveTexture_12i41")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a514a"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(140, 60, 1)
+direction = Vector3(-1, -1, 0)
+spread = 20.0
+initial_velocity_max = 1.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 0.999984
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 0.999978
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+scale_max = 0.6
+alpha_curve = SubResource("CurveTexture_12i41")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_du5qn"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(350, 60, 1)
+direction = Vector3(-1, -1, 0)
+spread = 20.0
+initial_velocity_max = 1.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 0.999984
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 0.999978
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+alpha_curve = SubResource("CurveTexture_12i41")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1sge"]
+size = Vector2(662, 134)
+
+[node name="Pool" type="Node2D"]
+script = ExtResource("1_h0rrj")
+
+[node name="PoolBase" type="Sprite2D" parent="."]
+position = Vector2(610.595, 357)
+texture = ExtResource("2_wjd4q")
+
+[node name="Pool" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_71hfq")
+position = Vector2(609.046, 357.303)
+scale = Vector2(1.00531, 1.02405)
+texture = ExtResource("4_op0xy")
+
+[node name="PoolDrop" type="ColorRect" parent="Pool"]
+material = SubResource("ShaderMaterial_huk7e")
+offset_left = -350.18652
+offset_top = -67.675415
+offset_right = 353.0791
+offset_bottom = 78.80182
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(783.595, 361)
+amount = 10
+texture = ExtResource("5_k3fql")
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_b6ai2")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(783.595, 361)
+amount = 30
+texture = ExtResource("5_k3fql")
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_a514a")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="."]
+position = Vector2(604.595, 359)
+amount = 10
+texture = ExtResource("5_k3fql")
+process_material = SubResource("ParticleProcessMaterial_du5qn")
+
+[node name="PoolArea2D" type="Area2D" parent="."]
+z_index = 1000
+position = Vector2(606.595, 361)
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PoolArea2D"]
+shape = SubResource("RectangleShape2D_y1sge")

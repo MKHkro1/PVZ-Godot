@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CrazyDaveDialogDetailResource" load_steps=2 format=3 uid="uid://urishti8iy5w"]
+
+[ext_resource type="Script" uid="uid://7qucqjvdq78q" path="res://scripts/resources/crazy_dave_dialog_detail_resource.gd" id="1_dmtxh"]
+
+[resource]
+script = ExtResource("1_dmtxh")
+text = "我要疯了"
+is_crazy = true
+is_hand = false
+is_choosed = false
+metadata/_custom_type_script = "uid://7qucqjvdq78q"

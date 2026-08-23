@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpy4d8sd10s3u"]
+
+[ext_resource type="Texture2D" uid="uid://bc71xlstexduq" path="res://assets/reanim/Cornpult_butter_splat.png" id="1_vtjn2"]
+
+[node name="CornpultButterSplat" type="Sprite2D"]
+texture = ExtResource("1_vtjn2")

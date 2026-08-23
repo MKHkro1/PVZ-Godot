@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://cpv8ixg877ej5"]
+
+[ext_resource type="Theme" uid="uid://em12la0rqibq" path="res://data/PVZ_theme.tres" id="1_5c0lc"]
+[ext_resource type="Script" uid="uid://dgc06cujbbbu8" path="res://scripts/ui/card/card_base.gd" id="2_dao7o"]
+[ext_resource type="Texture2D" uid="uid://bnlu4gj7hi2m2" path="res://resources/card_bg/01Norm.tres" id="3_5c0lc"]
+
+[sub_resource type="SystemFont" id="SystemFont_fpdtd"]
+font_names = PackedStringArray("Sans-Serif")
+font_weight = 500
+hinting = 2
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5c0lc"]
+bg_color = Color(0, 0, 0, 0.470588)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dao7o"]
+bg_color = Color(0, 0, 0, 0.235294)
+
+[node name="Card" type="Control"]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 50.0
+offset_bottom = 70.0
+mouse_filter = 2
+theme = ExtResource("1_5c0lc")
+script = ExtResource("2_dao7o")
+
+[node name="CardBg" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_5c0lc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Cost" type="Label" parent="CardBg"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.78
+anchor_right = 0.65
+anchor_bottom = 0.95
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = SubResource("SystemFont_fpdtd")
+theme_override_font_sizes/font_size = 10
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_5c0lc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dao7o")
+value = 100.0
+fill_mode = 2
+show_percentage = false

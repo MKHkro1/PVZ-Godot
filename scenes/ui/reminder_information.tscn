@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnuo4uq3g3572"]
+
+[ext_resource type="Script" uid="uid://8fhrrwwqfm1h" path="res://scripts/ui/reminder_information.gd" id="2_uas5h"]
+
+[node name="ReminderInformation" type="CanvasLayer"]
+script = ExtResource("2_uas5h")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 100)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -143.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.992157, 0.960784, 0.678431, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "在这你只能种水生植物，这是在水下！"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

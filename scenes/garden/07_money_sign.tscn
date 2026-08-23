@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://02r6pim88mbc"]
+
+[ext_resource type="Texture2D" uid="uid://bma7kou87taa5" path="res://assets/image/garden/Zen_MoneySign.png" id="1_a55wt"]
+[ext_resource type="Script" uid="uid://mnhn2ihvr6ts" path="res://scripts/garden/Item/garden_item_07_money_sign.gd" id="1_atxcp"]
+[ext_resource type="Script" uid="uid://7qucqjvdq78q" path="res://scripts/resources/crazy_dave_dialog_detail_resource.gd" id="2_iopsr"]
+[ext_resource type="Script" uid="uid://dlfnh7fjqyil6" path="res://scripts/resources/crazy_dave_dialog_resource.gd" id="3_dgja6"]
+[ext_resource type="PackedScene" uid="uid://dsxyx35geqj23" path="res://scenes/crazy_dave/crazy_dave.tscn" id="6_oclsb"]
+
+[sub_resource type="Resource" id="Resource_v0ynm"]
+script = ExtResource("2_iopsr")
+text = "我给你$1500换你这棵植物！"
+is_hand = true
+is_choosed = true
+metadata/_custom_type_script = "uid://7qucqjvdq78q"
+
+[sub_resource type="Resource" id="Resource_oclsb"]
+script = ExtResource("3_dgja6")
+dialog_detail_list = Array[ExtResource("2_iopsr")]([SubResource("Resource_v0ynm")])
+metadata/_custom_type_script = "uid://dlfnh7fjqyil6"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iopsr"]
+radius = 0.1
+
+[node name="MoneySign" type="Node2D"]
+script = ExtResource("1_atxcp")
+dave_dialog = SubResource("Resource_oclsb")
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="ZenMoneySign" type="Sprite2D" parent="Body"]
+texture = ExtResource("1_a55wt")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_iopsr")
+
+[node name="DaveCanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="CrazyDave" parent="DaveCanvasLayer" instance=ExtResource("6_oclsb")]
+visible = false
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="signal_agree_choose" from="DaveCanvasLayer/CrazyDave" to="." method="sell_agree"]
+[connection signal="signal_disagree_choose" from="DaveCanvasLayer/CrazyDave" to="." method="sell_disagree"]

@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://qqlx8d8doe43"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_5bty5"]
+[ext_resource type="Texture2D" uid="uid://osds5r8hvsmb" path="res://assets/reanim/Wallnut_body.png" id="2_gedag"]
+[ext_resource type="Script" uid="uid://dfmsywqp6uy3v" path="res://scripts/character/plant/plant_1001_wall_nut_bowling.gd" id="2_tojy8"]
+[ext_resource type="PackedScene" uid="uid://dqaqlnax0o5fp" path="res://scenes/bullet/bullet_1002_bowling_bomb.tscn" id="3_m0ob3"]
+[ext_resource type="Texture2D" uid="uid://cpbkvykx6yq07" path="res://assets/reanim/Wallnut_twitch.png" id="3_tojy8"]
+[ext_resource type="Texture2D" uid="uid://co3e8k6uwm4hi" path="res://assets/reanim/Wallnut_blink1.png" id="4_m0ob3"]
+[ext_resource type="Script" uid="uid://t3g1fyasmwgx" path="res://scripts/character/components/anim_component/component_anim_empty.gd" id="7_1ohsp"]
+
+[node name="Plant1002WallNutBowling" instance=ExtResource("1_5bty5")]
+script = ExtResource("2_tojy8")
+bowling_bullet_scene = ExtResource("3_m0ob3")
+plant_type = 1002
+
+[node name="Body" parent="." index="1"]
+modulate = Color(1, 0, 0.141176, 1)
+
+[node name="_ground" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+position = Vector2(-42, -69)
+centered = false
+
+[node name="Anim_idle" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+position = Vector2(-42, -69)
+centered = false
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+position = Vector2(-38.163, -60.7476)
+rotation = -0.0454682
+scale = Vector2(0.7, 0.68937)
+texture = ExtResource("2_gedag")
+centered = false
+
+[node name="Anim_blink_twitch" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+visible = false
+position = Vector2(-14.5894, -8.3159)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_tojy8")
+centered = false
+
+[node name="Anim_blink_twice" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+visible = false
+position = Vector2(-15.7894, -22.3159)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_m0ob3")
+centered = false
+
+[node name="AnimComponent" parent="." index="2"]
+script = ExtResource("7_1ohsp")
+
+[node name="BlinkComponent" parent="." index="5"]
+is_enable_default = false

@@ -1,0 +1,204 @@
+[gd_scene load_steps=4 format=3 uid="uid://boypdb7ni1p2f"]
+
+[ext_resource type="Texture2D" uid="uid://b503mef7pqkkl" path="res://assets/image/garden/Background_Greenhouse_New.png" id="1_duho5"]
+[ext_resource type="PackedScene" uid="uid://bp3u3o8nttci" path="res://scenes/garden/plant_cell_garden.tscn" id="2_duho5"]
+[ext_resource type="Script" uid="uid://r3i58bb3k04m" path="res://scripts/garden/garden_bg_page.gd" id="2_w7gml"]
+
+[node name="BackgroundGreenhouse" type="Sprite2D"]
+texture = ExtResource("1_duho5")
+centered = false
+script = ExtResource("2_w7gml")
+
+[node name="GardenPlantCellAll" type="Node2D" parent="."]
+
+[node name="PlantCell" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 210.0
+offset_top = 115.0
+offset_right = 285.0
+offset_bottom = 190.0
+
+[node name="PlantCell2" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 290.0
+offset_top = 110.0
+offset_right = 365.0
+offset_bottom = 185.0
+
+[node name="PlantCell3" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 376.0
+offset_top = 108.0
+offset_right = 451.0
+offset_bottom = 183.0
+
+[node name="PlantCell4" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 458.0
+offset_top = 116.0
+offset_right = 533.0
+offset_bottom = 191.0
+
+[node name="PlantCell5" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 541.0
+offset_top = 112.0
+offset_right = 616.0
+offset_bottom = 187.0
+
+[node name="PlantCell6" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 623.0
+offset_top = 108.0
+offset_right = 698.0
+offset_bottom = 183.0
+
+[node name="PlantCell7" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 707.0
+offset_top = 112.0
+offset_right = 782.0
+offset_bottom = 187.0
+
+[node name="PlantCell8" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 787.0
+offset_top = 114.0
+offset_right = 862.0
+offset_bottom = 189.0
+
+[node name="PlantCell9" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 200.0
+offset_top = 215.0
+offset_right = 275.0
+offset_bottom = 290.0
+
+[node name="PlantCell10" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 283.0
+offset_top = 210.0
+offset_right = 358.0
+offset_bottom = 285.0
+
+[node name="PlantCell11" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 368.0
+offset_top = 212.0
+offset_right = 443.0
+offset_bottom = 287.0
+
+[node name="PlantCell12" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 451.0
+offset_top = 215.0
+offset_right = 526.0
+offset_bottom = 290.0
+
+[node name="PlantCell13" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 551.0
+offset_top = 214.0
+offset_right = 626.0
+offset_bottom = 289.0
+
+[node name="PlantCell14" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 636.0
+offset_top = 212.0
+offset_right = 711.0
+offset_bottom = 287.0
+
+[node name="PlantCell15" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 717.0
+offset_top = 210.0
+offset_right = 792.0
+offset_bottom = 285.0
+
+[node name="PlantCell16" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 800.0
+offset_top = 215.0
+offset_right = 875.0
+offset_bottom = 290.0
+
+[node name="PlantCell17" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 177.0
+offset_top = 312.0
+offset_right = 252.0
+offset_bottom = 387.0
+
+[node name="PlantCell18" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 264.0
+offset_top = 310.0
+offset_right = 339.0
+offset_bottom = 385.0
+
+[node name="PlantCell19" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 356.0
+offset_top = 308.0
+offset_right = 431.0
+offset_bottom = 383.0
+
+[node name="PlantCell20" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 446.0
+offset_top = 312.0
+offset_right = 521.0
+offset_bottom = 387.0
+
+[node name="PlantCell21" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 551.0
+offset_top = 311.0
+offset_right = 626.0
+offset_bottom = 386.0
+
+[node name="PlantCell22" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 643.0
+offset_top = 305.0
+offset_right = 718.0
+offset_bottom = 380.0
+
+[node name="PlantCell23" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 731.0
+offset_top = 309.0
+offset_right = 806.0
+offset_bottom = 384.0
+
+[node name="PlantCell24" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 824.0
+offset_top = 310.0
+offset_right = 899.0
+offset_bottom = 385.0
+
+[node name="PlantCell25" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 169.0
+offset_top = 411.0
+offset_right = 244.0
+offset_bottom = 486.0
+
+[node name="PlantCell26" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 260.0
+offset_top = 409.0
+offset_right = 335.0
+offset_bottom = 484.0
+
+[node name="PlantCell27" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 349.0
+offset_top = 411.0
+offset_right = 424.0
+offset_bottom = 486.0
+
+[node name="PlantCell28" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 439.0
+offset_top = 414.0
+offset_right = 514.0
+offset_bottom = 489.0
+
+[node name="PlantCell29" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 562.0
+offset_top = 417.0
+offset_right = 637.0
+offset_bottom = 492.0
+
+[node name="PlantCell30" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 651.0
+offset_top = 415.0
+offset_right = 726.0
+offset_bottom = 490.0
+
+[node name="PlantCell31" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 739.0
+offset_top = 409.0
+offset_right = 814.0
+offset_bottom = 484.0
+
+[node name="PlantCell32" parent="GardenPlantCellAll" instance=ExtResource("2_duho5")]
+offset_left = 830.0
+offset_top = 412.0
+offset_right = 905.0
+offset_bottom = 487.0

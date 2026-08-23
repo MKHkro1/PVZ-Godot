@@ -1,0 +1,225 @@
+[gd_scene load_steps=35 format=3 uid="uid://vhxn4alby3ow"]
+
+[ext_resource type="Script" uid="uid://xuptai70s00a" path="res://scripts/main_game_item/lawn_mover/pool_cleaner.gd" id="1_hjt5v"]
+[ext_resource type="Texture2D" uid="uid://d2je1pntfgimf" path="res://assets/reanim/PoolCleaner_wheel.png" id="2_fhoyp"]
+[ext_resource type="Texture2D" uid="uid://dqkdqqq613r0c" path="res://assets/reanim/PoolCleaner_body1.png" id="3_w522v"]
+[ext_resource type="Texture2D" uid="uid://dirqoy4v477t8" path="res://assets/reanim/PoolCleaner_tubeend.png" id="4_8b71b"]
+[ext_resource type="Texture2D" uid="uid://brgyp3qdtvwbp" path="res://assets/reanim/PoolCleaner_tube.png" id="5_baiuf"]
+[ext_resource type="Animation" uid="uid://bkdw0mcstrdlw" path="res://animation/item/LawnMover/PoolCleaner_land_static.tres" id="6_404b7"]
+[ext_resource type="Texture2D" uid="uid://dii400pvutu4p" path="res://assets/reanim/PoolCleaner_funnel.png" id="6_w1404"]
+[ext_resource type="Texture2D" uid="uid://cski0et40alxe" path="res://assets/reanim/PoolCleaner_funnel_overlay.png" id="7_85o48"]
+[ext_resource type="Animation" uid="uid://djyrc073gmp2a" path="res://animation/item/LawnMover/PoolCleaner_land.tres" id="12_8b71b"]
+[ext_resource type="Animation" uid="uid://cwtov38w6tqhg" path="res://animation/item/LawnMover/PoolCleaner_landsuck.tres" id="13_baiuf"]
+[ext_resource type="Animation" uid="uid://ciawtq4satiq1" path="res://animation/item/LawnMover/PoolCleaner_suck.tres" id="14_w1404"]
+[ext_resource type="Animation" uid="uid://7pkxtp31uk60" path="res://animation/item/LawnMover/PoolCleaner_water.tres" id="15_85o48"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gcy1w"]
+_data = {
+&"PoolCleaner_land": ExtResource("12_8b71b"),
+&"PoolCleaner_land_static": ExtResource("6_404b7"),
+&"PoolCleaner_landsuck": ExtResource("13_baiuf"),
+&"PoolCleaner_suck": ExtResource("14_w1404"),
+&"PoolCleaner_water": ExtResource("15_85o48")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lam7n"]
+animation = &"PoolCleaner_land"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x0jtq"]
+animation = &"PoolCleaner_land_static"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_404b7"]
+animation = &"PoolCleaner_landsuck"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p2cpk"]
+animation = &"PoolCleaner_suck"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lhpx6"]
+animation = &"PoolCleaner_water"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mfpvd"]
+advance_mode = 2
+advance_expression = "is_zombie"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0g3ak"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "not is_water"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hjt5v"]
+advance_mode = 2
+advance_expression = "is_water"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fhoyp"]
+advance_mode = 2
+advance_expression = "is_water and not is_zombie"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w522v"]
+advance_mode = 2
+advance_expression = "is_zombie"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8b71b"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "is_water"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_85o48"]
+advance_mode = 2
+advance_expression = "not is_water"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lam7n"]
+advance_mode = 2
+advance_expression = "not is_water"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_baiuf"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w1404"]
+advance_mode = 2
+advance_expression = "is_moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_404b7"]
+reset = false
+switch_mode = 1
+advance_mode = 2
+advance_expression = "is_water and is_zombie"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p2cpk"]
+reset = false
+switch_mode = 1
+advance_mode = 2
+advance_expression = "not is_water and is_zombie"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_r7t2f"]
+states/PoolCleaner_land/node = SubResource("AnimationNodeAnimation_lam7n")
+states/PoolCleaner_land/position = Vector2(387, 91)
+states/PoolCleaner_land_static/node = SubResource("AnimationNodeAnimation_x0jtq")
+states/PoolCleaner_land_static/position = Vector2(347, 17)
+states/PoolCleaner_landsuck/node = SubResource("AnimationNodeAnimation_404b7")
+states/PoolCleaner_landsuck/position = Vector2(387, 233)
+states/PoolCleaner_suck/node = SubResource("AnimationNodeAnimation_p2cpk")
+states/PoolCleaner_suck/position = Vector2(681, 91)
+states/PoolCleaner_water/node = SubResource("AnimationNodeAnimation_lhpx6")
+states/PoolCleaner_water/position = Vector2(681, 233)
+states/Start/position = Vector2(160, 55)
+transitions = ["PoolCleaner_land", "PoolCleaner_landsuck", SubResource("AnimationNodeStateMachineTransition_mfpvd"), "PoolCleaner_landsuck", "PoolCleaner_land", SubResource("AnimationNodeStateMachineTransition_0g3ak"), "PoolCleaner_land", "PoolCleaner_water", SubResource("AnimationNodeStateMachineTransition_hjt5v"), "PoolCleaner_landsuck", "PoolCleaner_water", SubResource("AnimationNodeStateMachineTransition_fhoyp"), "PoolCleaner_water", "PoolCleaner_suck", SubResource("AnimationNodeStateMachineTransition_w522v"), "PoolCleaner_suck", "PoolCleaner_water", SubResource("AnimationNodeStateMachineTransition_8b71b"), "PoolCleaner_water", "PoolCleaner_land", SubResource("AnimationNodeStateMachineTransition_85o48"), "PoolCleaner_suck", "PoolCleaner_land", SubResource("AnimationNodeStateMachineTransition_lam7n"), "Start", "PoolCleaner_land_static", SubResource("AnimationNodeStateMachineTransition_baiuf"), "PoolCleaner_land_static", "PoolCleaner_land", SubResource("AnimationNodeStateMachineTransition_w1404"), "PoolCleaner_landsuck", "PoolCleaner_suck", SubResource("AnimationNodeStateMachineTransition_404b7"), "PoolCleaner_suck", "PoolCleaner_landsuck", SubResource("AnimationNodeStateMachineTransition_p2cpk")]
+graph_offset = Vector2(261, 27)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5srnt"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_brrg7"]
+graph_offset = Vector2(-249.552, -10.592)
+nodes/output/position = Vector2(460, 60)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_r7t2f")
+nodes/StateMachine/position = Vector2(-60, 80)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_5srnt")
+nodes/TimeScale/position = Vector2(280, 60)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"StateMachine"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brrg7"]
+size = Vector2(36, 48)
+
+[node name="PoolCleaner" type="Node2D"]
+script = ExtResource("1_hjt5v")
+
+[node name="Body" type="Node2D" parent="."]
+position = Vector2(-29, -61)
+scale = Vector2(0.8, 0.8)
+
+[node name="PoolCleaner_backwheel1" type="Sprite2D" parent="Body"]
+position = Vector2(37.5, 32.9)
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("2_fhoyp")
+centered = false
+
+[node name="PoolCleaner_backwheel2" type="Sprite2D" parent="Body"]
+position = Vector2(9.1, 30.4)
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("2_fhoyp")
+centered = false
+
+[node name="PoolCleaner_body" type="Sprite2D" parent="Body"]
+position = Vector2(11.1, 14.1)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_w522v")
+centered = false
+
+[node name="PoolCleaner_body2" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="PoolCleaner_tubeend" type="Sprite2D" parent="Body"]
+position = Vector2(30.8, 15.2)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_8b71b")
+centered = false
+
+[node name="PoolCleaner_whitewater1" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="PoolCleaner_whitewater2" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="PoolCleaner_whitewater3" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="PoolCleaner_tube" type="Sprite2D" parent="Body"]
+position = Vector2(35.5, -4.2)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_baiuf")
+centered = false
+
+[node name="PoolCleaner_bubble" type="Sprite2D" parent="Body"]
+visible = false
+centered = false
+
+[node name="PoolCleaner_funnel" type="Sprite2D" parent="Body"]
+position = Vector2(41.4, -21.2)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_w1404")
+centered = false
+
+[node name="PoolCleaner_funnel_overlay" type="Sprite2D" parent="Body"]
+position = Vector2(41.6, -21.2)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_85o48")
+centered = false
+
+[node name="PoolCleaner_frontwheel1" type="Sprite2D" parent="Body"]
+position = Vector2(4.8, 51.8)
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("2_fhoyp")
+centered = false
+
+[node name="PoolCleaner_frontwheel11" type="Sprite2D" parent="Body"]
+position = Vector2(33, 50)
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("2_fhoyp")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_gcy1w")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_brrg7")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 2.0
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -23)
+collision_layer = 0
+collision_mask = 513
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, -10)
+shape = SubResource("RectangleShape2D_brrg7")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]

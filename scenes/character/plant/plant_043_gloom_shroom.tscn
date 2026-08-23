@@ -1,0 +1,774 @@
+[gd_scene load_steps=37 format=3 uid="uid://bqqakge6bmsww"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_185k3"]
+[ext_resource type="Script" uid="uid://n0ofh7q85nqc" path="res://scripts/character/plant/plant_043_gloom_shroom.gd" id="2_52sk1"]
+[ext_resource type="Texture2D" uid="uid://crmmrx3udqb0" path="res://assets/reanim/GloomShroom_base.png" id="2_bucvu"]
+[ext_resource type="Texture2D" uid="uid://crtc0e5ars06p" path="res://assets/reanim/GloomShroom_shooter4.png" id="3_f5ptl"]
+[ext_resource type="Texture2D" uid="uid://kayk4ioac4ge" path="res://assets/reanim/GloomShroom_shooter5.png" id="4_il08b"]
+[ext_resource type="Texture2D" uid="uid://dbufjppsufks" path="res://assets/reanim/GloomShroom_head.png" id="5_r6v0n"]
+[ext_resource type="Texture2D" uid="uid://buljqolbwkqsf" path="res://assets/reanim/GloomShroom_stem1.png" id="6_52sk1"]
+[ext_resource type="Texture2D" uid="uid://btqhc7w415bc4" path="res://assets/reanim/GloomShroom_shooter1.png" id="7_fdqap"]
+[ext_resource type="Texture2D" uid="uid://cxhcfy34a1jcr" path="res://assets/reanim/GloomShroom_stem2.png" id="8_xweqa"]
+[ext_resource type="Texture2D" uid="uid://blnjxkyjc8hps" path="res://assets/reanim/GloomShroom_shooter2.png" id="9_sj1qt"]
+[ext_resource type="Texture2D" uid="uid://c3vhpes4gfdnm" path="res://assets/reanim/GloomShroom_stem3.png" id="10_xenpt"]
+[ext_resource type="Texture2D" uid="uid://8xpg1e5uv1h" path="res://assets/reanim/GloomShroom_shooter3.png" id="11_kxswi"]
+[ext_resource type="Texture2D" uid="uid://dbb2pywmigtfp" path="res://assets/reanim/GloomShroom_blink1.png" id="12_1w7go"]
+[ext_resource type="Animation" uid="uid://bixk3lhrkpgdn" path="res://animation/character/plant/043_gloom_shroom/GloomShroom_idle.tres" id="13_082uc"]
+[ext_resource type="Animation" uid="uid://dfffn4scim40k" path="res://animation/character/plant/043_gloom_shroom/GloomShroom_shooting.tres" id="14_phidv"]
+[ext_resource type="Animation" uid="uid://ddnlwbrerwu06" path="res://animation/character/plant/043_gloom_shroom/GloomShroom_sleep.tres" id="15_1lckp"]
+[ext_resource type="Script" uid="uid://d27ifln7bjwup" path="res://scripts/character/components/attack_behavior_component/component_attack_bullet_base.gd" id="17_fdqap"]
+[ext_resource type="Script" uid="uid://bafp0ax1lmlge" path="res://scripts/character/components/detect_component/component_detect.gd" id="18_xweqa"]
+[ext_resource type="Texture2D" uid="uid://yjc7pkf5hdn2" path="res://assets/image/particles/bullet/PuffShroom_puff1.png" id="19_sj1qt"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_76ioa"]
+_data = {
+&"GloomShroom_idle": ExtResource("13_082uc"),
+&"GloomShroom_shooting": ExtResource("14_phidv"),
+&"GloomShroom_sleep": ExtResource("15_1lckp")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bucvu"]
+animation = &"GloomShroom_shooting"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_f5ptl"]
+fadein_time = 0.2
+fadeout_time = 0.2
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_il08b"]
+animation = &"GloomShroom_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r6v0n"]
+animation = &"GloomShroom_sleep"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_52sk1"]
+advance_mode = 2
+advance_expression = "not is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fdqap"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xweqa"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "not is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sj1qt"]
+advance_mode = 2
+advance_expression = "is_sleeping"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xenpt"]
+states/GloomShroom_idle/node = SubResource("AnimationNodeAnimation_il08b")
+states/GloomShroom_idle/position = Vector2(470, 37)
+states/GloomShroom_sleep/node = SubResource("AnimationNodeAnimation_r6v0n")
+states/GloomShroom_sleep/position = Vector2(470, 165)
+transitions = ["Start", "GloomShroom_idle", SubResource("AnimationNodeStateMachineTransition_52sk1"), "GloomShroom_idle", "GloomShroom_sleep", SubResource("AnimationNodeStateMachineTransition_fdqap"), "GloomShroom_sleep", "GloomShroom_idle", SubResource("AnimationNodeStateMachineTransition_xweqa"), "Start", "GloomShroom_sleep", SubResource("AnimationNodeStateMachineTransition_sj1qt")]
+graph_offset = Vector2(0, -51)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_kxswi"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_bucvu"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_bucvu"]
+graph_offset = Vector2(-302.349, 67.7537)
+nodes/output/position = Vector2(680, 160)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_bucvu")
+nodes/Animation/position = Vector2(-260, 400)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_f5ptl")
+nodes/OneShot/position = Vector2(280, 160)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_xenpt")
+nodes/StateMachine/position = Vector2(-40, 140)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_bucvu")
+nodes/TimeScale/position = Vector2(460, 140)
+"nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_kxswi")
+"nodes/TimeScale 2/position" = Vector2(40, 380)
+node_connections = [&"output", 0, &"TimeScale", &"OneShot", 0, &"StateMachine", &"OneShot", 1, &"TimeScale 2", &"TimeScale", 0, &"OneShot", &"TimeScale 2", 0, &"Animation"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52sk1"]
+size = Vector2(238, 204)
+
+[sub_resource type="Curve" id="Curve_52sk1"]
+_data = [Vector2(0, 1), 0.0, -0.290422, 0, 0, Vector2(0.861728, 0.703985), -1.51642, -1.51642, 0, 0, Vector2(1, 0), -3.38307, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_fdqap"]
+curve = SubResource("Curve_52sk1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_52sk1"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 5, 1)
+spread = 0.0
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -20.0
+linear_accel_max = -20.0
+scale_min = 0.9
+scale_max = 0.9
+alpha_curve = SubResource("CurveTexture_fdqap")
+
+[node name="Plant043GloomShroom" node_paths=PackedStringArray("node2d_detect_in_slope") instance=ExtResource("1_185k3")]
+script = ExtResource("2_52sk1")
+plant_type = 43
+node2d_detect_in_slope = [NodePath("HurtBoxComponent/HurtBoxDetection"), NodePath("AttackComponent/DetectComponent")]
+
+[node name="BodyCorrect" parent="Body" index="0"]
+position = Vector2(-39, -67)
+
+[node name="Anim_blink" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+visible = false
+centered = false
+
+[node name="Anim_idle" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+centered = false
+
+[node name="Anim_sleep" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+visible = false
+centered = false
+
+[node name="Anim_shooting" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
+visible = false
+centered = false
+
+[node name="GloomShroom_base" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
+position = Vector2(11.724738, 41.901047)
+scale = Vector2(0.8220105, 0.7617317)
+texture = ExtResource("2_bucvu")
+centered = false
+
+[node name="GloomShroom_shooter4" type="Sprite2D" parent="Body/BodyCorrect" index="5"]
+position = Vector2(8.349476, 3.5289288)
+scale = Vector2(0.7815157, 0.8204843)
+texture = ExtResource("3_f5ptl")
+centered = false
+
+[node name="GloomShroom_shooter42" type="Sprite2D" parent="Body/BodyCorrect" index="6"]
+position = Vector2(74.52579, 3.7289286)
+rotation = 3.14159
+scale = Vector2(0.7815157, 0.8204843)
+skew = -3.14159
+texture = ExtResource("3_f5ptl")
+centered = false
+
+[node name="GloomShroom_shooter5" type="Sprite2D" parent="Body/BodyCorrect" index="7"]
+position = Vector2(28.324738, -1.0205476)
+scale = Vector2(0.80352616, 0.8032264)
+texture = ExtResource("4_il08b")
+centered = false
+
+[node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="8"]
+position = Vector2(7.0742145, 6.027881)
+scale = Vector2(0.80352616, 0.8032264)
+texture = ExtResource("5_r6v0n")
+centered = false
+
+[node name="GloomShroom_stem1" type="Sprite2D" parent="Body/BodyCorrect" index="9"]
+position = Vector2(31.449476, 49.85157)
+scale = Vector2(0.80352616, 0.8032264)
+texture = ExtResource("6_52sk1")
+centered = false
+
+[node name="GloomShroom_shooter1" type="Sprite2D" parent="Body/BodyCorrect" index="10"]
+position = Vector2(29.22474, 52.07736)
+scale = Vector2(0.80352616, 0.8032264)
+texture = ExtResource("7_fdqap")
+centered = false
+
+[node name="GloomShroom_stem2" type="Sprite2D" parent="Body/BodyCorrect" index="11"]
+position = Vector2(9.974214, 40.702095)
+scale = Vector2(0.7815157, 0.8204843)
+texture = ExtResource("8_xweqa")
+centered = false
+
+[node name="GloomShroom_stem22" type="Sprite2D" parent="Body/BodyCorrect" index="12"]
+position = Vector2(71.25053, 41.926834)
+rotation = 3.14159
+scale = Vector2(0.7815157, 0.8204843)
+skew = -3.14159
+texture = ExtResource("8_xweqa")
+centered = false
+
+[node name="GloomShroom_shooter2" type="Sprite2D" parent="Body/BodyCorrect" index="13"]
+position = Vector2(8.3247385, 41.303143)
+scale = Vector2(0.79450524, 0.8204843)
+texture = ExtResource("9_sj1qt")
+centered = false
+
+[node name="GloomShroom_shooter22" type="Sprite2D" parent="Body/BodyCorrect" index="14"]
+position = Vector2(72.87527, 42.603146)
+rotation = 3.14159
+scale = Vector2(0.79450524, 0.8204843)
+skew = -3.14159
+texture = ExtResource("9_sj1qt")
+centered = false
+
+[node name="GloomShroom_stem3" type="Sprite2D" parent="Body/BodyCorrect" index="15"]
+position = Vector2(2.7742143, 24.427881)
+scale = Vector2(0.79102093, 0.8204843)
+texture = ExtResource("10_xenpt")
+centered = false
+
+[node name="GloomShroom_stem32" type="Sprite2D" parent="Body/BodyCorrect" index="16"]
+position = Vector2(78.501045, 25.652618)
+rotation = 3.14159
+scale = Vector2(0.79102093, 0.8204843)
+skew = -3.14159
+texture = ExtResource("10_xenpt")
+centered = false
+
+[node name="GloomShroom_shooter3" type="Sprite2D" parent="Body/BodyCorrect" index="17"]
+position = Vector2(0.04947619, 22.52788)
+scale = Vector2(0.79102093, 0.8204843)
+texture = ExtResource("11_kxswi")
+centered = false
+
+[node name="GloomShroom_shooter32" type="Sprite2D" parent="Body/BodyCorrect" index="18"]
+position = Vector2(81.30105, 23.82788)
+rotation = 3.14159
+scale = Vector2(0.79102093, 0.8204843)
+skew = -3.14159
+texture = ExtResource("11_kxswi")
+centered = false
+
+[node name="GloomShroom_face" type="Sprite2D" parent="Body/BodyCorrect" index="19"]
+visible = false
+centered = false
+
+[node name="Blink" type="Sprite2D" parent="Body/BodyCorrect" index="20"]
+visible = false
+position = Vector2(15, 12)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("12_1w7go")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_76ioa")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+deterministic = false
+tree_root = SubResource("AnimationNodeBlendTree_bucvu")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
+parameters/TimeScale/scale = 1.0
+"parameters/TimeScale 2/scale" = 1.0
+
+[node name="AttackComponent" type="Node2D" parent="." index="10"]
+script = ExtResource("17_fdqap")
+is_lane = false
+attack_cd = 2.0
+attack_bullet_type = 4
+attack_sfx = &"Fume"
+
+[node name="DetectComponent" type="Node2D" parent="AttackComponent" index="0"]
+script = ExtResource("18_xweqa")
+is_lane = false
+
+[node name="Area2D" type="Area2D" parent="AttackComponent/DetectComponent" index="0"]
+position = Vector2(0, -25)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/DetectComponent/Area2D" index="0"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_52sk1")
+
+[node name="BulletAttackCdTimer" type="Timer" parent="AttackComponent" index="1"]
+
+[node name="AllBullet_FX" type="Node2D" parent="." index="11"]
+
+[node name="Bullet_FX" type="Node2D" parent="AllBullet_FX" index="0"]
+unique_name_in_owner = true
+position = Vector2(-0.00109863, -32.7102)
+scale = Vector2(1.01359, 0.986498)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX" index="0"]
+z_index = 10
+position = Vector2(36.789, 3.25569)
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX" index="1"]
+z_index = -1
+position = Vector2(27.0166, -17.8081)
+rotation = -0.867057
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX" index="2"]
+z_index = -1
+position = Vector2(0.994317, -24.8978)
+rotation = -1.55838
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX" index="3"]
+z_index = -1
+position = Vector2(-23.3389, -19.4305)
+rotation = -2.21739
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D5" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX" index="4"]
+z_index = 10
+position = Vector2(-36.1748, 3.05054)
+rotation = -3.1483
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D6" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX" index="5"]
+z_index = 10
+position = Vector2(-23.7739, 19.6365)
+rotation = -3.96804
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D7" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX" index="6"]
+z_index = 10
+position = Vector2(1.0507, 30.6649)
+rotation = -4.7097
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D8" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX" index="7"]
+z_index = 10
+position = Vector2(25.9936, 21.9023)
+rotation = -5.39906
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="Bullet_FX2" type="Node2D" parent="AllBullet_FX" index="1"]
+unique_name_in_owner = true
+position = Vector2(-0.00109863, -32.7102)
+scale = Vector2(1.01359, 0.986498)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX2" index="0"]
+z_index = 10
+position = Vector2(36.789, 3.25569)
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX2" index="1"]
+z_index = -1
+position = Vector2(27.0166, -17.8081)
+rotation = -0.867057
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX2" index="2"]
+z_index = -1
+position = Vector2(0.994317, -24.8978)
+rotation = -1.55838
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX2" index="3"]
+z_index = -1
+position = Vector2(-23.3389, -19.4305)
+rotation = -2.21739
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D5" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX2" index="4"]
+z_index = 10
+position = Vector2(-36.1748, 3.05054)
+rotation = -3.1483
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D6" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX2" index="5"]
+z_index = 10
+position = Vector2(-23.7739, 19.6365)
+rotation = -3.96804
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D7" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX2" index="6"]
+z_index = 10
+position = Vector2(1.0507, 30.6649)
+rotation = -4.7097
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D8" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX2" index="7"]
+z_index = 10
+position = Vector2(25.9936, 21.9023)
+rotation = -5.39906
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="Bullet_FX3" type="Node2D" parent="AllBullet_FX" index="2"]
+unique_name_in_owner = true
+position = Vector2(-0.00109863, -32.7102)
+scale = Vector2(1.01359, 0.986498)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX3" index="0"]
+z_index = 10
+position = Vector2(36.789, 3.25569)
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX3" index="1"]
+z_index = -1
+position = Vector2(27.0166, -17.8081)
+rotation = -0.867057
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX3" index="2"]
+z_index = -1
+position = Vector2(0.994317, -24.8978)
+rotation = -1.55838
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX3" index="3"]
+z_index = -1
+position = Vector2(-23.3389, -19.4305)
+rotation = -2.21739
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D5" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX3" index="4"]
+z_index = 10
+position = Vector2(-36.1748, 3.05054)
+rotation = -3.1483
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D6" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX3" index="5"]
+z_index = 10
+position = Vector2(-23.7739, 19.6365)
+rotation = -3.96804
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D7" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX3" index="6"]
+z_index = 10
+position = Vector2(1.0507, 30.6649)
+rotation = -4.7097
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D8" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX3" index="7"]
+z_index = 10
+position = Vector2(25.9936, 21.9023)
+rotation = -5.39906
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="Bullet_FX4" type="Node2D" parent="AllBullet_FX" index="3"]
+unique_name_in_owner = true
+position = Vector2(-0.00109863, -32.7102)
+scale = Vector2(1.01359, 0.986498)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX4" index="0"]
+z_index = 10
+position = Vector2(36.789, 3.25569)
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX4" index="1"]
+z_index = -1
+position = Vector2(27.0166, -17.8081)
+rotation = -0.867057
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX4" index="2"]
+z_index = -1
+position = Vector2(0.994317, -24.8978)
+rotation = -1.55838
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX4" index="3"]
+z_index = -1
+position = Vector2(-23.3389, -19.4305)
+rotation = -2.21739
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D5" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX4" index="4"]
+z_index = 10
+position = Vector2(-36.1748, 3.05054)
+rotation = -3.1483
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D6" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX4" index="5"]
+z_index = 10
+position = Vector2(-23.7739, 19.6365)
+rotation = -3.96804
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D7" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX4" index="6"]
+z_index = 10
+position = Vector2(1.0507, 30.6649)
+rotation = -4.7097
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[node name="GPUParticles2D8" type="GPUParticles2D" parent="AllBullet_FX/Bullet_FX4" index="7"]
+z_index = 10
+position = Vector2(25.9936, 21.9023)
+rotation = -5.39906
+scale = Vector2(0.972908, 1.0289)
+skew = -0.0453321
+emitting = false
+amount = 5
+texture = ExtResource("19_sj1qt")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_52sk1")
+
+[connection signal="timeout" from="AttackComponent/BulletAttackCdTimer" to="AttackComponent" method="_on_bullet_attack_cd_timer_timeout"]
