@@ -1,7 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bdae4201munk0"]
 
 [ext_resource type="PackedScene" uid="uid://b2soejmoqi7wd" path="res://scenes/main/MainGame00Base.tscn" id="1_p4tip"]
-[ext_resource type="Resource" uid="uid://c8hxvxxt7hdo6" path="res://resources/level_date_resource/mode_adventure/adventure_05_Roof_test.tres" id="2_8jftm"]
 [ext_resource type="Texture2D" uid="uid://bq56gu2rrtxdd" path="res://assets/image/background/background5.jpg" id="2_656vs"]
 [ext_resource type="Script" uid="uid://c1v0j24twli6i" path="res://scripts/main_game_item/back_ground/main_game_slope.gd" id="3_8ubs5"]
 [ext_resource type="PackedScene" uid="uid://brnfbv2sxv2qh" path="res://scenes/ui/plant_cell.tscn" id="3_656vs"]
@@ -10,7 +9,6 @@
 
 [node name="MainGame03Roof" node_paths=PackedStringArray("main_game_slope") instance=ExtResource("1_p4tip")]
 main_game_slope = NodePath("CanvasLayerBG/Background/RoofSlope")
-game_para = ExtResource("2_8jftm")
 
 [node name="Background" parent="CanvasLayerBG" index="0"]
 texture = ExtResource("2_656vs")

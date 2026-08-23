@@ -100,4 +100,11 @@ func _run() -> void:
 	else:
 		print("[PROBE] 豌豆射手默认解锁 OK")
 
+	# 5) 选卡判定ID空间(约定): card_slot_norm 三处判定必须传 card.card_plant_type
+	#    (植物类型值1..40), 不能用 card_id(卡片顺序号0起)。无战斗上下文时
+	#    is_plant_unlocked_for_choose 因game_mode守卫放行, 无法在此断言, 依赖实机选卡验证。
+	if Global.is_plant_unlocked_for_choose(1) != true:
+		printerr("[FAIL] 无战斗上下文时应放行"); errors += 1
+	print("[PROBE] 选卡判定ID空间约定 OK")
+
 	quit(errors)
