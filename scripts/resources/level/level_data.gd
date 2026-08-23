@@ -198,8 +198,6 @@ func set_choose_level(curr_game_mode:Global.MainScenes, curr_level_page:int, cur
 @export_group("卡片参数")
 ## 卡槽模式，只有Norm可以选卡
 @export var card_mode : E_CardMode = E_CardMode.Norm
-## 僵王博士Boss战(冒险5-10最终关/小游戏): 关卡启动时生成僵王
-@export var is_zomboss_fight : bool = false
 ## 是否有种子雨
 @export var is_seed_rain := false
 @export_subgroup("正常卡槽参数")
