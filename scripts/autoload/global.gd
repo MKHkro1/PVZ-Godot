@@ -316,8 +316,35 @@ func is_plant_unlocked_for_choose(plant_type:int) -> bool:
 		return true
 	return plant_type in curr_unlocked_plants
 
-## 旧存档迁移: 按已通关的冒险关卡回填已解锁植物
+## 豌豆射手始终默认解锁(任何存档加载/迁移后兜底)
+func ensure_pea_shooter_unlocked() -> void:
+	if not (PlantType.P001PeaShooterSingle in curr_unlocked_plants):
+		curr_unlocked_plants.insert(0, PlantType.P001PeaShooterSingle)
+
+## 冒险模式总关数
+const ADVENTURE_LEVEL_COUNT := 50
+## 冒险模式当前进度(0-49): 点冒险模式直接进入该关, 通关后+1, 50关后轮回回1-1
+var adventure_next_index:int = 0
+
+## 冒险模式关卡序号 -> 关卡资源路径(序号4即原版1-5坚果保龄球特殊关)
+func _adventure_level_res_path(idx:int) -> String:
+	if idx == 4:
+		return "res://resources/level_date_resource/mode_minigame/minigame_01_bowling.tres"
+	var stage:int = floori(idx / 10.0)
+	var pos:int = idx % 10
+	return "res://resources/level_date_resource/mode_adventure/adventure_%d_%02d.tres" % [stage + 1, pos + 1]
+
+## 无选关界面: 直接进入当前进度的冒险关卡(沿用选关按钮的参数装配方式)
+func start_adventure_next_level() -> void:
+	var idx:int = adventure_next_index % ADVENTURE_LEVEL_COUNT
+	var para:ResourceLevelData = load(_adventure_level_res_path(idx))
+	para.set_choose_level(MainScenes.ChooseLevelAdventure, floori(idx / 10.0), "%04d" % (idx + 1))
+	game_para = para
+	SceneTransition.change_scene(MainScenesMap[para.game_sences])
+
+## 旧存档迁移: 按已通关的冒险关卡回填已解锁植物, 并推导冒险进度
 func _migrate_unlocked_plants_from_progress() -> void:
+	var max_idx := -1
 	for save_name:String in curr_all_level_state_data:
 		var state:Dictionary = curr_all_level_state_data[save_name]
 		if not state.get("IsSuccess", false):
@@ -326,7 +353,12 @@ func _migrate_unlocked_plants_from_progress() -> void:
 		## save_game_name 格式: "{mode}_{page}_{id}"
 		if parts.size() < 3 or parts[0] != "101":
 			continue
-		unlock_adventure_reward_plant(int(parts[parts.size() - 1]) - 1, true)
+		var idx := int(parts[parts.size() - 1]) - 1
+		max_idx = maxi(max_idx, idx)
+		unlock_adventure_reward_plant(idx, true)
+	## 已通关最高关的下一关作为续玩起点(全部通关则轮回回1-1)
+	if max_idx >= 0:
+		adventure_next_index = (max_idx + 1) % ADVENTURE_LEVEL_COUNT
 """
 ## 一个关卡的游戏状态的例子
 var curr_one_level_state_data:Dictionary = {
@@ -388,6 +420,7 @@ func save_global_game_data() -> void:
 		"curr_num_new_garden_plant": curr_num_new_garden_plant,
 		"curr_all_level_state_data": curr_all_level_state_data,
 		"curr_unlocked_plants": curr_unlocked_plants,
+		"adventure_next_index": adventure_next_index,
 	}
 	var save_game_path = "user://" + curr_user_name + "/GlobalSaveGame.json"
 	save_json(data, save_game_path)
@@ -409,6 +442,10 @@ func load_global_game_data() -> void:
 			curr_unlocked_plants.append(int(p))
 	else:
 		_migrate_unlocked_plants_from_progress()
+	## 豌豆射手始终默认解锁
+	ensure_pea_shooter_unlocked()
+	## 冒险进度存档(旧档无此字段时按通关记录推导)
+	adventure_next_index = int(data.get("adventure_next_index", 0)) if data.has("adventure_next_index") else adventure_next_index
 #endregion
 
 #region 保存上次选卡信息

@@ -469,7 +469,11 @@ func win_main_game():
 	## 多轮游戏，重置主游戏数据
 	if game_para.game_round != 1:
 		re_main_game()
-	SceneTransition.change_scene(Global.MainScenesMap.get(game_para.game_mode, Global.MainScenesMap[Global.MainScenes.StartMenu]))
+	## 冒险模式已无选关界面: 通关记录档案后回主菜单(下次点开始游戏自动续下一关)
+	if game_para.game_mode == Global.MainScenes.ChooseLevelAdventure:
+		SceneTransition.change_scene(Global.MainScenesMap[Global.MainScenes.StartMenu])
+	else:
+		SceneTransition.change_scene(Global.MainScenesMap.get(game_para.game_mode, Global.MainScenesMap[Global.MainScenes.StartMenu]))
 
 #endregion
 
@@ -555,9 +559,10 @@ func update_level_state_data_success():
 	var curr_level_state_data:Dictionary = Global.curr_all_level_state_data.get(game_para.save_game_name, {})
 	curr_level_state_data["IsSuccess"] = true
 	Global.curr_all_level_state_data[game_para.save_game_name] = curr_level_state_data
-	## 冒险模式: 通关解锁奖励植物(原版每关一个)
+	## 冒险模式: 通关解锁奖励植物(原版每关一个), 并推进进度(50关后轮回回1-1)
 	if game_para.game_mode == Global.MainScenes.ChooseLevelAdventure:
 		Global.unlock_adventure_reward_plant(int(game_para.level_id) - 1)
+		Global.adventure_next_index = (int(Global.adventure_next_index) + 1) % 50
 	Global.save_global_game_data()
 
 ## 冒险模式行限制: 可用行之外的格子禁种禁僵尸并隐藏(原版1-1单行/1-2三行)

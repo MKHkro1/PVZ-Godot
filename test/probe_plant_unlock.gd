@@ -60,13 +60,44 @@ func _run() -> void:
 	Global.curr_all_level_state_data["101_0_0003"] = {"IsSuccess": true}
 	Global.curr_all_level_state_data["101_0_0037"] = {"IsSuccess": true}
 	Global._migrate_unlocked_plants_from_progress()
-	# 应解锁 idx0(->2) idx1(->3) idx2(->4) idx26(stage3,pos6->31南瓜)
+	# 应解锁 idx0(->2) idx1(->3) idx2(->4) idx36(stage3,pos6->31南瓜)
 	if Global.curr_unlocked_plants.size() != 5:
 		printerr("[FAIL] 迁移后应有5个植物, 实际=", Global.curr_unlocked_plants); errors += 1
 	else:
 		for want in [2, 3, 4, 31]:
 			if not (want in Global.curr_unlocked_plants):
 				printerr("[FAIL] 迁移缺植物", want); errors += 1
-	print("[PROBE] 旧档迁移 OK")
+	# 进度推导: 已通关最高 idx36 -> 下一关 37
+	if Global.adventure_next_index != 37:
+		printerr("[FAIL] 迁移进度应为37, 实际=", Global.adventure_next_index); errors += 1
+	else:
+		print("[PROBE] 旧档迁移+进度推导 OK")
+
+	# 5) 关卡路径映射与轮回
+	if Global._adventure_level_res_path(0) != "res://resources/level_date_resource/mode_adventure/adventure_1_01.tres":
+		printerr("[FAIL] idx0 路径错误: ", Global._adventure_level_res_path(0)); errors += 1
+	if Global._adventure_level_res_path(4) != "res://resources/level_date_resource/mode_minigame/minigame_01_bowling.tres":
+		printerr("[FAIL] idx4 应为保龄球: ", Global._adventure_level_res_path(4)); errors += 1
+	if Global._adventure_level_res_path(49) != "res://resources/level_date_resource/mode_adventure/adventure_5_10.tres":
+		printerr("[FAIL] idx49 路径错误: ", Global._adventure_level_res_path(49)); errors += 1
+	# 50关轮回: 从49推进 -> 0
+	var wrapped:int = (49 + 1) % 50
+	if wrapped != 0:
+		printerr("[FAIL] 轮回计算错误"); errors += 1
+	# 每个序号的资源都存在且可加载(idx4为小游戏资源)
+	for i in range(50):
+		var rp:String = Global._adventure_level_res_path(i)
+		if not ResourceLoader.exists(rp):
+			printerr("[FAIL] 序号", i, "资源缺失: ", rp); errors += 1
+	print("[PROBE] 路径映射+轮回 OK")
+
+	# 4) 豌豆射手始终默认解锁
+	Global.curr_unlocked_plants.clear()
+	Global.curr_unlocked_plants.append(16)
+	Global.ensure_pea_shooter_unlocked()
+	if Global.curr_unlocked_plants.size() != 2 or Global.curr_unlocked_plants[0] != 1:
+		printerr("[FAIL] 豌豆射手兜底失败: ", Global.curr_unlocked_plants); errors += 1
+	else:
+		print("[PROBE] 豌豆射手默认解锁 OK")
 
 	quit(errors)
