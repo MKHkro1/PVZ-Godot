@@ -574,6 +574,12 @@ func _apply_usable_row_limit() -> void:
 		for cell in plant_cell_manager.all_plant_cells[i]:
 			cell.set_row_limit_no_plant()
 			cell.visible = false
+	## 隐藏受限行的小推车(避免悬浮在裁剪掉的草坪上)
+	await get_tree().process_frame
+	var mowers := lawn_mover_manager.all_lawn_movers
+	for i in mowers.size():
+		if not (i in rows) and is_instance_valid(mowers[i]):
+			mowers[i].visible = false
 
 ## 更新当前关卡数据 (多轮游戏)
 func update_level_state_data_multi_round_data(is_have_multi_round_data:=true):
