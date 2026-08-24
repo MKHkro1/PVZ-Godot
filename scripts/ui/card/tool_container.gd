@@ -16,5 +16,5 @@ func _ready() -> void:
 func _sync_to_card_slot() -> void:
 	if not is_instance_valid(_card_slot_container):
 		return
-	position = Vector2(_card_slot_container.size.x - TOOL_WIDTH, 0.0)
+	position = Vector2(_card_slot_container.position.x + _card_slot_container.size.x, 0.0)
 	z_index = 10

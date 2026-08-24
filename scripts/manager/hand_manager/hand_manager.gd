@@ -74,7 +74,7 @@ func _click_shovel() -> void:
 func _click_glove() -> void:
 	if not is_instance_valid(Global.main_game) or not Global.main_game.card_manager.is_glove:
 		return
-	if hm_item.ui_glove.is_on_cooldown():
+	if not Global.glove_no_cooldown and hm_item.ui_glove.is_on_cooldown():
 		SoundManager.play_other_SFX("buzzer")
 		return
 	SoundManager.play_other_SFX("seedlift")

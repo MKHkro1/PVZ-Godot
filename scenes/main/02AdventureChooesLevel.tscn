@@ -55,7 +55,6 @@
 [ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_1_03.tres" id="L13"]
 [ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_1_04.tres" id="L14"]
 [ext_resource type="Resource" uid="uid://c8yt6n65ponc6" path="res://resources/level_date_resource/mode_minigame/minigame_01_bowling.tres" id="MG1"]
-[ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_1_05.tres" id="L15"]
 [ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_1_06.tres" id="L16"]
 [ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_1_07.tres" id="L17"]
 [ext_resource type="Resource" path="res://resources/level_date_resource/mode_adventure/adventure_1_08.tres" id="L18"]

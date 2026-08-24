@@ -11,20 +11,25 @@ func _ready() -> void:
 	EventBus.subscribe("main_game_progress_update", _on_main_game_progress_update)
 
 #region 卡槽处于焦点时置顶
+func _is_main_game_active() -> bool:
+	return is_instance_valid(Global.main_game) \
+		and Global.main_game.main_game_progress == MainGameManager.E_MainGameProgress.MAIN_GAME
+
+
 func _on_bg_mouse_entered() -> void:
-	if Global.card_slot_top_mouse_focus and Global.main_game.main_game_progress == MainGameManager.E_MainGameProgress.MAIN_GAME:
+	if Global.card_slot_top_mouse_focus and _is_main_game_active():
 		# 鼠标进入时，提高z_index，保证在前面显示
 		layer = 10
 
 func _on_bg_mouse_exited() -> void:
-	if Global.card_slot_top_mouse_focus and Global.main_game.main_game_progress == MainGameManager.E_MainGameProgress.MAIN_GAME:
+	if Global.card_slot_top_mouse_focus and _is_main_game_active():
 		# 鼠标离开时，恢复原始
 		layer = -1
 
 ## 修改控制台按钮时
 ## 植物卡槽取消置顶,取消鼠标焦点卡槽置顶时
 func card_slot_top_mouse_focus():
-	if not Global.card_slot_top_mouse_focus and Global.main_game.main_game_progress == MainGameManager.E_MainGameProgress.MAIN_GAME:
+	if not Global.card_slot_top_mouse_focus and _is_main_game_active():
 		layer = -1
 
 #endregion
@@ -38,4 +43,3 @@ func _on_main_game_progress_update(main_game_progress:MainGameManager.E_MainGame
 			layer = 10
 		MainGameManager.E_MainGameProgress.MAIN_GAME:
 			layer = -1
-

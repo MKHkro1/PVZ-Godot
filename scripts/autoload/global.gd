@@ -310,6 +310,8 @@ func unlock_adventure_reward_plant(level_index:int, silent := false) -> bool:
 
 ## 当前游戏模式下该植物是否可选(仅冒险模式受解锁限制)
 func is_plant_unlocked_for_choose(plant_type:int) -> bool:
+	if unlock_all_plants:
+		return true
 	if main_game == null or main_game.game_para == null:
 		return true
 	if main_game.game_para.game_mode != MainScenes.ChooseLevelAdventure:
@@ -561,6 +563,10 @@ var plant_be_shovel_front := true	## 预铲除植物本格置顶
 
 ## 打开所有关卡，默认为冒险开放1关，其余开放三关,无尽模式默认开放
 var open_all_level := false
+## 冒险选卡时解锁全部植物
+var unlock_all_plants := false
+## 手套使用后无冷却
+var glove_no_cooldown := false
 
 var time_scale := 1.0
 
@@ -582,6 +588,8 @@ func save_config():
 	config.set_value("user_control", "fog_is_static", fog_is_static)
 	config.set_value("user_control", "plant_be_shovel_front", plant_be_shovel_front)
 	config.set_value("user_control", "open_all_level", open_all_level)
+	config.set_value("user_control", "unlock_all_plants", unlock_all_plants)
+	config.set_value("user_control", "glove_no_cooldown", glove_no_cooldown)
 
 	config.save(config_path)
 
@@ -617,6 +625,8 @@ func load_config():
 	fog_is_static = config.get_value("user_control", "fog_is_static", false)
 	plant_be_shovel_front = config.get_value("user_control", "plant_be_shovel_front", true)
 	open_all_level = config.get_value("user_control", "open_all_level", false)
+	unlock_all_plants = config.get_value("user_control", "unlock_all_plants", false)
+	glove_no_cooldown = config.get_value("user_control", "glove_no_cooldown", false)
 #endregion
 
 #region 当前植物和僵尸

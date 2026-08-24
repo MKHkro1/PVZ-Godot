@@ -213,15 +213,7 @@ func create_plant(plant_type:Global.PlantType, is_imitater:=false, is_plant_star
 
 		## 如果是down位置植物，修改中间植物节点顺序， 提高中间植物和壳的位置,
 		if plant_condition.place_plant_in_cell == Global.PlacePlantInCell.Down:
-			#plant = plant as PlantDownBase
-			## 修改PlantNorm和PlantShell为底部植物节点上下移动节点的子节点
-			remove_child(plant_container_node[Global.PlacePlantInCell.Norm])
-			plant.down_plant_container.add_child(plant_container_node[Global.PlacePlantInCell.Norm])
-			plant_container_node[Global.PlacePlantInCell.Norm].global_position = plant_postion_node_ori_global_position[Global.PlacePlantInCell.Norm] - plant.plant_up_position
-
-			remove_child(plant_container_node[Global.PlacePlantInCell.Shell])
-			plant.down_plant_container.add_child(plant_container_node[Global.PlacePlantInCell.Shell])
-			plant_container_node[Global.PlacePlantInCell.Shell].global_position = plant_postion_node_ori_global_position[Global.PlacePlantInCell.Shell] - plant.plant_up_position
+			_reparent_norm_shell_under_down(plant as Plant000DownBase)
 
 	signal_plant_create.emit(self, plant.plant_type)
 
@@ -514,26 +506,28 @@ func get_curr_plant_num()->int:
 		curr_plant_num += 1
 	return curr_plant_num
 
-## 手套从格子摘下植物(不销毁)
-func glove_detach_plant(plant: Plant000Base) -> void:
+## 手套从格子摘下植物(不销毁); 返回随花盆/睡莲一起搬走的叠放植物
+func glove_detach_plant(plant: Plant000Base) -> Array[Plant000Base]:
+	var carried_stack: Array[Plant000Base] = []
 	if plant.plant_type == Global.PlantType.P048CobCannon:
 		_glove_detach_cob_cannon(plant as Plant048CobCannon)
-		return
+		return carried_stack
 	var plant_condition: ResourcePlantCondition = Global.get_plant_info(
 		plant.plant_type, Global.PlantInfoAttribute.PlantConditionResource
 	)
 	var place := plant_condition.place_plant_in_cell
 	if plant_in_cell.get(place) != plant:
-		return
+		return carried_stack
 	plant_in_cell[place] = null
 	plant.plant_cell = null
 	if place == Global.PlacePlantInCell.Down and plant is Plant000DownBase:
-		_glove_clear_stacked_on_down(plant)
+		carried_stack = _glove_take_stacked_plants_for_carry()
+		_detach_down_plant_containers(plant as Plant000DownBase)
 		down_plant_change_condition(plant_cell_type == PlantCellType.Pool)
 	signal_plant_free.emit(self, plant.plant_type)
-	_glove_remove_plant_from_tree(plant)
+	return carried_stack
 
-func glove_attach_plant(plant: Plant000Base) -> bool:
+func glove_attach_plant(plant: Plant000Base, carried_stack: Array[Plant000Base] = []) -> bool:
 	if plant.plant_type == Global.PlantType.P048CobCannon:
 		return _glove_attach_cob_cannon(plant as Plant048CobCannon)
 	var plant_condition: ResourcePlantCondition = Global.get_plant_info(
@@ -555,23 +549,14 @@ func glove_attach_plant(plant: Plant000Base) -> bool:
 	plant.lane = row_col.x
 	var container = plant_container_node[place]
 	if plant.get_parent() != container:
-		container.add_child(plant)
+		plant.reparent(container)
 	plant.position = Vector2.ZERO
 	plant.z_index = 0
 	plant_in_cell[place] = plant
 	if place == Global.PlacePlantInCell.Down and plant is Plant000DownBase:
 		var down_plant := plant as Plant000DownBase
-		remove_child(plant_container_node[Global.PlacePlantInCell.Norm])
-		down_plant.down_plant_container.add_child(plant_container_node[Global.PlacePlantInCell.Norm])
-		plant_container_node[Global.PlacePlantInCell.Norm].global_position = (
-			plant_postion_node_ori_global_position[Global.PlacePlantInCell.Norm] - down_plant.plant_up_position
-		)
-		remove_child(plant_container_node[Global.PlacePlantInCell.Shell])
-		down_plant.down_plant_container.add_child(plant_container_node[Global.PlacePlantInCell.Shell])
-		plant_container_node[Global.PlacePlantInCell.Shell].global_position = (
-			plant_postion_node_ori_global_position[Global.PlacePlantInCell.Shell] - down_plant.plant_up_position
-		)
-		_glove_restore_stacked_on_down(down_plant)
+		_reparent_norm_shell_under_down(down_plant)
+		_glove_restore_carried_stack(carried_stack)
 		down_plant_change_condition(plant_cell_type == PlantCellType.Pool)
 	signal_plant_create.emit(self, plant.plant_type)
 	return true
@@ -616,12 +601,6 @@ func _glove_detach_cob_cannon(cannon: Plant048CobCannon) -> void:
 			cannon.signal_character_death.disconnect(death_cb)
 		cannon.plant_cell_next = null
 	rear.signal_plant_free.emit(rear, cannon.plant_type)
-	_glove_remove_plant_from_tree(cannon)
-
-func _glove_remove_plant_from_tree(plant: Plant000Base) -> void:
-	var parent := plant.get_parent()
-	if is_instance_valid(parent):
-		parent.remove_child(plant)
 
 func _glove_attach_cob_cannon(cannon: Plant048CobCannon) -> bool:
 	if not _glove_can_attach_cob_cannon(cannon):
@@ -632,7 +611,7 @@ func _glove_attach_cob_cannon(cannon: Plant048CobCannon) -> bool:
 	cannon.lane = row_col.x
 	var container = plant_container_node[Global.PlacePlantInCell.Norm]
 	if cannon.get_parent() != container:
-		container.add_child(cannon)
+		cannon.reparent(container)
 	cannon.position = Vector2.ZERO
 	cannon.z_index = 0
 	plant_in_cell[Global.PlacePlantInCell.Norm] = cannon
@@ -660,42 +639,66 @@ func _glove_can_attach_cob_cannon(cannon: Plant048CobCannon) -> bool:
 			return false
 	return true
 
-func _glove_clear_stacked_on_down(down_plant: Plant000Base) -> void:
+func _glove_take_stacked_plants_for_carry() -> Array[Plant000Base]:
+	var taken: Array[Plant000Base] = []
 	for place in [
 		Global.PlacePlantInCell.Norm,
 		Global.PlacePlantInCell.Shell,
 		Global.PlacePlantInCell.Float,
 	]:
 		var stacked: Plant000Base = plant_in_cell[place]
-		if is_instance_valid(stacked) and down_plant.is_ancestor_of(stacked):
-			plant_in_cell[place] = null
-			stacked.plant_cell = null
+		if not is_instance_valid(stacked):
+			continue
+		plant_in_cell[place] = null
+		stacked.plant_cell = null
+		taken.append(stacked)
+	return taken
 
-func _glove_restore_stacked_on_down(down_plant: Plant000DownBase) -> void:
-	for place in [
-		Global.PlacePlantInCell.Norm,
-		Global.PlacePlantInCell.Shell,
-		Global.PlacePlantInCell.Float,
-	]:
-		for child in plant_container_node[place].get_children():
-			if child is Plant000Base:
-				var stacked: Plant000Base = child
-				plant_in_cell[place] = stacked
-				stacked.plant_cell = self
-				stacked.row_col = row_col
-				stacked.lane = row_col.x
+func _glove_restore_carried_stack(carried_stack: Array[Plant000Base]) -> void:
+	for stacked in carried_stack:
+		if not is_instance_valid(stacked):
+			continue
+		var plant_condition: ResourcePlantCondition = Global.get_plant_info(
+			stacked.plant_type, Global.PlantInfoAttribute.PlantConditionResource
+		)
+		var place := plant_condition.place_plant_in_cell
+		var container = plant_container_node[place]
+		if stacked.get_parent() != container:
+			stacked.reparent(container)
+		stacked.position = Vector2.ZERO
+		stacked.z_index = 0
+		stacked.plant_cell = self
+		stacked.row_col = row_col
+		stacked.lane = row_col.x
+		plant_in_cell[place] = stacked
+
+func _reparent_norm_shell_under_down(down_plant: Plant000DownBase) -> void:
+	var norm_container: Control = plant_container_node[Global.PlacePlantInCell.Norm]
+	if is_instance_valid(norm_container) and norm_container.get_parent() == self:
+		remove_child(norm_container)
+		down_plant.down_plant_container.add_child(norm_container)
+		norm_container.global_position = (
+			plant_postion_node_ori_global_position[Global.PlacePlantInCell.Norm] - down_plant.plant_up_position
+		)
+	var shell_container: Control = plant_container_node[Global.PlacePlantInCell.Shell]
+	if is_instance_valid(shell_container) and shell_container.get_parent() == self:
+		remove_child(shell_container)
+		down_plant.down_plant_container.add_child(shell_container)
+		shell_container.global_position = (
+			plant_postion_node_ori_global_position[Global.PlacePlantInCell.Shell] - down_plant.plant_up_position
+		)
 
 func _detach_down_plant_containers(down_plant: Plant000DownBase) -> void:
-	down_plant.down_plant_container.remove_child(plant_container_node[Global.PlacePlantInCell.Norm])
-	add_child(plant_container_node[Global.PlacePlantInCell.Norm])
-	plant_container_node[Global.PlacePlantInCell.Norm].global_position = (
-		plant_postion_node_ori_global_position[Global.PlacePlantInCell.Norm]
-	)
-	down_plant.down_plant_container.remove_child(plant_container_node[Global.PlacePlantInCell.Shell])
-	add_child(plant_container_node[Global.PlacePlantInCell.Shell])
-	plant_container_node[Global.PlacePlantInCell.Shell].global_position = (
-		plant_postion_node_ori_global_position[Global.PlacePlantInCell.Shell]
-	)
+	var norm_container: Control = plant_container_node[Global.PlacePlantInCell.Norm]
+	if is_instance_valid(norm_container) and norm_container.get_parent() == down_plant.down_plant_container:
+		down_plant.down_plant_container.remove_child(norm_container)
+		add_child(norm_container)
+		norm_container.global_position = plant_postion_node_ori_global_position[Global.PlacePlantInCell.Norm]
+	var shell_container: Control = plant_container_node[Global.PlacePlantInCell.Shell]
+	if is_instance_valid(shell_container) and shell_container.get_parent() == down_plant.down_plant_container:
+		down_plant.down_plant_container.remove_child(shell_container)
+		add_child(shell_container)
+		shell_container.global_position = plant_postion_node_ori_global_position[Global.PlacePlantInCell.Shell]
 
 ## 鼠标移动检测
 #func _input(event):

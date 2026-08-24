@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		_end_cooldown()
 
 func _on_button_pressed() -> void:
-	if _is_cooling:
+	if not Global.glove_no_cooldown and _is_cooling:
 		SoundManager.play_other_SFX("buzzer")
 		return
 	glove_icon.visible = false
@@ -34,6 +34,8 @@ func ui_glove_appear() -> void:
 		glove_icon.visible = true
 
 func start_cooldown() -> void:
+	if Global.glove_no_cooldown:
+		return
 	_is_cooling = true
 	_cool_timer = COOL_TIME
 	cool_mask.visible = true
@@ -41,7 +43,7 @@ func start_cooldown() -> void:
 	glove_icon.visible = false
 
 func is_on_cooldown() -> bool:
-	return _is_cooling
+	return not Global.glove_no_cooldown and _is_cooling
 
 func _end_cooldown() -> void:
 	_is_cooling = false

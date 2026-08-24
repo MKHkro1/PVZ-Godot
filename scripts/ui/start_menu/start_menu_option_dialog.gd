@@ -7,15 +7,20 @@ class_name StartMenuOptionDialog
 
 ## 全屏按钮
 @onready var check_button: CheckButton = $Option/FullScreen/CheckButton
+@onready var unlock_all_plants_check: CheckButton = $Option/UnlockAllPlants/CheckButton
+@onready var glove_no_cooldown_check: CheckButton = $Option/GloveNoCooldown/CheckButton
 
 
 func _ready() -> void:
 	## 为按钮添加音效
 	SoundManager.setup_ui_main_game_sound(self)
+	Global.load_config()
 	music_sound_signal(music_h_slider, AudioServer.get_bus_index("BGM"))
 	music_sound_signal(sound_h_slider, AudioServer.get_bus_index("SFX"))
 
 	check_button.button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+	unlock_all_plants_check.button_pressed = Global.unlock_all_plants
+	glove_no_cooldown_check.button_pressed = Global.glove_no_cooldown
 
 func music_sound_signal(h_slider: HSlider, bus_index):
 	h_slider.value = SoundManager.get_volum(bus_index)
@@ -36,6 +41,17 @@ func appear_menu():
 ## 关闭菜单
 func return_button_pressed():
 	await get_tree().create_timer(0.1).timeout
+	Global.save_config()
 
 	visible = false
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+
+func _on_unlock_all_plants_toggled(toggled_on: bool) -> void:
+	Global.unlock_all_plants = toggled_on
+	Global.save_config()
+
+
+func _on_glove_no_cooldown_toggled(toggled_on: bool) -> void:
+	Global.glove_no_cooldown = toggled_on
+	Global.save_config()

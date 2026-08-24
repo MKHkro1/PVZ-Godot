@@ -8,6 +8,8 @@ class_name HM_Item
 @onready var real_glove: RealGlove = %RealGlove
 @onready var temporary_character: Node2D = %TemporaryCharacter
 
+var _glove_carry_root: Node2D
+
 ## 手持道具状态
 enum E_HmItemStatus {
 	Null,
@@ -25,7 +27,26 @@ var curr_shovel_look_plant_num: int = 0
 
 ## 手套搬运
 var _glove_carried_plant: Plant000Base
+var _glove_carried_stack: Array[Plant000Base] = []
 var _glove_source_cell: PlantCell
+var _glove_carry_offset: Vector2 = Vector2.ZERO
+
+
+func _ready() -> void:
+	call_deferred("_init_glove_carry_root")
+
+
+func _init_glove_carry_root() -> void:
+	if is_instance_valid(Global.main_game):
+		_glove_carry_root = Global.main_game.get_node("PlantCellsRoot") as Node2D
+
+
+func _get_glove_carry_root() -> Node2D:
+	if is_instance_valid(_glove_carry_root):
+		return _glove_carry_root
+	if is_instance_valid(Global.main_game):
+		_glove_carry_root = Global.main_game.get_node("PlantCellsRoot") as Node2D
+	return _glove_carry_root
 
 
 func click_shovel() -> void:
@@ -56,8 +77,18 @@ func _shovel_item_process() -> void:
 
 
 func _glove_item_process() -> void:
-	if is_instance_valid(_glove_carried_plant):
-		_glove_carried_plant.global_position = temporary_character.get_global_mouse_position()
+	if not is_instance_valid(_glove_carried_plant):
+		return
+	var carry_root := _get_glove_carry_root()
+	if not is_instance_valid(carry_root):
+		return
+	var mouse_pos := carry_root.get_global_mouse_position()
+	_glove_carried_plant.global_position = mouse_pos + _glove_carry_offset
+	for stacked in _glove_carried_stack:
+		if not is_instance_valid(stacked):
+			continue
+		var offset: Vector2 = stacked.get_meta("glove_offset", Vector2.ZERO)
+		stacked.global_position = _glove_carried_plant.global_position + offset
 
 
 func mouse_enter(plant_cell: PlantCell) -> void:
@@ -136,18 +167,33 @@ func _glove_try_pick(plant_cell: PlantCell) -> bool:
 	if plant_be_shovel_look == plant:
 		plant_be_shovel_look.be_shovel_look_end()
 		plant_be_shovel_look = null
-	detach_cell.glove_detach_plant(plant)
+	_glove_carried_stack = detach_cell.glove_detach_plant(plant)
 	_glove_begin_carry(plant)
 	return false
 
 
 func _glove_begin_carry(plant: Plant000Base) -> void:
 	plant.be_shovel_look_end()
-	var carry_pos := plant.global_position
-	if plant.get_parent() != temporary_character:
-		temporary_character.add_child(plant)
-	plant.global_position = carry_pos
+	var carry_root := _get_glove_carry_root()
+	if not is_instance_valid(carry_root):
+		return
+	var carry_global := plant.global_position
+	for stacked in _glove_carried_stack:
+		if is_instance_valid(stacked):
+			stacked.set_meta("glove_offset", stacked.global_position - carry_global)
+	if plant.get_parent() != carry_root:
+		plant.reparent(carry_root, true)
+	plant.global_position = carry_global
 	plant.z_index = 300
+	var mouse_pos := carry_root.get_global_mouse_position()
+	_glove_carry_offset = carry_global - mouse_pos
+	for stacked in _glove_carried_stack:
+		if not is_instance_valid(stacked):
+			continue
+		if stacked.get_parent() != carry_root:
+			stacked.reparent(carry_root, true)
+		stacked.global_position = plant.global_position + stacked.get_meta("glove_offset", Vector2.ZERO)
+		stacked.z_index = 300
 
 
 func _glove_try_place(target_cell: PlantCell) -> bool:
@@ -164,12 +210,17 @@ func _glove_try_place(target_cell: PlantCell) -> bool:
 	SoundManager.play_other_SFX("plant2")
 	var plant := _glove_carried_plant
 	var source := _glove_source_cell
+	var stack := _glove_carried_stack
+	if not target_cell.glove_attach_plant(plant, stack):
+		if is_instance_valid(source):
+			source.glove_attach_plant(plant, stack)
+		_glove_carried_plant = null
+		_glove_source_cell = null
+		_glove_carried_stack = []
+		return false
 	_glove_carried_plant = null
 	_glove_source_cell = null
-	if not target_cell.glove_attach_plant(plant):
-		if is_instance_valid(source):
-			source.glove_attach_plant(plant)
-		return false
+	_glove_carried_stack = []
 	real_glove.change_is_using(false)
 	curr_hm_item_status = E_HmItemStatus.Null
 	return true
@@ -177,13 +228,16 @@ func _glove_try_place(target_cell: PlantCell) -> bool:
 
 func _glove_cancel_carry(play_sfx: bool = false) -> bool:
 	if not is_instance_valid(_glove_carried_plant):
+		_glove_carried_stack = []
 		return true
 	var plant := _glove_carried_plant
-	_glove_carried_plant = null
 	var source := _glove_source_cell
+	var stack := _glove_carried_stack
+	_glove_carried_plant = null
 	_glove_source_cell = null
+	_glove_carried_stack = []
 	if is_instance_valid(source):
-		source.glove_attach_plant(plant)
+		source.glove_attach_plant(plant, stack)
 	if play_sfx:
 		SoundManager.play_other_SFX("tap2")
 	return true

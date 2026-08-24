@@ -7,6 +7,8 @@ class_name MainGameMenuOptionDialog
 @onready var sound_h_slider: HSlider = $Option/VBoxContainer/SoundEffect/HSlider
 @onready var time_scale_h_slider: HSlider = $Option/VBoxContainer/TimeScale/HSlider
 @onready var time_sacle_label: Label = $Option/VBoxContainer/TimeScale/Label
+@onready var unlock_all_plants_check: CheckBox = $Option/VBoxContainer/UnlockAllPlants
+@onready var glove_no_cooldown_check: CheckBox = $Option/VBoxContainer/GloveNoCooldown
 @onready var canvas_layer_console: CanvasLayerConsole = %CanvasLayerConsole
 ## 图鉴场景所在的画布层
 @onready var canvas_layer_almanac: CanvasLayer = %CanvasLayerAlmanac
@@ -24,11 +26,14 @@ var _is_game_over_menu := false
 func _ready() -> void:
 	## 为按钮添加音效
 	SoundManager.setup_ui_main_game_sound(self)
+	Global.load_config()
 	## 连接滑轨信号
 	music_sound_signal(music_h_slider, AudioServer.get_bus_index("BGM"))
 	music_sound_signal(sound_h_slider, AudioServer.get_bus_index("SFX"))
 	time_sacle_signal(time_scale_h_slider)
 	time_sacle_label.text = "倍速 " + str(Global.time_scale) + " 倍"
+	unlock_all_plants_check.button_pressed = Global.unlock_all_plants
+	glove_no_cooldown_check.button_pressed = Global.glove_no_cooldown
 
 
 #region 空格/Esc 快捷开关菜单
@@ -125,6 +130,7 @@ func return_button_pressed():
 	if now - _last_close_request_ms < 250:
 		return
 	_last_close_request_ms = now
+	Global.save_config()
 	await get_tree().create_timer(0.1).timeout
 	SoundManager.play_other_SFX("pause")
 	visible = false
@@ -170,4 +176,18 @@ func _unrealized():
 ## 出现控制台
 func _on_button_console_pressed() -> void:
 	canvas_layer_console.appear_canvas_layer_control()
+
+
+func _on_unlock_all_plants_toggled(toggled_on: bool) -> void:
+	Global.unlock_all_plants = toggled_on
+	Global.save_config()
+
+
+func _on_glove_no_cooldown_toggled(toggled_on: bool) -> void:
+	Global.glove_no_cooldown = toggled_on
+	if toggled_on and is_instance_valid(Global.main_game):
+		var ui_glove = Global.main_game.get_node_or_null("%UIGlove")
+		if ui_glove:
+			ui_glove._end_cooldown()
+	Global.save_config()
 
