@@ -27,6 +27,8 @@ var card_slot_seed_rain :CardSlotSeedRain
 
 ## 是否有铲子
 var is_shovel:=true
+## 是否有手套
+var is_glove:=true
 
 ## 当前临时卡片
 var curr_temp_cards:Array[Card]
@@ -55,6 +57,7 @@ func _on_hm_character_clear_card(curr_card:Card):
 func init_card_manager(game_para:ResourceLevelData):
 	self.card_mode = game_para.card_mode
 	self.is_shovel = game_para.is_shovel
+	self.is_glove = game_para.is_glove
 	self.is_seed_rain = game_para.is_seed_rain
 	if game_para.is_seed_rain:
 		card_slot_seed_rain = load("res://scenes/card_slot/card_slot_seed_rain.tscn").instantiate()
@@ -85,6 +88,7 @@ func init_card_manager(game_para:ResourceLevelData):
 ## 开始下一轮游戏更新卡片管理器
 func start_next_game_card_manager_update():
 	card_slot_root.ui_shovel.visible = false
+	card_slot_root.ui_glove.visible = false
 	if is_seed_rain:
 		card_slot_seed_rain.pause_seed_rain()
 
@@ -143,6 +147,8 @@ func card_slot_update_main_game():
 					card.card_change_cool_time(0)
 	if is_shovel:
 		card_slot_root.ui_shovel.visible = true
+	if is_glove:
+		card_slot_root.ui_glove.visible = true
 
 ## 待选卡槽卡槽消失
 func card_slot_disappear_choose():

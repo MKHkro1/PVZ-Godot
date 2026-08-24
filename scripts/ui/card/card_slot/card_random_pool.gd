@@ -79,7 +79,7 @@ func get_random_card_with_plant_boosts(boosts: Dictionary) -> Card:
 			w = maxi(1, int(w * float(boosts[plant_type])))
 		boosted_plant_total += w
 		boosted_data.append([plant_type, w])
-	var boosted_total_prob := boosted_plant_total + (total_prob - total_prob_plant)
+	var boosted_total_prob: int = boosted_plant_total + (total_prob - total_prob_plant)
 	var rand_val := randi_range(1, boosted_total_prob)
 	if rand_val <= boosted_plant_total:
 		var temp_picker := RandomPicker.new(boosted_data, false)

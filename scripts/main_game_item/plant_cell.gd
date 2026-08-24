@@ -514,6 +514,177 @@ func get_curr_plant_num()->int:
 		curr_plant_num += 1
 	return curr_plant_num
 
+## 手套从格子摘下植物(不销毁)
+func glove_detach_plant(plant: Plant000Base) -> void:
+	if plant.plant_type == Global.PlantType.P048CobCannon:
+		_glove_detach_cob_cannon(plant as Plant048CobCannon)
+		return
+	var plant_condition: ResourcePlantCondition = Global.get_plant_info(
+		plant.plant_type, Global.PlantInfoAttribute.PlantConditionResource
+	)
+	var place := plant_condition.place_plant_in_cell
+	if plant_in_cell.get(place) != plant:
+		return
+	plant_in_cell[place] = null
+	plant.plant_cell = null
+	if place == Global.PlacePlantInCell.Down and plant is Plant000DownBase:
+		_glove_clear_stacked_on_down(plant)
+		down_plant_change_condition(plant_cell_type == PlantCellType.Pool)
+	signal_plant_free.emit(self, plant.plant_type)
+
+func glove_attach_plant(plant: Plant000Base) -> bool:
+	if plant.plant_type == Global.PlantType.P048CobCannon:
+		return _glove_attach_cob_cannon(plant as Plant048CobCannon)
+	var plant_condition: ResourcePlantCondition = Global.get_plant_info(
+		plant.plant_type, Global.PlantInfoAttribute.PlantConditionResource
+	)
+	if not plant_condition.judge_is_can_plant(self, plant.plant_type):
+		return false
+	var place := plant_condition.place_plant_in_cell
+	if plant_condition.is_purple_card:
+		var pre := plant_condition.get_preplant_purple(self, plant.plant_type)
+		if pre != null and pre != plant:
+			pre.character_death_disappear()
+		elif is_instance_valid(plant_in_cell[place]) and plant_in_cell[place] != plant:
+			return false
+	elif is_instance_valid(plant_in_cell[place]) and plant_in_cell[place] != plant:
+		return false
+	plant.plant_cell = self
+	plant.row_col = row_col
+	plant.lane = row_col.x
+	var container = plant_container_node[place]
+	container.add_child(plant)
+	plant.position = Vector2.ZERO
+	plant_in_cell[place] = plant
+	if place == Global.PlacePlantInCell.Down and plant is Plant000DownBase:
+		var down_plant := plant as Plant000DownBase
+		remove_child(plant_container_node[Global.PlacePlantInCell.Norm])
+		down_plant.down_plant_container.add_child(plant_container_node[Global.PlacePlantInCell.Norm])
+		plant_container_node[Global.PlacePlantInCell.Norm].global_position = (
+			plant_postion_node_ori_global_position[Global.PlacePlantInCell.Norm] - down_plant.plant_up_position
+		)
+		remove_child(plant_container_node[Global.PlacePlantInCell.Shell])
+		down_plant.down_plant_container.add_child(plant_container_node[Global.PlacePlantInCell.Shell])
+		plant_container_node[Global.PlacePlantInCell.Shell].global_position = (
+			plant_postion_node_ori_global_position[Global.PlacePlantInCell.Shell] - down_plant.plant_up_position
+		)
+		_glove_restore_stacked_on_down(down_plant)
+		down_plant_change_condition(plant_cell_type == PlantCellType.Pool)
+	signal_plant_create.emit(self, plant.plant_type)
+	return true
+
+func glove_can_attach_plant(plant: Plant000Base) -> bool:
+	if plant.plant_type == Global.PlantType.P048CobCannon:
+		return _glove_can_attach_cob_cannon(plant as Plant048CobCannon)
+	var plant_condition: ResourcePlantCondition = Global.get_plant_info(
+		plant.plant_type, Global.PlantInfoAttribute.PlantConditionResource
+	)
+	return plant_condition.judge_is_can_plant(self, plant.plant_type)
+
+## 手套选取目标: 底部区域优先选花盆/睡莲, 其余与铲子相同
+func return_plant_for_glove() -> Plant000Base:
+	if get_curr_plant_num() <= 0:
+		return null
+	var place: Global.PlacePlantInCell = get_plant_place_from_mouse_pos()
+	if place == Global.PlacePlantInCell.Shell:
+		if is_instance_valid(plant_in_cell[Global.PlacePlantInCell.Down]):
+			return plant_in_cell[Global.PlacePlantInCell.Down]
+	if place == Global.PlacePlantInCell.Float:
+		if is_instance_valid(plant_in_cell[Global.PlacePlantInCell.Float]):
+			return plant_in_cell[Global.PlacePlantInCell.Float]
+	var plant: Plant000Base = return_plant_null_res(place)
+	if plant != null:
+		return plant
+	if is_instance_valid(plant_in_cell[Global.PlacePlantInCell.Down]):
+		return plant_in_cell[Global.PlacePlantInCell.Down]
+	return null
+
+func _glove_detach_cob_cannon(cannon: Plant048CobCannon) -> void:
+	var rear: PlantCell = cannon.plant_cell
+	if rear == null or rear.plant_in_cell.get(Global.PlacePlantInCell.Norm) != cannon:
+		return
+	rear.plant_in_cell[Global.PlacePlantInCell.Norm] = null
+	cannon.plant_cell = null
+	if is_instance_valid(cannon.plant_cell_next):
+		if cannon.plant_cell_next.plant_in_cell.get(Global.PlacePlantInCell.Norm) == cannon:
+			cannon.plant_cell_next.plant_in_cell[Global.PlacePlantInCell.Norm] = null
+		var death_cb := cannon.plant_cell_next.one_plant_free.bind(cannon)
+		if cannon.signal_character_death.is_connected(death_cb):
+			cannon.signal_character_death.disconnect(death_cb)
+		cannon.plant_cell_next = null
+	rear.signal_plant_free.emit(rear, cannon.plant_type)
+
+func _glove_attach_cob_cannon(cannon: Plant048CobCannon) -> bool:
+	if not _glove_can_attach_cob_cannon(cannon):
+		return false
+	var next_cell: PlantCell = Global.main_game.plant_cell_manager.all_plant_cells[row_col.x][row_col.y + 1]
+	cannon.plant_cell = self
+	cannon.row_col = row_col
+	cannon.lane = row_col.x
+	plant_container_node[Global.PlacePlantInCell.Norm].add_child(cannon)
+	cannon.position = Vector2.ZERO
+	plant_in_cell[Global.PlacePlantInCell.Norm] = cannon
+	cannon.plant_cell_next = next_cell
+	next_cell.plant_in_cell[Global.PlacePlantInCell.Norm] = cannon
+	var death_cb := next_cell.one_plant_free.bind(cannon)
+	if not cannon.signal_character_death.is_connected(death_cb):
+		cannon.signal_character_death.connect(death_cb)
+	signal_plant_create.emit(self, cannon.plant_type)
+	return true
+
+func _glove_can_attach_cob_cannon(cannon: Plant048CobCannon) -> bool:
+	if not can_common_plant:
+		return false
+	if row_col.y >= Global.main_game.plant_cell_manager.row_col.y - 1:
+		return false
+	var next_cell: PlantCell = Global.main_game.plant_cell_manager.all_plant_cells[row_col.x][row_col.y + 1]
+	if not next_cell.can_common_plant:
+		return false
+	for cell in [self, next_cell]:
+		var norm: Plant000Base = cell.plant_in_cell[Global.PlacePlantInCell.Norm]
+		if is_instance_valid(norm) and norm != cannon:
+			return false
+		if is_instance_valid(cell.plant_in_cell[Global.PlacePlantInCell.Shell]):
+			return false
+	return true
+
+func _glove_clear_stacked_on_down(down_plant: Plant000Base) -> void:
+	for place in [
+		Global.PlacePlantInCell.Norm,
+		Global.PlacePlantInCell.Shell,
+		Global.PlacePlantInCell.Float,
+	]:
+		var stacked: Plant000Base = plant_in_cell[place]
+		if is_instance_valid(stacked) and down_plant.is_ancestor_of(stacked):
+			plant_in_cell[place] = null
+			stacked.plant_cell = null
+
+func _glove_restore_stacked_on_down(down_plant: Plant000DownBase) -> void:
+	for place in [
+		Global.PlacePlantInCell.Norm,
+		Global.PlacePlantInCell.Shell,
+		Global.PlacePlantInCell.Float,
+	]:
+		for child in plant_container_node[place].get_children():
+			if child is Plant000Base:
+				var stacked: Plant000Base = child
+				plant_in_cell[place] = stacked
+				stacked.plant_cell = self
+				stacked.row_col = row_col
+				stacked.lane = row_col.x
+
+func _detach_down_plant_containers(down_plant: Plant000DownBase) -> void:
+	down_plant.down_plant_container.remove_child(plant_container_node[Global.PlacePlantInCell.Norm])
+	add_child(plant_container_node[Global.PlacePlantInCell.Norm])
+	plant_container_node[Global.PlacePlantInCell.Norm].global_position = (
+		plant_postion_node_ori_global_position[Global.PlacePlantInCell.Norm]
+	)
+	down_plant.down_plant_container.remove_child(plant_container_node[Global.PlacePlantInCell.Shell])
+	add_child(plant_container_node[Global.PlacePlantInCell.Shell])
+	plant_container_node[Global.PlacePlantInCell.Shell].global_position = (
+		plant_postion_node_ori_global_position[Global.PlacePlantInCell.Shell]
+	)
+
 ## 鼠标移动检测
 #func _input(event):
 	#if event is InputEventMouseMotion:

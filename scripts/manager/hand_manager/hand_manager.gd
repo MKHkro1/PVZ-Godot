@@ -11,7 +11,7 @@ class_name HandManager
 enum E_HandManagerStatus{
 	Null, 		## 手上什么都没拿
 	Character,	## 手持角色 植物、僵尸
-	Item,		## 手持道具 铲子 （TODO: 锤子手套）
+	Item,		## 手持道具 铲子/手套
 }
 
 ## 当前手持管理器状态
@@ -25,6 +25,7 @@ var curr_plant_cell:PlantCell = null
 func _ready() -> void:
 	EventBus.subscribe("main_game_click_card", _click_card)
 	EventBus.subscribe("main_game_click_shovel", _click_shovel)
+	EventBus.subscribe("main_game_click_glove", _click_glove)
 
 func _process(_delta: float) -> void:
 	match curr_hm_status:
@@ -61,9 +62,26 @@ func _click_card(card:Card) -> void:
 ## 点击ui铲子
 func _click_shovel() -> void:
 	SoundManager.play_other_SFX("shovel")
+	if curr_hm_status == E_HandManagerStatus.Item:
+		hm_item.exit_status()
 	curr_hm_status = E_HandManagerStatus.Item
 	hm_item.click_shovel()
 	## 如果当前在植物格子中
+	if curr_plant_cell:
+		_on_cell_mouse_enter(curr_plant_cell)
+
+## 点击ui手套
+func _click_glove() -> void:
+	if not is_instance_valid(Global.main_game) or not Global.main_game.card_manager.is_glove:
+		return
+	if hm_item.ui_glove.is_on_cooldown():
+		SoundManager.play_other_SFX("buzzer")
+		return
+	SoundManager.play_other_SFX("seedlift")
+	if curr_hm_status == E_HandManagerStatus.Item:
+		hm_item.exit_status()
+	curr_hm_status = E_HandManagerStatus.Item
+	hm_item.click_glove()
 	if curr_plant_cell:
 		_on_cell_mouse_enter(curr_plant_cell)
 
@@ -76,8 +94,8 @@ func _on_click_cell(plant_cell:PlantCell):
 			if hm_character.click_cell(plant_cell):
 				curr_hm_status = E_HandManagerStatus.Null
 		E_HandManagerStatus.Item:
-			hm_item.click_cell(plant_cell)
-			curr_hm_status = E_HandManagerStatus.Null
+			if hm_item.click_cell(plant_cell):
+				curr_hm_status = E_HandManagerStatus.Null
 
 ## 鼠标进入cell
 func _on_cell_mouse_enter(plant_cell:PlantCell):

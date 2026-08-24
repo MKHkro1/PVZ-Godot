@@ -247,6 +247,8 @@ func set_choose_level(curr_game_mode:Global.MainScenes, curr_level_page:int, cur
 @export var is_mode_column := false
 ## 是否有铲子
 @export var is_shovel := true
+## 是否有手套(移动植物)
+@export var is_glove := true
 #endregion
 
 #region 罐子参数
