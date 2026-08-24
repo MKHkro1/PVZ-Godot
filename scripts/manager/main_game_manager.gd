@@ -391,7 +391,7 @@ func _spawn_zomboss_if_needed() -> void:
 	## reanim 部件局部 X≈630~660，节点原点左移后机体落在屏幕右侧
 	boss.global_position = Vector2(
 		anchor_pos.x - ZombossBoss.REANIM_ANCHOR_X - 130.0,
-		anchor_pos.y - 115.0
+		anchor_pos.y - 270.0
 	)
 	add_child(boss)
 	zomboss_boss = boss

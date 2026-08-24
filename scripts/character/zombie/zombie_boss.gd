@@ -14,14 +14,14 @@ const REANIM_ANCHOR := Vector2(REANIM_ANCHOR_X, -100.0)
 ## 手臂投放点 / 吐球 X(相对机体原点)
 const SPAWN_MARKER := Vector2(REANIM_ANCHOR_X - 40.0, -60.0)
 const BALL_MARKER := Vector2(REANIM_ANCHOR_X - 55.0, -90.0)
-const SPAWN_PER_ROUND := 5
-const SPAWN_DROP_GAP := 0.45
 const TEX_EYEGLOW := preload("res://assets/reanim/Zombie_boss_eyeglow.png")
 const TEX_MOUTHGLOW := preload("res://assets/reanim/Zombie_boss_mouthglow.png")
 const TEX_EYEGLOW_RED := preload("res://assets/reanim/Zombie_boss_eyeglow_red.png")
 const TEX_EYEGLOW_BLUE := preload("res://assets/reanim/Zombie_boss_eyeglow_blue.png")
 const TEX_MOUTHGLOW_RED := preload("res://assets/reanim/Zombie_boss_mouthglow_red.png")
 const TEX_MOUTHGLOW_BLUE := preload("res://assets/reanim/Zombie_boss_mouthglow_blue.png")
+const TEX_NECK := preload("res://assets/reanim/Zombie_boss_neck.png")
+const TEX_UPPERBODY := preload("res://assets/reanim/Zombie_boss_upperbody.png")
 ## 破损阶段贴图(原版: 8000/20000 伤害后切换)
 const DAMAGE_PARTS: Dictionary = {
 	"Boss_head": [
@@ -90,7 +90,6 @@ var head_cooldown := 10.0				## 吐球冷却计时
 var is_busy := false					## 正在播放攻击动画
 var is_dead := false
 var spawn_early_rounds := 2				## 前N轮用初级池
-var _driver: ZombossBossDriver
 var _head_attack_lane := 2
 var damage_level := 0
 var _head_glow_fire := true
@@ -100,13 +99,9 @@ func _ready() -> void:
 	## 绘制层级高于背景与普通单位
 	z_index = 260
 	_setup_hurt_box()
-	_setup_driver()
 	_cache_anim_players()
+	_apply_neck_texture()
 	_play_enter()
-
-func _setup_driver() -> void:
-	_driver = ZombossBossDriver.new()
-	add_child(_driver)
 
 func _setup_hurt_box() -> void:
 	var area := Area2D.new()
@@ -157,18 +152,12 @@ func _play_anim(anim_name: String, loop := false) -> void:
 	_update_cockpit_visibility(anim_name)
 
 
-func _sync_cockpit_driver() -> void:
-	if _driver == null:
-		return
-	var body1 := get_node_or_null("Boss_body1") as Sprite2D
-	_driver.visible = body1 != null and body1.visible
-
-
 func _update_cockpit_visibility(_anim_name: String) -> void:
 	pass
 
 
 func _apply_damage_look() -> void:
+	_apply_neck_texture()
 	for node_name in DAMAGE_PARTS:
 		var spr := get_node_or_null(node_name) as Sprite2D
 		if spr == null:
@@ -185,6 +174,18 @@ func _damage_level_from_hp() -> int:
 	return 0
 
 
+func _apply_neck_texture() -> void:
+	var neck := get_node_or_null("Boss_neck") as Sprite2D
+	if neck != null:
+		neck.texture = TEX_NECK
+
+
+func _apply_upperbody_texture() -> void:
+	var body1 := get_node_or_null("Boss_body1") as Sprite2D
+	if body1 != null and body1.visible:
+		body1.texture = TEX_UPPERBODY
+
+
 func _play_enter() -> void:
 	is_busy = true
 	_play_anim("Zombie_boss_enter")
@@ -196,9 +197,10 @@ func _play_enter() -> void:
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
-	_sync_cockpit_driver()
 	if _head_glow_active:
 		_apply_head_glow(_head_glow_fire)
+	_apply_neck_texture()
+	_apply_upperbody_texture()
 	if is_resting and not is_busy:
 		rest_timer += delta
 		head_cooldown -= delta
@@ -252,27 +254,19 @@ func _run_next_action() -> void:
 		"RV":
 			_do_rv_attack()
 
-## ===== 投放僵尸(手臂掉落, 每批多只) =====
+## ===== 投放僵尸(手臂掉落, 每次一只) =====
 func _do_spawn() -> void:
 	is_busy = true
 	var row := randi_range(0, 4)
 	var pool := POOL_EARLY if round_count <= spawn_early_rounds else POOL_LATE
 	_play_anim("Zombie_boss_spawn_%d" % (row + 1))
-	## 原版: 同一路连续投放多只, 间隔约 0.45s
-	for i in range(SPAWN_PER_ROUND):
-		var delay := 0.85 + float(i) * SPAWN_DROP_GAP
-		get_tree().create_timer(delay).timeout.connect(func():
-			if not is_dead:
-				_spawn_zombie(_pick_spawn_type(pool), row))
+	get_tree().create_timer(0.85).timeout.connect(func():
+		if not is_dead:
+			_spawn_zombie(_pick_spawn_type(pool), row))
 	await _active_anim_player.animation_finished
 	is_busy = false
 	_apply_damage_look()
 	_play_anim("Zombie_boss_idle", true)
-
-func _spawn_batch_at_row(row: int) -> void:
-	var pool := POOL_EARLY if round_count <= spawn_early_rounds else POOL_LATE
-	for i in range(SPAWN_PER_ROUND):
-		_spawn_zombie(_pick_spawn_type(pool), row)
 
 func _pick_spawn_type(pool: Array[int]) -> int:
 	## 高级池中巨人/冰车/投石车为稀有项

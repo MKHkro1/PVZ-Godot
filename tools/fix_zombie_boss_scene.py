@@ -21,18 +21,22 @@ def fix_resource_paths(text: str) -> str:
         "animation/character/zombie/999_zombie_boss/Zombie_boss_",
         text,
     )
-    # 上半身用 jpg（彩色正确）；neck 仍用带下划线 png
+    # 上半身 / 颈部统一用标准 png
     text = text.replace(
         "assets/reanim/Zombie_boss_upperbody.png",
-        "assets/reanim/Zombie_boss_upperbody.jpg",
+        "assets/reanim/Zombie_boss_upperbody.png",
     )
     text = text.replace(
-        "assets/reanim/Zombie_boss_upperbody_.png",
-        "assets/reanim/Zombie_boss_upperbody.jpg",
+        "assets/reanim/Zombie_boss_upperbody.png",
+        "assets/reanim/Zombie_boss_upperbody.png",
     )
     text = text.replace(
         "assets/reanim/Zombie_boss_neck.png",
-        "assets/reanim/Zombie_boss_neck_.png",
+        "assets/reanim/Zombie_boss_neck.png",
+    )
+    text = text.replace(
+        "assets/reanim/Zombie_boss_neck.png",
+        "assets/reanim/Zombie_boss_neck.png",
     )
     return text
 

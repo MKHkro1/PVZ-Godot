@@ -6,29 +6,31 @@ var lane := 2
 var is_fire := true
 var damage := 1800
 var boss_ref: ZombossBoss
-var speed := 42.0
+var speed := 20.0
 var _dead := false
 var _layers: Array[Sprite2D] = []
 
+const BALL_SCALE := 1.05
+const SHADOW_SCALE := 0.95
 const TEX_SHADOW := preload("res://assets/reanim/Zombie_boss_icefire_shadow.png")
 
 const FIRE_LAYERS: Array[Dictionary] = [
-	{"tex": "res://assets/reanim/Zombie_boss_fireball.png", "scale": 0.11, "offset": Vector2.ZERO},
-	{"tex": "res://assets/reanim/Zombie_boss_fireball_chunks.png", "scale": 0.11, "offset": Vector2.ZERO},
-	{"tex": "res://assets/reanim/Zombie_boss_fireball_multiply.png", "scale": 0.11, "blend": CanvasItemMaterial.BLEND_MODE_MUL},
-	{"tex": "res://assets/reanim/Zombie_boss_fireball_additive.png", "scale": 0.105, "blend": CanvasItemMaterial.BLEND_MODE_ADD},
-	{"tex": "res://assets/reanim/Zombie_boss_fireball_superglow.png", "scale": 0.10, "blend": CanvasItemMaterial.BLEND_MODE_ADD},
+	{"tex": "res://assets/reanim/Zombie_boss_fireball_black.png", "scale": 1.0, "offset": Vector2.ZERO},
+	{"tex": "res://assets/reanim/Zombie_boss_fireball.png", "scale": 1.0, "offset": Vector2.ZERO},
+	{"tex": "res://assets/reanim/Zombie_boss_fireball_chunks.png", "scale": 1.0, "offset": Vector2.ZERO},
+	{"tex": "res://assets/reanim/Zombie_boss_fireball_multiply.png", "scale": 1.0, "blend": CanvasItemMaterial.BLEND_MODE_MUL},
+	{"tex": "res://assets/reanim/Zombie_boss_fireball_additive.png", "scale": 0.96, "blend": CanvasItemMaterial.BLEND_MODE_ADD},
+	{"tex": "res://assets/reanim/Zombie_boss_fireball_superglow.png", "scale": 0.92, "blend": CanvasItemMaterial.BLEND_MODE_ADD},
 ]
 
 const ICE_LAYERS: Array[Dictionary] = [
-	{"tex": "res://assets/reanim/Zombie_boss_iceball.png", "scale": 0.11, "offset": Vector2.ZERO},
-	{"tex": "res://assets/reanim/Zombie_boss_iceball_crystal1.png", "scale": 0.11, "offset": Vector2(2, -3)},
-	{"tex": "res://assets/reanim/Zombie_boss_iceball_crystal1.png", "scale": 0.09, "offset": Vector2(-2, 1)},
-	{"tex": "res://assets/reanim/Zombie_boss_iceball_crystal2.png", "scale": 0.11, "offset": Vector2(-4, 2)},
-	{"tex": "res://assets/reanim/Zombie_boss_iceball_crystal3.png", "scale": 0.11, "offset": Vector2(3, 4)},
-	{"tex": "res://assets/reanim/Zombie_boss_iceball_overlay.png", "scale": 0.11, "offset": Vector2.ZERO},
-	{"tex": "res://assets/reanim/Zombie_boss_iceball_multiply.png", "scale": 0.11, "blend": CanvasItemMaterial.BLEND_MODE_MUL},
-	{"tex": "res://assets/reanim/Zombie_boss_iceball_highlight.png", "scale": 0.10, "blend": CanvasItemMaterial.BLEND_MODE_ADD},
+	{"tex": "res://assets/reanim/Zombie_boss_iceball.png", "scale": 1.0, "offset": Vector2.ZERO},
+	{"tex": "res://assets/reanim/Zombie_boss_iceball_crystal1.png", "scale": 1.0, "offset": Vector2(3, -4)},
+	{"tex": "res://assets/reanim/Zombie_boss_iceball_crystal2.png", "scale": 1.0, "offset": Vector2(-5, 3)},
+	{"tex": "res://assets/reanim/Zombie_boss_iceball_crystal3.png", "scale": 1.0, "offset": Vector2(4, 5)},
+	{"tex": "res://assets/reanim/Zombie_boss_iceball_overlay.png", "scale": 1.0, "offset": Vector2.ZERO},
+	{"tex": "res://assets/reanim/Zombie_boss_iceball_multiply.png", "scale": 1.0, "blend": CanvasItemMaterial.BLEND_MODE_MUL},
+	{"tex": "res://assets/reanim/Zombie_boss_iceball_highlight.png", "scale": 0.92, "blend": CanvasItemMaterial.BLEND_MODE_ADD},
 ]
 
 
@@ -41,6 +43,7 @@ func setup(boss: ZombossBoss, p_lane: int, p_is_fire: bool, p_damage: int) -> vo
 
 func _ready() -> void:
 	z_index = lane * 50 + 45
+	modulate = Color.WHITE
 	_build_layers()
 	EventBus.subscribe("ice_all_zombie", _on_ice_all)
 	EventBus.subscribe("jalapeno_bomb_effect_item_lane", _on_jala)
@@ -52,9 +55,9 @@ func _build_layers() -> void:
 	shadow.name = "Shadow"
 	shadow.texture = TEX_SHADOW
 	shadow.centered = true
-	shadow.position = Vector2(0, 12)
-	shadow.scale = Vector2(0.10, 0.10)
-	shadow.modulate = Color(1, 1, 1, 0.28)
+	shadow.position = Vector2(0, 36)
+	shadow.scale = Vector2(SHADOW_SCALE, SHADOW_SCALE)
+	shadow.modulate = Color(1, 1, 1, 0.32)
 	add_child(shadow)
 	_layers.append(shadow)
 
@@ -65,9 +68,9 @@ func _build_layers() -> void:
 		s.name = "Layer%d" % i
 		s.texture = load(spec["tex"]) as Texture2D
 		s.centered = true
-		var sc: float = spec.get("scale", 0.11)
+		var sc: float = spec.get("scale", 1.0) * BALL_SCALE
 		s.scale = Vector2(sc, sc)
-		s.position = spec.get("offset", Vector2.ZERO)
+		s.position = spec.get("offset", Vector2.ZERO) * BALL_SCALE
 		if spec.has("blend"):
 			var mat := CanvasItemMaterial.new()
 			mat.blend_mode = spec["blend"]
@@ -82,7 +85,7 @@ func _physics_process(delta: float) -> void:
 	global_position.x -= speed * delta
 	for s in _layers:
 		if s.name != "Shadow":
-			s.rotation -= delta * 3.2
+			s.rotation -= delta * 2.4
 	_hit_cells_at_x(global_position.x)
 	if global_position.x < -150.0:
 		_destroy()

@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 
 ANIM_DIR = Path(__file__).resolve().parent.parent / "animation/character/zombie/999_zombie_boss"
-UPPER = "res://assets/reanim/Zombie_boss_upperbody.jpg"
+UPPER = "res://assets/reanim/Zombie_boss_upperbody.png"
 # head_idle 首帧 cockpit 位置
 BODY1_POS = "Vector2(527.80, 156.10)"
 
