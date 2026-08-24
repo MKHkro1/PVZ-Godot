@@ -197,6 +197,11 @@ func judge_is_have_enemy():
 
 ## 获取应该被攻击的植物,在当前植物格子中
 func get_first_be_hit_plant_in_cell(plant:Plant000Base)->Plant000Base:
+	if not is_instance_valid(plant.plant_cell):
+		## 手套搬运等脱离格子时, 直接以该植物为目标
+		if plant.hurt_box_component.is_enabling:
+			return plant
+		return null
 	## shell
 	#prints("植物是否合法", is_instance_valid(plant), plant.name)
 	if is_instance_valid(plant.plant_cell.plant_in_cell[Global.PlacePlantInCell.Shell]):
@@ -222,6 +227,9 @@ func _judge_enemy_is_can_be_attack(enemy:Character000Base)->bool:
 	if enemy is Plant000Base:
 		## 如果当前植物可以被攻击到
 		if enemy.curr_be_attack_status & can_attack_plant_status:
+			## 手套搬运中无格子, 跳过梯子判定
+			if not is_instance_valid(enemy.plant_cell):
+				return true
 			## 梯子
 			if is_attack_ladder_plant:
 				return true

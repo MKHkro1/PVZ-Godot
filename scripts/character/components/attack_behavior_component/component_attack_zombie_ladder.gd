@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 
 ## 判断是否可以给敌人挂梯子
 func get_plant_can_ladder(enemy:Character000Base) -> Plant000Base:
-	if enemy is Plant000Base:
+	if enemy is Plant000Base and is_instance_valid(enemy.plant_cell):
 		## 挂载梯子的植物
 		var plant_ladder:Plant000Base= enemy.plant_cell.get_plant_ladder()
 		if is_instance_valid(plant_ladder):
