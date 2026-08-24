@@ -166,32 +166,34 @@ func mouse_exit(_plant_cell:PlantCell):
 	if is_mode_column:
 		_mouse_exit_column()
 
-## 点击种植植物\僵尸
-func click_cell(plant_cell:PlantCell):
-	if is_shadow_in_cell:
-		if curr_card.card_plant_type != 0:
-			plant_cell.create_plant(curr_card.card_plant_type, curr_card.is_imitater)
-		else:
-			var zombie_init_para:Dictionary = {
-				Zombie000Base.E_ZInitAttr.CharacterInitType:Character000Base.E_CharacterInitType.IsNorm,
-				Zombie000Base.E_ZInitAttr.Lane:plant_cell.row_col.x,
-			}
+## 点击种植植物\僵尸, 成功则返回 true
+func click_cell(plant_cell:PlantCell) -> bool:
+	if not is_shadow_in_cell:
+		return false
+	if curr_card.card_plant_type != 0:
+		plant_cell.create_plant(curr_card.card_plant_type, curr_card.is_imitater)
+	else:
+		var zombie_init_para:Dictionary = {
+			Zombie000Base.E_ZInitAttr.CharacterInitType:Character000Base.E_CharacterInitType.IsNorm,
+			Zombie000Base.E_ZInitAttr.Lane:plant_cell.row_col.x,
+		}
 
-			Global.main_game.zombie_manager.create_norm_zombie(
-				curr_card.card_zombie_type,
-				Global.main_game.zombie_manager.all_zombie_rows[plant_cell.row_col.x],
-				zombie_init_para,
-				Vector2(
-					plant_cell.global_position.x + plant_cell.size.x/2,
-					Global.main_game.zombie_manager.all_zombie_rows[plant_cell.row_col.x].zombie_create_position.global_position.y
-				),
-				GlobalUtils.get_special_zombie_callable(curr_card.card_zombie_type, plant_cell)
-			)
+		Global.main_game.zombie_manager.create_norm_zombie(
+			curr_card.card_zombie_type,
+			Global.main_game.zombie_manager.all_zombie_rows[plant_cell.row_col.x],
+			zombie_init_para,
+			Vector2(
+				plant_cell.global_position.x + plant_cell.size.x/2,
+				Global.main_game.zombie_manager.all_zombie_rows[plant_cell.row_col.x].zombie_create_position.global_position.y
+			),
+			GlobalUtils.get_special_zombie_callable(curr_card.card_zombie_type, plant_cell)
+		)
 
-		## 卡片种植完成发射信号
-		curr_card.signal_card_use_end.emit()
-		if is_mode_column:
-			_click_cell_column(plant_cell)
+	## 卡片种植完成发射信号
+	curr_card.signal_card_use_end.emit()
+	if is_mode_column:
+		_click_cell_column(plant_cell)
+	return true
 
 ## 退出当前状态
 func exit_status():

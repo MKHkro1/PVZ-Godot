@@ -73,8 +73,8 @@ func _on_click_cell(plant_cell:PlantCell):
 		E_HandManagerStatus.Null:
 			hm_null.click_cell(plant_cell)
 		E_HandManagerStatus.Character:
-			hm_character.click_cell(plant_cell)
-			curr_hm_status = E_HandManagerStatus.Null
+			if hm_character.click_cell(plant_cell):
+				curr_hm_status = E_HandManagerStatus.Null
 		E_HandManagerStatus.Item:
 			hm_item.click_cell(plant_cell)
 			curr_hm_status = E_HandManagerStatus.Null
@@ -101,12 +101,10 @@ func _on_cell_mouse_exit(plant_cell:PlantCell):
 		E_HandManagerStatus.Item:
 			hm_item.mouse_exit(plant_cell)
 
-## 取消角色和道具
+## 取消角色和道具(仅右键)
 func _input(event):
 	## 当前手持状态不为空且鼠标点击事件
 	if curr_hm_status != E_HandManagerStatus.Null and event is InputEventMouseButton:
-		## 右键点击 或左鍵点击空白
-		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed or\
-		event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not curr_plant_cell:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			SoundManager.play_other_SFX("tap2")
 			curr_hm_status = E_HandManagerStatus.Null

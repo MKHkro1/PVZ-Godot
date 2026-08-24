@@ -105,6 +105,8 @@ var _head_glow_active := false
 var is_head_vulnerable := false
 var _is_frozen := false
 var _freeze_timer: Timer
+var _ice_effect: Node2D
+var _anim_speed_backup: Dictionary = {}
 var _hurt_area: Area2D
 var _detect_area: Area2D
 
@@ -579,6 +581,13 @@ func _on_ice_all_zombie(time_ice = null, _time_decelerate = null) -> void:
 func _apply_ice_freeze(time: float) -> void:
 	_is_frozen = true
 	modulate = Color(0.55, 0.82, 1.05)
+	_pause_all_animations()
+	if is_instance_valid(_ice_effect):
+		_ice_effect.queue_free()
+	_ice_effect = SceneRegistry.ICE_EFFECT.instantiate()
+	add_child(_ice_effect)
+	if _ice_effect.has_method("start_ice_effect"):
+		_ice_effect.start_ice_effect(time)
 	if _freeze_timer == null:
 		_freeze_timer = Timer.new()
 		_freeze_timer.one_shot = true
@@ -587,8 +596,29 @@ func _apply_ice_freeze(time: float) -> void:
 	_freeze_timer.start(maxf(time, 0.1))
 
 
+func _pause_all_animations() -> void:
+	_anim_speed_backup.clear()
+	for child in get_children():
+		if child is AnimationPlayer:
+			var player := child as AnimationPlayer
+			_anim_speed_backup[player] = player.speed_scale
+			player.speed_scale = 0.0
+
+
+func _resume_all_animations() -> void:
+	for child in get_children():
+		if child is AnimationPlayer:
+			var player := child as AnimationPlayer
+			player.speed_scale = _anim_speed_backup.get(player, 1.0)
+	_anim_speed_backup.clear()
+
+
 func _on_ice_freeze_end() -> void:
 	_is_frozen = false
+	_resume_all_animations()
+	if is_instance_valid(_ice_effect):
+		_ice_effect.queue_free()
+		_ice_effect = null
 	if not is_dead:
 		modulate = Color.WHITE
 
