@@ -1,46 +1,59 @@
 # 🌱 使用godot重置PVZ
-从95版、植物娘、胆小菇之梦，到杂交版、融合版等众多精彩的改版与同人作品，相信许多玩家都曾萌生过属于自己的创意与幻想。
 
-本项目基于 [Godot4.5.1](https://godotengine.org/zh-cn/) 引擎，致力于对原版《植物大战僵尸》进行高质量复刻（完美还原），目前除僵王和部分小游戏外已经基本实现所有原版内容。
+从95版、植物娘、胆小菇之梦，到杂交版、融合版等众多精彩的改版与同人作品，
+
+相信许多玩家都曾萌生过属于自己的创意与幻想。
+
+本项目基于 [Godot4.5.1](https://godotengine.org/zh-cn/) 引擎，
+
+致力于对原版《植物大战僵尸》进行godot复刻，
+
+目前除部分小游戏外已经基本实现所有原版内容。
 
 欢迎各位大佬在本开源项目基础上，完成属于自己的 PVZ 同人改版之梦！
 
-
 **考虑到版权问题，将原版相关资源文件删除。**
 
-
-有对本项目感兴趣的大佬，欢迎大家进qq群 (1046565016) 交流
-
 ## 项目展示
-### 项目视频介绍
+
+### 原开源项目视频介绍
+
 [开源！使用Godot实现对原版PVZ的完美复刻 (https://www.bilibili.com/video/BV1FKNJzUEpp/)](https://www.bilibili.com/video/BV1FKNJzUEpp/)
-请观看该合集最新的展示视频
+
 ### 主游戏界面
+
 ![主游戏界面](readme_show/main_game.png)
+
 ### 开始菜单界面
+
 ![开始菜单界面](readme_show/run_start_menu.png)
+
 ### 自定义关卡
+
 - 自定义关卡使用在游戏根目录下"level_game_para"文件夹中的游戏参数文件。
 - 游戏参数文件为"ResourceLevelData"类型的资源文件
 - 具体查看脚本文件"res://scripts/resources/level/level_data.gd"
 
 ## 游戏开发相关
+
 [基于本项目开发pvz同人改版必看内容（./docs/开发相关.md）](./docs/开发相关.md)
 
 ### 插件
+
 #### [anim_player_refactor](https://github.com/poohcom1/godot-animation-player-refactor)
+
 一个 Godot 插件，用于重构 AnimationPlayer 的动画。
 [插件使用教程](https://www.bilibili.com/video/BV1GxXWYZExH?spm_id_from=333.788.videopod.sections&vd_source=1005534986b111b7c1911fe1c36ac835)
 
 注意：目录下**plugin.gd**脚本中调用的函数EditorUtil.find_animation_menu_button(base_control)只支持英文，需要进入函数修改对应的代码 func(node): return node.text == "Animation" 修改为 func(node): return node.text == "Animation" or node.text == "动画"
 
 ### [R2Ga_PVZ](https://github.com/hsk-dream/PVZ_reanim2godot_animation)
+
 将植物大战僵尸的动画文件转换为Godot游戏引擎所支持的动画格式。[使用教程](https://www.bilibili.com/video/BV1XBKwzdELA/)
 forked from [PVZ_reanim2godot_animation](https://github.com/HYTommm/PVZ_reanim2godot_animation)
 
-
-
 ### PVZ相关参考资料
+
 - [［PVZ解包］一代PVZ植物大战僵尸PAK文件解包教程(https://www.bilibili.com/video/BV1JQ4y1k7KS/)](https://www.bilibili.com/video/BV1JQ4y1k7KS/)
 
 - [Godot4.3——植物大战僵尸：游戏制作教程（已完结） (https://www.bilibili.com/video/BV1AdBtY9Ec5/)](https://www.bilibili.com/video/BV1AdBtY9Ec5/)
@@ -73,15 +86,17 @@ forked from [PVZ_reanim2godot_animation](https://github.com/HYTommm/PVZ_reanim2g
 
 🔗 完整许可条款请查看 [LICENSE 文件](./LICENSE)
 
-
 ## 🙌 致谢
+
 致敬《植物大战僵尸》原作团队（PopCap & EA）
 
 ### 项目贡献
+
 - 植物图鉴初稿整理：[多003_](https://space.bilibili.com/472181151)
 - 宽屏（16:9）的部分素材使用[豆包ai](https://www.doubao.com/chat)生成,感谢ai
 
 ### 参考项目
+
 - 樱桃炸弹爆炸动画粒子特效: [HYTommm](https://space.bilibili.com/3493140163988287)开源项目[Godot-PVZ](https://github.com/HYTommm/Godot-PVZ)
 - 信号总线,随机选择器: [玩物不丧志的老李](https://space.bilibili.com/8618918)开源项目[godot_core_system](https://github.com/LiGameAcademy/godot_core_system)
 - 种子雨雨幕：[简单的小雨氛围：shader写的雾、粒子做的雨和水花 | godot4教程](https://www.bilibili.com/video/BV15ibAz4EZi)

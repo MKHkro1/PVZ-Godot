@@ -53,6 +53,7 @@ func _ready() -> void:
 		enemy_collision_lay = zomie_enemy_collision_lay
 	elif owner is Plant000Base:
 		enemy_collision_lay = plant_enemy_collision_lay
+		EventBus.subscribe("zomboss_head_vulnerable", _on_zomboss_head_vulnerable)
 	elif owner is MainGameManager:
 		enemy_collision_lay = plant_enemy_collision_lay
 	else:
@@ -70,6 +71,15 @@ func _ready() -> void:
 	## 如果是角色类型(世界有一个全局检测组件,用于追踪型子弹检查敌人)
 	if owner is Character000Base and owner.lane == -1 and owner.character_init_type == Character000Base.E_CharacterInitType.IsNorm:
 		printerr(owner.name + "lane == -1且为正常出战初始化类型")
+
+
+func _on_zomboss_head_vulnerable(_is_vulnerable = null) -> void:
+	need_judge = true
+
+
+func _exit_tree() -> void:
+	if owner is Plant000Base:
+		EventBus.unsubscribe("zomboss_head_vulnerable", _on_zomboss_head_vulnerable)
 
 func _process(_delta):
 	if need_judge and is_enabling:
@@ -93,8 +103,12 @@ func disable_component(is_enable_factor:E_IsEnableFactor):
 ## 敌人进入当前区域，若为同一行，当前帧进行判断是否可以攻击
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	var enemy = area.owner
+	if enemy == null:
+		enemy = area.get_parent()
 	if enemy is ZombossBoss:
 		need_judge = true
+		return
+	if enemy == null:
 		return
 	if is_lane and owner.lane != enemy.lane:
 		return
@@ -132,20 +146,18 @@ func _on_enemy_zombie_lane_update(zombie:Zombie000Base):
 func judge_is_have_enemy():
 	#print("判定敌人")
 	zomboss_can_be_attacked = null
+	## 先找场上普通敌人, 再考虑低头僵王
 	for ray_area in all_ray_area:
 		var all_enemy_area = ray_area.get_overlapping_areas()
 		for enemy_area in all_enemy_area:
-			if enemy_area.owner is ZombossBoss:
-				var boss: ZombossBoss = enemy_area.owner
-				if _judge_zomboss_can_be_attacked(boss):
-					zomboss_can_be_attacked = boss
-					enemy_can_be_attacked = null
-					signal_can_attack.emit()
-					return true
+			var area_owner = enemy_area.owner
+			if area_owner == null:
+				area_owner = enemy_area.get_parent()
+			if area_owner is ZombossBoss:
 				continue
-			if not enemy_area.owner is Character000Base:
+			if not area_owner is Character000Base:
 				continue
-			var enemy:Character000Base = enemy_area.owner
+			var enemy:Character000Base = area_owner
 			if _judge_enemy_is_can_be_attack(enemy):
 				enemy_can_be_attacked = enemy
 				if enemy_can_be_attacked is Plant000Base and is_instance_valid(enemy_can_be_attacked):
@@ -155,6 +167,20 @@ func judge_is_have_enemy():
 					enemy_can_be_attacked.signal_character_death.connect(func():need_judge = true)
 				signal_can_attack.emit()
 				return true
+
+	for ray_area in all_ray_area:
+		var all_enemy_area = ray_area.get_overlapping_areas()
+		for enemy_area in all_enemy_area:
+			var area_owner = enemy_area.owner
+			if area_owner == null:
+				area_owner = enemy_area.get_parent()
+			if area_owner is ZombossBoss:
+				var boss: ZombossBoss = area_owner
+				if _judge_zomboss_can_be_attacked(boss):
+					zomboss_can_be_attacked = boss
+					enemy_can_be_attacked = null
+					signal_can_attack.emit()
+					return true
 
 	var boss_by_range := _try_zomboss_by_range()
 	if boss_by_range != null:
@@ -247,15 +273,18 @@ func update_first_enemy()->Character000Base:
 	for ray_area in all_ray_area:
 		var all_enemy_area = ray_area.get_overlapping_areas()
 		for enemy_area in all_enemy_area:
-			if enemy_area.owner is ZombossBoss:
-				var boss: ZombossBoss = enemy_area.owner
+			var area_owner = enemy_area.owner
+			if area_owner == null:
+				area_owner = enemy_area.get_parent()
+			if area_owner is ZombossBoss:
+				var boss: ZombossBoss = area_owner
 				if _judge_zomboss_can_be_attacked(boss):
 					if best_zomboss == null or best_zomboss.hurt_box_component.global_position.x > boss.hurt_box_component.global_position.x:
 						best_zomboss = boss
 				continue
-			if not enemy_area.owner is Character000Base:
+			if not area_owner is Character000Base:
 				continue
-			var enemy: Character000Base = enemy_area.owner
+			var enemy: Character000Base = area_owner
 			## 如果敌人可以被攻击
 			if _judge_enemy_is_can_be_attack(enemy):
 				if is_instance_valid(enemy_can_be_attacked):
@@ -263,9 +292,11 @@ func update_first_enemy()->Character000Base:
 						enemy_can_be_attacked = enemy
 				else:
 					enemy_can_be_attacked = enemy
-	if best_zomboss == null:
-		best_zomboss = _try_zomboss_by_range()
-	zomboss_can_be_attacked = best_zomboss
+	## 无普通敌人时才瞄准低头僵王
+	if enemy_can_be_attacked == null:
+		if best_zomboss == null:
+			best_zomboss = _try_zomboss_by_range()
+		zomboss_can_be_attacked = best_zomboss
 	#print(enemy_can_be_attacked.global_position.x, enemy_can_be_attacked.name)
 	return enemy_can_be_attacked
 

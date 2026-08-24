@@ -124,13 +124,16 @@ func _setup_hurt_box() -> void:
 	area.collision_mask = 0
 	area.monitoring = false
 	area.monitorable = false
+	## Area 中心对齐头部, 子弹瞄准/碰撞用 global_position
+	area.position = REANIM_ANCHOR + Vector2(-80.0, -120.0)
 	var shape_node := CollisionShape2D.new()
 	var rect := RectangleShape2D.new()
-	rect.size = Vector2(160.0, 320.0)
+	rect.size = Vector2(200.0, 280.0)
 	shape_node.shape = rect
-	shape_node.position = REANIM_ANCHOR + Vector2(-80.0, -60.0)
 	area.add_child(shape_node)
 	add_child(area)
+	## 运行时节点必须手动设 owner, 子弹/射线用 area.owner 识别僵王
+	area.owner = self
 	_hurt_area = area
 
 func _setup_detect_box() -> void:
@@ -140,13 +143,15 @@ func _setup_detect_box() -> void:
 	area.collision_mask = 0
 	area.monitorable = false
 	area.monitoring = false
+	## 覆盖全行高度, 方便植物水平射线重叠检测
+	area.position = REANIM_ANCHOR + Vector2(-40.0, 40.0)
 	var shape_node := CollisionShape2D.new()
 	var rect := RectangleShape2D.new()
-	rect.size = Vector2(140.0, 100.0)
+	rect.size = Vector2(180.0, 520.0)
 	shape_node.shape = rect
-	shape_node.position = REANIM_ANCHOR + Vector2(-70.0, -200.0)
 	area.add_child(shape_node)
 	add_child(area)
+	area.owner = self
 	_detect_area = area
 
 func _set_head_vulnerable(v: bool) -> void:
@@ -158,6 +163,8 @@ func _set_head_vulnerable(v: bool) -> void:
 		_hurt_area.monitoring = mon
 	if _detect_area != null:
 		_detect_area.monitorable = v
+	## 通知植物重新判定攻击目标
+	EventBus.push_event("zomboss_head_vulnerable", [v])
 
 func _cache_anim_players() -> void:
 	for child in get_children():

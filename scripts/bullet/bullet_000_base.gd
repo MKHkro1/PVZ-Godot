@@ -105,6 +105,8 @@ func get_bullet_paras()->Dictionary[E_InitParasAttr,Variant]:
 ## 子弹与敌人碰撞
 func _on_area_2d_attack_area_entered(area: Area2D) -> void:
 	var owner_node = area.owner
+	if owner_node == null:
+		owner_node = area.get_parent()
 	if owner_node is ZombossBoss:
 		var boss: ZombossBoss = owner_node
 		if boss.is_dead or not boss.is_head_vulnerable:

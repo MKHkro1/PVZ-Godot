@@ -129,8 +129,8 @@ func _flatten_cells_at_x(x: float) -> void:
 		cell.plant_be_flattened()
 
 
-## 寒冰菇冰冻全场 → 火球熄灭
-func _on_ice_all(_payload = null) -> void:
+## 寒冰菇冰冻全场 → 火球熄灭 (EventBus 传 time_ice, time_decelerate)
+func _on_ice_all(_time_ice = null, _time_decelerate = null) -> void:
 	if is_fire:
 		_destroy()
 
@@ -147,4 +147,6 @@ func _destroy() -> void:
 	if _dead:
 		return
 	_dead = true
+	EventBus.unsubscribe("ice_all_zombie", _on_ice_all)
+	EventBus.unsubscribe("jalapeno_bomb_lane_zombie", _on_jalapeno_lane)
 	queue_free()

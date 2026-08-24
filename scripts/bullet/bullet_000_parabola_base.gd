@@ -98,7 +98,10 @@ func _physics_process(delta: float) -> void:
 	var eased_t = eased_time(t)
 	## 如果到达最终落点时未命中敌人,攻击空气销毁子弹
 	if eased_t >= 1:
-		attack_once(null)
+		if is_instance_valid(target_zomboss) and not target_zomboss.is_dead and target_zomboss.is_head_vulnerable:
+			attack_once_boss(target_zomboss)
+		else:
+			attack_once(null)
 	## 是否更新弹开曲线
 	if not is_bounce_update:
 		## 子弹根据贝塞尔曲线的路径更新位置
