@@ -8,6 +8,9 @@ signal boss_died
 
 const HP_MAX := 40000.0
 const BALL_DAMAGE := 1800
+## reanim 部件 idle 局部锚点(Boss_body2/腿等), 场景原点与此错位 ~660px
+const REANIM_ANCHOR_X := 660.0
+const REANIM_ANCHOR := Vector2(REANIM_ANCHOR_X, -100.0)
 ## 各动画时长(与 tres 一致)
 const T_ENTER := 3.25
 const T_IDLE := 1.166667
@@ -29,7 +32,8 @@ const POOL_LATE:Array[int] = [
 	Global.ZombieType.Z024Gargantuar, Global.ZombieType.Z013Zamboni, Global.ZombieType.Z023Catapult,
 ]
 
-@onready var anim_player: AnimationPlayer = $AnimationPlayer
+var _anim_players: Dictionary = {}
+var _active_anim_player: AnimationPlayer
 
 var curr_hp := HP_MAX
 var stage := 1						## 当前阶段 1..3
@@ -46,16 +50,64 @@ var spawn_early_rounds := 2				## 前N轮用初级池
 func _ready() -> void:
 	## 绘制层级高于背景与普通单位
 	z_index = 260
-	if anim_player.has_animation("Zombie_boss_idle"):
-		anim_player.get_animation("Zombie_boss_idle").loop_mode = Animation.LOOP_LINEAR
+	_setup_hurt_box()
+	_cache_anim_players()
 	_play_enter()
+
+func _setup_hurt_box() -> void:
+	var area := Area2D.new()
+	area.name = "HurtBoxReal"
+	area.collision_layer = 512
+	area.collision_mask = 0
+	area.monitoring = false
+	var shape_node := CollisionShape2D.new()
+	var rect := RectangleShape2D.new()
+	rect.size = Vector2(160.0, 320.0)
+	shape_node.shape = rect
+	shape_node.position = REANIM_ANCHOR + Vector2(-80.0, -60.0)
+	area.add_child(shape_node)
+	add_child(area)
+
+func _cache_anim_players() -> void:
+	for child in get_children():
+		if child is AnimationPlayer:
+			var player := child as AnimationPlayer
+			for anim_name in player.get_animation_list():
+				_anim_players[anim_name] = player
+	if _anim_players.is_empty():
+		push_error("僵王: 未找到 AnimationPlayer")
+
+
+func _get_anim_player(anim_name: String) -> AnimationPlayer:
+	if _anim_players.has(anim_name):
+		return _anim_players[anim_name]
+	var node_name := "Anim_" + anim_name
+	var player := get_node_or_null(node_name) as AnimationPlayer
+	if player != null:
+		_anim_players[anim_name] = player
+		return player
+	push_warning("僵王: 缺少动画 %s" % anim_name)
+	return _active_anim_player if _active_anim_player != null else get_child(0) as AnimationPlayer
+
+
+func _play_anim(anim_name: String, loop := false) -> void:
+	var player := _get_anim_player(anim_name)
+	if player == null:
+		return
+	_active_anim_player = player
+	if player.has_animation(anim_name):
+		var anim := player.get_animation(anim_name)
+		if loop:
+			anim.loop_mode = Animation.LOOP_LINEAR
+		player.play(anim_name)
+
 
 func _play_enter() -> void:
 	is_busy = true
-	anim_player.play("Zombie_boss_enter")
-	await anim_player.animation_finished
+	_play_anim("Zombie_boss_enter")
+	await _active_anim_player.animation_finished
 	is_busy = false
-	anim_player.play("Zombie_boss_idle")
+	_play_anim("Zombie_boss_idle", true)
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -117,14 +169,14 @@ func _run_next_action() -> void:
 func _do_spawn() -> void:
 	is_busy = true
 	var row := randi_range(0, 4)
-	anim_player.play("Zombie_boss_spawn_%d" % (row + 1))
+	_play_anim("Zombie_boss_spawn_%d" % (row + 1))
 	## 动画中段掉落
 	get_tree().create_timer(0.9).timeout.connect(func():
 		if not is_dead:
 			_spawn_batch_at_row(row))
-	await anim_player.animation_finished
+	await _active_anim_player.animation_finished
 	is_busy = false
-	anim_player.play("Zombie_boss_idle")
+	_play_anim("Zombie_boss_idle", true)
 
 func _spawn_batch_at_row(row: int) -> void:
 	var pool := POOL_EARLY if round_count <= spawn_early_rounds else POOL_LATE
@@ -163,14 +215,14 @@ func _do_stomp() -> void:
 	is_busy = true
 	var rows := _rows_with_plants_in_stomp_range()
 	var row: int = rows.pick_random() if not rows.is_empty() else 2
-	anim_player.play("Zombie_boss_stomp_%d" % clampi(row + 1, 1, 4))
+	_play_anim("Zombie_boss_stomp_%d" % clampi(row + 1, 1, 4))
 	## 踩踏落地帧(约55%)整行压扁
 	get_tree().create_timer(_curr_anim_length() * 0.55).timeout.connect(func():
 		if not is_dead:
 			_smash_row(row))
-	await anim_player.animation_finished
+	await _active_anim_player.animation_finished
 	is_busy = false
-	anim_player.play("Zombie_boss_idle")
+	_play_anim("Zombie_boss_idle", true)
 
 func _smash_row(row: int) -> void:
 	var cells = Global.main_game.plant_cell_manager.all_plant_cells
@@ -183,32 +235,33 @@ func _smash_row(row: int) -> void:
 ## ===== 天降(替代蹦极: 直接空投僵尸到有植物的格子旁) =====
 func _do_bungee_drop() -> void:
 	is_busy = true
-	anim_player.play("Zombie_boss_bungee_1_enter")
+	_play_anim("Zombie_boss_bungee_1_enter")
 	var targets := _planted_cells_for_drop(3)
 	get_tree().create_timer(T_BUNGEE_IN * 0.6).timeout.connect(func():
 		if is_dead:
 			return
 		for c in targets:
 			var pool := POOL_LATE if stage >= 2 else POOL_EARLY
-			_spawn_zombie(_pick_spawn_type(pool), c.y, Vector2(c.x * 80.0 + 45.0 - 160.0, _row_y(c.y))))
-	await anim_player.animation_finished
-	anim_player.play("Zombie_boss_bungee_1_leave")
-	await anim_player.animation_finished
+			_spawn_zombie(_pick_spawn_type(pool), c.y, Vector2(c.x * 80.0 + 45.0 - 160.0, _row_y(c.y)))
+	)
+	await _active_anim_player.animation_finished
+	_play_anim("Zombie_boss_bungee_1_leave")
+	await _active_anim_player.animation_finished
 	is_busy = false
-	anim_player.play("Zombie_boss_idle")
+	_play_anim("Zombie_boss_idle", true)
 
 ## ===== RV 房车冲撞: 3x2 区域碾压 =====
 func _do_rv_attack() -> void:
 	is_busy = true
-	anim_player.play("Zombie_boss_RV_1")
+	_play_anim("Zombie_boss_RV_1")
 	var target := _rv_target_cell()
 	## 冲撞判定帧
 	get_tree().create_timer(_curr_anim_length() * 0.5).timeout.connect(func():
 		if not is_dead:
 			_smash_area(target.x, target.y))
-	await anim_player.animation_finished
+	await _active_anim_player.animation_finished
 	is_busy = false
-	anim_player.play("Zombie_boss_idle")
+	_play_anim("Zombie_boss_idle", true)
 
 func _rv_target_cell() -> Vector2i:
 	var cells = Global.main_game.plant_cell_manager.all_plant_cells
@@ -236,22 +289,22 @@ func _do_head_attack() -> void:
 	is_busy = true
 	var lane := randi_range(0, 4)
 	var is_fire := randf() > 0.5
-	anim_player.play("Zombie_boss_head_enter")
-	await anim_player.animation_finished
+	_play_anim("Zombie_boss_head_enter")
+	await _active_anim_player.animation_finished
 	if is_dead:
 		return
-	anim_player.play("Zombie_boss_head_attack_%d" % (randi_range(1, 5)))
+	_play_anim("Zombie_boss_head_attack_%d" % (randi_range(1, 5)))
 	## 出球帧(约40%)
 	get_tree().create_timer(_curr_anim_length() * 0.4).timeout.connect(func():
 		if not is_dead:
 			_fire_ball(lane, is_fire))
-	await anim_player.animation_finished
+	await _active_anim_player.animation_finished
 	if is_dead:
 		return
-	anim_player.play("Zombie_boss_head_leave")
-	await anim_player.animation_finished
+	_play_anim("Zombie_boss_head_leave")
+	await _active_anim_player.animation_finished
 	is_busy = false
-	anim_player.play("Zombie_boss_idle")
+	_play_anim("Zombie_boss_idle", true)
 
 func _fire_ball(lane: int, is_fire: bool) -> void:
 	var ball_scene: PackedScene = load("res://scenes/main_game_item/zomboss_ball.tscn")
@@ -260,7 +313,7 @@ func _fire_ball(lane: int, is_fire: bool) -> void:
 	var ball = ball_scene.instantiate()
 	ball.setup(self, lane, is_fire, BALL_DAMAGE)
 	Global.main_game.add_child(ball)
-	ball.global_position = global_position + Vector2(-140.0, -180.0)
+	ball.global_position = global_position + REANIM_ANCHOR + Vector2(-140.0, -80.0)
 
 ## ===== 受击(供植物子弹调用, 签名对齐 Character000Base) =====
 func be_attacked_bullet(attack_value: int, _bullet_mode: Global.AttackMode = Global.AttackMode.Norm, _is_drop := true, _sfx := true) -> void:
@@ -292,11 +345,12 @@ func _update_stage() -> void:
 func _die() -> void:
 	is_dead = true
 	is_busy = true
-	anim_player.speed_scale = 1.5
-	anim_player.play("Zombie_boss_death")
+	var death_player := _get_anim_player("Zombie_boss_death")
+	death_player.speed_scale = 1.5
+	_play_anim("Zombie_boss_death")
 	_explosion_sequence()
-	await anim_player.animation_finished
-	anim_player.speed_scale = 1.0
+	await _active_anim_player.animation_finished
+	death_player.speed_scale = 1.0
 	EventBus.push_event("boss_defeated", [global_position])
 	boss_died.emit()
 	EventBus.push_event("create_trophy", [global_position])
@@ -338,4 +392,6 @@ func _row_y(row: int) -> float:
 	return 282.0
 
 func _curr_anim_length() -> float:
-	return anim_player.current_animation_length if anim_player.current_animation != "" else 1.0
+	if _active_anim_player == null or _active_anim_player.current_animation == "":
+		return 1.0
+	return _active_anim_player.current_animation_length

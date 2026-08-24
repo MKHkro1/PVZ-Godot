@@ -17,7 +17,7 @@ func init_card_slot_norm(game_para:ResourceLevelData):
 	for i in card_slot_candidate.all_card_candidate_containers_plant:
 		var card:Card = card_slot_candidate.all_card_candidate_containers_plant[i].card
 		## 冒险模式: 未解锁植物置灰且不可选
-		if not Global.is_plant_unlocked_for_choose(i):
+		if not Global.is_plant_unlocked_for_choose(card.card_plant_type):
 			card_slot_candidate.all_card_candidate_containers_plant[i].modulate = Color(0.3, 0.3, 0.3, 1.0)
 			continue
 		card.signal_card_click.connect(_on_card_click.bind(card))
@@ -112,7 +112,7 @@ func _on_card_click(card:Card):
 		and Global.main_game.main_game_progress != MainGameManager.E_MainGameProgress.RE_CHOOSE_CARD:
 		return
 	## 冒险模式: 未解锁植物不可选
-	if not Global.is_plant_unlocked_for_choose(card.card_id):
+	if not Global.is_plant_unlocked_for_choose(card.card_plant_type):
 		return
 	SoundManager.play_other_SFX("tap")
 	# 如果card被选择，取消选取，后面的card向前移动
@@ -141,7 +141,7 @@ func _on_imitater_card_click(card:Card):
 		and Global.main_game.main_game_progress != MainGameManager.E_MainGameProgress.RE_CHOOSE_CARD:
 		return
 	## 冒险模式: 未解锁植物不可被模仿者复制
-	if not Global.is_plant_unlocked_for_choose(card.card_id):
+	if not Global.is_plant_unlocked_for_choose(card.card_plant_type):
 		return
 	SoundManager.play_other_SFX("tap")
 	# 如果card被选择，取消选取，后面的card向前移动

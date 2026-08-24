@@ -122,6 +122,8 @@ var p_yeti_run :float= -1
 @export_group("本局游戏参数")
 ## 正常进入游戏会自动更新对应关卡数据,直接进入该场景会使用该关卡数据,并设置is_test=true
 @export var game_para : ResourceLevelData
+## 僵王博士(仅 is_zomboss_fight 关卡)
+var zomboss_boss: ZombossBoss
 ## 若为true,选卡无冷却
 var is_test := false
 ## 当前轮次
@@ -370,6 +372,30 @@ func main_game_start():
 	SoundManager.play_bgm_smooth(bgm_main_game)
 
 	zombie_manager.start_game()
+	_spawn_zomboss_if_needed()
+
+
+func _spawn_zomboss_if_needed() -> void:
+	if not game_para.is_zomboss_fight:
+		return
+	if is_instance_valid(zomboss_boss):
+		return
+	var boss: ZombossBoss = SceneRegistry.ZOMBIE_BOSS.instantiate() as ZombossBoss
+	var rows := zombie_manager.all_zombie_rows
+	if rows.is_empty():
+		push_error("僵王战: 僵尸行未初始化")
+		boss.queue_free()
+		return
+	var anchor_row = rows[mini(2, rows.size() - 1)]
+	var anchor_pos: Vector2 = anchor_row.zombie_create_position.global_position
+	## reanim 部件局部 X≈630~660，节点原点需大幅左移后机体才落在屏幕右侧
+	boss.global_position = Vector2(
+		anchor_pos.x - ZombossBoss.REANIM_ANCHOR_X - 90.0,
+		anchor_pos.y - 35.0
+	)
+	add_child(boss)
+	zomboss_boss = boss
+	print("僵王已生成 pos=", boss.global_position)
 
 
 #region 游戏结束

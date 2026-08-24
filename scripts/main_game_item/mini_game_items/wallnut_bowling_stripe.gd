@@ -41,4 +41,3 @@ func init_item(plant_cell_col_j:int=2, plant_cell_can_use:Dictionary = {}):
 			for j in range(plant_cell_col_j + 1, plant_cells_row.size()):
 				var plant_cell:PlantCell = plant_cells_row[j]
 				plant_cell.set_bowling_no_zombie()
-

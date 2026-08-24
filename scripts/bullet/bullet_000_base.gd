@@ -103,7 +103,16 @@ func get_bullet_paras()->Dictionary[E_InitParasAttr,Variant]:
 
 ## 子弹与敌人碰撞
 func _on_area_2d_attack_area_entered(area: Area2D) -> void:
-	var enemy:Character000Base = area.owner
+	var owner_node = area.owner
+	if owner_node is ZombossBoss:
+		var boss: ZombossBoss = owner_node
+		if boss.is_dead:
+			return
+		if max_attack_num != -1 and curr_attack_num >= max_attack_num:
+			return
+		attack_once_boss(boss)
+		return
+	var enemy:Character000Base = owner_node
 	## TODO:攻击植物子弹
 	if enemy is Plant000Base:
 		## 子弹阵营为植物
@@ -157,6 +166,19 @@ func _attack_plant(plant:Plant000Base):
 ## 抛物线子弹先对Norm进行攻击
 func get_first_be_hit_plant_in_cell(plant:Plant000Base)->Plant000Base:
 	return plant
+
+func attack_once_boss(boss: ZombossBoss) -> void:
+	curr_attack_num += 1
+	if max_attack_num != -1 and curr_attack_num > max_attack_num:
+		return
+	boss.be_attacked_bullet(attack_value, bullet_mode, true, trigger_be_attack_sfx)
+	if type_bullet_SFX != SoundManagerClass.TypeBulletSFX.Null:
+		SoundManager.play_bullet_attack_SFX(type_bullet_SFX)
+	if bullet_effect.is_bullet_effect:
+		bullet_effect.global_position.x = boss.global_position.x + ZombossBoss.REANIM_ANCHOR_X - 40.0
+		bullet_effect.activate_bullet_effect()
+	if max_attack_num != -1 and curr_attack_num >= max_attack_num:
+		queue_free()
 
 ## 攻击一次
 func attack_once(enemy:Character000Base):

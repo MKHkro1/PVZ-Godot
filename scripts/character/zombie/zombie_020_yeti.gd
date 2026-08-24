@@ -24,4 +24,3 @@ func judge_is_run():
 	if p < probability_run:
 		update_direction_x_root(-1)
 		is_run_end = true
-

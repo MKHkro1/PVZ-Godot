@@ -324,6 +324,10 @@ var pot_num_on_fixed_mode:int = 0
 
 @export_subgroup("锤子")
 @export var is_hammer := false
+
+@export_subgroup("僵王博士")
+## 僵王 Boss 战(冒险5-10 / 小游戏僵王复仇): 无波次出怪, 由僵王主动投放
+@export var is_zomboss_fight := false
 #endregion
 
 ## 存档之前的原始数据,如果因为存档改变, 删除存档后重新修复回来
@@ -452,6 +456,16 @@ func init_para():
 	## 我是僵尸模式，僵尸禁止进房
 	if is_zombie_mode:
 		is_zombie_can_home = false
+
+	## 僵王 Boss 战: 关闭波次刷怪与开局展示僵尸, 使用 Boss BGM, 夜晚屋顶无天降阳光
+	if is_zomboss_fight:
+		monster_mode = E_MonsterMode.Null
+		look_show_zombie = false
+		is_bungi = false
+		is_day = false
+		is_day_sun = false
+		if game_BGM == GameBGM.Roof or game_BGM == GameBGM.FrontDay:
+			game_BGM = GameBGM.Boss
 
 	## 多轮游戏 存档
 	if game_round != 1:

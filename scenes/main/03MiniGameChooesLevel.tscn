@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cqo7ru5lo8e6g"]
+[gd_scene load_steps=49 format=3 uid="uid://cqo7ru5lo8e6g"]
 
 [ext_resource type="Theme" uid="uid://cx302yraw066y" path="res://data/ChooesLevel.tres" id="1_ehgxy"]
 [ext_resource type="Script" uid="uid://jru6xfv7g4f1" path="res://scripts/choose_level/choose_level.gd" id="1_o008e"]
@@ -30,6 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://cbhaawnc37cwe" path="res://assets/reanim/LilyPad_body.png" id="19_4nhff"]
 [ext_resource type="Texture2D" uid="uid://dmmcjbsd028oj" path="res://assets/reanim/LilyPad_blink1.png" id="20_bku10"]
 [ext_resource type="Resource" uid="uid://0vrftjy7v4a2" path="res://resources/level_date_resource/mode_minigame/minigame_05_column.tres" id="24_iqxly"]
+[ext_resource type="Resource" path="res://resources/level_date_resource/mode_minigame/minigame_07_zomboss.tres" id="25_zomboss"]
+[ext_resource type="PackedScene" uid="uid://ceq71xsqf5iyg" path="res://scenes/character/zombie/Zombie_boss.tscn" id="26_zomboss"]
 [ext_resource type="Texture2D" uid="uid://xc3kqag3vqlq" path="res://assets/image/ui/ui_level/Almanac_CloseButton.png" id="25_ta0hi"]
 [ext_resource type="Texture2D" uid="uid://c82uuprowr5d" path="res://assets/image/ui/ui_level/Almanac_CloseButtonHighlight.png" id="26_fvivu"]
 [ext_resource type="BitMap" uid="uid://bc7yq02xscrlr" path="res://assets/image/ui/ui_level/Almanac_CloseButton_Mask.png" id="27_2sh17"]
@@ -530,6 +532,40 @@ stretch_mode = 4
 
 [node name="ChooseLevelButton6" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
 layout_mode = 2
+curr_level_data_game_para = ExtResource("25_zomboss")
+
+[node name="Label" parent="AllPage/GridContainer/ChooseLevelButton6/TextureButton" index="0"]
+text = "僵王复仇"
+
+[node name="Panel" type="Panel" parent="AllPage/GridContainer/ChooseLevelButton6"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.93979
+offset_top = 0.98791504
+offset_right = 42.06021
+offset_bottom = 68.9879
+grow_horizontal = 2
+pivot_offset = Vector2(41, 33.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_we3l7")
+
+[node name="TextureRect" type="TextureRect" parent="AllPage/GridContainer/ChooseLevelButton6/Panel"]
+layout_mode = 0
+offset_left = -14.060211
+offset_top = -4.987915
+offset_right = 145.93979
+offset_bottom = 155.01208
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_e2jkj")
+
+[node name="ZombieBoss" parent="AllPage/GridContainer/ChooseLevelButton6/Panel/TextureRect" instance=ExtResource("26_zomboss")]
+position = Vector2(92.0, 78.0)
+scale = Vector2(0.12, 0.12)
 
 [node name="ChooseLevelButton7" parent="AllPage/GridContainer" instance=ExtResource("9_xsph7")]
 layout_mode = 2
@@ -757,4 +793,5 @@ vertical_alignment = 1
 [editable path="AllPage/GridContainer/ChooseLevelButton4"]
 [editable path="AllPage/GridContainer/ChooseLevelButton4/Panel/TextureRect/Rain"]
 [editable path="AllPage/GridContainer/ChooseLevelButton5"]
+[editable path="AllPage/GridContainer/ChooseLevelButton6"]
 [editable path="AllPage/GridContainer2/ChooseLevelButton"]

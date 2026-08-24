@@ -14,23 +14,39 @@ func _run() -> void:
 		await create_timer(0.5).timeout
 		if current_scene != null and current_scene.name != "StartMenu":
 			break
-	await create_timer(5.0).timeout
+	await create_timer(6.0).timeout
 	var mgr = Global.main_game
-	var boss = mgr.zomboss_boss
-	print("[DBG] boss=", boss, " inside_tree=", boss.is_inside_tree(), " gpos=", boss.global_position)
-	print("[DBG] visible=", boss.visible, " z=", boss.z_index, " modulate=", boss.modulate)
-	var ap: AnimationPlayer = boss.get_node("AnimationPlayer")
-	print("[DBG] anim当前=", ap.current_animation, " playing=", ap.is_playing(), " pos_in_anim=", ap.current_animation_position)
-	print("[DBG] 有idle=", ap.has_animation("Zombie_boss_idle"), " 进度库列表=", ap.get_animation_list().slice(0, 3))
-	for part_name in ["Boss_body1", "Boss_head", "Boss_RV", "Boss_outerarm_hand"]:
+	var boss: ZombossBoss = mgr.zomboss_boss
+	if boss == null:
+		printerr("[FAIL] 僵王未生成")
+		quit(1)
+		return
+	print("[DBG] boss gpos=", boss.global_position)
+	print("[DBG] visible=", boss.visible, " z=", boss.z_index)
+	var ap := boss.get_node_or_null("Anim_Zombie_boss_idle") as AnimationPlayer
+	if ap != null:
+		print("[DBG] idle anim=", ap.current_animation, " playing=", ap.is_playing())
+	for part_name in ["Boss_body2", "Boss_innerleg_foot", "Boss_head", "Boss_body1"]:
 		var n = boss.get_node_or_null(part_name)
 		if n is Sprite2D:
 			var s: Sprite2D = n
-			print("[DBG] ", part_name, " visible=", s.visible, " tex=", s.texture != null, " gpos=", s.global_position, " scale=", s.scale)
-		else:
-			print("[DBG] ", part_name, " 缺失")
-	# 相机
+			print("[DBG] ", part_name, " vis=", s.visible, " tex=", s.texture != null, " gpos=", s.global_position)
 	var cam := current_scene.get_viewport().get_camera_2d()
 	if cam != null:
-		print("[DBG] camera center=", cam.get_screen_center_position(), " zoom=", cam.zoom)
+		var vp := current_scene.get_viewport().get_visible_rect()
+		print("[DBG] camera=", cam.global_position, " viewport=", vp)
+	# 机体应在屏幕内 (约 500~900)
+	var body := boss.get_node_or_null("Boss_body2") as Sprite2D
+	if body != null and body.visible and body.texture != null:
+		var gx := body.global_position.x
+		if gx >= 400.0 and gx <= 950.0:
+			print("[OK] Boss_body2 在屏幕范围内 gx=", gx)
+		else:
+			printerr("[FAIL] Boss_body2 超出屏幕 gx=", gx)
+			quit(1)
+			return
+	else:
+		printerr("[FAIL] Boss_body2 不可见或无贴图")
+		quit(1)
+		return
 	quit(0)

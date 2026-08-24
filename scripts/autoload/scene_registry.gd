@@ -41,6 +41,9 @@ var JACKSON_MANAGER = load("res://scenes/character/components/jackson_manager.ts
 ## 奖杯
 var TROPHY = load("res://scenes/item/game_scenes_item/trophy.tscn")
 
+## 僵王博士
+const ZOMBIE_BOSS: PackedScene = preload("res://scenes/character/zombie/Zombie_boss.tscn")
+
 ## 冰冻僵尸特效
 const ICE_EFFECT = preload("res://scenes/fx/ice_effect.tscn")
 ## 泳池水花场景
