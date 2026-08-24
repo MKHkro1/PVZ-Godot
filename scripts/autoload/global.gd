@@ -570,6 +570,27 @@ var glove_no_cooldown := false
 
 var time_scale := 1.0
 
+const TIME_STOP_SPEED := 0.2
+var is_time_stop := false
+signal time_stop_changed(active: bool)
+
+
+func toggle_time_stop() -> void:
+	is_time_stop = not is_time_stop
+	if is_time_stop:
+		Engine.time_scale = TIME_STOP_SPEED
+	else:
+		Engine.time_scale = time_scale
+	time_stop_changed.emit(is_time_stop)
+
+
+func clear_time_stop() -> void:
+	if is_time_stop:
+		is_time_stop = false
+		time_stop_changed.emit(false)
+	Engine.time_scale = time_scale
+
+
 func save_config():
 	var config_path := "user://" + curr_user_name + "/config.ini"
 	print("保存游戏控制台数据：", config_path)

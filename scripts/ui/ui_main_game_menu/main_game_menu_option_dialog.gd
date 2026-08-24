@@ -75,7 +75,8 @@ func time_sacle_signal(h_slider: HSlider):
 	h_slider.value_changed.connect(func (v:float):
 		Global.time_scale = v
 		time_sacle_label.text = "倍速 " + str(Global.time_scale) + " 倍"
-		Engine.time_scale = Global.time_scale
+		if not Global.is_time_stop:
+			Engine.time_scale = Global.time_scale
 		)
 
 ## 出现菜单
@@ -155,7 +156,7 @@ func resume_game():
 
 	Global.end_tree_pause_clear_all_pause_factors()
 	Global.time_scale = 1.0
-	Engine.time_scale = Global.time_scale
+	Global.clear_time_stop()
 	## 平滑过渡重开本关(与全局场景切换一致, 不再硬切)
 	SceneTransition.change_scene(get_tree().current_scene.scene_file_path)
 
@@ -166,7 +167,7 @@ func return_main_menu():
 	EventBus.push_event("change_is_mouse_visibel_on_hammer", true)
 	Global.end_tree_pause_clear_all_pause_factors()
 	Global.time_scale = 1.0
-	Engine.time_scale = Global.time_scale
+	Global.clear_time_stop()
 	SceneTransition.change_scene(Global.MainScenesMap[Global.MainScenes.StartMenu])
 
 ## 功能未实现

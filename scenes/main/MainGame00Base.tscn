@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://b2soejmoqi7wd"]
+[gd_scene load_steps=74 format=3 uid="uid://b2soejmoqi7wd"]
 
 [ext_resource type="Script" uid="uid://c7dr2016dfdoo" path="res://scripts/manager/main_game_manager.gd" id="1_7dde3"]
 [ext_resource type="Script" uid="uid://b2rst408m72au" path="res://scripts/manager/hand_manager/hand_manager.gd" id="3_acpf0"]
@@ -65,6 +65,7 @@
 [ext_resource type="Script" uid="uid://5unqafehbil7" path="res://scripts/fx/other_effect/canvas_layer_effect.gd" id="51_qfhda"]
 [ext_resource type="Script" uid="uid://pqbu71xw5ngn" path="res://scripts/character/components/detect_component/component_detect_global.gd" id="55_l4e4o"]
 [ext_resource type="Script" uid="uid://l5xf5880s78e" path="res://scripts/ui/main_game_ui/label_zombie_sum.gd" id="59_b2sx0"]
+[ext_resource type="PackedScene" uid="uid://c8ktime5stopbtn" path="res://scenes/ui/time_stop_button.tscn" id="60_tsbtn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy6tc"]
 size = Vector2(150, 600)
@@ -784,6 +785,9 @@ grow_vertical = 2
 text = "菜单"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TimeStopButton" parent="CanvasLayerUI/All_UI" instance=ExtResource("60_tsbtn")]
+unique_name_in_owner = true
 
 [node name="MainGameMenuOptionDialog" type="TextureRect" parent="CanvasLayerUI/All_UI"]
 unique_name_in_owner = true

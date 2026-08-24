@@ -24,6 +24,24 @@ const TEX_MOUTHGLOW_RED := preload("res://assets/reanim/Zombie_boss_mouthglow_re
 const TEX_MOUTHGLOW_BLUE := preload("res://assets/reanim/Zombie_boss_mouthglow_blue.png")
 const TEX_NECK := preload("res://assets/reanim/Zombie_boss_neck.png")
 const TEX_UPPERBODY := preload("res://assets/reanim/Zombie_boss_upperbody.png")
+const COCKPIT_BODY1_POS := Vector2(528.5, 154.032)
+const COCKPIT_BODY1_ROT := -0.286234
+const COCKPIT_NECK_POS := Vector2(553.6, 170.46399)
+const COCKPIT_NECK_ROT := -0.033161
+const COCKPIT_SCALE := Vector2(0.796, 0.796)
+const COCKPIT_IDLE_ANIM := "Zombie_boss_idle"
+const HEAD_ANIM_PREFIX := "Zombie_boss_head"
+const HEAD_PARTS: Array[String] = [
+	"Boss_head",
+	"Boss_jaw",
+	"Boss_innerjaw",
+	"Boss_mouthglow",
+	"Boss_mouthglow_red",
+	"Boss_eyeglow",
+	"Boss_eyeglow_red",
+	"Boss_head2",
+	"Boss_antenna",
+]
 ## 破损阶段贴图(原版: 8000/20000 伤害后切换)
 const DAMAGE_PARTS: Dictionary = {
 	"Boss_head": [
@@ -120,6 +138,17 @@ var is_death: bool:
 	get:
 		return is_dead
 
+func _enter_tree() -> void:
+	## 场景默认是 idle 驾驶舱姿态; 进场前先全隐藏, 避免 add_child 到 _ready 之间闪一帧
+	_hide_all_sprite_parts()
+
+
+func _hide_all_sprite_parts() -> void:
+	for child in get_children():
+		if child is Sprite2D:
+			(child as Sprite2D).visible = false
+
+
 func _ready() -> void:
 	## 绘制层级高于背景与普通单位
 	z_index = 260
@@ -191,13 +220,13 @@ func _cache_anim_players() -> void:
 		push_error("僵王: 未找到 AnimationPlayer")
 
 
-## 动画轨会写 null/jpg 贴图, 移除后由脚本固定 png, 避免切换闪烁
+## 驾驶舱 body1/neck 全部由脚本控制; 剥离所有相关动画轨道(含空 key 轨道, 避免 Godot 报错)
 func _strip_cockpit_texture_tracks(anim: Animation) -> void:
 	if anim == null:
 		return
 	for i in range(anim.get_track_count() - 1, -1, -1):
 		var track_path := str(anim.track_get_path(i))
-		if track_path.ends_with("Boss_body1:texture") or track_path.ends_with("Boss_neck:texture"):
+		if track_path.begins_with("Boss_body1:") or track_path.begins_with("Boss_neck:"):
 			anim.remove_track(i)
 
 
@@ -215,22 +244,68 @@ func _get_anim_player(anim_name: String) -> AnimationPlayer:
 
 func _play_anim(anim_name: String, loop := false) -> void:
 	var player := _get_anim_player(anim_name)
-	if player == null:
+	if player == null or not player.has_animation(anim_name):
 		return
-	## 每个动画独立 AnimationPlayer, 切换前必须停掉上一个, 否则会卡在旧姿态
-	if is_instance_valid(_active_anim_player) and _active_anim_player != player:
-		_active_anim_player.stop()
+	var anim := player.get_animation(anim_name)
+	anim.loop_mode = Animation.LOOP_LINEAR if loop else Animation.LOOP_NONE
+	## 先让新动画第 0 帧立即生效, 再停其它播放器, 避免部件停在上一姿态闪一帧
+	player.play(anim_name)
+	player.seek(0.0, true)
+	for child in get_children():
+		if child is AnimationPlayer and child != player:
+			(child as AnimationPlayer).stop()
 	_active_anim_player = player
-	if player.has_animation(anim_name):
-		var anim := player.get_animation(anim_name)
-		anim.loop_mode = Animation.LOOP_LINEAR if loop else Animation.LOOP_NONE
-		player.play(anim_name)
-	call_deferred("_apply_cockpit_textures")
-	_update_cockpit_visibility(anim_name)
+	_apply_cockpit_textures()
+	_apply_damage_look()
+	_post_anim_switch_fixup(anim_name)
 
 
-func _update_cockpit_visibility(_anim_name: String) -> void:
-	pass
+func _snap_cockpit_pose() -> void:
+	var body1 := get_node_or_null("Boss_body1") as Sprite2D
+	if body1 != null:
+		body1.visible = true
+		body1.position = COCKPIT_BODY1_POS
+		body1.rotation = COCKPIT_BODY1_ROT
+		body1.scale = COCKPIT_SCALE
+	var neck := get_node_or_null("Boss_neck") as Sprite2D
+	if neck != null:
+		neck.visible = true
+		neck.position = COCKPIT_NECK_POS
+		neck.rotation = COCKPIT_NECK_ROT
+		neck.scale = COCKPIT_SCALE
+
+
+func _hide_head_parts() -> void:
+	for part_name in HEAD_PARTS:
+		var spr := get_node_or_null(part_name) as Sprite2D
+		if spr != null:
+			spr.visible = false
+
+
+func _hide_cockpit_parts() -> void:
+	var body1 := get_node_or_null("Boss_body1") as Sprite2D
+	if body1 != null:
+		body1.visible = false
+	var neck := get_node_or_null("Boss_neck") as Sprite2D
+	if neck != null:
+		neck.visible = false
+
+
+func _post_anim_switch_fixup(anim_name: String) -> void:
+	if anim_name == COCKPIT_IDLE_ANIM:
+		_snap_cockpit_pose()
+		_hide_head_parts()
+	elif anim_name == "Zombie_boss_enter":
+		## enter 第 0 帧应是整机入画(body2 可见、驾驶舱隐藏), 不能套用 idle 驾驶舱 snap
+		_hide_cockpit_parts()
+		_hide_head_parts()
+		if is_instance_valid(_active_anim_player):
+			_active_anim_player.seek(0.0, true)
+	elif anim_name.begins_with(HEAD_ANIM_PREFIX):
+		return
+	else:
+		_hide_cockpit_parts()
+		_hide_head_parts()
 
 
 func _apply_damage_look() -> void:

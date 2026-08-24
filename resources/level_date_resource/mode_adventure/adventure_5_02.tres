@@ -37,6 +37,7 @@ metadata/_custom_type_script = "uid://bke3sg5otco7s"
 script = ExtResource("1_ld")
 game_sences = 2
 game_BG = 4
+game_BGM = 4
 all_pre_plant_data = Array[ExtResource("1_pre")]([SubResource("pot0"), SubResource("pot1"), SubResource("pot2"), SubResource("pot3"), SubResource("pot4")])
 zombie_multy = 3
 max_wave = 30

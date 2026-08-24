@@ -518,7 +518,7 @@ func win_main_game():
 	## 游戏暂停因素、游戏速度
 	Global.end_tree_pause_clear_all_pause_factors()
 	Global.time_scale = 1.0
-	Engine.time_scale = Global.time_scale
+	Global.clear_time_stop()
 
 	update_level_state_data_success()
 	## 多轮游戏，重置主游戏数据

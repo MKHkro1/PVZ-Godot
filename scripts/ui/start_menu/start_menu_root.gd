@@ -16,7 +16,7 @@ func _ready() -> void:
 	SoundManager.play_bgm(bgm)
 
 	Global.time_scale = 1.0
-	Engine.time_scale = Global.time_scale
+	Global.clear_time_stop()
 
 	## 入场动画(延迟到布局完成后播放)
 	call_deferred("_play_entrance_anim")

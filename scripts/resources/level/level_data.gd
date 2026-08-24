@@ -361,6 +361,7 @@ var save_game_data_main_game:ResourceSaveGameMainGame
 """
 func init_para():
 	_sanitize_zomboss_fight()
+	_sync_default_bgm_from_background()
 	match card_mode:
 		E_CardMode.Norm:
 			pass
@@ -485,6 +486,22 @@ func init_para():
 	if game_round != 1:
 		print("更新多轮游戏存档数据")
 		update_data_with_save_game_data()
+
+## 关卡未显式配置 BGM 时，按背景场景自动匹配（避免屋顶等场景误播前院白天曲）
+func _sync_default_bgm_from_background() -> void:
+	if game_BGM != GameBGM.FrontDay:
+		return
+	match game_BG:
+		GameBg.FrontNight:
+			game_BGM = GameBGM.FrontNight
+		GameBg.Pool:
+			game_BGM = GameBGM.Pool
+		GameBg.Fog:
+			game_BGM = GameBGM.Fog
+		GameBg.Roof:
+			game_BGM = GameBGM.Roof
+		_:
+			pass
 
 ## 仅允许冒险 5-10(0001-0050 之 0050) 与小游戏僵王关启用 Boss 战
 func _sanitize_zomboss_fight() -> void:
