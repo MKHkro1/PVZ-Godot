@@ -29,6 +29,8 @@ var card_order_plant:Dictionary[int, Global.PlantType] = {}
 var card_order_zombie:Dictionary[int, Global.ZombieType] = {}
 ## 当前生成的卡片总数量
 var all_num_card :int = 0
+## 下次强制生成的植物卡(花盆不足时由僵王请求)
+var _force_next_plant: Global.PlantType = Global.PlantType.Null
 #endregion
 
 ## 是否正在运行中
@@ -93,6 +95,29 @@ func card_use_end(card:Card):
 func _on_create_new_card_timer_timeout() -> void:
 	_create_new_card() # Replace with function body.
 
+## 统计传送带上指定植物卡数量
+func count_plant_cards(plant_type: Global.PlantType) -> int:
+	var n := 0
+	for card in curr_cards:
+		if is_instance_valid(card) and card.card_plant_type == plant_type:
+			n += 1
+	if _force_next_plant == plant_type:
+		n += 1
+	return n
+
+## 请求下次强制生成指定植物卡(若已有同类型请求则忽略)
+func request_force_plant_card(plant_type: Global.PlantType) -> void:
+	if plant_type == Global.PlantType.Null:
+		return
+	if _force_next_plant != Global.PlantType.Null:
+		return
+	_force_next_plant = plant_type
+	## 若卡槽未满且未在等空间, 尽快补一张
+	if is_working and curr_cards.size() < num_card_max and create_new_card_timer.is_stopped() == false:
+		## 缩短等待: 下一帧若计时器快结束则直接创建
+		if create_new_card_timer.time_left > 1.0:
+			create_new_card_timer.start(0.4)
+
 ## 生成一张新卡片
 func _create_new_card():
 	if curr_cards.size() >= num_card_max:
@@ -100,7 +125,10 @@ func _create_new_card():
 		await signal_card_end
 		create_new_card_timer.start()
 	var new_card_prefabs:Card
-	if card_order_plant.has(all_num_card):
+	if _force_next_plant != Global.PlantType.Null and AllCards.all_plant_card_prefabs.has(_force_next_plant):
+		new_card_prefabs = AllCards.all_plant_card_prefabs[_force_next_plant]
+		_force_next_plant = Global.PlantType.Null
+	elif card_order_plant.has(all_num_card):
 		new_card_prefabs = AllCards.all_plant_card_prefabs[card_order_plant[all_num_card]]
 	elif card_order_zombie.has(all_num_card):
 		new_card_prefabs = AllCards.all_zombie_card_prefabs[card_order_zombie[all_num_card]]

@@ -64,6 +64,12 @@ const T_BUNGEE_IN := 2.0
 const T_BUNGEE_OUT := 1.416667
 const T_HEAD_ENTER := 4.666667
 const T_HEAD_LEAVE := 3.666667
+## 低头吐球后 idle 停留(给植物输出窗口)
+const HEAD_IDLE_DWELL := 4.0
+## 吐球冷却(略长于原版 10s)
+const HEAD_COOLDOWN := 16.0
+## 场上花盆过少时强制传送带出花盆的阈值
+const FLOWER_POT_MIN := 16
 ## 阶段休息时间(Stage1/2/3)
 const REST_BY_STAGE:Array[float] = [5.0, 4.5, 4.0]
 ## 投放间隔(Stage1/2/3)
@@ -86,7 +92,7 @@ var rest_timer := 0.0
 var rest_time := REST_BY_STAGE[0]
 var round_count := 0					## 已完成动作轮数
 var action_queue: Array[String] = []		## 本轮待执行动作
-var head_cooldown := 10.0				## 吐球冷却计时
+var head_cooldown := HEAD_COOLDOWN				## 吐球冷却计时
 var is_busy := false					## 正在播放攻击动画
 var is_dead := false
 var spawn_early_rounds := 2				## 前N轮用初级池
@@ -192,11 +198,13 @@ func _play_anim(anim_name: String, loop := false) -> void:
 	var player := _get_anim_player(anim_name)
 	if player == null:
 		return
+	## 每个动画独立 AnimationPlayer, 切换前必须停掉上一个, 否则会卡在旧姿态
+	if is_instance_valid(_active_anim_player) and _active_anim_player != player:
+		_active_anim_player.stop()
 	_active_anim_player = player
 	if player.has_animation(anim_name):
 		var anim := player.get_animation(anim_name)
-		if loop:
-			anim.loop_mode = Animation.LOOP_LINEAR
+		anim.loop_mode = Animation.LOOP_LINEAR if loop else Animation.LOOP_NONE
 		player.play(anim_name)
 	_update_cockpit_visibility(anim_name)
 
@@ -254,7 +262,7 @@ func _physics_process(delta: float) -> void:
 		rest_timer += delta
 		head_cooldown -= delta
 		if head_cooldown <= 0.0:
-			head_cooldown = 10.0
+			head_cooldown = HEAD_COOLDOWN
 			_do_head_attack()
 			return
 		if rest_timer >= rest_time:
@@ -265,12 +273,14 @@ func _physics_process(delta: float) -> void:
 	elif not is_resting and not is_busy:
 		head_cooldown -= delta
 		if head_cooldown <= 0.0:
-			head_cooldown = 10.0
+			head_cooldown = HEAD_COOLDOWN
 			_do_head_attack()
 		elif not action_queue.is_empty():
 			_run_next_action()
 		else:
 			is_resting = true
+	## 屋顶花盆过少时, 请求传送带补花盆
+	_ensure_flower_pots(delta)
 
 ## ===== 动作队列(参考 HE SetStateList 规则) =====
 func _build_round_queue() -> void:
@@ -364,21 +374,17 @@ func _smash_row(row: int) -> void:
 	for cell in cells[row]:
 		cell.plant_be_flattened()
 
-## ===== 天降(替代蹦极: 直接空投僵尸到有植物的格子旁) =====
+## ===== 天降蹦极僵尸(enter→投放蹦极→leave) =====
 func _do_bungee_drop() -> void:
 	is_busy = true
 	_play_anim("Zombie_boss_bungee_1_enter")
-	var targets := _planted_cells_for_drop(3)
-	get_tree().create_timer(T_BUNGEE_IN * 0.6).timeout.connect(func():
+	var targets := _plant_cells_for_bungee(3)
+	get_tree().create_timer(T_BUNGEE_IN * 0.55).timeout.connect(func():
 		if is_dead:
 			return
-		for c in targets:
-			var pool := POOL_LATE if stage >= 2 else POOL_EARLY
-			var cells = Global.main_game.plant_cell_manager.all_plant_cells
-			var drop_pos := Vector2(c.x * 80.0 + 45.0 - 160.0, _row_y(c.y))
-			if c.y < cells.size() and c.x < cells[c.y].size():
-				drop_pos = cells[c.y][c.x].global_position + Vector2(40.0, 20.0)
-			_spawn_zombie(_pick_spawn_type(pool), c.y, drop_pos)
+		for cell in targets:
+			if is_instance_valid(cell):
+				_spawn_bungee_at_cell(cell)
 	)
 	await _active_anim_player.animation_finished
 	_play_anim("Zombie_boss_bungee_1_leave")
@@ -386,6 +392,45 @@ func _do_bungee_drop() -> void:
 	is_busy = false
 	_apply_damage_look()
 	_play_anim("Zombie_boss_idle", true)
+
+
+func _plant_cells_for_bungee(max_n: int) -> Array[PlantCell]:
+	var cells: Array[PlantCell] = Global.main_game.plant_cell_manager.get_cell_have_plant()
+	cells.shuffle()
+	var out: Array[PlantCell] = []
+	for cell in cells:
+		## 只偷前半场, 与原版蹦极落点接近
+		if cell.row_col.y <= 4:
+			out.append(cell)
+		if out.size() >= max_n:
+			break
+	return out
+
+
+func _spawn_bungee_at_cell(plant_cell: PlantCell) -> void:
+	var zm = Global.main_game.zombie_manager
+	if zm == null:
+		return
+	var lane: int = plant_cell.row_col.x
+	if lane < 0 or lane >= zm.all_zombie_rows.size():
+		return
+	var row_node = zm.all_zombie_rows[lane]
+	var init_para: Dictionary = {
+		Zombie000Base.E_ZInitAttr.CharacterInitType: Character000Base.E_CharacterInitType.IsNorm,
+		Zombie000Base.E_ZInitAttr.Lane: lane,
+	}
+	var pos := Vector2(
+		plant_cell.global_position.x + plant_cell.size.x * 0.5,
+		row_node.zombie_create_position.global_position.y
+	)
+	zm.create_norm_zombie(
+		Global.ZombieType.Z021Bungi,
+		row_node,
+		init_para,
+		pos,
+		GlobalUtils.create_bungi.bind(plant_cell)
+	)
+	SoundManager.play_character_SFX("bungee_scream")
 
 ## ===== RV 房车冲撞: 3x2 区域碾压 =====
 func _do_rv_attack() -> void:
@@ -433,6 +478,7 @@ func _do_head_attack() -> void:
 	_play_anim("Zombie_boss_head_enter")
 	await _active_anim_player.animation_finished
 	if is_dead:
+		_finish_head_attack(false)
 		return
 	_set_head_vulnerable(true)
 	_apply_head_glow(is_fire)
@@ -444,15 +490,27 @@ func _do_head_attack() -> void:
 			_fire_ball(_head_attack_lane, is_fire))
 	await _active_anim_player.animation_finished
 	if is_dead:
+		_finish_head_attack(false)
+		return
+	## 吐球后低头 idle 停留, 给植物输出时间
+	_play_anim("Zombie_boss_head_idle", true)
+	await get_tree().create_timer(HEAD_IDLE_DWELL).timeout
+	if is_dead:
+		_finish_head_attack(false)
 		return
 	_play_anim("Zombie_boss_head_leave")
 	await _active_anim_player.animation_finished
+	_finish_head_attack(true)
+
+
+func _finish_head_attack(play_body_idle: bool) -> void:
 	_head_glow_active = false
 	_clear_head_glow()
 	_set_head_vulnerable(false)
 	is_busy = false
-	_apply_damage_look()
-	_play_anim("Zombie_boss_idle", true)
+	if not is_dead and play_body_idle:
+		_apply_damage_look()
+		_play_anim("Zombie_boss_idle", true)
 
 func _apply_head_glow(is_fire: bool) -> void:
 	var mouth := get_node_or_null("Boss_mouthglow_red") as Sprite2D
@@ -556,6 +614,34 @@ func _planted_cells_for_drop(max_n: int) -> Array[Vector2i]:
 				out.append(Vector2i(c, r))
 	out.shuffle()
 	return out.slice(0, max_n)
+
+var _pot_check_timer := 0.0
+
+func _ensure_flower_pots(delta: float) -> void:
+	_pot_check_timer += delta
+	if _pot_check_timer < 2.0:
+		return
+	_pot_check_timer = 0.0
+	if not is_instance_valid(Global.main_game):
+		return
+	var cm = Global.main_game.card_manager
+	if cm == null or not is_instance_valid(cm.card_slot_conveyor_belt):
+		return
+	var pot_on_field: int = _count_flower_pots_on_field()
+	var belt: CardSlotConveyorBelt = cm.card_slot_conveyor_belt
+	var pot_on_belt: int = belt.count_plant_cards(Global.PlantType.P034FlowerPot)
+	if pot_on_field + pot_on_belt < FLOWER_POT_MIN:
+		belt.request_force_plant_card(Global.PlantType.P034FlowerPot)
+
+
+func _count_flower_pots_on_field() -> int:
+	var n := 0
+	var cells = Global.main_game.plant_cell_manager.all_plant_cells
+	for lane in cells:
+		for cell in lane:
+			if is_instance_valid(cell.plant_in_cell[Global.PlacePlantInCell.Down]):
+				n += 1
+	return n
 
 func _row_y(row: int) -> float:
 	var zm = Global.main_game.zombie_manager
