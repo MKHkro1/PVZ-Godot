@@ -215,14 +215,20 @@ func _cache_anim_players() -> void:
 			var player := child as AnimationPlayer
 			for anim_name in player.get_animation_list():
 				_anim_players[anim_name] = player
-				_strip_cockpit_texture_tracks(player.get_animation(anim_name))
+				## 头部动画保留 cockpit 轨道(Boss_body1/Boss_neck 跟随头部运动);
+				## 非头部动画剥离, 由脚本控制驾驶舱姿态
+				var is_head_anim := anim_name.begins_with(HEAD_ANIM_PREFIX)
+				_strip_cockpit_texture_tracks(player.get_animation(anim_name), is_head_anim)
 	if _anim_players.is_empty():
 		push_error("僵王: 未找到 AnimationPlayer")
 
 
-## 驾驶舱 body1/neck 全部由脚本控制; 剥离所有相关动画轨道(含空 key 轨道, 避免 Godot 报错)
-func _strip_cockpit_texture_tracks(anim: Animation) -> void:
+## 驾驶舱 body1/neck 由脚本控制; 非头部动画剥离相关轨道(含空 key 轨道, 避免 Godot 报错)
+## keep_for_head=true 时保留轨道(头部动画需要 cockpit 跟随运动)
+func _strip_cockpit_texture_tracks(anim: Animation, keep_for_head: bool = false) -> void:
 	if anim == null:
+		return
+	if keep_for_head:
 		return
 	for i in range(anim.get_track_count() - 1, -1, -1):
 		var track_path := str(anim.track_get_path(i))
@@ -302,7 +308,13 @@ func _post_anim_switch_fixup(anim_name: String) -> void:
 		if is_instance_valid(_active_anim_player):
 			_active_anim_player.seek(0.0, true)
 	elif anim_name.begins_with(HEAD_ANIM_PREFIX):
-		return
+		## 头部动画保留 cockpit 轨道, 确保 neck/body1 可见
+		var body1 := get_node_or_null("Boss_body1") as Sprite2D
+		if body1 != null:
+			body1.visible = true
+		var neck := get_node_or_null("Boss_neck") as Sprite2D
+		if neck != null:
+			neck.visible = true
 	else:
 		_hide_cockpit_parts()
 		_hide_head_parts()
