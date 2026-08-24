@@ -41,6 +41,8 @@ func _ready() -> void:
 				if node.curr_level_data_game_para == null:
 					continue
 				node.signal_choose_level_button.connect(_on_choose_level_button)
+				## 从磁盘拷贝关卡参数, 避免 init_para 污染 .tres 缓存
+				node.curr_level_data_game_para = _duplicate_level_para(node.curr_level_data_game_para)
 				## 初始化游戏数据的选关数据
 				node.curr_level_data_game_para.set_choose_level(game_mode, page_i, level_id)
 				var curr_level_state_data:Dictionary= Global.curr_all_level_state_data.get(node.curr_level_data_game_para.save_game_name, {})
@@ -91,8 +93,17 @@ func generate_level_id() -> String:
 	next_level_number += 1
 	return id_str
 
+func _duplicate_level_para(src: ResourceLevelData) -> ResourceLevelData:
+	var res_path: String = src.get_level_res_path()
+	if not res_path.is_empty():
+		return Global.load_level_para(res_path)
+	return src.duplicate(true)
+
 func _on_choose_level_button(choose_level_button:ChooseLevelButton):
-	Global.game_para = choose_level_button.curr_level_data_game_para.duplicate(true)
+	var btn_para: ResourceLevelData = choose_level_button.curr_level_data_game_para
+	var para: ResourceLevelData = _duplicate_level_para(btn_para)
+	para.set_choose_level(btn_para.game_mode, btn_para.level_page, btn_para.level_id)
+	Global.game_para = para
 	choose_level_start_game(Global.game_para.game_sences)
 
 ## 进入游戏关卡

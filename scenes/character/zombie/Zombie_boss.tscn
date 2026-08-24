@@ -1,154 +1,171 @@
-[gd_scene load_steps=84 format=3 uid="uid://ceq71xsqf5iyg"]
+[gd_scene load_steps=79 format=3 uid="uid://ceq71xsqf5iyg"]
 
-[ext_resource type="Script" path="res://scripts/character/zombie/zombie_boss.gd" id="boss_script"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_arm_upper2.png" id="0_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_innerarm_lower.png" id="1_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_innerarm_fingerrope.png" id="2_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_innerarm_finger.png" id="3_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_innerarm_hand.png" id="4_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_rvwheel.png" id="5_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_rv.png" id="6_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_innerarm_thumb2.png" id="7_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_innerarm_thumb1.png" id="8_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_innerarm_upper.png" id="9_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_foot.png" id="10_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_legbits.png" id="11_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_innerleg_upper.png" id="12_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_leg_lower.png" id="13_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_lowerbody.png" id="14_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_outerleg_upper.png" id="15_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_upperbody.png" id="16_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_neck.png" id="17_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_innerjaw.png" id="18_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_mouthglow.png" id="19_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_mouthglow_red.png" id="20_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_jaw.png" id="21_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_eyeglow.png" id="22_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_eyeglow_red.png" id="23_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_head2.png" id="24_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_eyeglow_black.png" id="25_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_antenna.png" id="26_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_antenna_lit.png" id="27_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_head.png" id="28_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_outerarm_thumb2.png" id="29_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_outerarm_hand.png" id="30_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_outerarm_finger2.png" id="31_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_outerarm_finger1.png" id="32_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_outerarm_thumb1.png" id="33_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_outerarm_lower.png" id="34_fuck"]
-[ext_resource type="Texture2D" path="res://assets/reanim/Zombie_boss_outerarm_upper.png" id="35_fuck"]
-[ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_enter.tres" id="1_anim"]
-[ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_idle.tres" id="2_anim"]
+[ext_resource type="Texture2D" uid="uid://d0gnsuf88om6q" path="res://assets/reanim/Zombie_boss_arm_upper2.png" id="0_fuck"]
+[ext_resource type="Animation" uid="uid://cbv4fhs268lws" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_enter.tres" id="1_anim"]
+[ext_resource type="Texture2D" uid="uid://cb7lvkchehhyj" path="res://assets/reanim/Zombie_boss_innerarm_lower.png" id="1_fuck"]
+[ext_resource type="Animation" uid="uid://bieg4xp1g2ias" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_idle.tres" id="2_anim"]
 [ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_spawn_5.tres" id="3_anim"]
+[ext_resource type="Texture2D" uid="uid://c77q3t07btgx3" path="res://assets/reanim/Zombie_boss_innerarm_finger.png" id="3_fuck"]
 [ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_spawn_4.tres" id="4_anim"]
+[ext_resource type="Texture2D" uid="uid://b61wa16xujdnk" path="res://assets/reanim/Zombie_boss_innerarm_hand.png" id="4_fuck"]
 [ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_spawn_3.tres" id="5_anim"]
 [ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_spawn_2.tres" id="6_anim"]
 [ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_spawn_1.tres" id="7_anim"]
+[ext_resource type="Texture2D" uid="uid://cdrqid7xanb3t" path="res://assets/reanim/Zombie_boss_innerarm_thumb2.png" id="7_fuck"]
 [ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_bungee_1_enter.tres" id="8_anim"]
+[ext_resource type="Texture2D" uid="uid://dgcifib0510bl" path="res://assets/reanim/Zombie_boss_innerarm_thumb1.png" id="8_fuck"]
 [ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_bungee_1_leave.tres" id="9_anim"]
+[ext_resource type="Texture2D" uid="uid://d22p4oxj6fvxt" path="res://assets/reanim/Zombie_boss_innerarm_upper.png" id="9_fuck"]
 [ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_stomp_1.tres" id="10_anim"]
+[ext_resource type="Texture2D" uid="uid://yrcmd1nqpt8i" path="res://assets/reanim/Zombie_boss_foot.png" id="10_fuck"]
 [ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_stomp_2.tres" id="11_anim"]
+[ext_resource type="Texture2D" uid="uid://cq7u4mojd15e3" path="res://assets/reanim/Zombie_boss_legbits.png" id="11_fuck"]
 [ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_stomp_3.tres" id="12_anim"]
+[ext_resource type="Texture2D" uid="uid://cpn0fqjqj12ah" path="res://assets/reanim/Zombie_boss_innerleg_upper.png" id="12_fuck"]
 [ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_stomp_4.tres" id="13_anim"]
-[ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_head_enter.tres" id="14_anim"]
-[ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_head_idle.tres" id="15_anim"]
-[ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_head_attack_1.tres" id="16_anim"]
-[ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_head_attack_2.tres" id="17_anim"]
-[ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_head_attack_3.tres" id="18_anim"]
-[ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_head_attack_4.tres" id="19_anim"]
-[ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_head_attack_5.tres" id="20_anim"]
-[ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_head_leave.tres" id="21_anim"]
-[ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_death.tres" id="22_anim"]
-[ext_resource type="Animation" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_RV_1.tres" id="23_anim"]
+[ext_resource type="Texture2D" uid="uid://bjxhbmwr06r3n" path="res://assets/reanim/Zombie_boss_leg_lower.png" id="13_fuck"]
+[ext_resource type="Animation" uid="uid://ct411rhbake8a" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_head_enter.tres" id="14_anim"]
+[ext_resource type="Texture2D" uid="uid://bxsncalumj0c" path="res://assets/reanim/Zombie_boss_lowerbody.png" id="14_fuck"]
+[ext_resource type="Animation" uid="uid://2jx60tm1qkbn" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_head_idle.tres" id="15_anim"]
+[ext_resource type="Texture2D" uid="uid://dmxrbe37acf4o" path="res://assets/reanim/Zombie_boss_outerleg_upper.png" id="15_fuck"]
+[ext_resource type="Texture2D" uid="uid://618utgrqroib" path="res://assets/reanim/Zombie_boss_upperbody.jpg" id="15_l5caj"]
+[ext_resource type="Animation" uid="uid://pv7skhemb4u4" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_head_attack_1.tres" id="16_anim"]
+[ext_resource type="Texture2D" uid="uid://ddr888opwsyx3" path="res://assets/reanim/Zombie_boss_neck.jpg" id="16_l5caj"]
+[ext_resource type="Animation" uid="uid://c4v8m0qi5oyqb" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_head_attack_2.tres" id="17_anim"]
+[ext_resource type="Animation" uid="uid://b0iurf237bmm2" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_head_attack_3.tres" id="18_anim"]
+[ext_resource type="Texture2D" uid="uid://b1g33eigvbf34" path="res://assets/reanim/Zombie_boss_innerjaw.png" id="18_fuck"]
+[ext_resource type="Animation" uid="uid://de0r02vtxfpqt" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_head_attack_4.tres" id="19_anim"]
+[ext_resource type="Texture2D" uid="uid://bpi1pc7gdc7e3" path="res://assets/reanim/Zombie_boss_mouthglow.png" id="19_fuck"]
+[ext_resource type="Animation" uid="uid://cpff662nnv52l" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_head_attack_5.tres" id="20_anim"]
+[ext_resource type="Texture2D" uid="uid://4a4nlhkc5nak" path="res://assets/reanim/Zombie_boss_mouthglow_red.png" id="20_fuck"]
+[ext_resource type="Animation" uid="uid://c55frbyvwd1vu" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_head_leave.tres" id="21_anim"]
+[ext_resource type="Texture2D" uid="uid://bql5giivcflcr" path="res://assets/reanim/Zombie_boss_jaw.png" id="21_fuck"]
+[ext_resource type="Animation" uid="uid://dbyx6obiykerb" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_death.tres" id="22_anim"]
+[ext_resource type="Texture2D" uid="uid://dk0ry1s32y2so" path="res://assets/reanim/Zombie_boss_eyeglow.png" id="22_fuck"]
+[ext_resource type="Animation" uid="uid://iwgc7mv4uk0p" path="res://animation/character/zombie/999_zombie_boss/Zombie_boss_RV_1.tres" id="23_anim"]
+[ext_resource type="Texture2D" uid="uid://baeptg7m3bq68" path="res://assets/reanim/Zombie_boss_eyeglow_red.png" id="23_fuck"]
+[ext_resource type="Texture2D" uid="uid://cbanmp4jcvjfb" path="res://assets/reanim/Zombie_boss_head2.png" id="24_fuck"]
+[ext_resource type="Texture2D" uid="uid://b5owucpyftf8c" path="res://assets/reanim/Zombie_boss_antenna.png" id="26_fuck"]
+[ext_resource type="Texture2D" uid="uid://dosj05ct71hmf" path="res://assets/reanim/Zombie_boss_head.png" id="28_fuck"]
+[ext_resource type="Texture2D" uid="uid://y7g8rfl3fp03" path="res://assets/reanim/Zombie_boss_outerarm_thumb2.png" id="29_fuck"]
+[ext_resource type="Texture2D" uid="uid://c74eawoq1s7t2" path="res://assets/reanim/Zombie_boss_outerarm_hand.png" id="30_fuck"]
+[ext_resource type="Texture2D" uid="uid://t8xlhlkacmq4" path="res://assets/reanim/Zombie_boss_outerarm_finger2.png" id="31_fuck"]
+[ext_resource type="Texture2D" uid="uid://dtklsfuxl3iw0" path="res://assets/reanim/Zombie_boss_outerarm_finger1.png" id="32_fuck"]
+[ext_resource type="Texture2D" uid="uid://dao8440gm8ep2" path="res://assets/reanim/Zombie_boss_outerarm_thumb1.png" id="33_fuck"]
+[ext_resource type="Texture2D" uid="uid://itotbpb0blnd" path="res://assets/reanim/Zombie_boss_outerarm_lower.png" id="34_fuck"]
+[ext_resource type="Texture2D" uid="uid://773rlnrhsldg" path="res://assets/reanim/Zombie_boss_outerarm_upper.png" id="35_fuck"]
+[ext_resource type="Script" uid="uid://e1b6a8abhd0u" path="res://scripts/character/zombie/zombie_boss.gd" id="boss_script"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_enter"]
 _data = {
 &"Zombie_boss_enter": ExtResource("1_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_idle"]
 _data = {
 &"Zombie_boss_idle": ExtResource("2_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_spawn_5"]
 _data = {
 &"Zombie_boss_spawn_5": ExtResource("3_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_spawn_4"]
 _data = {
 &"Zombie_boss_spawn_4": ExtResource("4_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_spawn_3"]
 _data = {
 &"Zombie_boss_spawn_3": ExtResource("5_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_spawn_2"]
 _data = {
 &"Zombie_boss_spawn_2": ExtResource("6_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_spawn_1"]
 _data = {
 &"Zombie_boss_spawn_1": ExtResource("7_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_bungee_1_enter"]
 _data = {
 &"Zombie_boss_bungee_1_enter": ExtResource("8_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_bungee_1_leave"]
 _data = {
 &"Zombie_boss_bungee_1_leave": ExtResource("9_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_stomp_1"]
 _data = {
 &"Zombie_boss_stomp_1": ExtResource("10_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_stomp_2"]
 _data = {
 &"Zombie_boss_stomp_2": ExtResource("11_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_stomp_3"]
 _data = {
 &"Zombie_boss_stomp_3": ExtResource("12_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_stomp_4"]
 _data = {
 &"Zombie_boss_stomp_4": ExtResource("13_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_head_enter"]
 _data = {
 &"Zombie_boss_head_enter": ExtResource("14_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_head_idle"]
 _data = {
 &"Zombie_boss_head_idle": ExtResource("15_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_head_attack_1"]
 _data = {
 &"Zombie_boss_head_attack_1": ExtResource("16_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_head_attack_2"]
 _data = {
 &"Zombie_boss_head_attack_2": ExtResource("17_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_head_attack_3"]
 _data = {
 &"Zombie_boss_head_attack_3": ExtResource("18_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_head_attack_4"]
 _data = {
 &"Zombie_boss_head_attack_4": ExtResource("19_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_head_attack_5"]
 _data = {
 &"Zombie_boss_head_attack_5": ExtResource("20_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_head_leave"]
 _data = {
 &"Zombie_boss_head_leave": ExtResource("21_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_death"]
 _data = {
 &"Zombie_boss_death": ExtResource("22_anim")
 }
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_Zombie_boss_RV_1"]
 _data = {
 &"Zombie_boss_RV_1": ExtResource("23_anim")
@@ -158,335 +175,577 @@ _data = {
 script = ExtResource("boss_script")
 
 [node name="Anim_enter" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_idle" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_spawn_5" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_spawn_4" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_spawn_3" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_spawn_2" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_spawn_1" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_bungee_1_enter" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_bungee_1_leave" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_stomp_1" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_stomp_2" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_stomp_3" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_stomp_4" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_head_enter" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_head_idle" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_head_attack_1" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_head_attack_2" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_head_attack_3" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_head_attack_4" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_head_attack_5" type="Sprite2D" parent="."]
 centered = false
 
 [node name="Anim_head_leave" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_death" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Anim_RV_1" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Boss_innerarm_bits" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(523, -245.5)
+rotation = 0.354302
+scale = Vector2(0.795, 0.894)
+texture = ExtResource("0_fuck")
 centered = false
 
 [node name="Boss_innerarm_lower" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(530.1, -212.1)
+rotation = 1.089085
+scale = Vector2(0.795, 0.795)
+texture = ExtResource("1_fuck")
 centered = false
 
 [node name="Boss_innerarm_finger4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(366.8, -69.6)
+rotation = 1.260128
+scale = Vector2(0.618, 0.679)
+texture = ExtResource("3_fuck")
 centered = false
 
 [node name="Boss_innerarm_finger2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(347.4, -115.2)
+rotation = 1.460841
+scale = Vector2(0.793, 0.865)
+texture = ExtResource("3_fuck")
 centered = false
 
 [node name="Boss_innerarm_finger1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(341.2, -151.6)
+rotation = 1.576032
+scale = Vector2(0.794, 0.794)
+texture = ExtResource("3_fuck")
 centered = false
 
 [node name="Boss_innerarm_finger3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(352.7, -88.3)
+rotation = 1.410226
+scale = Vector2(0.676, 0.712)
+texture = ExtResource("3_fuck")
 centered = false
 
 [node name="Boss_innerarm_hand" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(424.6, -172.3)
+rotation = 1.518436
+scale = Vector2(0.794, 0.794)
+texture = ExtResource("4_fuck")
 centered = false
 
 [node name="Boss_RV_wheel1" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Boss_RV_wheel2" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Boss_RV" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Boss_innerarm_thumb2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(401.8, -156.6)
+rotation = 1.518436
+scale = Vector2(0.794, 0.794)
+texture = ExtResource("7_fuck")
 centered = false
 
 [node name="Boss_innerarm_thumb1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(418.2, -155.6)
+rotation = 1.518436
+scale = Vector2(0.794, 0.794)
+texture = ExtResource("8_fuck")
 centered = false
 
 [node name="Boss_innerarm_upper" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(541.8, -379.8)
+rotation = 0.354302
+scale = Vector2(0.795, 0.795)
+texture = ExtResource("9_fuck")
 centered = false
 
 [node name="Boss_innerleg_foot" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(808.1, 106.8)
+rotation = -0.654498
+scale = Vector2(0.647, 0.647)
+texture = ExtResource("10_fuck")
 centered = false
 
 [node name="Boss_innerleg_bits" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(824, -38.4)
+rotation = -0.642281
+scale = Vector2(0.797, 0.797)
+texture = ExtResource("11_fuck")
 centered = false
 
 [node name="Boss_innerleg_upper" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(804.7, -201.9)
+rotation = 0.07854
+scale = Vector2(0.795, 0.795)
+texture = ExtResource("12_fuck")
 centered = false
 
 [node name="Boss_innerleg_lower" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(797.8, 3)
+rotation = -0.642281
+scale = Vector2(0.647, 0.647)
+texture = ExtResource("13_fuck")
 centered = false
 
 [node name="Boss_body2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(737, -183.3)
+rotation = 6.115634
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("14_fuck")
 centered = false
 
 [node name="Boss_outerleg_foot" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(831.4, 345.1)
+rotation = -0.511381
+scale = Vector2(0.799, 0.799)
+texture = ExtResource("10_fuck")
 centered = false
 
 [node name="Boss_outerleg_bits" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(859.8, 184.2)
+rotation = -0.511381
+scale = Vector2(0.998, 0.998)
+texture = ExtResource("11_fuck")
 centered = false
 
 [node name="Boss_outerleg_upper" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(786, 16.9)
+rotation = -0.274017
+scale = Vector2(0.799, 0.89)
+texture = ExtResource("15_fuck")
 centered = false
 
 [node name="Boss_outerleg_lower" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(825.4, 202.9)
+rotation = -0.511381
+scale = Vector2(0.799, 0.799)
+texture = ExtResource("13_fuck")
 centered = false
 
 [node name="Boss_body1" type="Sprite2D" parent="."]
-texture = ExtResource("16_fuck")
+position = Vector2(528.5, 154.032)
+rotation = -0.286234
+scale = Vector2(0.796, 0.796)
+texture = ExtResource("15_l5caj")
 centered = false
 
 [node name="Boss_neck" type="Sprite2D" parent="."]
-texture = ExtResource("17_fuck")
+position = Vector2(553.6, 170.46399)
+rotation = -0.033161
+scale = Vector2(0.796, 0.796)
+texture = ExtResource("16_l5caj")
 centered = false
 
 [node name="Boss_innerjaw" type="Sprite2D" parent="."]
+position = Vector2(552.352, 235.51201)
+rotation = -0.0005584953
+scale = Vector2(0.996, 0.996)
+texture = ExtResource("18_fuck")
 centered = false
 
 [node name="Boss_mouthglow" type="Sprite2D" parent="."]
+position = Vector2(559.26, 235.61201)
+rotation = -0.0005584953
+scale = Vector2(0.996, 0.996)
+texture = ExtResource("19_fuck")
 centered = false
 
 [node name="Boss_mouthglow_red" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(564.1, 343)
+rotation = -0.050615
+scale = Vector2(0.955, 0.998)
+skew = 0.045379
+texture = ExtResource("20_fuck")
 centered = false
 
 [node name="Boss_jaw" type="Sprite2D" parent="."]
+position = Vector2(528.968, 251.42801)
+rotation = -0.0005584953
+scale = Vector2(0.796, 0.796)
+texture = ExtResource("21_fuck")
 centered = false
 
 [node name="Boss_eyeglow" type="Sprite2D" parent="."]
+position = Vector2(524.66003, 240.58002)
+rotation = -0.0005584953
+scale = Vector2(0.796, 0.796)
+texture = ExtResource("22_fuck")
 centered = false
 
 [node name="Boss_eyeglow_red" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(523.2, 354.9)
+rotation = -0.048869
+scale = Vector2(0.795, 0.796)
+skew = -0.0017455
+texture = ExtResource("23_fuck")
 centered = false
 
 [node name="Boss_head2" type="Sprite2D" parent="."]
+position = Vector2(549.01996, 174.35602)
+rotation = -0.0005584953
+scale = Vector2(0.796, 0.796)
+texture = ExtResource("24_fuck")
 centered = false
 
 [node name="Boss_eyeglow_black" type="Sprite2D" parent="."]
+visible = false
 centered = false
 
 [node name="Boss_antenna2" type="Sprite2D" parent="."]
+position = Vector2(499.836, 199.41202)
+rotation = 0.05689782
+scale = Vector2(0.798, 0.798)
+texture = ExtResource("26_fuck")
 centered = false
 
 [node name="Boss_head" type="Sprite2D" parent="."]
+position = Vector2(518.82, 179.88002)
+rotation = -0.0005584953
+scale = Vector2(0.796, 0.796)
+texture = ExtResource("28_fuck")
 centered = false
 
 [node name="Boss_antenna" type="Sprite2D" parent="."]
+position = Vector2(721.544, 203.468)
+rotation = -0.0005584953
+scale = Vector2(0.996, 0.996)
+texture = ExtResource("26_fuck")
 centered = false
 
 [node name="Boss_outerarm_thumb2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(855, 68.7)
+rotation = -0.69115
+scale = Vector2(0.857, 0.903)
+texture = ExtResource("29_fuck")
 centered = false
 
 [node name="Boss_outerarm_hand" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(883.6, 1.8)
+rotation = -0.680678
+scale = Vector2(0.792, 0.792)
+texture = ExtResource("30_fuck")
 centered = false
 
 [node name="Boss-outerarm_finger4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1025.1, 72.4)
+rotation = -1.172861
+scale = Vector2(0.663, 0.608)
+texture = ExtResource("31_fuck")
 centered = false
 
 [node name="Boss-outerarm_knuckle4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1034, 38.6)
+rotation = -1.329941
+scale = Vector2(0.533, 0.586)
+texture = ExtResource("32_fuck")
 centered = false
 
 [node name="Boss-outerarm_finger3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(998, 89.1)
+rotation = -1.007055
+scale = Vector2(0.686, 0.702)
+texture = ExtResource("31_fuck")
 centered = false
 
 [node name="Boss-outerarm_knuckle3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1009.9, 52.1)
+rotation = -1.136209
+scale = Vector2(0.565, 0.66)
+texture = ExtResource("32_fuck")
 centered = false
 
 [node name="Boss-outerarm_finger2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(962.4, 112)
+rotation = -0.968658
+scale = Vector2(0.737, 0.806)
+texture = ExtResource("31_fuck")
 centered = false
 
 [node name="Boss-outerarm_knuckle2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(974.6, 72.4)
+rotation = -1.069887
+scale = Vector2(0.742, 0.792)
+texture = ExtResource("32_fuck")
 centered = false
 
 [node name="Boss-outerarm_finger1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(912.9, 107.3)
+rotation = -0.689405
+scale = Vector2(0.696, 0.766)
+texture = ExtResource("31_fuck")
 centered = false
 
 [node name="Boss-outerarm_knuckle1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(931.9, 70.3)
+rotation = -0.633555
+scale = Vector2(0.755, 0.755)
+texture = ExtResource("32_fuck")
 centered = false
 
 [node name="Boss_outerarm_thumb1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(885.8, 38.1)
+rotation = -0.767945
+scale = Vector2(0.865, 0.903)
+skew = 0.1343905
+texture = ExtResource("33_fuck")
 centered = false
 
 [node name="Boss_outerarm_bits" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(821.1, -144.5)
+rotation = -1.096067
+scale = Vector2(0.796, 0.796)
+texture = ExtResource("0_fuck")
 centered = false
 
 [node name="Boss_outerarm_lower" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(832, -160)
+rotation = -0.471239
+scale = Vector2(0.794, 0.855)
+texture = ExtResource("34_fuck")
 centered = false
 
 [node name="Boss_outerarm_upper" type="Sprite2D" parent="."]
+position = Vector2(738.792, 215.424)
+rotation = -0.759218
+scale = Vector2(0.794, 0.794)
+texture = ExtResource("35_fuck")
 centered = false
 
 [node name="Anim_Zombie_boss_enter" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_enter")
+&"": SubResource("AnimationLibrary_Zombie_boss_enter")
 }
 
 [node name="Anim_Zombie_boss_idle" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_idle")
+&"": SubResource("AnimationLibrary_Zombie_boss_idle")
 }
 
 [node name="Anim_Zombie_boss_spawn_5" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_spawn_5")
+&"": SubResource("AnimationLibrary_Zombie_boss_spawn_5")
 }
 
 [node name="Anim_Zombie_boss_spawn_4" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_spawn_4")
+&"": SubResource("AnimationLibrary_Zombie_boss_spawn_4")
 }
 
 [node name="Anim_Zombie_boss_spawn_3" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_spawn_3")
+&"": SubResource("AnimationLibrary_Zombie_boss_spawn_3")
 }
 
 [node name="Anim_Zombie_boss_spawn_2" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_spawn_2")
+&"": SubResource("AnimationLibrary_Zombie_boss_spawn_2")
 }
 
 [node name="Anim_Zombie_boss_spawn_1" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_spawn_1")
+&"": SubResource("AnimationLibrary_Zombie_boss_spawn_1")
 }
 
 [node name="Anim_Zombie_boss_bungee_1_enter" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_bungee_1_enter")
+&"": SubResource("AnimationLibrary_Zombie_boss_bungee_1_enter")
 }
 
 [node name="Anim_Zombie_boss_bungee_1_leave" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_bungee_1_leave")
+&"": SubResource("AnimationLibrary_Zombie_boss_bungee_1_leave")
 }
 
 [node name="Anim_Zombie_boss_stomp_1" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_stomp_1")
+&"": SubResource("AnimationLibrary_Zombie_boss_stomp_1")
 }
 
 [node name="Anim_Zombie_boss_stomp_2" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_stomp_2")
+&"": SubResource("AnimationLibrary_Zombie_boss_stomp_2")
 }
 
 [node name="Anim_Zombie_boss_stomp_3" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_stomp_3")
+&"": SubResource("AnimationLibrary_Zombie_boss_stomp_3")
 }
 
 [node name="Anim_Zombie_boss_stomp_4" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_stomp_4")
+&"": SubResource("AnimationLibrary_Zombie_boss_stomp_4")
 }
 
 [node name="Anim_Zombie_boss_head_enter" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_head_enter")
+&"": SubResource("AnimationLibrary_Zombie_boss_head_enter")
 }
 
 [node name="Anim_Zombie_boss_head_idle" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_head_idle")
+&"": SubResource("AnimationLibrary_Zombie_boss_head_idle")
 }
 
 [node name="Anim_Zombie_boss_head_attack_1" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_head_attack_1")
+&"": SubResource("AnimationLibrary_Zombie_boss_head_attack_1")
 }
 
 [node name="Anim_Zombie_boss_head_attack_2" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_head_attack_2")
+&"": SubResource("AnimationLibrary_Zombie_boss_head_attack_2")
 }
 
 [node name="Anim_Zombie_boss_head_attack_3" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_head_attack_3")
+&"": SubResource("AnimationLibrary_Zombie_boss_head_attack_3")
 }
 
 [node name="Anim_Zombie_boss_head_attack_4" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_head_attack_4")
+&"": SubResource("AnimationLibrary_Zombie_boss_head_attack_4")
 }
 
 [node name="Anim_Zombie_boss_head_attack_5" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_head_attack_5")
+&"": SubResource("AnimationLibrary_Zombie_boss_head_attack_5")
 }
 
 [node name="Anim_Zombie_boss_head_leave" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_head_leave")
+&"": SubResource("AnimationLibrary_Zombie_boss_head_leave")
 }
 
 [node name="Anim_Zombie_boss_death" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_death")
+&"": SubResource("AnimationLibrary_Zombie_boss_death")
 }
 
 [node name="Anim_Zombie_boss_RV_1" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_Zombie_boss_RV_1")
+&"": SubResource("AnimationLibrary_Zombie_boss_RV_1")
 }
-

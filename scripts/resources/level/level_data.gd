@@ -97,6 +97,16 @@ var level_page:int=0
 var level_id:String = "test"
 ## 多轮游戏存档保存的文件名(无后缀)
 var save_game_name:String
+## duplicate 后 resource_path 会丢失, 用于主游戏从磁盘重载原始关卡
+var runtime_level_path: String = ""
+
+func bind_runtime_level_path(path: String) -> void:
+	runtime_level_path = path
+
+func get_level_res_path() -> String:
+	if not runtime_level_path.is_empty():
+		return runtime_level_path
+	return resource_path
 
 ## 初始化选关数据
 func set_choose_level(curr_game_mode:Global.MainScenes, curr_level_page:int, curr_level_id:String):
@@ -348,6 +358,7 @@ var save_game_data_main_game:ResourceSaveGameMainGame
 		出怪列表禁止: 011鸭子僵尸 021蹦极僵尸 025小鬼僵尸
 """
 func init_para():
+	_sanitize_zomboss_fight()
 	match card_mode:
 		E_CardMode.Norm:
 			pass
@@ -472,6 +483,20 @@ func init_para():
 	if game_round != 1:
 		print("更新多轮游戏存档数据")
 		update_data_with_save_game_data()
+
+## 仅允许冒险 5-10(0001-0050 之 0050) 与小游戏僵王关启用 Boss 战
+func _sanitize_zomboss_fight() -> void:
+	if not is_zomboss_fight:
+		return
+	var allowed := false
+	match game_mode:
+		Global.MainScenes.ChooseLevelAdventure:
+			allowed = level_id == "0050"
+		Global.MainScenes.ChooseLevelMiniGame:
+			allowed = level_id == "0006"
+	if not allowed:
+		push_warning("关卡 %s 非法 is_zomboss_fight, 已重置" % level_id)
+		is_zomboss_fight = false
 
 ## 罐子固定生成模式下，获取僵尸按行类型生成的分类字典
 func get_pot_zombie_with_row_type_pot_on_fiexd_mode(pot_zombie_dic:Dictionary) -> Dictionary[Global.ZombieRowType, Dictionary]:

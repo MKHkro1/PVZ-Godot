@@ -141,9 +141,17 @@ var is_save_game_data_on_init:=false
 func _ready() -> void:
 	Global.main_game = self
 
-	## 先获取当前关卡参数(duplicate 避免 init_para 污染 .tres 缓存导致其它关卡串关)
+	## 优先从磁盘重载关卡参数, 避免 init_para 污染资源缓存导致串关(如 1-1 变僵王)
 	if Global.game_para != null:
-		game_para = Global.game_para.duplicate(true)
+		var src_para: ResourceLevelData = Global.game_para
+		var res_path: String = src_para.get_level_res_path()
+		var para: ResourceLevelData = null
+		if not res_path.is_empty():
+			para = Global.load_level_para(res_path)
+		if para == null:
+			para = src_para.duplicate(true)
+		para.set_choose_level(src_para.game_mode, src_para.level_page, src_para.level_id)
+		game_para = para
 	else:
 		is_test = true
 	game_para.init_para()

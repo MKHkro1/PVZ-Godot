@@ -334,10 +334,23 @@ func _adventure_level_res_path(idx:int) -> String:
 	var pos:int = idx % 10
 	return "res://resources/level_date_resource/mode_adventure/adventure_%d_%02d.tres" % [stage + 1, pos + 1]
 
+## 从磁盘重新加载关卡参数(忽略资源缓存, 避免 init_para 污染串关)
+func load_level_para(res_path: String) -> ResourceLevelData:
+	var res: Resource = ResourceLoader.load(res_path, "", ResourceLoader.CACHE_MODE_IGNORE)
+	if res is ResourceLevelData:
+		var para: ResourceLevelData = (res as ResourceLevelData).duplicate(true)
+		para.bind_runtime_level_path(res_path)
+		return para
+	push_error("无法加载关卡资源: %s" % res_path)
+	return null
+
 ## 无选关界面: 直接进入当前进度的冒险关卡(沿用选关按钮的参数装配方式)
 func start_adventure_next_level() -> void:
 	var idx:int = adventure_next_index % ADVENTURE_LEVEL_COUNT
-	var para:ResourceLevelData = load(_adventure_level_res_path(idx)).duplicate(true)
+	var res_path: String = _adventure_level_res_path(idx)
+	var para: ResourceLevelData = load_level_para(res_path)
+	if para == null:
+		return
 	para.set_choose_level(MainScenes.ChooseLevelAdventure, floori(idx / 10.0), "%04d" % (idx + 1))
 	game_para = para
 	SceneTransition.change_scene(MainScenesMap[para.game_sences])
