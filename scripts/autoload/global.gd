@@ -337,7 +337,7 @@ func _adventure_level_res_path(idx:int) -> String:
 ## 无选关界面: 直接进入当前进度的冒险关卡(沿用选关按钮的参数装配方式)
 func start_adventure_next_level() -> void:
 	var idx:int = adventure_next_index % ADVENTURE_LEVEL_COUNT
-	var para:ResourceLevelData = load(_adventure_level_res_path(idx))
+	var para:ResourceLevelData = load(_adventure_level_res_path(idx)).duplicate(true)
 	para.set_choose_level(MainScenes.ChooseLevelAdventure, floori(idx / 10.0), "%04d" % (idx + 1))
 	game_para = para
 	SceneTransition.change_scene(MainScenesMap[para.game_sences])

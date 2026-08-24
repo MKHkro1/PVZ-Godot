@@ -141,9 +141,9 @@ var is_save_game_data_on_init:=false
 func _ready() -> void:
 	Global.main_game = self
 
-	## 先获取当前关卡参数
+	## 先获取当前关卡参数(duplicate 避免 init_para 污染 .tres 缓存导致其它关卡串关)
 	if Global.game_para != null:
-		game_para = Global.game_para
+		game_para = Global.game_para.duplicate(true)
 	else:
 		is_test = true
 	game_para.init_para()

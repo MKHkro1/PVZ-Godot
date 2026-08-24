@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource("1_ld")
+game_sences = 0
+is_zomboss_fight = false
 usable_rows = Array[int]([2])
 zombie_multy = 1
 max_wave = 10

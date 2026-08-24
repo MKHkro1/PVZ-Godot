@@ -92,8 +92,8 @@ func generate_level_id() -> String:
 	return id_str
 
 func _on_choose_level_button(choose_level_button:ChooseLevelButton):
-	Global.game_para = choose_level_button.curr_level_data_game_para
-	choose_level_start_game(choose_level_button.curr_level_data_game_para.game_sences)
+	Global.game_para = choose_level_button.curr_level_data_game_para.duplicate(true)
+	choose_level_start_game(Global.game_para.game_sences)
 
 ## 进入游戏关卡
 func choose_level_start_game(game_scense:Global.MainScenes):

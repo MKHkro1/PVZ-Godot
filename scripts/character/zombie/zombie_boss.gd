@@ -66,12 +66,14 @@ const T_HEAD_ENTER := 4.666667
 const T_HEAD_LEAVE := 3.666667
 ## 低头吐球后 idle 停留(给植物输出窗口)
 const HEAD_IDLE_DWELL := 4.0
-## 吐球冷却(略长于原版 10s)
-const HEAD_COOLDOWN := 16.0
+## 吐球冷却
+const HEAD_COOLDOWN := 20.0
 ## 场上花盆过少时强制传送带出花盆的阈值
-const FLOWER_POT_MIN := 16
-## 阶段休息时间(Stage1/2/3)
-const REST_BY_STAGE:Array[float] = [5.0, 4.5, 4.0]
+const FLOWER_POT_MIN := 4
+## 踩踏最右侧列数(有植物才触发)
+const STOMP_COL_COUNT := 4
+## 阶段休息时间(Stage1/2/3) — 给植物更多输出窗口
+const REST_BY_STAGE:Array[float] = [8.0, 7.0, 6.0]
 ## 投放间隔(Stage1/2/3)
 const SPAWN_GAP_BY_STAGE:Array[float] = [3.5, 3.0, 2.6]
 ## 初级出怪池(前两轮) / 高级池
@@ -101,6 +103,8 @@ var damage_level := 0
 var _head_glow_fire := true
 var _head_glow_active := false
 var is_head_vulnerable := false
+var _is_frozen := false
+var _freeze_timer: Timer
 var _hurt_area: Area2D
 var _detect_area: Area2D
 
@@ -121,6 +125,8 @@ func _ready() -> void:
 	_setup_detect_box()
 	_cache_anim_players()
 	_apply_neck_texture()
+	EventBus.subscribe("ice_all_zombie", _on_ice_all_zombie)
+	EventBus.subscribe("jalapeno_bomb_lane_zombie", _on_jalapeno_lane)
 	_play_enter()
 
 func _setup_hurt_box() -> void:
@@ -252,7 +258,7 @@ func _play_enter() -> void:
 	_play_anim("Zombie_boss_idle", true)
 
 func _physics_process(delta: float) -> void:
-	if is_dead:
+	if is_dead or _is_frozen:
 		return
 	if _head_glow_active:
 		_apply_head_glow(_head_glow_fire)
@@ -286,16 +292,17 @@ func _physics_process(delta: float) -> void:
 func _build_round_queue() -> void:
 	action_queue.clear()
 	round_count += 1
-	## stage>1: 有植物可踩则优先踩踏; 75%天降 / 25%RV
-	if stage > 1:
+	action_queue.append("Spawn")
+	## stage>=2 且偶数轮才考虑踩踏/天降/RV, 降低压迫频率
+	if stage >= 2 and round_count % 2 == 0:
 		var stomp_rows := _rows_with_plants_in_stomp_range()
 		if not stomp_rows.is_empty():
 			action_queue.append("Stomp")
-		if randf() < 0.75:
-			action_queue.append("BungeeDrop")
-		else:
-			action_queue.append("RV")
-	action_queue.append("Spawn")
+		elif round_count % 4 == 0:
+			if randf() < 0.55:
+				action_queue.append("BungeeDrop")
+			else:
+				action_queue.append("RV")
 	rest_time = REST_BY_STAGE[stage - 1]
 
 func _run_next_action() -> void:
@@ -351,28 +358,36 @@ func _spawn_zombie(ztype: int, row: int, at_pos := Vector2.ZERO) -> void:
 	}
 	zm.create_norm_zombie(ztype, row_node, init_para, pos)
 
-## ===== 踩踏: 整行碾压 =====
+## ===== 踩踏: 最右侧4列碾压(有植物才触发) =====
 func _do_stomp() -> void:
-	is_busy = true
 	var rows := _rows_with_plants_in_stomp_range()
-	var row: int = rows.pick_random() if not rows.is_empty() else 2
+	if rows.is_empty():
+		return
+	is_busy = true
+	var row: int = rows.pick_random()
 	_play_anim("Zombie_boss_stomp_%d" % clampi(row + 1, 1, 4))
-	## 踩踏落地帧(约55%)整行压扁
+	## 踩踏落地帧(约55%)碾压右侧4列
 	get_tree().create_timer(_curr_anim_length() * 0.55).timeout.connect(func():
 		if not is_dead:
-			_smash_row(row))
+			_smash_row_right_cols(row))
 	await _active_anim_player.animation_finished
 	is_busy = false
 	_apply_damage_look()
 	_play_anim("Zombie_boss_idle", true)
 
-func _smash_row(row: int) -> void:
+
+func _stomp_col_start(col_count: int) -> int:
+	return maxi(0, col_count - STOMP_COL_COUNT)
+
+
+func _smash_row_right_cols(row: int) -> void:
 	var cells = Global.main_game.plant_cell_manager.all_plant_cells
 	if row >= cells.size():
 		return
 	SoundManager.play_character_SFX("gargantuar_thump")
-	for cell in cells[row]:
-		cell.plant_be_flattened()
+	var start_col := _stomp_col_start(cells[row].size())
+	for c in range(start_col, cells[row].size()):
+		cells[row][c].plant_be_flattened()
 
 ## ===== 天降蹦极僵尸(enter→投放蹦极→leave) =====
 func _do_bungee_drop() -> void:
@@ -550,6 +565,40 @@ func be_attacked_bullet(attack_value: int, _bullet_mode: Global.AttackMode = Glo
 	if curr_hp <= 0.0:
 		_die()
 
+
+## 寒冰菇: 冻结僵王行动
+func _on_ice_all_zombie(time_ice = null, _time_decelerate = null) -> void:
+	if is_dead:
+		return
+	var t := 4.0
+	if time_ice is float or time_ice is int:
+		t = float(time_ice)
+	_apply_ice_freeze(t)
+
+
+func _apply_ice_freeze(time: float) -> void:
+	_is_frozen = true
+	modulate = Color(0.55, 0.82, 1.05)
+	if _freeze_timer == null:
+		_freeze_timer = Timer.new()
+		_freeze_timer.one_shot = true
+		_freeze_timer.timeout.connect(_on_ice_freeze_end)
+		add_child(_freeze_timer)
+	_freeze_timer.start(maxf(time, 0.1))
+
+
+func _on_ice_freeze_end() -> void:
+	_is_frozen = false
+	if not is_dead:
+		modulate = Color.WHITE
+
+
+## 火爆辣椒: 头部可攻击时造成伤害
+func _on_jalapeno_lane(_lane = null) -> void:
+	if is_dead or not is_head_vulnerable:
+		return
+	be_attacked_bullet(1800, Global.AttackMode.Penetration, false, true)
+
 func body_flash() -> void:
 	modulate = Color(1.6, 1.2, 1.2)
 	create_tween().tween_property(self, "modulate", Color.WHITE, 0.12)
@@ -598,12 +647,21 @@ func _explosion_sequence() -> void:
 func _rows_with_plants_in_stomp_range() -> Array[int]:
 	var cells = Global.main_game.plant_cell_manager.all_plant_cells
 	var out: Array[int] = []
-	for r in range(mini(4, cells.size())):
-		for cell in cells[r]:
-			if cell.get_curr_plant_num() > 0:
-				out.append(r)
-				break
+	for r in range(mini(5, cells.size())):
+		if _row_has_plants_in_stomp_cols(r):
+			out.append(r)
 	return out
+
+
+func _row_has_plants_in_stomp_cols(row: int) -> bool:
+	var cells = Global.main_game.plant_cell_manager.all_plant_cells
+	if row >= cells.size():
+		return false
+	var start_col := _stomp_col_start(cells[row].size())
+	for c in range(start_col, cells[row].size()):
+		if cells[row][c].get_curr_plant_num() > 0:
+			return true
+	return false
 
 func _planted_cells_for_drop(max_n: int) -> Array[Vector2i]:
 	var cells = Global.main_game.plant_cell_manager.all_plant_cells
