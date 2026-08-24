@@ -126,7 +126,7 @@ func _ready() -> void:
 	_setup_hurt_box()
 	_setup_detect_box()
 	_cache_anim_players()
-	_apply_neck_texture()
+	_apply_cockpit_textures()
 	EventBus.subscribe("ice_all_zombie", _on_ice_all_zombie)
 	EventBus.subscribe("jalapeno_bomb_lane_zombie", _on_jalapeno_lane)
 	_play_enter()
@@ -186,8 +186,19 @@ func _cache_anim_players() -> void:
 			var player := child as AnimationPlayer
 			for anim_name in player.get_animation_list():
 				_anim_players[anim_name] = player
+				_strip_cockpit_texture_tracks(player.get_animation(anim_name))
 	if _anim_players.is_empty():
 		push_error("僵王: 未找到 AnimationPlayer")
+
+
+## 动画轨会写 null/jpg 贴图, 移除后由脚本固定 png, 避免切换闪烁
+func _strip_cockpit_texture_tracks(anim: Animation) -> void:
+	if anim == null:
+		return
+	for i in range(anim.get_track_count() - 1, -1, -1):
+		var track_path := str(anim.track_get_path(i))
+		if track_path.ends_with("Boss_body1:texture") or track_path.ends_with("Boss_neck:texture"):
+			anim.remove_track(i)
 
 
 func _get_anim_player(anim_name: String) -> AnimationPlayer:
@@ -214,6 +225,7 @@ func _play_anim(anim_name: String, loop := false) -> void:
 		var anim := player.get_animation(anim_name)
 		anim.loop_mode = Animation.LOOP_LINEAR if loop else Animation.LOOP_NONE
 		player.play(anim_name)
+	call_deferred("_apply_cockpit_textures")
 	_update_cockpit_visibility(anim_name)
 
 
@@ -222,7 +234,7 @@ func _update_cockpit_visibility(_anim_name: String) -> void:
 
 
 func _apply_damage_look() -> void:
-	_apply_neck_texture()
+	_apply_cockpit_textures()
 	for node_name in DAMAGE_PARTS:
 		var spr := get_node_or_null(node_name) as Sprite2D
 		if spr == null:
@@ -239,15 +251,12 @@ func _damage_level_from_hp() -> int:
 	return 0
 
 
-func _apply_neck_texture() -> void:
+func _apply_cockpit_textures() -> void:
 	var neck := get_node_or_null("Boss_neck") as Sprite2D
 	if neck != null:
 		neck.texture = TEX_NECK
-
-
-func _apply_upperbody_texture() -> void:
 	var body1 := get_node_or_null("Boss_body1") as Sprite2D
-	if body1 != null and body1.visible:
+	if body1 != null:
 		body1.texture = TEX_UPPERBODY
 
 
@@ -264,8 +273,6 @@ func _physics_process(delta: float) -> void:
 		return
 	if _head_glow_active:
 		_apply_head_glow(_head_glow_fire)
-	_apply_neck_texture()
-	_apply_upperbody_texture()
 	if is_resting and not is_busy:
 		rest_timer += delta
 		head_cooldown -= delta

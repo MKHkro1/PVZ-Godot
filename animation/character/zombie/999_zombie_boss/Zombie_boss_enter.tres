@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bjxhbmwr06r3n" path="res://assets/reanim/Zombie_boss_leg_lower.png" id="3_fuck"]
 [ext_resource type="Texture2D" uid="uid://bxsncalumj0c" path="res://assets/reanim/Zombie_boss_lowerbody.png" id="4_fuck"]
 [ext_resource type="Texture2D" uid="uid://dmxrbe37acf4o" path="res://assets/reanim/Zombie_boss_outerleg_upper.png" id="5_fuck"]
-[ext_resource type="Texture2D" uid="uid://618utgrqroib" path="res://assets/reanim/Zombie_boss_upperbody.png" id="6_fuck"]
+[ext_resource type="Texture2D" uid="uid://byk72kpagmolj" path="res://assets/reanim/Zombie_boss_upperbody.png" id="6_fuck"]
 
 [resource]
 resource_name = "Zombie_boss_enter"
