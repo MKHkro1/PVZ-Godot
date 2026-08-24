@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://b2soejmoqi7wd"]
+[gd_scene load_steps=73 format=3 uid="uid://b2soejmoqi7wd"]
 
 [ext_resource type="Script" uid="uid://c7dr2016dfdoo" path="res://scripts/manager/main_game_manager.gd" id="1_7dde3"]
 [ext_resource type="Script" uid="uid://b2rst408m72au" path="res://scripts/manager/hand_manager/hand_manager.gd" id="3_acpf0"]
@@ -59,6 +59,7 @@
 [ext_resource type="Script" uid="uid://drl7ywtxslsbm" path="res://scripts/ui/card/shovel_in_ui.gd" id="43_erab5"]
 [ext_resource type="Texture2D" uid="uid://d4lqo87x72hwx" path="res://assets/image/garden/Zen_GardenGlove.png" id="44_glove_tex"]
 [ext_resource type="Script" uid="uid://cm9realglove4k" path="res://scripts/main_game_item/real_glove.gd" id="45_real_glove"]
+[ext_resource type="Script" path="res://scripts/ui/card/tool_container.gd" id="46_tool_bar"]
 [ext_resource type="Script" uid="uid://bkaiiq5qsbt5j" path="res://scripts/main_game_item/level_info.gd" id="46_y1sge"]
 [ext_resource type="FontFile" uid="uid://dqb8lum530s2f" path="res://assets/fonts/方正少儿_GBK.ttf" id="48_27j16"]
 [ext_resource type="Script" uid="uid://5unqafehbil7" path="res://scripts/fx/other_effect/canvas_layer_effect.gd" id="51_qfhda"]
@@ -320,13 +321,15 @@ layout_mode = 0
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxEmpty_41ccn")
 
-[node name="ShovelContainer" type="Control" parent="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer"]
+[node name="ShovelContainer" type="Control" parent="CanvasLayerCardSlot/CardSlotRoot"]
+unique_name_in_owner = true
+z_index = 10
 custom_minimum_size = Vector2(140, 72)
-layout_mode = 2
-size_flags_horizontal = 8
+layout_mode = 0
 mouse_filter = 1
+script = ExtResource("46_tool_bar")
 
-[node name="UIShovel" type="TextureRect" parent="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer"]
+[node name="UIShovel" type="TextureRect" parent="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
@@ -335,7 +338,7 @@ offset_bottom = 72.0
 texture = ExtResource("42_pmw6j")
 script = ExtResource("43_erab5")
 
-[node name="Shovel" type="TextureRect" parent="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer/UIShovel"]
+[node name="Shovel" type="TextureRect" parent="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIShovel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -348,7 +351,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_w5iw5")
 
-[node name="Button" type="Button" parent="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer/UIShovel"]
+[node name="Button" type="Button" parent="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIShovel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -364,7 +367,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_jbbka")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_jbbka")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jbbka")
 
-[node name="Label" type="Label" parent="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer/UIShovel"]
+[node name="Label" type="Label" parent="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIShovel"]
 layout_mode = 0
 offset_left = 54.0
 offset_top = 50.0
@@ -376,7 +379,7 @@ text = "F"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UIGlove" type="TextureRect" parent="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer"]
+[node name="UIGlove" type="TextureRect" parent="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
@@ -386,7 +389,7 @@ offset_bottom = 72.0
 texture = ExtResource("42_pmw6j")
 script = ExtResource("43_glove_ui")
 
-[node name="Glove" type="TextureRect" parent="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer/UIGlove"]
+[node name="Glove" type="TextureRect" parent="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIGlove"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -401,7 +404,7 @@ texture = ExtResource("44_glove_tex")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer/UIGlove"]
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIGlove"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -412,7 +415,7 @@ mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
-[node name="Button" type="Button" parent="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer/UIGlove"]
+[node name="Button" type="Button" parent="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIGlove"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -428,7 +431,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_jbbka")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_jbbka")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jbbka")
 
-[node name="Label" type="Label" parent="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer/UIGlove"]
+[node name="Label" type="Label" parent="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIGlove"]
 layout_mode = 0
 offset_left = 54.0
 offset_top = 50.0
@@ -1447,8 +1450,8 @@ debug_color = Color(0, 0.6, 0.69803923, 0.20392157)
 [connection signal="timeout" from="Manager/ZombieManager/HammerZombieManager/HammerZombieTimer" to="Manager/ZombieManager/HammerZombieManager" method="_on_hammer_zombie_timer_timeout"]
 [connection signal="timeout" from="Manager/ZombieManager/CheckZombieEndWaveTimer" to="Manager/ZombieManager" method="_on_check_zombie_end_wave_timer_timeout"]
 [connection signal="area_entered" from="CanvasLayerBG/Background/Home/Area2DHome" to="CanvasLayerBG/Background/Home" method="_on_area_2d_home_area_entered"]
-[connection signal="pressed" from="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer/UIShovel/Button" to="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer/UIShovel" method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer/UIGlove/Button" to="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer/UIGlove" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIShovel/Button" to="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIShovel" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIGlove/Button" to="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIGlove" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayerUI/All_UI/MainGameMenuButton" to="CanvasLayerUI/All_UI/MainGameMenuOptionDialog" method="appear_menu"]
 [connection signal="pressed" from="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/Button1" to="CanvasLayerUI/All_UI/MainGameMenuOptionDialog" method="encyclopedia"]
 [connection signal="pressed" from="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/Button4" to="CanvasLayerUI/All_UI/MainGameMenuOptionDialog" method="_on_button_console_pressed"]

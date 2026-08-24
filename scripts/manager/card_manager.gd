@@ -149,6 +149,8 @@ func card_slot_update_main_game():
 		card_slot_root.ui_shovel.visible = true
 	if is_glove:
 		card_slot_root.ui_glove.visible = true
+	if is_instance_valid(card_slot_root.tool_container):
+		card_slot_root.tool_container.call_deferred("_sync_to_card_slot")
 
 ## 待选卡槽卡槽消失
 func card_slot_disappear_choose():

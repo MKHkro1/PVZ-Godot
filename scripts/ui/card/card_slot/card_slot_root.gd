@@ -7,6 +7,8 @@ var curr_cards:Array[Card]
 @onready var ui_shovel: UIShovel = %UIShovel
 ## 手套
 @onready var ui_glove = %UIGlove
+## 道具栏(铲子/手套容器)
+@onready var tool_container: Control = %ShovelContainer
 
 ## 快捷键
 @warning_ignore("unused_parameter")
