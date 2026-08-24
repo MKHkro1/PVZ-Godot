@@ -194,6 +194,21 @@ func _glove_begin_carry(plant: Plant000Base) -> void:
 			stacked.reparent(carry_root, true)
 		stacked.global_position = plant.global_position + stacked.get_meta("glove_offset", Vector2.ZERO)
 		stacked.z_index = 300
+	_glove_set_carried_invincible(true)
+
+
+func _glove_set_carried_invincible(invincible: bool) -> void:
+	var plants: Array[Plant000Base] = []
+	if is_instance_valid(_glove_carried_plant):
+		plants.append(_glove_carried_plant)
+	for stacked in _glove_carried_stack:
+		if is_instance_valid(stacked) and not plants.has(stacked):
+			plants.append(stacked)
+	for p in plants:
+		if invincible:
+			p.be_glove_carry_begin()
+		else:
+			p.be_glove_carry_end()
 
 
 func _glove_try_place(target_cell: PlantCell) -> bool:
@@ -211,6 +226,7 @@ func _glove_try_place(target_cell: PlantCell) -> bool:
 	var plant := _glove_carried_plant
 	var source := _glove_source_cell
 	var stack := _glove_carried_stack
+	_glove_set_carried_invincible(false)
 	if not target_cell.glove_attach_plant(plant, stack):
 		if is_instance_valid(source):
 			source.glove_attach_plant(plant, stack)
@@ -233,6 +249,7 @@ func _glove_cancel_carry(play_sfx: bool = false) -> bool:
 	var plant := _glove_carried_plant
 	var source := _glove_source_cell
 	var stack := _glove_carried_stack
+	_glove_set_carried_invincible(false)
 	_glove_carried_plant = null
 	_glove_source_cell = null
 	_glove_carried_stack = []

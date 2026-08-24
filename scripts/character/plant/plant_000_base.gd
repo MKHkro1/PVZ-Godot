@@ -222,6 +222,16 @@ func be_shovel_kill():
 	is_can_death_language = false
 	hp_component.Hp_loss_death()
 
+## 手套搬运中: 暂时关闭受击判定
+func be_glove_carry_begin() -> void:
+	if is_instance_valid(hurt_box_component):
+		hurt_box_component.disable_component(ComponentNormBase.E_IsEnableFactor.Character)
+
+## 手套放下后: 恢复受击判定
+func be_glove_carry_end() -> void:
+	if is_instance_valid(hurt_box_component):
+		hurt_box_component.enable_component(ComponentNormBase.E_IsEnableFactor.Character)
+
 ## 手持紫卡植物可以种植在该植物上
 func preplant_purple_body_light_and_dark():
 	if Global.plant_be_shovel_front:

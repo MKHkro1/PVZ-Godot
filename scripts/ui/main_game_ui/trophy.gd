@@ -19,6 +19,7 @@ func _ready():
 	Global.save_global_game_data()
 
 func _on_trophy_button_pressed() -> void:
+	SoundManager.stop_bgm()
 	SoundManager.play_other_SFX("winmusic")
 	$TrophyButton.disabled = true
 	var center = get_viewport().get_visible_rect().size / 2 + Global.main_game.camera_2d.global_position

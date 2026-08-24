@@ -65,6 +65,13 @@ func play_bgm_smooth(stream: AudioStream) -> void:
 	_tween_bgm_swap.tween_property(bgm_play, "volume_db", _base_bgm_db, 0.30)\
 		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 
+## 停止当前关卡 BGM
+func stop_bgm() -> void:
+	if _tween_bgm_swap and _tween_bgm_swap.is_valid():
+		_tween_bgm_swap.kill()
+		bgm_play.volume_db = _base_bgm_db
+	bgm_play.stop()
+
 #region 植物和僵尸有关音效(植物、僵尸、子弹、受击)
 """
  音效分为 僵尸受击 子弹音效 角色(植物僵尸) 戴夫 和其他音效
