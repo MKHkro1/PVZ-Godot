@@ -462,6 +462,7 @@ func init_para():
 		monster_mode = E_MonsterMode.Null
 		look_show_zombie = false
 		is_bungi = false
+		game_BG = GameBg.Roof
 		is_day = false
 		is_day_sun = false
 		if game_BGM == GameBGM.Roof or game_BGM == GameBGM.FrontDay:

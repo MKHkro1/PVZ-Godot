@@ -27,6 +27,10 @@ func init_background_manager(game_para:ResourceLevelData):
 func init_background(game_para:ResourceLevelData):
 	var curr_bg_texture: Texture2D = game_para.GameBgTextureMap[game_para.game_BG]
 	background.texture = curr_bg_texture
+	if not game_para.is_day:
+		background.modulate = Color(0.42, 0.45, 0.58, 1.0)
+	else:
+		background.modulate = Color.WHITE
 	home.init_home(game_para.game_BG)
 	if not game_para.is_zombie_can_home:
 		print("僵尸无法进房")

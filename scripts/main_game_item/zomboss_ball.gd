@@ -1,6 +1,6 @@
 extends Node2D
 class_name ZombossBall
-## 僵王吐出的火球/冰球: 多层贴图合体, 向左滚过草坪, 逐格碾压植物(1800)
+## 僵王吐出的火球/冰球: 向左滚过草坪, 碾压压扁植物
 
 var lane := 2
 var is_fire := true
@@ -45,9 +45,10 @@ func _ready() -> void:
 	z_index = lane * 50 + 45
 	modulate = Color.WHITE
 	_build_layers()
+	## 寒冰菇: 全场消火球
 	EventBus.subscribe("ice_all_zombie", _on_ice_all)
-	EventBus.subscribe("jalapeno_bomb_effect_item_lane", _on_jala)
-	EventBus.subscribe("jalapeno_bomb_effect_lane_zombie", _on_jala)
+	## 火爆辣椒: 本行消冰球
+	EventBus.subscribe("jalapeno_bomb_lane_zombie", _on_jalapeno_lane)
 
 
 func _build_layers() -> void:
@@ -86,7 +87,7 @@ func _physics_process(delta: float) -> void:
 	for s in _layers:
 		if s.name != "Shadow":
 			s.rotation -= delta * 2.4
-	_hit_cells_at_x(global_position.x)
+	_flatten_cells_at_x(global_position.x)
 	if global_position.x < -150.0:
 		_destroy()
 
@@ -94,7 +95,7 @@ func _physics_process(delta: float) -> void:
 var _last_smashed_col := -999
 
 
-func _hit_cells_at_x(x: float) -> void:
+func _flatten_cells_at_x(x: float) -> void:
 	var cells = Global.main_game.plant_cell_manager.all_plant_cells
 	if lane >= cells.size():
 		return
@@ -106,18 +107,20 @@ func _hit_cells_at_x(x: float) -> void:
 	_last_smashed_col = col
 	var cell = cells[lane][col]
 	if cell.get_curr_plant_num() > 0:
-		for plant in cell.plant_in_cell.values():
-			if is_instance_valid(plant):
-				plant.be_attacked_bullet(damage, Global.AttackMode.Penetration, true, true)
+		cell.plant_be_flattened()
 
 
+## 寒冰菇冰冻全场 → 火球熄灭
 func _on_ice_all(_payload = null) -> void:
 	if is_fire:
 		_destroy()
 
 
-func _on_jala(_payload = null) -> void:
-	if not is_fire:
+## 火爆辣椒本行火焰 → 冰球融化
+func _on_jalapeno_lane(bomb_lane: int = -1) -> void:
+	if is_fire:
+		return
+	if bomb_lane == lane:
 		_destroy()
 
 

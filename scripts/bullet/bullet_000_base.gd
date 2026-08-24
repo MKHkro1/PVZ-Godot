@@ -106,7 +106,7 @@ func _on_area_2d_attack_area_entered(area: Area2D) -> void:
 	var owner_node = area.owner
 	if owner_node is ZombossBoss:
 		var boss: ZombossBoss = owner_node
-		if boss.is_dead:
+		if boss.is_dead or not boss.is_head_vulnerable:
 			return
 		if max_attack_num != -1 and curr_attack_num >= max_attack_num:
 			return

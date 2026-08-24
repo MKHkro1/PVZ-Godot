@@ -395,7 +395,15 @@ func _spawn_zomboss_if_needed() -> void:
 	)
 	add_child(boss)
 	zomboss_boss = boss
+	_setup_zomboss_hp_bar(boss)
 	print("僵王已生成 pos=", boss.global_position)
+
+
+func _setup_zomboss_hp_bar(boss: ZombossBoss) -> void:
+	var bar_scene := preload("res://scenes/ui/zomboss_hp_bar.tscn")
+	var bar := bar_scene.instantiate() as ZombossHpBar
+	level_info.add_child(bar)
+	bar.bind_boss(boss)
 
 
 #region 游戏结束

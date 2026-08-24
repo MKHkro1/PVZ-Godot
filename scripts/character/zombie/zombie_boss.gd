@@ -94,6 +94,8 @@ var _head_attack_lane := 2
 var damage_level := 0
 var _head_glow_fire := true
 var _head_glow_active := false
+var is_head_vulnerable := false
+var _hurt_area: Area2D
 
 func _ready() -> void:
 	## 绘制层级高于背景与普通单位
@@ -109,6 +111,7 @@ func _setup_hurt_box() -> void:
 	area.collision_layer = 512
 	area.collision_mask = 0
 	area.monitoring = false
+	area.monitorable = false
 	var shape_node := CollisionShape2D.new()
 	var rect := RectangleShape2D.new()
 	rect.size = Vector2(160.0, 320.0)
@@ -116,6 +119,16 @@ func _setup_hurt_box() -> void:
 	shape_node.position = REANIM_ANCHOR + Vector2(-80.0, -60.0)
 	area.add_child(shape_node)
 	add_child(area)
+	_hurt_area = area
+
+func _set_head_vulnerable(v: bool) -> void:
+	is_head_vulnerable = v
+	if _hurt_area == null:
+		return
+	_hurt_area.monitorable = v
+	var mon := _hurt_area.monitoring
+	_hurt_area.monitoring = not mon
+	_hurt_area.monitoring = mon
 
 func _cache_anim_players() -> void:
 	for child in get_children():
@@ -385,6 +398,7 @@ func _do_head_attack() -> void:
 	await _active_anim_player.animation_finished
 	if is_dead:
 		return
+	_set_head_vulnerable(true)
 	_apply_head_glow(is_fire)
 	_play_anim("Zombie_boss_head_attack_%d" % (_head_attack_lane + 1))
 	## 出球帧(约40%)
@@ -399,6 +413,7 @@ func _do_head_attack() -> void:
 	await _active_anim_player.animation_finished
 	_head_glow_active = false
 	_clear_head_glow()
+	_set_head_vulnerable(false)
 	is_busy = false
 	_apply_damage_look()
 	_play_anim("Zombie_boss_idle", true)
@@ -433,7 +448,7 @@ func _fire_ball(lane: int, is_fire: bool) -> void:
 
 ## ===== 受击(供植物子弹调用, 签名对齐 Character000Base) =====
 func be_attacked_bullet(attack_value: int, _bullet_mode: Global.AttackMode = Global.AttackMode.Norm, _is_drop := true, _sfx := true) -> void:
-	if is_dead:
+	if is_dead or not is_head_vulnerable:
 		return
 	curr_hp -= attack_value
 	body_flash()
@@ -464,6 +479,7 @@ func _update_stage() -> void:
 ## ===== 死亡: 加速演出+爆炸闪烁 → 奖杯 =====
 func _die() -> void:
 	is_dead = true
+	_set_head_vulnerable(false)
 	is_busy = true
 	var death_player := _get_anim_player("Zombie_boss_death")
 	death_player.speed_scale = 1.5
