@@ -8,9 +8,53 @@ signal boss_died
 
 const HP_MAX := 40000.0
 const BALL_DAMAGE := 1800
-## reanim 部件 idle 局部锚点(Boss_body2/腿等), 场景原点与此错位 ~660px
+## reanim 部件局部锚点(Boss_body2/腿等), 场景原点与此错位 ~660px
 const REANIM_ANCHOR_X := 660.0
 const REANIM_ANCHOR := Vector2(REANIM_ANCHOR_X, -100.0)
+## 手臂投放点 / 吐球 X(相对机体原点)
+const SPAWN_MARKER := Vector2(REANIM_ANCHOR_X - 40.0, -60.0)
+const BALL_MARKER := Vector2(REANIM_ANCHOR_X - 55.0, -90.0)
+const SPAWN_PER_ROUND := 5
+const SPAWN_DROP_GAP := 0.45
+const TEX_EYEGLOW := preload("res://assets/reanim/Zombie_boss_eyeglow.png")
+const TEX_MOUTHGLOW := preload("res://assets/reanim/Zombie_boss_mouthglow.png")
+const TEX_EYEGLOW_RED := preload("res://assets/reanim/Zombie_boss_eyeglow_red.png")
+const TEX_EYEGLOW_BLUE := preload("res://assets/reanim/Zombie_boss_eyeglow_blue.png")
+const TEX_MOUTHGLOW_RED := preload("res://assets/reanim/Zombie_boss_mouthglow_red.png")
+const TEX_MOUTHGLOW_BLUE := preload("res://assets/reanim/Zombie_boss_mouthglow_blue.png")
+## 破损阶段贴图(原版: 8000/20000 伤害后切换)
+const DAMAGE_PARTS: Dictionary = {
+	"Boss_head": [
+		preload("res://assets/reanim/Zombie_boss_head.png"),
+		preload("res://assets/reanim/Zombie_boss_head_damage1.png"),
+		preload("res://assets/reanim/Zombie_boss_head_damage2.png"),
+	],
+	"Boss_jaw": [
+		preload("res://assets/reanim/Zombie_boss_jaw.png"),
+		preload("res://assets/reanim/Zombie_boss_jaw_damage1.png"),
+		preload("res://assets/reanim/Zombie_boss_jaw_damage2.png"),
+	],
+	"Boss_outerleg_foot": [
+		preload("res://assets/reanim/Zombie_boss_foot.png"),
+		preload("res://assets/reanim/Zombie_boss_foot_damage1.png"),
+		preload("res://assets/reanim/Zombie_boss_foot_damage2.png"),
+	],
+	"Boss_outerarm_hand": [
+		preload("res://assets/reanim/Zombie_boss_outerarm_hand.png"),
+		preload("res://assets/reanim/Zombie_boss_outerarm_hand_damage1.png"),
+		preload("res://assets/reanim/Zombie_boss_outerarm_hand_damage2.png"),
+	],
+	"Boss_outerarm_thumb1": [
+		preload("res://assets/reanim/Zombie_boss_outerarm_thumb1.png"),
+		preload("res://assets/reanim/Zombie_boss_outerarm_thumb_damage1.png"),
+		preload("res://assets/reanim/Zombie_boss_outerarm_thumb_damage2.png"),
+	],
+	"Boss_outerarm_thumb2": [
+		preload("res://assets/reanim/Zombie_boss_outerarm_thumb2.png"),
+		preload("res://assets/reanim/Zombie_boss_outerarm_thumb_damage1.png"),
+		preload("res://assets/reanim/Zombie_boss_outerarm_thumb_damage2.png"),
+	],
+}
 ## 各动画时长(与 tres 一致)
 const T_ENTER := 3.25
 const T_IDLE := 1.166667
@@ -46,13 +90,23 @@ var head_cooldown := 10.0				## 吐球冷却计时
 var is_busy := false					## 正在播放攻击动画
 var is_dead := false
 var spawn_early_rounds := 2				## 前N轮用初级池
+var _driver: ZombossBossDriver
+var _head_attack_lane := 2
+var damage_level := 0
+var _head_glow_fire := true
+var _head_glow_active := false
 
 func _ready() -> void:
 	## 绘制层级高于背景与普通单位
 	z_index = 260
 	_setup_hurt_box()
+	_setup_driver()
 	_cache_anim_players()
 	_play_enter()
+
+func _setup_driver() -> void:
+	_driver = ZombossBossDriver.new()
+	add_child(_driver)
 
 func _setup_hurt_box() -> void:
 	var area := Area2D.new()
@@ -100,6 +154,35 @@ func _play_anim(anim_name: String, loop := false) -> void:
 		if loop:
 			anim.loop_mode = Animation.LOOP_LINEAR
 		player.play(anim_name)
+	_update_cockpit_visibility(anim_name)
+
+
+func _sync_cockpit_driver() -> void:
+	if _driver == null:
+		return
+	var body1 := get_node_or_null("Boss_body1") as Sprite2D
+	_driver.visible = body1 != null and body1.visible
+
+
+func _update_cockpit_visibility(_anim_name: String) -> void:
+	pass
+
+
+func _apply_damage_look() -> void:
+	for node_name in DAMAGE_PARTS:
+		var spr := get_node_or_null(node_name) as Sprite2D
+		if spr == null:
+			continue
+		var texs: Array = DAMAGE_PARTS[node_name]
+		spr.texture = texs[mini(damage_level, texs.size() - 1)]
+
+
+func _damage_level_from_hp() -> int:
+	if curr_hp <= 20000.0:
+		return 2
+	if curr_hp <= 32000.0:
+		return 1
+	return 0
 
 
 func _play_enter() -> void:
@@ -107,11 +190,15 @@ func _play_enter() -> void:
 	_play_anim("Zombie_boss_enter")
 	await _active_anim_player.animation_finished
 	is_busy = false
+	_apply_damage_look()
 	_play_anim("Zombie_boss_idle", true)
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
+	_sync_cockpit_driver()
+	if _head_glow_active:
+		_apply_head_glow(_head_glow_fire)
 	if is_resting and not is_busy:
 		rest_timer += delta
 		head_cooldown -= delta
@@ -169,21 +256,23 @@ func _run_next_action() -> void:
 func _do_spawn() -> void:
 	is_busy = true
 	var row := randi_range(0, 4)
+	var pool := POOL_EARLY if round_count <= spawn_early_rounds else POOL_LATE
 	_play_anim("Zombie_boss_spawn_%d" % (row + 1))
-	## 动画中段掉落
-	get_tree().create_timer(0.9).timeout.connect(func():
-		if not is_dead:
-			_spawn_batch_at_row(row))
+	## 原版: 同一路连续投放多只, 间隔约 0.45s
+	for i in range(SPAWN_PER_ROUND):
+		var delay := 0.85 + float(i) * SPAWN_DROP_GAP
+		get_tree().create_timer(delay).timeout.connect(func():
+			if not is_dead:
+				_spawn_zombie(_pick_spawn_type(pool), row))
 	await _active_anim_player.animation_finished
 	is_busy = false
+	_apply_damage_look()
 	_play_anim("Zombie_boss_idle", true)
 
 func _spawn_batch_at_row(row: int) -> void:
 	var pool := POOL_EARLY if round_count <= spawn_early_rounds else POOL_LATE
-	var batch := mini(2 + stage, 5)
-	for i in range(batch):
-		var t := _pick_spawn_type(pool)
-		_spawn_zombie(t, row)
+	for i in range(SPAWN_PER_ROUND):
+		_spawn_zombie(_pick_spawn_type(pool), row)
 
 func _pick_spawn_type(pool: Array[int]) -> int:
 	## 高级池中巨人/冰车/投石车为稀有项
@@ -202,8 +291,7 @@ func _spawn_zombie(ztype: int, row: int, at_pos := Vector2.ZERO) -> void:
 	var row_node = zm.all_zombie_rows[row]
 	var pos := at_pos
 	if pos == Vector2.ZERO:
-		var create_marker = row_node.zombie_create_position
-		pos = Vector2(global_position.x - 120.0, create_marker.global_position.y + 20.0)
+		pos = Vector2(global_position.x + SPAWN_MARKER.x, _row_y(row))
 	var init_para: Dictionary = {
 		Zombie000Base.E_ZInitAttr.CharacterInitType: Character000Base.E_CharacterInitType.IsNorm,
 		Zombie000Base.E_ZInitAttr.Lane: row,
@@ -222,6 +310,7 @@ func _do_stomp() -> void:
 			_smash_row(row))
 	await _active_anim_player.animation_finished
 	is_busy = false
+	_apply_damage_look()
 	_play_anim("Zombie_boss_idle", true)
 
 func _smash_row(row: int) -> void:
@@ -242,12 +331,17 @@ func _do_bungee_drop() -> void:
 			return
 		for c in targets:
 			var pool := POOL_LATE if stage >= 2 else POOL_EARLY
-			_spawn_zombie(_pick_spawn_type(pool), c.y, Vector2(c.x * 80.0 + 45.0 - 160.0, _row_y(c.y)))
+			var cells = Global.main_game.plant_cell_manager.all_plant_cells
+			var drop_pos := Vector2(c.x * 80.0 + 45.0 - 160.0, _row_y(c.y))
+			if c.y < cells.size() and c.x < cells[c.y].size():
+				drop_pos = cells[c.y][c.x].global_position + Vector2(40.0, 20.0)
+			_spawn_zombie(_pick_spawn_type(pool), c.y, drop_pos)
 	)
 	await _active_anim_player.animation_finished
 	_play_anim("Zombie_boss_bungee_1_leave")
 	await _active_anim_player.animation_finished
 	is_busy = false
+	_apply_damage_look()
 	_play_anim("Zombie_boss_idle", true)
 
 ## ===== RV 房车冲撞: 3x2 区域碾压 =====
@@ -261,6 +355,7 @@ func _do_rv_attack() -> void:
 			_smash_area(target.x, target.y))
 	await _active_anim_player.animation_finished
 	is_busy = false
+	_apply_damage_look()
 	_play_anim("Zombie_boss_idle", true)
 
 func _rv_target_cell() -> Vector2i:
@@ -287,24 +382,48 @@ func _do_head_attack() -> void:
 	if is_busy or is_dead:
 		return
 	is_busy = true
-	var lane := randi_range(0, 4)
+	_head_attack_lane = randi_range(0, 4)
 	var is_fire := randf() > 0.5
+	_head_glow_fire = is_fire
+	_head_glow_active = true
+	_apply_head_glow(is_fire)
 	_play_anim("Zombie_boss_head_enter")
 	await _active_anim_player.animation_finished
 	if is_dead:
 		return
-	_play_anim("Zombie_boss_head_attack_%d" % (randi_range(1, 5)))
+	_apply_head_glow(is_fire)
+	_play_anim("Zombie_boss_head_attack_%d" % (_head_attack_lane + 1))
 	## 出球帧(约40%)
 	get_tree().create_timer(_curr_anim_length() * 0.4).timeout.connect(func():
 		if not is_dead:
-			_fire_ball(lane, is_fire))
+			_apply_head_glow(is_fire)
+			_fire_ball(_head_attack_lane, is_fire))
 	await _active_anim_player.animation_finished
 	if is_dead:
 		return
 	_play_anim("Zombie_boss_head_leave")
 	await _active_anim_player.animation_finished
+	_head_glow_active = false
+	_clear_head_glow()
 	is_busy = false
+	_apply_damage_look()
 	_play_anim("Zombie_boss_idle", true)
+
+func _apply_head_glow(is_fire: bool) -> void:
+	var mouth := get_node_or_null("Boss_mouthglow_red") as Sprite2D
+	var eye := get_node_or_null("Boss_eyeglow_red") as Sprite2D
+	if mouth != null:
+		mouth.texture = TEX_MOUTHGLOW_RED if is_fire else TEX_MOUTHGLOW_BLUE
+	if eye != null:
+		eye.texture = TEX_EYEGLOW_RED if is_fire else TEX_EYEGLOW_BLUE
+
+func _clear_head_glow() -> void:
+	var mouth := get_node_or_null("Boss_mouthglow_red") as Sprite2D
+	var eye := get_node_or_null("Boss_eyeglow_red") as Sprite2D
+	if mouth != null:
+		mouth.texture = TEX_MOUTHGLOW
+	if eye != null:
+		eye.texture = TEX_EYEGLOW
 
 func _fire_ball(lane: int, is_fire: bool) -> void:
 	var ball_scene: PackedScene = load("res://scenes/main_game_item/zomboss_ball.tscn")
@@ -313,7 +432,10 @@ func _fire_ball(lane: int, is_fire: bool) -> void:
 	var ball = ball_scene.instantiate()
 	ball.setup(self, lane, is_fire, BALL_DAMAGE)
 	Global.main_game.add_child(ball)
-	ball.global_position = global_position + REANIM_ANCHOR + Vector2(-140.0, -80.0)
+	ball.global_position = Vector2(
+		global_position.x + BALL_MARKER.x,
+		_row_y(lane) - 52.0
+	)
 
 ## ===== 受击(供植物子弹调用, 签名对齐 Character000Base) =====
 func be_attacked_bullet(attack_value: int, _bullet_mode: Global.AttackMode = Global.AttackMode.Norm, _is_drop := true, _sfx := true) -> void:
@@ -330,6 +452,10 @@ func body_flash() -> void:
 	create_tween().tween_property(self, "modulate", Color.WHITE, 0.12)
 
 func _update_stage() -> void:
+	var new_dmg := _damage_level_from_hp()
+	if new_dmg != damage_level:
+		damage_level = new_dmg
+		_apply_damage_look()
 	var pct := curr_hp / HP_MAX
 	if pct <= 0.10 and stage < 3:
 		stage = 3

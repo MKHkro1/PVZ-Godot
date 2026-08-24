@@ -21,10 +21,14 @@ def fix_resource_paths(text: str) -> str:
         "animation/character/zombie/999_zombie_boss/Zombie_boss_",
         text,
     )
-    # 项目贴图实际文件名带下划线后缀
+    # 上半身用 jpg（彩色正确）；neck 仍用带下划线 png
     text = text.replace(
         "assets/reanim/Zombie_boss_upperbody.png",
+        "assets/reanim/Zombie_boss_upperbody.jpg",
+    )
+    text = text.replace(
         "assets/reanim/Zombie_boss_upperbody_.png",
+        "assets/reanim/Zombie_boss_upperbody.jpg",
     )
     text = text.replace(
         "assets/reanim/Zombie_boss_neck.png",
