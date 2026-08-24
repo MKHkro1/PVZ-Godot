@@ -7,6 +7,7 @@ class_name Bullet000ParabolaBase
 @export var parabola_height: float = -300
 ## 抛物线(贝塞尔曲线)子弹需要根据敌人位置每帧更新(_ready之前赋值)
 var target_enemy: Character000Base
+var target_zomboss: ZombossBoss
 ## 敌人最终位置，敌人死亡时位置不变
 var enemy_last_global_pos: Vector2
 ## 敌人移动距离(大于最大距离后,子弹不进行修正)
@@ -44,7 +45,9 @@ var start_control_point_on_bounce:Vector2
 
 func _ready() -> void:
 	super()
-	if is_instance_valid(target_enemy) and is_instance_valid(target_enemy.hurt_box_component):
+	if is_instance_valid(target_zomboss) and is_instance_valid(target_zomboss.hurt_box_component):
+		enemy_last_global_pos = target_zomboss.hurt_box_component.global_position
+	elif is_instance_valid(target_enemy) and is_instance_valid(target_enemy.hurt_box_component):
 		enemy_last_global_pos = target_enemy.hurt_box_component.global_position
 	curr_diff_x = 0
 	start_global_pos = global_position
@@ -71,13 +74,18 @@ func init_bullet(bullet_paras:Dictionary[E_InitParasAttr,Variant]):
 
 	## 抛物线子弹初始化
 	self.target_enemy = bullet_paras.get(E_InitParasAttr.Enemy, null)
+	self.target_zomboss = bullet_paras.get(E_InitParasAttr.ZombossBoss, null)
 
 	self.enemy_last_global_pos = bullet_paras[E_InitParasAttr.EnemyGloPos]
 
 
 func _physics_process(delta: float) -> void:
 	## 若敌人存在且敌人还未死亡,更新其位置
-	if is_instance_valid(target_enemy) and not target_enemy.is_death:
+	if is_instance_valid(target_zomboss) and not target_zomboss.is_dead and target_zomboss.is_head_vulnerable:
+		curr_diff_x += abs(target_zomboss.hurt_box_component.global_position.x - enemy_last_global_pos.x)
+		if curr_diff_x < max_diff_x:
+			enemy_last_global_pos = target_zomboss.hurt_box_component.global_position + Vector2(0, -20)
+	elif is_instance_valid(target_enemy) and not target_enemy.is_death:
 		##$ 计算敌人移动的水平差距
 		curr_diff_x += abs(target_enemy.hurt_box_component.global_position.x - enemy_last_global_pos.x)
 		if curr_diff_x < max_diff_x:

@@ -26,8 +26,10 @@ func init_background_manager(game_para:ResourceLevelData):
 ## 初始化背景
 func init_background(game_para:ResourceLevelData):
 	var curr_bg_texture: Texture2D = game_para.GameBgTextureMap[game_para.game_BG]
+	if not game_para.is_day and game_para.game_BG == ResourceLevelData.GameBg.Roof:
+		curr_bg_texture = preload("res://assets/image/background/background6boss.jpg")
 	background.texture = curr_bg_texture
-	if not game_para.is_day:
+	if not game_para.is_day and game_para.game_BG != ResourceLevelData.GameBg.Roof:
 		background.modulate = Color(0.42, 0.45, 0.58, 1.0)
 	else:
 		background.modulate = Color.WHITE

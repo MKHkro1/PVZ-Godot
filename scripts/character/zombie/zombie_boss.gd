@@ -96,11 +96,23 @@ var _head_glow_fire := true
 var _head_glow_active := false
 var is_head_vulnerable := false
 var _hurt_area: Area2D
+var _detect_area: Area2D
+
+## 抛物线子弹追踪用(对齐 Character000Base.hurt_box_component)
+var hurt_box_component: Area2D:
+	get:
+		return _hurt_area
+
+## 对齐 Character000Base.is_death
+var is_death: bool:
+	get:
+		return is_dead
 
 func _ready() -> void:
 	## 绘制层级高于背景与普通单位
 	z_index = 260
 	_setup_hurt_box()
+	_setup_detect_box()
 	_cache_anim_players()
 	_apply_neck_texture()
 	_play_enter()
@@ -121,14 +133,31 @@ func _setup_hurt_box() -> void:
 	add_child(area)
 	_hurt_area = area
 
+func _setup_detect_box() -> void:
+	var area := Area2D.new()
+	area.name = "HurtBoxDetection"
+	area.collision_layer = 4
+	area.collision_mask = 0
+	area.monitorable = false
+	area.monitoring = false
+	var shape_node := CollisionShape2D.new()
+	var rect := RectangleShape2D.new()
+	rect.size = Vector2(140.0, 100.0)
+	shape_node.shape = rect
+	shape_node.position = REANIM_ANCHOR + Vector2(-70.0, -200.0)
+	area.add_child(shape_node)
+	add_child(area)
+	_detect_area = area
+
 func _set_head_vulnerable(v: bool) -> void:
 	is_head_vulnerable = v
-	if _hurt_area == null:
-		return
-	_hurt_area.monitorable = v
-	var mon := _hurt_area.monitoring
-	_hurt_area.monitoring = not mon
-	_hurt_area.monitoring = mon
+	if _hurt_area != null:
+		_hurt_area.monitorable = v
+		var mon := _hurt_area.monitoring
+		_hurt_area.monitoring = not mon
+		_hurt_area.monitoring = mon
+	if _detect_area != null:
+		_detect_area.monitorable = v
 
 func _cache_anim_players() -> void:
 	for child in get_children():

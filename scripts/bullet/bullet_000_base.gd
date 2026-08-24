@@ -72,6 +72,7 @@ enum E_InitParasAttr{
 	## 抛物线子弹\追踪子弹额外属性
 	Enemy,				## 子弹选中的敌人
 	EnemyGloPos,		## 敌人位置(发射子弹时敌人若已经消失,抛物线依旧可以攻击)
+	ZombossBoss,		## 僵王博士目标(投手抛物线)
 
 }
 

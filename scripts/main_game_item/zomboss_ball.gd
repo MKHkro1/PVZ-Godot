@@ -9,6 +9,8 @@ var boss_ref: ZombossBoss
 var speed := 20.0
 var _dead := false
 var _layers: Array[Sprite2D] = []
+var _row_base_y := 0.0
+const BALL_Y_OFFSET := 52.0
 
 const BALL_SCALE := 1.05
 const SHADOW_SCALE := 0.95
@@ -39,12 +41,14 @@ func setup(boss: ZombossBoss, p_lane: int, p_is_fire: bool, p_damage: int) -> vo
 	lane = clampi(p_lane, 0, 4)
 	is_fire = p_is_fire
 	damage = p_damage
+	_row_base_y = _get_row_base_y(lane)
 
 
 func _ready() -> void:
 	z_index = lane * 50 + 45
 	modulate = Color.WHITE
 	_build_layers()
+	_update_y_on_slope()
 	## 寒冰菇: 全场消火球
 	EventBus.subscribe("ice_all_zombie", _on_ice_all)
 	## 火爆辣椒: 本行消冰球
@@ -84,12 +88,27 @@ func _physics_process(delta: float) -> void:
 	if _dead:
 		return
 	global_position.x -= speed * delta
+	_update_y_on_slope()
 	for s in _layers:
 		if s.name != "Shadow":
 			s.rotation -= delta * 2.4
 	_flatten_cells_at_x(global_position.x)
 	if global_position.x < -150.0:
 		_destroy()
+
+
+func _get_row_base_y(row: int) -> float:
+	var zm = Global.main_game.zombie_manager
+	if zm != null and row < zm.all_zombie_rows.size():
+		return zm.all_zombie_rows[row].zombie_create_position.global_position.y
+	return 282.0
+
+
+func _update_y_on_slope() -> void:
+	var slope_y := 0.0
+	if is_instance_valid(Global.main_game.main_game_slope):
+		slope_y = Global.main_game.main_game_slope.get_all_slope_y(global_position.x)
+	global_position.y = _row_base_y + slope_y - BALL_Y_OFFSET
 
 
 var _last_smashed_col := -999
