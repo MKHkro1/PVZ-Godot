@@ -11,6 +11,8 @@ const BALL_DAMAGE := 1800
 ## reanim 部件局部锚点(Boss_body2/腿等), 场景原点与此错位 ~660px
 const REANIM_ANCHOR_X := 660.0
 const REANIM_ANCHOR := Vector2(REANIM_ANCHOR_X, -100.0)
+## 投手抛物线瞄准点(相对 hurt_box; 正值=更靠下)
+const PULT_AIM_OFFSET := Vector2(0, 90)
 ## 手臂投放点 / 吐球 X(相对机体原点)
 const SPAWN_MARKER := Vector2(REANIM_ANCHOR_X - 40.0, -60.0)
 const BALL_MARKER := Vector2(REANIM_ANCHOR_X - 55.0, -90.0)
@@ -68,8 +70,6 @@ const T_HEAD_LEAVE := 3.666667
 const HEAD_IDLE_DWELL := 4.0
 ## 吐球冷却
 const HEAD_COOLDOWN := 20.0
-## 场上花盆过少时强制传送带出花盆的阈值
-const FLOWER_POT_MIN := 4
 ## 踩踏最右侧列数(有植物才触发)
 const STOMP_COL_COUNT := 4
 ## 阶段休息时间(Stage1/2/3) — 给植物更多输出窗口
@@ -294,8 +294,6 @@ func _physics_process(delta: float) -> void:
 			_run_next_action()
 		else:
 			is_resting = true
-	## 屋顶花盆过少时, 请求传送带补花盆
-	_ensure_flower_pots(delta)
 
 ## ===== 动作队列(参考 HE SetStateList 规则) =====
 func _build_round_queue() -> void:
@@ -709,34 +707,6 @@ func _planted_cells_for_drop(max_n: int) -> Array[Vector2i]:
 				out.append(Vector2i(c, r))
 	out.shuffle()
 	return out.slice(0, max_n)
-
-var _pot_check_timer := 0.0
-
-func _ensure_flower_pots(delta: float) -> void:
-	_pot_check_timer += delta
-	if _pot_check_timer < 2.0:
-		return
-	_pot_check_timer = 0.0
-	if not is_instance_valid(Global.main_game):
-		return
-	var cm = Global.main_game.card_manager
-	if cm == null or not is_instance_valid(cm.card_slot_conveyor_belt):
-		return
-	var pot_on_field: int = _count_flower_pots_on_field()
-	var belt: CardSlotConveyorBelt = cm.card_slot_conveyor_belt
-	var pot_on_belt: int = belt.count_plant_cards(Global.PlantType.P034FlowerPot)
-	if pot_on_field + pot_on_belt < FLOWER_POT_MIN:
-		belt.request_force_plant_card(Global.PlantType.P034FlowerPot)
-
-
-func _count_flower_pots_on_field() -> int:
-	var n := 0
-	var cells = Global.main_game.plant_cell_manager.all_plant_cells
-	for lane in cells:
-		for cell in lane:
-			if is_instance_valid(cell.plant_in_cell[Global.PlacePlantInCell.Down]):
-				n += 1
-	return n
 
 func _row_y(row: int) -> float:
 	var zm = Global.main_game.zombie_manager

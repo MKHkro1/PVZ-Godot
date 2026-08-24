@@ -457,6 +457,19 @@ func on_zombie_go_home(zombie:Zombie000Base):
 	await get_tree().create_timer(3).timeout
 	SoundManager.play_other_SFX("scream")
 	ui_remind_word.zombie_won_word_appear()
+	await get_tree().create_timer(2.0).timeout
+	_show_game_over_dialog()
+
+
+func _show_game_over_dialog() -> void:
+	var all_ui: Control = canvas_layer_ui.get_node("All_UI")
+	var menu_btn: BaseButton = all_ui.get_node_or_null("MainGameMenuButton")
+	if menu_btn != null:
+		menu_btn.visible = false
+	var menu: MainGameMenuOptionDialog = all_ui.get_node("MainGameMenuOptionDialog")
+	menu.appear_game_over_menu()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	change_is_mouse_visibel_on_hammer(true)
 
 
 #region 奖杯
@@ -511,9 +524,9 @@ func win_main_game():
 	## 多轮游戏，重置主游戏数据
 	if game_para.game_round != 1:
 		re_main_game()
-	## 冒险模式已无选关界面: 通关记录档案后回主菜单(下次点开始游戏自动续下一关)
+	## 冒险模式: 通关后直接进入下一关
 	if game_para.game_mode == Global.MainScenes.ChooseLevelAdventure:
-		SceneTransition.change_scene(Global.MainScenesMap[Global.MainScenes.StartMenu])
+		Global.start_adventure_next_level()
 	else:
 		SceneTransition.change_scene(Global.MainScenesMap.get(game_para.game_mode, Global.MainScenesMap[Global.MainScenes.StartMenu]))
 

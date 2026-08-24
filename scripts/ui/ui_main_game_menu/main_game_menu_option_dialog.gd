@@ -10,6 +10,15 @@ class_name MainGameMenuOptionDialog
 @onready var canvas_layer_console: CanvasLayerConsole = %CanvasLayerConsole
 ## 图鉴场景所在的画布层
 @onready var canvas_layer_almanac: CanvasLayer = %CanvasLayerAlmanac
+@onready var option_root: Control = $Option
+@onready var option_vbox: VBoxContainer = $Option/VBoxContainer
+@onready var button_encyclopedia: BaseButton = $Option/Button1
+@onready var button_restart: BaseButton = $Option/Button2
+@onready var button_main_menu: BaseButton = $Option/Button3
+@onready var button_console: BaseButton = $Option/Button4
+@onready var button_return: TextureButton = $Return
+
+var _is_game_over_menu := false
 
 
 func _ready() -> void:
@@ -33,6 +42,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 ## 快捷键切换菜单
 func toggle_menu_by_hotkey() -> void:
+	if _is_game_over_menu:
+		return
 	## 图鉴打开时交给图鉴自己处理
 	if canvas_layer_almanac.get_child_count() > 0:
 		return
@@ -64,6 +75,7 @@ func time_sacle_signal(h_slider: HSlider):
 
 ## 出现菜单
 func appear_menu():
+	_set_normal_menu_layout()
 	await get_tree().create_timer(0.1).timeout
 	# 游戏暂停
 
@@ -72,14 +84,43 @@ func appear_menu():
 
 	visible = true
 	## 聚焦到关闭按钮: 空格/回车可直接继续游戏, 方向键可导航菜单
-	$Return.grab_focus()
+	button_return.grab_focus()
 	#mouse_filter = Control.MOUSE_FILTER_STOP
+
+
+## 失败后弹出: 仅重新开始 / 返回主菜单
+func appear_game_over_menu() -> void:
+	_is_game_over_menu = true
+	_set_game_over_menu_layout()
+	visible = true
+	button_restart.grab_focus()
+
+
+func _set_normal_menu_layout() -> void:
+	_is_game_over_menu = false
+	option_vbox.visible = true
+	button_encyclopedia.visible = true
+	button_console.visible = true
+	button_restart.visible = true
+	button_main_menu.visible = true
+	button_return.visible = true
+
+
+func _set_game_over_menu_layout() -> void:
+	option_vbox.visible = false
+	button_encyclopedia.visible = false
+	button_console.visible = false
+	button_restart.visible = true
+	button_main_menu.visible = true
+	button_return.visible = false
 
 ## 关闭菜单防抖时间戳(快捷键与焦点按钮可能对同一按键双触发)
 var _last_close_request_ms := -10000
 
 ## 关闭菜单
 func return_button_pressed():
+	if _is_game_over_menu:
+		return
 	var now := Time.get_ticks_msec()
 	if now - _last_close_request_ms < 250:
 		return
@@ -101,6 +142,7 @@ func encyclopedia():
 
 ## 重新开始
 func resume_game():
+	_is_game_over_menu = false
 	EventBus.push_event("change_is_mouse_visibel_on_hammer", true)
 
 	Global.main_game.re_main_game()
@@ -114,6 +156,7 @@ func resume_game():
 
 ## 返回主菜单
 func return_main_menu():
+	_is_game_over_menu = false
 	EventBus.push_event("change_is_mouse_visibel_on_hammer", true)
 	Global.end_tree_pause_clear_all_pause_factors()
 	Global.time_scale = 1.0

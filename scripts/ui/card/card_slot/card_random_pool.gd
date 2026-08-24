@@ -67,4 +67,25 @@ func get_random_card_info() -> Dictionary:
 		var card_zombie_type = card_choose_random_pool_zombie.get_random_item()
 		return {"plant_type": Global.PlantType.Null, "zombie_type": card_zombie_type}
 
+## 按倍率临时提升部分植物权重后随机一张卡(僵王传送带动态补卡)
+func get_random_card_with_plant_boosts(boosts: Dictionary) -> Card:
+	if boosts.is_empty() or card_choose_random_pool_plant == null:
+		return get_random_card()
+	var boosted_plant_total := 0
+	var boosted_data: Array[Array] = []
+	for plant_type in all_card_plant_type_probability.keys():
+		var w: int = all_card_plant_type_probability[plant_type]
+		if boosts.has(plant_type):
+			w = maxi(1, int(w * float(boosts[plant_type])))
+		boosted_plant_total += w
+		boosted_data.append([plant_type, w])
+	var boosted_total_prob := boosted_plant_total + (total_prob - total_prob_plant)
+	var rand_val := randi_range(1, boosted_total_prob)
+	if rand_val <= boosted_plant_total:
+		var temp_picker := RandomPicker.new(boosted_data, false)
+		var card_plant_type = temp_picker.get_random_item()
+		return AllCards.all_plant_card_prefabs[card_plant_type]
+	var card_zombie_type = card_choose_random_pool_zombie.get_random_item()
+	return AllCards.all_zombie_card_prefabs[card_zombie_type]
+
 

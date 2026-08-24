@@ -31,6 +31,13 @@ var card_order_zombie:Dictionary[int, Global.ZombieType] = {}
 var all_num_card :int = 0
 ## 下次强制生成的植物卡(花盆不足时由僵王请求)
 var _force_next_plant: Global.PlantType = Global.PlantType.Null
+## 僵王关: 场上花盆低于此值时提高花盆出卡概率
+const ZOMBOSS_FLOWER_POT_FIELD_MIN := 16
+## 僵王关: 传送带缺卡时的权重倍率
+const ZOMBOSS_MISSING_CARD_BOOST := 4.0
+## 僵王关: 花盆不足时的基础倍率(随缺口线性增加)
+const ZOMBOSS_FLOWER_POT_BOOST_BASE := 2.0
+const ZOMBOSS_FLOWER_POT_BOOST_PER_DEFICIT := 0.25
 #endregion
 
 ## 是否正在运行中
@@ -133,7 +140,11 @@ func _create_new_card():
 	elif card_order_zombie.has(all_num_card):
 		new_card_prefabs = AllCards.all_zombie_card_prefabs[card_order_zombie[all_num_card]]
 	else:
-		new_card_prefabs = card_random_pool.get_random_card()
+		var boosts := _get_zomboss_plant_boosts()
+		if boosts.is_empty():
+			new_card_prefabs = card_random_pool.get_random_card()
+		else:
+			new_card_prefabs = card_random_pool.get_random_card_with_plant_boosts(boosts)
 	var new_card = new_card_prefabs.duplicate()
 	new_card_area.add_child(new_card)
 	new_card.card_init_conveyor_belt()
@@ -145,6 +156,33 @@ func _create_new_card():
 	card_bg.clip_children = CanvasItem.CLIP_CHILDREN_DISABLED
 
 	all_num_card += 1
+
+func _get_zomboss_plant_boosts() -> Dictionary:
+	var boosts: Dictionary = {}
+	if not is_instance_valid(Global.main_game) or Global.main_game.game_para == null:
+		return boosts
+	if not Global.main_game.game_para.is_zomboss_fight:
+		return boosts
+	var pot_on_field := _count_flower_pots_on_field()
+	if pot_on_field < ZOMBOSS_FLOWER_POT_FIELD_MIN:
+		var deficit := ZOMBOSS_FLOWER_POT_FIELD_MIN - pot_on_field
+		boosts[Global.PlantType.P034FlowerPot] = ZOMBOSS_FLOWER_POT_BOOST_BASE + deficit * ZOMBOSS_FLOWER_POT_BOOST_PER_DEFICIT
+	if count_plant_cards(Global.PlantType.P021Jalapeno) == 0:
+		boosts[Global.PlantType.P021Jalapeno] = ZOMBOSS_MISSING_CARD_BOOST
+	if count_plant_cards(Global.PlantType.P015IceShroom) == 0:
+		boosts[Global.PlantType.P015IceShroom] = ZOMBOSS_MISSING_CARD_BOOST
+	return boosts
+
+func _count_flower_pots_on_field() -> int:
+	var n := 0
+	if not is_instance_valid(Global.main_game) or Global.main_game.plant_cell_manager == null:
+		return n
+	var cells = Global.main_game.plant_cell_manager.all_plant_cells
+	for lane in cells:
+		for cell in lane:
+			if is_instance_valid(cell.plant_in_cell[Global.PlacePlantInCell.Down]):
+				n += 1
+	return n
 
 #endregion
 

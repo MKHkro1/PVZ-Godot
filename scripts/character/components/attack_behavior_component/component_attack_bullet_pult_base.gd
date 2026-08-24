@@ -16,7 +16,7 @@ func _on_bullet_attack_cd_timer_timeout() -> void:
 		last_target_enemy_global_pos = last_target_enemy.global_position
 		animation_tree.set(attack_para, AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	elif is_instance_valid(last_target_zomboss):
-		last_target_enemy_global_pos = last_target_zomboss.hurt_box_component.global_position + Vector2(0, -20)
+		last_target_enemy_global_pos = last_target_zomboss.hurt_box_component.global_position + ZombossBoss.PULT_AIM_OFFSET
 		animation_tree.set(attack_para, AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 

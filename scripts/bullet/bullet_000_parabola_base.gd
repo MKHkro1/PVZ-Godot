@@ -46,7 +46,7 @@ var start_control_point_on_bounce:Vector2
 func _ready() -> void:
 	super()
 	if is_instance_valid(target_zomboss) and is_instance_valid(target_zomboss.hurt_box_component):
-		enemy_last_global_pos = target_zomboss.hurt_box_component.global_position
+		enemy_last_global_pos = target_zomboss.hurt_box_component.global_position + ZombossBoss.PULT_AIM_OFFSET
 	elif is_instance_valid(target_enemy) and is_instance_valid(target_enemy.hurt_box_component):
 		enemy_last_global_pos = target_enemy.hurt_box_component.global_position
 	curr_diff_x = 0
@@ -84,7 +84,7 @@ func _physics_process(delta: float) -> void:
 	if is_instance_valid(target_zomboss) and not target_zomboss.is_dead and target_zomboss.is_head_vulnerable:
 		curr_diff_x += abs(target_zomboss.hurt_box_component.global_position.x - enemy_last_global_pos.x)
 		if curr_diff_x < max_diff_x:
-			enemy_last_global_pos = target_zomboss.hurt_box_component.global_position + Vector2(0, -20)
+			enemy_last_global_pos = target_zomboss.hurt_box_component.global_position + ZombossBoss.PULT_AIM_OFFSET
 	elif is_instance_valid(target_enemy) and not target_enemy.is_death:
 		##$ 计算敌人移动的水平差距
 		curr_diff_x += abs(target_enemy.hurt_box_component.global_position.x - enemy_last_global_pos.x)
