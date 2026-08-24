@@ -69,9 +69,10 @@ var garden_need_water:=true
 func _unrealized():
 	dialog.appear_dialog()
 
-## 开始游戏(无选关界面: 直接进入当前进度的冒险关卡)
+## 开始游戏(冒险模式选关)
 func _on_button_1_pressed() -> void:
-	Global.start_adventure_next_level()
+	Global.game_para = null
+	SceneTransition.change_scene(Global.MainScenesMap[Global.MainScenes.ChooseLevelAdventure])
 
 
 ## 迷你游戏

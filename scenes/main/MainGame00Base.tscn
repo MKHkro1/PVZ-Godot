@@ -321,20 +321,17 @@ mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxEmpty_41ccn")
 
 [node name="ShovelContainer" type="Control" parent="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer"]
+custom_minimum_size = Vector2(140, 72)
 layout_mode = 2
+size_flags_horizontal = 8
 mouse_filter = 1
 
 [node name="UIShovel" type="TextureRect" parent="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -140.0
-offset_right = -70.0
+layout_mode = 0
+offset_right = 70.0
 offset_bottom = 72.0
-grow_horizontal = 0
 texture = ExtResource("42_pmw6j")
 script = ExtResource("43_erab5")
 
@@ -382,13 +379,10 @@ vertical_alignment = 1
 [node name="UIGlove" type="TextureRect" parent="CanvasLayerCardSlot/CardSlotRoot/CardSlotContainer/ShovelContainer"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_right = 70.0
+layout_mode = 0
+offset_left = 70.0
+offset_right = 140.0
 offset_bottom = 72.0
-grow_horizontal = 0
 texture = ExtResource("42_pmw6j")
 script = ExtResource("43_glove_ui")
 

@@ -21,7 +21,7 @@ func _ready() -> void:
 	## 如果没有开放所有关卡
 	if not Global.open_all_level:
 		if game_mode == Global.MainScenes.ChooseLevelAdventure:
-			open_level_num = 1
+			open_level_num = -1
 		## 自定义关卡全开放
 		elif game_mode == Global.MainScenes.ChooseLevelCustom:
 			open_level_num = -1
@@ -55,6 +55,16 @@ func _ready() -> void:
 
 ## 更新关卡是否锁住 无尽模式默认开放，不占用开放名额
 func update_lock_level(choose_level_button:ChooseLevelButton, curr_level_state_data:Dictionary):
+	if Global.open_all_level:
+		return
+	## 冒险模式: 按进度解锁(已通关关卡始终可选)
+	if game_mode == Global.MainScenes.ChooseLevelAdventure:
+		var level_id: int = int(choose_level_button.curr_level_data_game_para.level_id)
+		var max_unlocked: int = Global.adventure_next_index + 1
+		if curr_level_state_data.get("IsSuccess", false) or level_id <= max_unlocked:
+			return
+		choose_level_button.lock_choose_level_button()
+		return
 	## 如果开放名额为-1，即所有关卡都开发
 	if open_level_num == -1:
 		return
@@ -75,6 +85,8 @@ func _ready_update_page():
 	## 如果从游戏中退出
 	if Global.game_para != null and Global.game_para.game_mode == game_mode:
 		curr_page = Global.game_para.level_page
+	elif game_mode == Global.MainScenes.ChooseLevelAdventure:
+		curr_page = floori(Global.adventure_next_index / 10.0)
 
 	if curr_page > all_pages_array.size():
 		curr_page = 0
@@ -103,6 +115,8 @@ func _on_choose_level_button(choose_level_button:ChooseLevelButton):
 	var btn_para: ResourceLevelData = choose_level_button.curr_level_data_game_para
 	var para: ResourceLevelData = _duplicate_level_para(btn_para)
 	para.set_choose_level(btn_para.game_mode, btn_para.level_page, btn_para.level_id)
+	if btn_para.game_mode == Global.MainScenes.ChooseLevelAdventure:
+		Global.adventure_next_index = int(btn_para.level_id) - 1
 	Global.game_para = para
 	choose_level_start_game(Global.game_para.game_sences)
 
