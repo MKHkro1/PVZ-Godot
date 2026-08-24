@@ -1406,12 +1406,14 @@ text = "没做"
 
 [node name="LabelZombieSum" type="Label" parent="CanvasLayerUI"]
 unique_name_in_owner = true
-anchors_preset = 2
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 25.0
+offset_left = -213.0
 offset_top = -26.0
-offset_right = 213.0
+offset_right = -25.0
 grow_vertical = 0
 theme = ExtResource("25_aop5g")
 theme_type_variation = &"Label3"

@@ -2,6 +2,7 @@ extends PVZButtonBase
 class_name TimeStopButton
 
 @onready var label: Label = $Label
+@onready var shortcut_hint: Label = $ShortcutHint
 
 
 func _ready() -> void:
@@ -31,6 +32,7 @@ func _on_pressed() -> void:
 func _sync_visual(active: bool) -> void:
 	button_pressed = active
 	label.text = "时停中" if active else "时停"
+	shortcut_hint.visible = not active
 
 
 func _process(_delta: float) -> void:
