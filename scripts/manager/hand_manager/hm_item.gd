@@ -26,7 +26,6 @@ var curr_shovel_look_plant_num: int = 0
 ## 手套搬运
 var _glove_carried_plant: Plant000Base
 var _glove_source_cell: PlantCell
-var _glove_shadow: Node2D
 
 
 func click_shovel() -> void:
@@ -71,7 +70,7 @@ func mouse_enter(plant_cell: PlantCell) -> void:
 				plant_be_shovel_look.be_shovel_look()
 		E_HmItemStatus.Glove:
 			if is_instance_valid(_glove_carried_plant):
-				_update_glove_shadow(plant_cell)
+				pass
 			else:
 				curr_shovel_look_plant_num = plant_cell.get_curr_plant_num()
 				if curr_shovel_look_plant_num >= 1:
@@ -95,7 +94,6 @@ func mouse_exit(plant_cell: PlantCell) -> void:
 				plant_be_shovel_look.be_shovel_look_end()
 				plant_be_shovel_look = null
 				curr_shovel_look_plant_num = 0
-			_clear_glove_shadow()
 
 
 @warning_ignore("unused_parameter")
@@ -144,7 +142,11 @@ func _glove_try_pick(plant_cell: PlantCell) -> bool:
 
 
 func _glove_begin_carry(plant: Plant000Base) -> void:
-	temporary_character.add_child(plant)
+	plant.be_shovel_look_end()
+	var carry_pos := plant.global_position
+	if plant.get_parent() != temporary_character:
+		temporary_character.add_child(plant)
+	plant.global_position = carry_pos
 	plant.z_index = 300
 
 
@@ -164,7 +166,6 @@ func _glove_try_place(target_cell: PlantCell) -> bool:
 	var source := _glove_source_cell
 	_glove_carried_plant = null
 	_glove_source_cell = null
-	_clear_glove_shadow()
 	if not target_cell.glove_attach_plant(plant):
 		if is_instance_valid(source):
 			source.glove_attach_plant(plant)
@@ -179,7 +180,6 @@ func _glove_cancel_carry(play_sfx: bool = false) -> bool:
 		return true
 	var plant := _glove_carried_plant
 	_glove_carried_plant = null
-	_clear_glove_shadow()
 	var source := _glove_source_cell
 	_glove_source_cell = null
 	if is_instance_valid(source):
@@ -197,31 +197,6 @@ func _glove_can_place_at(target_cell: PlantCell) -> bool:
 
 func _can_glove_pick(plant: Plant000Base) -> bool:
 	return is_instance_valid(plant)
-
-
-func _update_glove_shadow(plant_cell: PlantCell) -> void:
-	if not is_instance_valid(_glove_carried_plant):
-		return
-	if _glove_shadow == null:
-		_glove_shadow = _glove_carried_plant.body.duplicate()
-		_glove_shadow.modulate.a = 0.0
-		temporary_character.add_child(_glove_shadow)
-	if plant_cell != _glove_source_cell and plant_cell.glove_can_attach_plant(_glove_carried_plant):
-		var cond: ResourcePlantCondition = Global.get_plant_info(
-			_glove_carried_plant.plant_type, Global.PlantInfoAttribute.PlantConditionResource
-		)
-		_glove_shadow.global_position = plant_cell.get_new_plant_static_shadow_global_position(
-			cond.place_plant_in_cell
-		)
-		_glove_shadow.modulate.a = 0.5
-	else:
-		_glove_shadow.modulate.a = 0.0
-
-
-func _clear_glove_shadow() -> void:
-	if is_instance_valid(_glove_shadow):
-		_glove_shadow.queue_free()
-	_glove_shadow = null
 
 
 func exit_status() -> void:

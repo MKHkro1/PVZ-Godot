@@ -531,6 +531,7 @@ func glove_detach_plant(plant: Plant000Base) -> void:
 		_glove_clear_stacked_on_down(plant)
 		down_plant_change_condition(plant_cell_type == PlantCellType.Pool)
 	signal_plant_free.emit(self, plant.plant_type)
+	_glove_remove_plant_from_tree(plant)
 
 func glove_attach_plant(plant: Plant000Base) -> bool:
 	if plant.plant_type == Global.PlantType.P048CobCannon:
@@ -553,8 +554,10 @@ func glove_attach_plant(plant: Plant000Base) -> bool:
 	plant.row_col = row_col
 	plant.lane = row_col.x
 	var container = plant_container_node[place]
-	container.add_child(plant)
+	if plant.get_parent() != container:
+		container.add_child(plant)
 	plant.position = Vector2.ZERO
+	plant.z_index = 0
 	plant_in_cell[place] = plant
 	if place == Global.PlacePlantInCell.Down and plant is Plant000DownBase:
 		var down_plant := plant as Plant000DownBase
@@ -613,6 +616,12 @@ func _glove_detach_cob_cannon(cannon: Plant048CobCannon) -> void:
 			cannon.signal_character_death.disconnect(death_cb)
 		cannon.plant_cell_next = null
 	rear.signal_plant_free.emit(rear, cannon.plant_type)
+	_glove_remove_plant_from_tree(cannon)
+
+func _glove_remove_plant_from_tree(plant: Plant000Base) -> void:
+	var parent := plant.get_parent()
+	if is_instance_valid(parent):
+		parent.remove_child(plant)
 
 func _glove_attach_cob_cannon(cannon: Plant048CobCannon) -> bool:
 	if not _glove_can_attach_cob_cannon(cannon):
@@ -621,8 +630,11 @@ func _glove_attach_cob_cannon(cannon: Plant048CobCannon) -> bool:
 	cannon.plant_cell = self
 	cannon.row_col = row_col
 	cannon.lane = row_col.x
-	plant_container_node[Global.PlacePlantInCell.Norm].add_child(cannon)
+	var container = plant_container_node[Global.PlacePlantInCell.Norm]
+	if cannon.get_parent() != container:
+		container.add_child(cannon)
 	cannon.position = Vector2.ZERO
+	cannon.z_index = 0
 	plant_in_cell[Global.PlacePlantInCell.Norm] = cannon
 	cannon.plant_cell_next = next_cell
 	next_cell.plant_in_cell[Global.PlacePlantInCell.Norm] = cannon
