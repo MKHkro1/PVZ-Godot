@@ -90,6 +90,13 @@ func _on_check_box_11_toggled(toggled_on: bool) -> void:
 
 func _on_check_box_12_toggled(toggled_on: bool) -> void:
 	Global.glove_no_cooldown = toggled_on
+	## 立即结束手套冷却
+	if toggled_on and is_instance_valid(Global.main_game):
+		var ui = Global.main_game.get_node_or_null("%UIGlove")
+		if ui:
+			ui._end_cooldown()
+	Global.save_config()
 
 func _on_check_box_13_toggled(toggled_on: bool) -> void:
 	Global.hammer_no_cooldown = toggled_on
+	Global.save_config()

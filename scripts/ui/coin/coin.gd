@@ -96,6 +96,12 @@ func _on_button_pressed() -> void:
 		coin_target_position = Global.coin_value_label.marker_2d_coin_target.global_position
 
 
+	## 点击弹跳效果
+	scale = Vector2(1.3, 1.3)
+	var pop_tween := create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	pop_tween.tween_property(self, "scale", Vector2.ONE, 0.15)
+	await pop_tween.finished
+	## 飞向金币槽
 	var click_tween:Tween = create_tween()
 	click_tween.tween_property(self, "global_position", coin_target_position, 0.5)
 	await click_tween.finished

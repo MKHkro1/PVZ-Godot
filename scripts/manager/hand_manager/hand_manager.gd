@@ -129,8 +129,12 @@ func _input(event):
 	## 当前手持状态不为空且鼠标点击事件
 	if curr_hm_status != E_HandManagerStatus.Null and event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+			## 只有手套搬运状态才需要取消并归还植物
+			if curr_hm_status == E_HandManagerStatus.Item and hm_item.curr_hm_item_status == HM_Item.E_HmItemStatus.Glove:
+				hm_item.exit_status()
 			SoundManager.play_other_SFX("tap2")
 			curr_hm_status = E_HandManagerStatus.Null
+			get_viewport().set_input_as_handled()
 
 ## 退出手持状态(锤子激活时调用)
 func _exit_hand_status() -> void:
