@@ -66,6 +66,9 @@
 [ext_resource type="Script" uid="uid://pqbu71xw5ngn" path="res://scripts/character/components/detect_component/component_detect_global.gd" id="55_l4e4o"]
 [ext_resource type="Script" uid="uid://l5xf5880s78e" path="res://scripts/ui/main_game_ui/label_zombie_sum.gd" id="59_b2sx0"]
 [ext_resource type="PackedScene" uid="uid://c8ktime5stopbtn" path="res://scenes/ui/time_stop_button.tscn" id="60_tsbtn"]
+[ext_resource type="Script" path="res://scripts/ui/card/hammer_in_ui.gd" id="61_hammer_ui"]
+[ext_resource type="Texture2D" path="res://assets/reanim/Hammer.png" id="62_hammer_tex"]
+[ext_resource type="Script" path="res://scripts/main_game_item/real_hammer.gd" id="63_real_hammer"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy6tc"]
 size = Vector2(150, 600)
@@ -325,7 +328,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_41ccn")
 [node name="ShovelContainer" type="Control" parent="CanvasLayerCardSlot/CardSlotRoot"]
 unique_name_in_owner = true
 z_index = 10
-custom_minimum_size = Vector2(140, 72)
+custom_minimum_size = Vector2(210, 72)
 layout_mode = 0
 mouse_filter = 1
 script = ExtResource("46_tool_bar")
@@ -444,6 +447,70 @@ text = "G"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="UIHammer" type="TextureRect" parent="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 140.0
+offset_right = 210.0
+offset_bottom = 72.0
+texture = ExtResource("42_pmw6j")
+script = ExtResource("61_hammer_ui")
+
+[node name="Hammer" type="TextureRect" parent="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIHammer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -36.0
+offset_right = 42.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("62_hammer_tex")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIHammer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+fill_mode = 2
+show_percentage = false
+
+[node name="Button" type="Button" parent="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIHammer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jbbka")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jbbka")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jbbka")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_jbbka")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jbbka")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jbbka")
+
+[node name="Label" type="Label" parent="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIHammer"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 50.0
+offset_right = 72.0
+offset_bottom = 73.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "H"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CanvasLayerFG" type="CanvasLayer" parent="."]
 layer = 5
 follow_viewport_enabled = true
@@ -481,6 +548,15 @@ texture = ExtResource("44_glove_tex")
 centered = false
 offset = Vector2(-20, -50)
 script = ExtResource("45_real_glove")
+
+[node name="RealHammer" type="Sprite2D" parent="CanvasLayerTemp"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(687, 67)
+texture = ExtResource("62_hammer_tex")
+centered = false
+offset = Vector2(-30, -60)
+script = ExtResource("63_real_hammer")
 
 [node name="CanvasLayerEffect" type="CanvasLayer" parent="."]
 layer = 30
@@ -913,13 +989,6 @@ layout_mode = 2
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 text = "解锁全部植物"
-
-[node name="GloveNoCooldown" type="CheckBox" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/VBoxContainer"]
-custom_minimum_size = Vector2(220, 0)
-layout_mode = 2
-mouse_filter = 1
-mouse_default_cursor_shape = 2
-text = "手套无冷却"
 
 [node name="Button1" type="BaseButton" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option"]
 _import_path = NodePath("")
@@ -1406,18 +1475,20 @@ text = "没做"
 
 [node name="LabelZombieSum" type="Label" parent="CanvasLayerUI"]
 unique_name_in_owner = true
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -213.0
+offset_left = -100.0
 offset_top = -26.0
-offset_right = -25.0
+offset_right = 100.0
+grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("25_aop5g")
 theme_type_variation = &"Label3"
 text = "当前僵尸数量：0"
+horizontal_alignment = 1
 script = ExtResource("59_b2sx0")
 
 [node name="LawnMovers" type="Node2D" parent="."]
@@ -1472,9 +1543,9 @@ debug_color = Color(0, 0.6, 0.69803923, 0.20392157)
 [connection signal="area_entered" from="CanvasLayerBG/Background/Home/Area2DHome" to="CanvasLayerBG/Background/Home" method="_on_area_2d_home_area_entered"]
 [connection signal="pressed" from="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIShovel/Button" to="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIShovel" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIGlove/Button" to="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIGlove" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIHammer/Button" to="CanvasLayerCardSlot/CardSlotRoot/ShovelContainer/UIHammer" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayerUI/All_UI/MainGameMenuButton" to="CanvasLayerUI/All_UI/MainGameMenuOptionDialog" method="appear_menu"]
 [connection signal="toggled" from="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/VBoxContainer/UnlockAllPlants" to="CanvasLayerUI/All_UI/MainGameMenuOptionDialog" method="_on_unlock_all_plants_toggled"]
-[connection signal="toggled" from="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/VBoxContainer/GloveNoCooldown" to="CanvasLayerUI/All_UI/MainGameMenuOptionDialog" method="_on_glove_no_cooldown_toggled"]
 [connection signal="pressed" from="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/Button1" to="CanvasLayerUI/All_UI/MainGameMenuOptionDialog" method="encyclopedia"]
 [connection signal="pressed" from="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/Button4" to="CanvasLayerUI/All_UI/MainGameMenuOptionDialog" method="_on_button_console_pressed"]
 [connection signal="pressed" from="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/Button2" to="CanvasLayerUI/All_UI/MainGameMenuOptionDialog" method="resume_game"]

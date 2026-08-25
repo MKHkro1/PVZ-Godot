@@ -7,7 +7,9 @@ var curr_cards:Array[Card]
 @onready var ui_shovel: UIShovel = %UIShovel
 ## 手套
 @onready var ui_glove = %UIGlove
-## 道具栏(铲子/手套容器)
+## 锤子
+@onready var ui_hammer: UIHammer = %UIHammer
+## 道具栏(铲子/手套/锤子容器)
 @onready var tool_container: Control = %ShovelContainer
 
 ## 快捷键
@@ -22,6 +24,11 @@ func _unhandled_key_input(event):
 	if Input.is_action_just_pressed("ShortcutKeys_Glove"):
 		if ui_glove.visible:
 			ui_glove._on_button_pressed()
+		return
+	## 锤子快捷键
+	if Input.is_action_just_pressed("ShortcutKeys_Hammer"):
+		if ui_hammer.visible:
+			ui_hammer._on_button_pressed()
 		return
 	## 卡片快捷键
 	for i in range(1,11):

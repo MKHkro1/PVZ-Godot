@@ -661,6 +661,10 @@ func _glove_restore_carried_stack(carried_stack: Array[Plant000Base]) -> void:
 		var plant_condition: ResourcePlantCondition = Global.get_plant_info(
 			stacked.plant_type, Global.PlantInfoAttribute.PlantConditionResource
 		)
+		## 验证叠放植物能否放在目标格, 不能放的直接销毁
+		if not plant_condition.judge_is_can_plant(self, stacked.plant_type):
+			stacked.queue_free()
+			continue
 		var place := plant_condition.place_plant_in_cell
 		var container = plant_container_node[place]
 		if stacked.get_parent() != container:

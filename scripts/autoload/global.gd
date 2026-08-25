@@ -567,6 +567,8 @@ var open_all_level := false
 var unlock_all_plants := false
 ## 手套使用后无冷却
 var glove_no_cooldown := false
+## 锤子使用后无冷却
+var hammer_no_cooldown := false
 
 var time_scale := 1.0
 
@@ -611,6 +613,7 @@ func save_config():
 	config.set_value("user_control", "open_all_level", open_all_level)
 	config.set_value("user_control", "unlock_all_plants", unlock_all_plants)
 	config.set_value("user_control", "glove_no_cooldown", glove_no_cooldown)
+	config.set_value("user_control", "hammer_no_cooldown", hammer_no_cooldown)
 
 	config.save(config_path)
 
@@ -648,6 +651,7 @@ func load_config():
 	open_all_level = config.get_value("user_control", "open_all_level", false)
 	unlock_all_plants = config.get_value("user_control", "unlock_all_plants", false)
 	glove_no_cooldown = config.get_value("user_control", "glove_no_cooldown", false)
+	hammer_no_cooldown = config.get_value("user_control", "hammer_no_cooldown", false)
 #endregion
 
 #region 当前植物和僵尸

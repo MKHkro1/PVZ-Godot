@@ -25,7 +25,7 @@ func init_game_item_manager(game_para:ResourceLevelData):
 		wallnut_bowling_stripe.init_item(game_para.plant_cell_col_j, game_para.plant_cell_can_use)
 		all_game_items[E_GameItemType.WallnutBowlingStripe] = wallnut_bowling_stripe
 
-	if game_para.is_hammer:
-		var hammer = HAMMER.instantiate()
-		canvas_layer_temp.add_child(hammer)
-		all_game_items[E_GameItemType.Hammer] = hammer
+	## 始终实例化锤子(道具工具, 非小游戏模式)
+	var hammer = HAMMER.instantiate()
+	canvas_layer_temp.add_child(hammer)
+	all_game_items[E_GameItemType.Hammer] = hammer

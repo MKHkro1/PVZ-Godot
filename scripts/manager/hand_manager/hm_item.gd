@@ -288,3 +288,5 @@ func exit_status() -> void:
 			real_glove.change_is_using(false)
 			ui_glove.ui_glove_appear()
 	curr_hm_item_status = E_HmItemStatus.Null
+
+

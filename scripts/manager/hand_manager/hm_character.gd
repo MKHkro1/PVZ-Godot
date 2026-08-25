@@ -162,14 +162,19 @@ func get_zombie_static_shadow_global_position(plant_cell)->Vector2:
 
 ## 鼠标移出cell
 func mouse_exit(_plant_cell:PlantCell):
+	is_shadow_in_cell = false
 	characte_static_shadow.modulate.a = 0
 	if is_mode_column:
 		_mouse_exit_column()
 
 ## 点击种植植物\僵尸, 成功则返回 true
 func click_cell(plant_cell:PlantCell) -> bool:
-	if not is_shadow_in_cell:
+	if not is_shadow_in_cell or not is_instance_valid(plant_cell) or curr_card == null:
 		return false
+	## 再次验证种植条件, 防止状态残留导致非法放置
+	if curr_card.card_plant_type != 0:
+		if not plant_condition.judge_is_can_plant(plant_cell, curr_card.card_plant_type):
+			return false
 	if curr_card.card_plant_type != 0:
 		plant_cell.create_plant(curr_card.card_plant_type, curr_card.is_imitater)
 	else:

@@ -61,6 +61,7 @@ func _click_card(card:Card) -> void:
 
 ## 点击ui铲子
 func _click_shovel() -> void:
+	EventBus.push_event("main_game_exit_hammer")
 	SoundManager.play_other_SFX("shovel")
 	if curr_hm_status == E_HandManagerStatus.Item:
 		hm_item.exit_status()
@@ -72,6 +73,7 @@ func _click_shovel() -> void:
 
 ## 点击ui手套
 func _click_glove() -> void:
+	EventBus.push_event("main_game_exit_hammer")
 	if not is_instance_valid(Global.main_game) or not Global.main_game.card_manager.is_glove:
 		return
 	if not Global.glove_no_cooldown and hm_item.ui_glove.is_on_cooldown():
@@ -87,6 +89,8 @@ func _click_glove() -> void:
 
 ## 鼠标点击cell
 func _on_click_cell(plant_cell:PlantCell):
+	if not is_instance_valid(plant_cell):
+		return
 	match curr_hm_status:
 		E_HandManagerStatus.Null:
 			hm_null.click_cell(plant_cell)

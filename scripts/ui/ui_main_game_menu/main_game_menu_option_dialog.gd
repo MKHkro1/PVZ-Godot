@@ -8,7 +8,6 @@ class_name MainGameMenuOptionDialog
 @onready var time_scale_h_slider: HSlider = $Option/VBoxContainer/TimeScale/HSlider
 @onready var time_sacle_label: Label = $Option/VBoxContainer/TimeScale/Label
 @onready var unlock_all_plants_check: CheckBox = $Option/VBoxContainer/UnlockAllPlants
-@onready var glove_no_cooldown_check: CheckBox = $Option/VBoxContainer/GloveNoCooldown
 @onready var canvas_layer_console: CanvasLayerConsole = %CanvasLayerConsole
 ## 图鉴场景所在的画布层
 @onready var canvas_layer_almanac: CanvasLayer = %CanvasLayerAlmanac
@@ -33,7 +32,6 @@ func _ready() -> void:
 	time_sacle_signal(time_scale_h_slider)
 	time_sacle_label.text = "倍速 " + str(Global.time_scale) + " 倍"
 	unlock_all_plants_check.button_pressed = Global.unlock_all_plants
-	glove_no_cooldown_check.button_pressed = Global.glove_no_cooldown
 
 
 #region 空格/Esc 快捷开关菜单
@@ -184,11 +182,4 @@ func _on_unlock_all_plants_toggled(toggled_on: bool) -> void:
 	Global.save_config()
 
 
-func _on_glove_no_cooldown_toggled(toggled_on: bool) -> void:
-	Global.glove_no_cooldown = toggled_on
-	if toggled_on and is_instance_valid(Global.main_game):
-		var ui_glove = Global.main_game.get_node_or_null("%UIGlove")
-		if ui_glove:
-			ui_glove._end_cooldown()
-	Global.save_config()
 

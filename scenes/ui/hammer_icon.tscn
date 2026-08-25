@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Texture2D" uid="uid://bqtnl31pv3rv3" path="res://assets/reanim/Hammer_3.png" id="1_h3"]
+[ext_resource type="Texture2D" uid="uid://qtifu6lsmq6x" path="res://assets/reanim/hammer_1.png" id="2_h1"]
+[ext_resource type="Texture2D" uid="uid://dweon5ml8otw5" path="res://assets/reanim/Hammer_2.png" id="3_h2"]
+
+[node name="HammerIcon" type="Node2D"]
+
+[node name="Hammer_3" type="Sprite2D" parent="."]
+position = Vector2(-8.35, -6.7)
+rotation = 1.11527
+scale = Vector2(0.797, 0.797)
+texture = ExtResource("1_h3")
+centered = false
+
+[node name="Hammer1" type="Sprite2D" parent="."]
+position = Vector2(-0.95, 16.7)
+rotation = 1.11527
+scale = Vector2(0.797, 0.797)
+texture = ExtResource("2_h1")
+centered = false
+
+[node name="Hammer_2" type="Sprite2D" parent="."]
+position = Vector2(8.35, -16.7)
+rotation = 1.11527
+scale = Vector2(0.797, 0.797)
+texture = ExtResource("3_h2")
+centered = false

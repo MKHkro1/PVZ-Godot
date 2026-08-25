@@ -5,10 +5,7 @@ class_name StartMenuOptionDialog
 @onready var music_h_slider: HSlider = $Option/Music/HSlider
 @onready var sound_h_slider: HSlider = $Option/SoundEffect/HSlider
 
-## 全屏按钮
-@onready var check_button: CheckButton = $Option/FullScreen/CheckButton
 @onready var unlock_all_plants_check: CheckButton = $Option/UnlockAllPlants/CheckButton
-@onready var glove_no_cooldown_check: CheckButton = $Option/GloveNoCooldown/CheckButton
 
 
 func _ready() -> void:
@@ -18,9 +15,7 @@ func _ready() -> void:
 	music_sound_signal(music_h_slider, AudioServer.get_bus_index("BGM"))
 	music_sound_signal(sound_h_slider, AudioServer.get_bus_index("SFX"))
 
-	check_button.button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 	unlock_all_plants_check.button_pressed = Global.unlock_all_plants
-	glove_no_cooldown_check.button_pressed = Global.glove_no_cooldown
 
 func music_sound_signal(h_slider: HSlider, bus_index):
 	h_slider.value = SoundManager.get_volum(bus_index)
@@ -49,9 +44,4 @@ func return_button_pressed():
 
 func _on_unlock_all_plants_toggled(toggled_on: bool) -> void:
 	Global.unlock_all_plants = toggled_on
-	Global.save_config()
-
-
-func _on_glove_no_cooldown_toggled(toggled_on: bool) -> void:
-	Global.glove_no_cooldown = toggled_on
 	Global.save_config()

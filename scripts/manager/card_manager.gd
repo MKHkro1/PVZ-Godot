@@ -29,6 +29,8 @@ var card_slot_seed_rain :CardSlotSeedRain
 var is_shovel:=true
 ## 是否有手套
 var is_glove:=true
+## 是否有锤子
+var is_hammer:=true
 
 ## 当前临时卡片
 var curr_temp_cards:Array[Card]
@@ -58,6 +60,7 @@ func init_card_manager(game_para:ResourceLevelData):
 	self.card_mode = game_para.card_mode
 	self.is_shovel = game_para.is_shovel
 	self.is_glove = game_para.is_glove
+	self.is_hammer = true
 	self.is_seed_rain = game_para.is_seed_rain
 	if game_para.is_seed_rain:
 		card_slot_seed_rain = load("res://scenes/card_slot/card_slot_seed_rain.tscn").instantiate()
@@ -89,6 +92,7 @@ func init_card_manager(game_para:ResourceLevelData):
 func start_next_game_card_manager_update():
 	card_slot_root.ui_shovel.visible = false
 	card_slot_root.ui_glove.visible = false
+	card_slot_root.ui_hammer.visible = false
 	if is_seed_rain:
 		card_slot_seed_rain.pause_seed_rain()
 
@@ -149,6 +153,8 @@ func card_slot_update_main_game():
 		card_slot_root.ui_shovel.visible = true
 	if is_glove:
 		card_slot_root.ui_glove.visible = true
+	if is_hammer:
+		card_slot_root.ui_hammer.visible = true
 	if is_instance_valid(card_slot_root.tool_container):
 		card_slot_root.tool_container.call_deferred("_sync_to_card_slot")
 

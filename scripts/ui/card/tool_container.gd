@@ -1,7 +1,7 @@
 extends Control
 ## 铲子/手套栏: 跟随卡槽容器右缘定位, 避免被卡槽内容遮挡
 
-const TOOL_WIDTH := 140.0
+const TOOL_WIDTH := 210.0
 
 @onready var _card_slot_container: Control = %CardSlotContainer
 
