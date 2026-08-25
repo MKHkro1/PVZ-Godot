@@ -73,7 +73,7 @@ func music_sound_signal(h_slider: HSlider, bus_index):
 
 func time_sacle_signal(h_slider: HSlider):
 	h_slider.value_changed.connect(func (v:float):
-		Global.time_scale = v
+		Global.time_scale = snapped(v, 0.1)
 		time_sacle_label.text = "倍速 " + str(Global.time_scale) + " 倍"
 		if not Global.is_time_stop:
 			Engine.time_scale = Global.time_scale

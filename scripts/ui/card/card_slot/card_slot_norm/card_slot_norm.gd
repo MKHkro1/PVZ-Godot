@@ -174,7 +174,7 @@ func move_card_to(card:Card, target_parent):
 	card.button.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	card.reparent(temporary_card)
 
-	var tween = create_tween()
+	var tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.tween_property(card, "global_position", target_parent.global_position, 0.2) # 时间可以改短点
 
 	await tween.finished
@@ -213,7 +213,7 @@ func pre_choosed_card(card:Card, target_parent):
 
 ## 移动卡槽（出现或隐藏）
 func move_card_slot_candidate(is_appeal:bool):
-	var tween = create_tween()
+	var tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	if is_appeal:
 		tween.tween_property(card_slot_candidate, "position",Vector2(0, 89.0), 0.2) # 时间可以改短点
 	else:
@@ -223,7 +223,7 @@ func move_card_slot_candidate(is_appeal:bool):
 
 ## 移动待选卡槽（出现或隐藏）
 func move_card_slot_battle(is_appeal:bool, appeal_time:= 0.2):
-	var tween = create_tween()
+	var tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	if is_appeal:
 		tween.tween_property(card_slot_battle, "position",Vector2(0, 0), appeal_time)
 	else:

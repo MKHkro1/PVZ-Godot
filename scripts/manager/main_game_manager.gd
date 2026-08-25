@@ -19,7 +19,7 @@ class_name MainGameManager
 ## INFO: 游戏速度超过8会代码执行顺序会有问题，可能会导致一些莫名其妙的bug
 @export var test_time_scale:=1:
 	set(value):
-		test_time_scale = value
+		test_time_scale = clampi(value, 1, 8)
 		Engine.time_scale = test_time_scale
 
 #endregion

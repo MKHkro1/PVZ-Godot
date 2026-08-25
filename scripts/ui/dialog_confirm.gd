@@ -24,10 +24,9 @@ func show_confirm(message: String) -> void:
 
 ## 将面板居中到屏幕中央
 func _center_panel() -> void:
-	return
 	var viewport_size = get_viewport_rect().size
 	var panel_size = panel.size
-	panel.position = (viewport_size - panel_size*2) / 2
+	panel.position = (viewport_size - panel_size) / 2
 
 
 
