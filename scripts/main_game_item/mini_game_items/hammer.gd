@@ -33,9 +33,14 @@ func _process(delta: float) -> void:
 
 func _on_activate_request() -> void:
 	if state != State.IDLE:
-		if state == State.COOLDOWN:
+		if state == State.COOLDOWN and not Global.hammer_no_cooldown:
 			SoundManager.play_other_SFX("buzzer")
 		return
+	## 无冷却模式直接清除冷却状态
+	if state == State.COOLDOWN and Global.hammer_no_cooldown:
+		state = State.IDLE
+	## 退出手持管理器状态(避免手套/铲子重叠)
+	EventBus.push_event("main_game_exit_hand_status")
 	state = State.ACTIVE
 	visible = true
 	area_2d.monitoring = true

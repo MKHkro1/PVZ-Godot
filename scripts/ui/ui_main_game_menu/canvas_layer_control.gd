@@ -14,6 +14,7 @@ class_name CanvasLayerConsole
 @onready var check_box_10: CheckBox = $OptionBG/HBoxContainer/VBoxContainer2/CheckBox10
 @onready var check_box_11: CheckBox = $OptionBG/HBoxContainer/VBoxContainer2/CheckBox11
 @onready var check_box_12: CheckBox = $OptionBG/HBoxContainer/VBoxContainer2/CheckBox12
+@onready var check_box_13: CheckBox = $OptionBG/HBoxContainer/VBoxContainer2/CheckBox13
 
 
 func _ready() -> void:
@@ -35,6 +36,7 @@ func init_console_panel():
 	check_box_10.button_pressed = Global.open_all_level
 	check_box_11.button_pressed = Global.unlock_all_plants
 	check_box_12.button_pressed = Global.glove_no_cooldown
+	check_box_13.button_pressed = Global.hammer_no_cooldown
 
 ## 关闭控制台
 func _on_texture_button_pressed() -> void:
@@ -88,3 +90,6 @@ func _on_check_box_11_toggled(toggled_on: bool) -> void:
 
 func _on_check_box_12_toggled(toggled_on: bool) -> void:
 	Global.glove_no_cooldown = toggled_on
+
+func _on_check_box_13_toggled(toggled_on: bool) -> void:
+	Global.hammer_no_cooldown = toggled_on

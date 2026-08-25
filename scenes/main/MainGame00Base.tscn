@@ -1202,7 +1202,7 @@ text = "选项设置"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CanvasLayerConsole" parent="CanvasLayerUI/All_UI/MainGameMenuOptionDialog/Option/Button4" instance=ExtResource("34_ifnc6")]
+[node name="CanvasLayerConsole" parent="CanvasLayerUI/All_UI" instance=ExtResource("34_ifnc6")]
 unique_name_in_owner = true
 layer = 60
 visible = false

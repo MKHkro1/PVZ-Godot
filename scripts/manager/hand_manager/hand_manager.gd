@@ -26,6 +26,7 @@ func _ready() -> void:
 	EventBus.subscribe("main_game_click_card", _click_card)
 	EventBus.subscribe("main_game_click_shovel", _click_shovel)
 	EventBus.subscribe("main_game_click_glove", _click_glove)
+	EventBus.subscribe("main_game_exit_hand_status", _exit_hand_status)
 
 func _process(_delta: float) -> void:
 	match curr_hm_status:
@@ -130,3 +131,8 @@ func _input(event):
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			SoundManager.play_other_SFX("tap2")
 			curr_hm_status = E_HandManagerStatus.Null
+
+## 退出手持状态(锤子激活时调用)
+func _exit_hand_status() -> void:
+	if curr_hm_status != E_HandManagerStatus.Null:
+		curr_hm_status = E_HandManagerStatus.Null
