@@ -174,7 +174,12 @@ func create_plant(plant_type:Global.PlantType, is_imitater:=false, is_plant_star
 			## 删除紫卡前置植物,创建新植物
 			var condition_pre_plant :ResourcePlantCondition = Global.get_plant_info(Global.AllPrePlantPurple[plant_type], Global.PlantInfoAttribute.PlantConditionResource)
 			if is_instance_valid(plant_in_cell[condition_pre_plant.place_plant_in_cell]):
-				plant_in_cell[condition_pre_plant.place_plant_in_cell].character_death_disappear()
+				var pre_plant:Plant000Base = plant_in_cell[condition_pre_plant.place_plant_in_cell]
+				## 底部植物(荷叶\花盆)身上挂着本格子的中间植物容器,
+				## 必须先归还容器再删除,否则容器随植物一起被释放,格子留下悬空引用
+				if pre_plant is Plant000DownBase:
+					_detach_down_plant_containers(pre_plant as Plant000DownBase)
+				pre_plant.character_death_disappear()
 				#await get_tree().process_frame
 		else:
 			## 非紫卡 如果该位置已经存在植物,返回
@@ -191,10 +196,16 @@ func create_plant(plant_type:Global.PlantType, is_imitater:=false, is_plant_star
 		Plant000Base.E_PInitAttr.IsZombieMode:is_zombie_mode
 	}
 	plant.init_plant(plant_init_para)
+	var target_container
 	if is_imitater:
-		plant_container_node[Global.PlacePlantInCell.Imitater].add_child(plant)
+		target_container = plant_container_node.get(Global.PlacePlantInCell.Imitater)
 	else:
-		plant_container_node[plant_condition.place_plant_in_cell].add_child(plant)
+		target_container = plant_container_node.get(plant_condition.place_plant_in_cell)
+	if not is_instance_valid(target_container):
+		push_warning("格子容器已释放, 无法种植植物")
+		plant.queue_free()
+		return null
+	target_container.add_child(plant)
 
 	plant_in_cell[plant_condition.place_plant_in_cell] = plant
 	plant.signal_character_death.connect(one_plant_free.bind(plant))
@@ -243,20 +254,24 @@ func one_plant_free(plant:Plant000Base):
 	#plant_in_cell[curr_plant_condition.place_plant_in_cell] = null
 	## 如果是down位置植物，下降中间植物和壳的位置，修改节点结构
 	if curr_plant_condition.place_plant_in_cell == Global.PlacePlantInCell.Down:
-		## 中间植物的节点修改回来(检查当前父节点避免重复添加)
+		## 中间植物的节点修改回来
 		var norm_container = plant_container_node[Global.PlacePlantInCell.Norm]
-		if norm_container.get_parent() == plant.down_plant_container:
-			plant.down_plant_container.remove_child(norm_container)
-		if norm_container.get_parent() != self:
-			add_child(norm_container)
-		norm_container.global_position = plant_postion_node_ori_global_position[Global.PlacePlantInCell.Norm]
+		if is_instance_valid(norm_container):
+			var norm_parent = norm_container.get_parent()
+			if is_instance_valid(norm_parent) and norm_parent != self:
+				norm_parent.remove_child(norm_container)
+			if norm_container.get_parent() != self:
+				add_child(norm_container)
+			norm_container.global_position = plant_postion_node_ori_global_position[Global.PlacePlantInCell.Norm]
 
 		var shell_container = plant_container_node[Global.PlacePlantInCell.Shell]
-		if shell_container.get_parent() == plant.down_plant_container:
-			plant.down_plant_container.remove_child(shell_container)
-		if shell_container.get_parent() != self:
-			add_child(shell_container)
-		shell_container.global_position = plant_postion_node_ori_global_position[Global.PlacePlantInCell.Shell]
+		if is_instance_valid(shell_container):
+			var shell_parent = shell_container.get_parent()
+			if is_instance_valid(shell_parent) and shell_parent != self:
+				shell_parent.remove_child(shell_container)
+			if shell_container.get_parent() != self:
+				add_child(shell_container)
+			shell_container.global_position = plant_postion_node_ori_global_position[Global.PlacePlantInCell.Shell]
 	## 玉米加农炮只有后轮plantcell发射信号更新植物数据
 	if plant.plant_type == Global.PlantType.P048CobCannon:
 		if plant.plant_cell == self:
@@ -563,6 +578,7 @@ func glove_attach_plant(plant: Plant000Base, carried_stack: Array[Plant000Base] 
 	plant.position = Vector2.ZERO
 	plant.z_index = 0
 	plant_in_cell[place] = plant
+	_glove_reconnect_death_signal(plant)
 	if place == Global.PlacePlantInCell.Down and plant is Plant000DownBase:
 		var down_plant := plant as Plant000DownBase
 		if is_instance_valid(down_plant) and is_instance_valid(down_plant.down_plant_container):
@@ -686,6 +702,17 @@ func _glove_restore_carried_stack(carried_stack: Array[Plant000Base]) -> void:
 		stacked.row_col = row_col
 		stacked.lane = row_col.x
 		plant_in_cell[place] = stacked
+		_glove_reconnect_death_signal(stacked)
+
+
+## 手套搬运植物后,把死亡清理信号从旧格子重连到当前格子
+## (否则底部植物死亡时,旧格子执行清理,当前格子挂在该植物身上的容器无人归还,变成悬空引用)
+func _glove_reconnect_death_signal(plant: Plant000Base) -> void:
+	for connection in plant.signal_character_death.get_connections():
+		var old_callable: Callable = connection["callable"]
+		if old_callable.get_method() == &"one_plant_free":
+			plant.signal_character_death.disconnect(old_callable)
+	plant.signal_character_death.connect(one_plant_free.bind(plant))
 
 func _reparent_norm_shell_under_down(down_plant: Plant000DownBase) -> void:
 	if not is_instance_valid(down_plant) or not is_instance_valid(down_plant.down_plant_container):
@@ -718,13 +745,25 @@ func _reparent_norm_shell_under_down(down_plant: Plant000DownBase) -> void:
 			)
 
 func _detach_down_plant_containers(down_plant: Plant000DownBase) -> void:
-	var norm_container: Control = plant_container_node[Global.PlacePlantInCell.Norm]
-	if is_instance_valid(norm_container) and norm_container.get_parent() == down_plant.down_plant_container:
+	## 注意: plant_container_node 是 @onready 缓存的长期引用,
+	## 若容器曾被异常释放(悬空引用), 带类型的直接赋值会崩溃, 必须先判有效
+	var norm_container_node = plant_container_node[Global.PlacePlantInCell.Norm]
+	if (
+		is_instance_valid(norm_container_node)
+		and is_instance_valid(down_plant.down_plant_container)
+		and norm_container_node.get_parent() == down_plant.down_plant_container
+	):
+		var norm_container: Control = norm_container_node
 		down_plant.down_plant_container.remove_child(norm_container)
 		add_child(norm_container)
 		norm_container.global_position = plant_postion_node_ori_global_position[Global.PlacePlantInCell.Norm]
-	var shell_container: Control = plant_container_node[Global.PlacePlantInCell.Shell]
-	if is_instance_valid(shell_container) and shell_container.get_parent() == down_plant.down_plant_container:
+	var shell_container_node = plant_container_node[Global.PlacePlantInCell.Shell]
+	if (
+		is_instance_valid(shell_container_node)
+		and is_instance_valid(down_plant.down_plant_container)
+		and shell_container_node.get_parent() == down_plant.down_plant_container
+	):
+		var shell_container: Control = shell_container_node
 		down_plant.down_plant_container.remove_child(shell_container)
 		add_child(shell_container)
 		shell_container.global_position = plant_postion_node_ori_global_position[Global.PlacePlantInCell.Shell]
