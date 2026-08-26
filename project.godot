@@ -13,11 +13,10 @@ config_version=5
 config/name="GodotPVZ-Dream_me"
 run/main_scene="uid://dc1xvxus2co66"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/use_filter=false
+boot_splash/image="res://assets/image/ui/梧萱梦汐X.png"
 config/icon="uid://dxvlqvahfmjaa"
 config/windows_native_icon="res://pvz_icon.ico"
-boot_splash/image="res://assets/image/ui/梧萱梦汐X.png"
-boot_splash/use_filter=false
-boot_splash/fullsize=true
 
 [autoload]
 

@@ -38,13 +38,17 @@ func init_console_panel():
 	check_box_12.button_pressed = Global.glove_no_cooldown
 	check_box_13.button_pressed = Global.hammer_no_cooldown
 
+@onready var option_bg: TextureRect = $OptionBG
+
 ## 关闭控制台
 func _on_texture_button_pressed() -> void:
+	option_bg.visible = false
 	visible = false
 	EventBus.push_event("change_is_mouse_visibel_on_hammer", false)
 	Global.save_config()
 
 func appear_canvas_layer_control() -> void:
+	option_bg.visible = true
 	visible = true
 	EventBus.push_event("change_is_mouse_visibel_on_hammer", true)
 

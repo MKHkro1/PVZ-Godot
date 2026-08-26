@@ -825,6 +825,9 @@ enum PlantType {
 
 	P049PeaShooterDoubleReverse,
 
+	## 原创植物骨架（占位名，可改名）
+	P050CustomPlant,
+
 	## 模仿者
 	P999Imitater = 999,
 	## 发芽
@@ -1244,6 +1247,13 @@ const  PlantInfo = {
 		PlantInfoAttribute.SunCost: 50,
 		PlantInfoAttribute.PlantConditionResource : preload("res://resources/character_resource/plant_condition/000_common_plant_land.tres"),
 		PlantInfoAttribute.PlantScenes : preload("res://scenes/character/plant/plant_1003_wall_nut_bowling.tscn")
+		},
+	PlantType.P050CustomPlant: {
+		PlantInfoAttribute.PlantName: "CustomPlant",
+		PlantInfoAttribute.CoolTime: 7.5,
+		PlantInfoAttribute.SunCost: 100,
+		PlantInfoAttribute.PlantConditionResource : preload("res://resources/character_resource/plant_condition/000_common_plant_land.tres"),
+		PlantInfoAttribute.PlantScenes : preload("res://scenes/character/plant/plant_050_custom_plant.tscn")
 		},
 }
 

@@ -228,8 +228,17 @@ func _glove_try_place(target_cell: PlantCell) -> bool:
 	var stack := _glove_carried_stack
 	_glove_set_carried_invincible(false)
 	if not target_cell.glove_attach_plant(plant, stack):
+		## 目标格放置失败, 尝试归还源格
+		var fallback_ok := false
 		if is_instance_valid(source):
-			source.glove_attach_plant(plant, stack)
+			fallback_ok = source.glove_attach_plant(plant, stack)
+		if not fallback_ok:
+			## 归还也失败, 销毁孤立植物
+			if is_instance_valid(plant):
+				plant.queue_free()
+			for stacked in stack:
+				if is_instance_valid(stacked):
+					stacked.queue_free()
 		_glove_carried_plant = null
 		_glove_source_cell = null
 		_glove_carried_stack = []
@@ -249,12 +258,27 @@ func _glove_cancel_carry(play_sfx: bool = false) -> bool:
 	var plant := _glove_carried_plant
 	var source := _glove_source_cell
 	var stack := _glove_carried_stack
-	_glove_set_carried_invincible(false)
-	_glove_carried_plant = null
-	_glove_source_cell = null
-	_glove_carried_stack = []
+	## 先尝试归还植物到源格子
+	var attach_ok := false
 	if is_instance_valid(source):
-		source.glove_attach_plant(plant, stack)
+		attach_ok = source.glove_attach_plant(plant, stack)
+	## 归还成功才清除状态并取消无敌
+	if attach_ok:
+		_glove_set_carried_invincible(false)
+		_glove_carried_plant = null
+		_glove_source_cell = null
+		_glove_carried_stack = []
+	else:
+		## 归还失败: 销毁孤立的植物, 避免闪退
+		_glove_set_carried_invincible(false)
+		if is_instance_valid(plant):
+			plant.queue_free()
+		for stacked in stack:
+			if is_instance_valid(stacked):
+				stacked.queue_free()
+		_glove_carried_plant = null
+		_glove_source_cell = null
+		_glove_carried_stack = []
 	if play_sfx:
 		SoundManager.play_other_SFX("tap2")
 	return true

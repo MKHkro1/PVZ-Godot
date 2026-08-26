@@ -1,0 +1,140 @@
+[gd_scene load_steps=16 format=3 uid="uid://bjdp2e5uco4fc"]
+
+[ext_resource type="PackedScene" uid="uid://c5cke4cm02um7" path="res://scenes/character/plant/plant_000_base.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://c06quod1o003" path="res://scripts/character/plant/plant_050_custom_plant.gd" id="2_script"]
+[ext_resource type="Script" uid="uid://d27ifln7bjwup" path="res://scripts/character/components/attack_behavior_component/component_attack_bullet_base.gd" id="3_attack"]
+[ext_resource type="Script" uid="uid://bafp0ax1lmlge" path="res://scripts/character/components/detect_component/component_detect.gd" id="4_detect"]
+[ext_resource type="Texture2D" uid="uid://cyyk1hmvx7u05" path="res://assets/reanim/anim_sprout.png" id="5_tex"]
+
+[sub_resource type="Animation" id="Animation_50attack"]
+resource_name = "Attack"
+step = 0.0833333
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackComponent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_shoot_bullet"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_50death"]
+resource_name = "Death"
+length = 1.5
+step = 0.0833333
+
+[sub_resource type="Animation" id="Animation_50idle"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+step = 0.0833333
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_50"]
+_data = {
+&"Attack": SubResource("Animation_50attack"),
+&"Death": SubResource("Animation_50death"),
+&"Idle": SubResource("Animation_50idle")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_50idle"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_50atk"]
+animation = &"Attack"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_50"]
+sync = true
+fadein_time = 0.2
+fadeout_time = 0.2
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_50"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_50"]
+graph_offset = Vector2(-100, -20)
+nodes/output/position = Vector2(760, 200)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_50atk")
+nodes/Animation/position = Vector2(-140, 140)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_50idle")
+"nodes/Animation 2/position" = Vector2(-120, 300)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_50")
+nodes/OneShot/position = Vector2(240, 180)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_50")
+nodes/TimeScale/position = Vector2(500, 200)
+node_connections = [&"output", 0, &"TimeScale", &"OneShot", 0, &"Animation", &"OneShot", 1, &"Animation 2", &"TimeScale", 0, &"OneShot"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50detect"]
+size = Vector2(1000, 5)
+
+[node name="Plant050CustomPlant" node_paths=PackedStringArray("node2d_detect_in_slope") instance=ExtResource("1_base")]
+script = ExtResource("2_script")
+plant_type = 50
+node2d_detect_in_slope = [NodePath("HurtBoxComponent/HurtBoxDetection"), NodePath("AttackComponent/DetectComponent")]
+
+[node name="Stem" type="Sprite2D" parent="Body/BodyCorrect" index="0"]
+position = Vector2(30, 42)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("5_tex")
+
+[node name="Head" type="Sprite2D" parent="Body/BodyCorrect/Stem" index="0"]
+position = Vector2(0, -28)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_tex")
+
+[node name="Marker2DBullet" type="Marker2D" parent="Body/BodyCorrect/Stem/Head" index="0"]
+position = Vector2(18, -6)
+
+[node name="Leaf_left" type="Sprite2D" parent="Body/BodyCorrect" index="1"]
+position = Vector2(68, 27.999998)
+rotation = 0.45
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_tex")
+
+[node name="Leaf_right" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
+position = Vector2(43, 52)
+rotation = -0.45
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_tex")
+
+[node name="SleepComponent" parent="." index="4" node_paths=PackedStringArray("sleep_influence_components")]
+sleep_influence_components = [NodePath("../BlinkComponent"), NodePath("../AttackComponent")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_50")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="9"]
+deterministic = false
+tree_root = SubResource("AnimationNodeBlendTree_50")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
+parameters/TimeScale/scale = 1.0
+
+[node name="AttackComponent" type="Node2D" parent="." index="10" node_paths=PackedStringArray("markers_2d_bullet")]
+script = ExtResource("3_attack")
+markers_2d_bullet = [NodePath("../Body/BodyCorrect/Stem/Head/Marker2DBullet")]
+
+[node name="BulletAttackCdTimer" type="Timer" parent="AttackComponent" index="0"]
+
+[node name="DetectComponent" type="Node2D" parent="AttackComponent" index="1"]
+script = ExtResource("4_detect")
+
+[node name="Area2D" type="Area2D" parent="AttackComponent/DetectComponent" index="0"]
+position = Vector2(0, -25)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/DetectComponent/Area2D" index="0"]
+position = Vector2(500, 0)
+shape = SubResource("RectangleShape2D_50detect")
+
+[connection signal="timeout" from="AttackComponent/BulletAttackCdTimer" to="AttackComponent" method="_on_bullet_attack_cd_timer_timeout"]

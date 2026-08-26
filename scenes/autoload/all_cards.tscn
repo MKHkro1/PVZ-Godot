@@ -6590,6 +6590,12 @@ centered = false
 [node name="Marker2DBullet" type="Marker2D" parent="PlantCards2/Card4/CardBg/CharacterStatic/Plant008PeaShooterDoubleReverse/Body/BodyCorrect/Anim_stem/stem_correct"]
 position = Vector2(60.9452, 30.6411)
 
+[node name="Card50" parent="PlantCards2" instance=ExtResource("2_5pqky")]
+layout_mode = 2
+card_id = 52
+card_plant_type = 50
+sun_cost = 100
+
 [node name="ZombieCards" type="GridContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 0

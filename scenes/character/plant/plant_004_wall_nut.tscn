@@ -49,9 +49,10 @@ transitions = ["Wallnut_idle", "Wallnut_face", SubResource("AnimationNodeStateMa
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_r0k88"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_hev76"]
+graph_offset = Vector2(-342.49152, 158.40628)
 nodes/output/position = Vector2(900, 120)
 nodes/AnimationNodeStateMachine/node = SubResource("AnimationNodeStateMachine_63m75")
-nodes/AnimationNodeStateMachine/position = Vector2(260, 100)
+nodes/AnimationNodeStateMachine/position = Vector2(140, 100)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_r0k88")
 nodes/TimeScale/position = Vector2(600, 100)
 node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"AnimationNodeStateMachine"]
@@ -87,22 +88,22 @@ centered = false
 centered = false
 
 [node name="Anim_face" type="Sprite2D" parent="Body/BodyCorrect" index="2"]
-position = Vector2(6.5065374, 4.1246166)
-rotation = -0.0053410362
-scale = Vector2(0.7, 0.71550256)
+position = Vector2(3.5119085, 8.780649)
+rotation = -0.050433125
+scale = Vector2(0.7, 0.6861191)
 texture = ExtResource("2_1opod")
 centered = false
 
 [node name="Anim_blink_twitch" type="Sprite2D" parent="Body/BodyCorrect" index="3"]
 visible = false
-position = Vector2(28.981411, 35.75301)
+position = Vector2(27.207443, 36.988834)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_ia1rq")
 centered = false
 
 [node name="Anim_blink_twice" type="Sprite2D" parent="Body/BodyCorrect" index="4"]
 visible = false
-position = Vector2(27.78141, 21.753014)
+position = Vector2(26.007442, 22.988836)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_s15q3")
 centered = false

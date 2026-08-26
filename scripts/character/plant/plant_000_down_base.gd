@@ -22,5 +22,6 @@ func init_plant(plant_init_para:Dictionary) -> void:
 
 ## 角色死亡时切换地形
 func character_death():
-	plant_cell.down_plant_change_condition(plant_cell.plant_cell_type == PlantCell.PlantCellType.Pool)
+	if is_instance_valid(plant_cell):
+		plant_cell.down_plant_change_condition(plant_cell.plant_cell_type == PlantCell.PlantCellType.Pool)
 	super()
