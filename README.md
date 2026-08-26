@@ -1,14 +1,14 @@
 # 🌱 使用godot重置PVZ
 
-从95版、植物娘、胆小菇之梦，到杂交版、融合版等众多精彩的改版与同人作品，
+从95版、植物娘、胆小菇之梦，到杂交版、融合版、恐怖版等众多精彩的改版与同人作品，
 
 相信许多玩家都曾萌生过属于自己的创意与幻想。
 
-本项目基于 [Godot4.5.1](https://godotengine.org/zh-cn/) 引擎，
+本项目基于 [Godot4.5.1](https://godotengine.org/zh-cn/) 引擎，继承于[hsk-dream](https://github.com/hsk-dream/PVZ-Godot-Dream)大佬搭建的基础框架，
 
-致力于对原版《植物大战僵尸》进行godot复刻，
+继续致力于对原版《植物大战僵尸》进行godot复刻，同时添加一些额外有趣的内容。
 
-目前除部分小游戏外已经基本实现所有原版内容。
+目前除部分小游戏外已经基本实现所有原版内容，
 
 欢迎各位大佬在本开源项目基础上，完成属于自己的 PVZ 同人改版之梦！
 
@@ -96,6 +96,10 @@ forked from [PVZ_reanim2godot_animation](https://github.com/HYTommm/PVZ_reanim2g
 - 樱桃炸弹爆炸动画粒子特效: [HYTommm](https://space.bilibili.com/3493140163988287)开源项目[Godot-PVZ](https://github.com/HYTommm/Godot-PVZ)
 - 信号总线,随机选择器: [玩物不丧志的老李](https://space.bilibili.com/8618918)开源项目[godot_core_system](https://github.com/LiGameAcademy/godot_core_system)
 - 种子雨雨幕：[简单的小雨氛围：shader写的雾、粒子做的雨和水花 | godot4教程](https://www.bilibili.com/video/BV15ibAz4EZi)
+
+
+
+---
 
 
 

@@ -228,7 +228,9 @@ func coffee_bean_awake_up():
 
 ## 获取种植新植物时植物虚影的位置
 func get_new_plant_static_shadow_global_position(place_plant_in_cell:Global.PlacePlantInCell):
-	return plant_container_node[place_plant_in_cell].global_position
+	if plant_container_node.has(place_plant_in_cell) and is_instance_valid(plant_container_node[place_plant_in_cell]):
+		return plant_container_node[place_plant_in_cell].global_position
+	return global_position
 
 ## 植物死亡
 func one_plant_free(plant:Plant000Base):
