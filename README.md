@@ -97,11 +97,7 @@ forked from [PVZ_reanim2godot_animation](https://github.com/HYTommm/PVZ_reanim2g
 - 信号总线,随机选择器: [玩物不丧志的老李](https://space.bilibili.com/8618918)开源项目[godot_core_system](https://github.com/LiGameAcademy/godot_core_system)
 - 种子雨雨幕：[简单的小雨氛围：shader写的雾、粒子做的雨和水花 | godot4教程](https://www.bilibili.com/video/BV15ibAz4EZi)
 
-
-
 ---
-
-
 
 # 组件
 
