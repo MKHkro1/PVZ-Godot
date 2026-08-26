@@ -45,6 +45,13 @@ if not exist "%PROJECT_DIR%\project.godot" (
 
 cd /d "%PROJECT_DIR%"
 
+rem 自愈：若上次构建中断遗留了 project.godot 备份，先还原插件列表
+powershell -NoProfile -ExecutionPolicy Bypass -File "%PROJECT_DIR%\.tools\set_plugins.ps1" -Recover
+
+echo [0/3] 临时禁用编辑器插件（消除无头导出退出时的 RID/ObjectDB 泄漏噪音）...
+powershell -NoProfile -ExecutionPolicy Bypass -File "%PROJECT_DIR%\.tools\set_plugins.ps1" -Off
+if errorlevel 1 echo [提示] 插件开关失败，将按原配置导出。
+
 echo [1/3] 导出 Windows EXE ...
 "%GODOT_EXE%" --headless --path "%PROJECT_DIR%" --export-release "%EXPORT_WIN%" "%WIN_EXE%"
 if errorlevel 1 (
@@ -97,6 +104,10 @@ if not exist "%APK_OUT%" (
 echo [完成] %APK_OUT%
 
 echo.
+echo 恢复编辑器插件配置 ...
+powershell -NoProfile -ExecutionPolicy Bypass -File "%PROJECT_DIR%\.tools\set_plugins.ps1" -On
+
+echo.
 echo ========================================
 echo   全部构建成功
 echo ========================================
@@ -111,6 +122,8 @@ exit /b 0
 
 :fail
 echo.
+rem 无论失败在哪一步，都尝试还原编辑器插件配置
+powershell -NoProfile -ExecutionPolicy Bypass -File "%PROJECT_DIR%\.tools\set_plugins.ps1" -On
 echo 构建未完成，请查看上方错误信息。
 echo.
 pause
